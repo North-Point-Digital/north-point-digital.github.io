@@ -176,9 +176,8 @@ const Navigation: React.FC = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/#services' },
-    { name: 'About', path: '/#about' },
-    { name: 'Testimonials', path: '/#testimonials' },
-    { name: 'Contact', path: '/#contact' },
+    { name: 'About Us', path: '/#about' },
+    // { name: 'Testimonials', path: '/#testimonials' },
   ];
 
   return (
@@ -215,7 +214,7 @@ const Navigation: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get Started
+              Contact Us
             </CTAButton>
           </NavLink>
         </NavLinks>

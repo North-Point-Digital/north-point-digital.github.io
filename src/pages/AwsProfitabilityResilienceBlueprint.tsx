@@ -2,23 +2,45 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaClipboardCheck, FaChartLine, FaShieldAlt, FaDollarSign, FaRocket, FaAward } from 'react-icons/fa';
+import CounterSection from '../components/CounterSection';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding-top: 80px;
-`;
-
-const PageContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background-image: url('/product_offer_hero_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+    z-index: 1;
+  }
 `;
 
 const HeroSection = styled.section`
   text-align: center;
   margin-bottom: 5rem;
 `;
+
+const PageContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 2;
+`;
+
+
 
 const Title = styled(motion.h1)`
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -154,25 +176,10 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
       description: "Implement best practices for cloud security"
     },
     {
-      icon: <FaChartLine />,
-      title: "Performance Boost",
-      description: "Optimize for speed and reliability"
-    },
-    {
-      icon: <FaRocket />,
-      title: "Scalability",
-      description: "Build systems that grow with your business"
-    },
-    {
       icon: <FaAward />,
       title: "Best Practices",
       description: "Align with AWS Well-Architected Framework"
     },
-    {
-      icon: <FaClipboardCheck />,
-      title: "Free Assessment",
-      description: "AWS-funded comprehensive review"
-    }
   ];
 
   return (
@@ -184,15 +191,15 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            AWS Profitability & Resilience Blueprint
+            Cost Optimization & Resilience Blueprint
           </Title>
           <Subtitle
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Transform your cloud infrastructure with a comprehensive Well-Architected Review
-            that drives profitability and ensures business resilience
+            Transform your cloud infrastructure with our comprehensive blueprint
+            that's lazer focused on reducing your AWS bill and enhancing your security posture.
           </Subtitle>
           <CTAButton
             initial={{ opacity: 0, y: 20 }}
@@ -201,8 +208,10 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get Your Free Assessment
+            Book A Call Today
           </CTAButton>
+          
+          <CounterSection />
         </HeroSection>
 
         <ContentSection>
@@ -211,56 +220,44 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <CardTitle>What is the AWS Profitability & Resilience Blueprint?</CardTitle>
+            <CardTitle>Your Blueprint To Secure and Cost Effective Infrastructure</CardTitle>
             <CardContent>
               <p>
-                Our AWS Profitability & Resilience Blueprint is a comprehensive service built on 
+                Our AWS Cost Optimization & Resilience Blueprint is a comprehensive service built on 
                 the foundation of AWS Well-Architected Reviews. We go beyond standard assessments 
-                to deliver actionable insights that directly impact your bottom line.
+                to deliver actionable insights and remediations that directly impact your operational costs and your security posture.
               </p>
               <p>
-                This FREE service, funded by AWS, provides you with a detailed analysis of your 
-                cloud architecture across five critical pillars: Operational Excellence, Security, 
-                Reliability, Performance Efficiency, and Cost Optimization.
+                <ul>
+                  <li>
+                    <FaClipboardCheck />
+                    Current state review of your AWS infrastructure, performed by industry experts.
+                  </li>
+                  <li>
+                    <FaClipboardCheck />
+                    Detailed cost savings analysis, infrastructure tagging strategies, budget alerting where we aim to for a minimum net save of 25% of your current AWS Spend.
+                  </li>
+                  <li>
+                    <FaClipboardCheck />
+                    Security vulnerability assessment and remediation roadmap. We will aim to remediate all high-risk items as part of the audit, giving you immediate value.
+                  </li>
+                  <li>
+                    <FaClipboardCheck />
+                    Fixed-fee audit, with no commitments or hidden costs. Just savings and better security for your business.
+                  </li>
+                </ul>
               </p>
+              <CTAButton
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >Book A Call Today
+            </CTAButton>
             </CardContent>
           </Card>
 
-          <Card
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <CardTitle>What You'll Receive</CardTitle>
-            <CardContent>
-              <ul>
-                <li>
-                  <FaClipboardCheck />
-                  Comprehensive 50+ point assessment of your AWS infrastructure
-                </li>
-                <li>
-                  <FaChartLine />
-                  Detailed cost analysis with savings opportunities identified
-                </li>
-                <li>
-                  <FaShieldAlt />
-                  Security vulnerability assessment and remediation roadmap
-                </li>
-                <li>
-                  <FaRocket />
-                  Performance optimization recommendations
-                </li>
-                <li>
-                  <FaDollarSign />
-                  ROI projections for recommended improvements
-                </li>
-                <li>
-                  <FaAward />
-                  Priority action plan aligned with your business goals
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
         </ContentSection>
 
         <FeatureGrid>
