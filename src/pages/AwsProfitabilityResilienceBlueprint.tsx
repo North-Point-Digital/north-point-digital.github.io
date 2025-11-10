@@ -268,6 +268,9 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
           </Card>
 
         </ContentSection>
+        
+        <ProcessTimelineSection />
+        <FAQSection />
 
         <FeatureGrid>
           {features.map((feature, index) => (
@@ -284,9 +287,6 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
           ))}
         </FeatureGrid>
       </PageContainer>
-      
-      <ProcessTimelineSection />
-      <FAQSection />
     </PageWrapper>
   );
 };
