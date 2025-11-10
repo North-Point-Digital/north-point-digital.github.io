@@ -192,18 +192,18 @@ const HeroSection: React.FC = () => {
   const features = [
     {
       Icon: FaCode,
-      title: 'Free Assessments',
-      description: 'AWS-funded Well-Architected Reviews & AI PoCs',
+      title: 'Expert Reviews',
+      description: 'Well-Architected Reviews & AI PoCs with immediate ROI',
     },
     {
       Icon: FaCloud,
-      title: 'AWS Migration',
-      description: 'Seamless cloud migration with AWS MAP framework',
+      title: 'Cloud Migration',
+      description: 'Seamless AWS migration with proven frameworks',
     },
     {
       Icon: FaShieldAlt,
       title: 'AWS Certified',
-      description: 'Specialist AWS consultancy & best practices',
+      description: 'Deep expertise in security and optimization',
     },
   ];
 
@@ -241,32 +241,28 @@ const HeroSection: React.FC = () => {
       >
         <TextContent>
           <Title variants={itemVariants}>
-            Transform Your Business with
+            Reduce Your AWS Bill by 25%+
             <br />
             <span style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-              AWS Cloud Excellence
+              While Strengthening Security
             </span>
           </Title>
           <Subtitle variants={itemVariants}>
-            Unlock the potential of your business with AWS-certified expertise
-            and bespoke cloud strategies that drive growth, enhance security,
-            and optimize your operations.
+            Expert AWS consultancy delivering Well-Architected Reviews, AI Proof of Concepts,
+            and seamless cloud migrations with proven results.
           </Subtitle>
           <CTAContainer variants={itemVariants}>
             <PrimaryButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => trackButtonClick('Hero Get Started')}
+              onClick={() => {
+                trackButtonClick('Hero Get Started');
+                const contactSection = document.getElementById('contact');
+                contactSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               Get Started <FaArrowRight />
             </PrimaryButton>
-            <SecondaryButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => trackButtonClick('Hero View Our Work')}
-            >
-              View Our Work
-            </SecondaryButton>
           </CTAContainer>
         </TextContent>
 

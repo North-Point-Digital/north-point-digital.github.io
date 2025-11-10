@@ -191,15 +191,15 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Cost Optimization & Resilience Blueprint
+            Security & Cost Optimization Blueprint
           </Title>
           <Subtitle
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Transform your cloud infrastructure with our comprehensive blueprint
-            that's lazer focused on reducing your AWS bill and enhancing your security posture.
+            Comprehensive Well-Architected Review that targets 25%+ cost reduction while
+            strengthening security. Risk-free engagement with no upfront cost.
           </Subtitle>
           <CTAButton
             initial={{ opacity: 0, y: 20 }}
@@ -220,33 +220,37 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <CardTitle>Your Blueprint To Secure and Cost Effective Infrastructure</CardTitle>
+            <CardTitle>Your Blueprint to Secure and Cost-Effective Infrastructure</CardTitle>
             <CardContent>
               <p>
-                Our AWS Cost Optimization & Resilience Blueprint is a comprehensive audit focused on two of the six pillars of AWS's Well Architechted Framework. 
-                We look at your AWS accounts and infrastructure then apply our cost saving strategies, create daily and monthly budget alerts tailored to your business.
+                Our Security & Cost Optimization Blueprint is a comprehensive Well-Architected Review
+                focused on the two pillars that deliver immediate ROI: Cost Optimization and Security.
+                This isn't a theoretical audit—we identify actionable improvements and remediate critical
+                issues during the engagement.
               </p>
               <p>
-                It is more important than ever to ensure that your cloud environment is safe from attack, with infrastructure misconfigurations and poor cloud security one of the leading causes of data breaches.
-                Our seasoned experts will identify and remediate any high-risk security we find, giving you immediate value.
+                We audit your AWS accounts and infrastructure, applying proven cost-saving strategies,
+                implementing budget alerts, and targeting a minimum 25% reduction in your AWS spend. With
+                infrastructure misconfigurations being a leading cause of data breaches, our experts identify
+                and remediate high-risk security vulnerabilities during the review—delivering immediate value.
               </p>
               <p>
                 <ul>
                   <li>
                     <FaClipboardCheck />
-                    Current state review of your AWS infrastructure, performed by industry experts.
+                    Complete infrastructure assessment by AWS-certified experts
                   </li>
                   <li>
                     <FaClipboardCheck />
-                    Detailed cost savings analysis, infrastructure tagging strategies, budget alerting where we aim to for a minimum net save of 25% of your current AWS Spend.
+                    Detailed cost optimization roadmap with tagging strategies and budget alerts (targeting 25%+ reduction)
                   </li>
                   <li>
                     <FaClipboardCheck />
-                    Security vulnerability assessment and remediation roadmap. We will aim to remediate all high-risk items as part of the audit, giving you immediate value.
+                    Security vulnerability remediation—we fix critical issues during the engagement
                   </li>
                   <li>
                     <FaClipboardCheck />
-                    Fixed-fee audit, with no commitments or hidden costs. Just savings and better security for your business.
+                    Risk-free engagement with no upfront cost and no long-term commitments
                   </li>
                 </ul>
               </p>

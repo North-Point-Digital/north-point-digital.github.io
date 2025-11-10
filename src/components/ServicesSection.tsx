@@ -137,31 +137,31 @@ const ServicesSection: React.FC = () => {
   const services = [
     {
       icon: <FaClipboardCheck />,
-      title: 'AWS Security & Cost Optimization Blueprint',
-      description: 'Get free AWS-aligned assessments to optimize architecture.',
-      features: ['Cost Optimization', 'Security Review', 'Performance Review', 'Path to Operational Excellence'],
+      title: 'Security & Cost Optimization Blueprint',
+      description: 'Comprehensive Well-Architected Review to slash costs and strengthen security.',
+      features: ['Target 25%+ Cost Reduction', 'Security Hardening', 'Performance Optimization', 'No Upfront Cost'],
       large: true,
       link: '/aws-profitability-resilience-blueprint',
     },
     {
       icon: <FaRobot />,
-title: 'North Point AI Launchpad',
-      description: 'Deliver AI-driven Proof of Concepts with cost analysis and production roadmap.',
-      features: ['PoC Development', 'Cost Analysis', 'Roadmap to Production'],
+      title: 'North Point AI Launchpad',
+      description: 'Working AI Proof of Concept with full costings and production roadmap in 2 weeks.',
+      features: ['Custom PoC Development', 'Production Cost Analysis', 'Implementation Roadmap', 'Fixed-Fee Engagement'],
       large: true,
       link: '/ai-launchpad',
     },
     {
       icon: <FaExchangeAlt />,
       title: 'AWS Migrations',
-      description: 'Effortlessly move to cloud using the MAP framework.',
-      features: ['Assessment & Planning', 'Migration Support', 'Infrastructure Modernisation'],
+      description: 'Seamless cloud migration using AWS MAP framework.',
+      features: ['Assessment & Planning', 'Migration Execution', 'Infrastructure Modernization'],
     },
     {
       icon: <FaCloud />,
       title: 'Cloud Architecture',
-      description: 'Build scalable infrastructure with AWS solutions.',
-      features: ['DevOps', 'Solitions Architecture', 'SRE'],
+      description: 'Build scalable, resilient AWS infrastructure.',
+      features: ['DevOps', 'Solutions Architecture', 'SRE'],
     },
     {
       icon: <FaDatabase />,
@@ -227,7 +227,7 @@ title: 'North Point AI Launchpad',
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            Specialist AWS consultancy services with funding-backed solutions
+            Specialist AWS consultancy delivering measurable results
           </Subtitle>
         </SectionHeader>
         

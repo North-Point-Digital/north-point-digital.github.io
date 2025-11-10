@@ -140,18 +140,18 @@ const AILaunchpad: React.FC = () => {
   const features = [
     {
       icon: <FaFlask />,
-      title: "Proof of Concept",
-      description: "Rapid development of AI-driven PoC tailor-made for your business needs"
+      title: "Working Prototype",
+      description: "AWS-powered AI PoC built with your data in 2 weeks"
     },
     {
       icon: <FaChartPie />,
-      title: "Full Costings & Summary",
-      description: "Detailed business case with comprehensive cost analysis"
+      title: "Full Cost Analysis",
+      description: "Complete business case with production cost projections"
     },
     {
       icon: <FaRoad />,
-      title: "Path to Production",
-      description: "Clear roadmap to scalable and production-ready AI solutions"
+      title: "Production Roadmap",
+      description: "Clear path to scalable, enterprise-grade AI solution"
     },
   ];
 
@@ -164,14 +164,15 @@ const AILaunchpad: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Unlock Your Next Phase of Growth. Without the Risk.
+            Validate Your AI Strategy in 2 Weeks
           </Title>
           <Subtitle
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Your Competitors Are Building AI. What's Your First Move?
+            From idea to working AI prototype in 14 days. Fixed-fee engagement with complete
+            production costings and implementation roadmap.
           </Subtitle>
           <CTAButton
             initial={{ opacity: 0, y: 20 }}
@@ -197,13 +198,18 @@ Schedule Your Strategy Call
             <CardTitle>The North Point AI Launchpad Program</CardTitle>
             <CardContent>
               <p>
-              is your definitive first step in leverageing AI to gain a competitive edge. This fixed-fee, two week program is designed to transform your business problems into a concrete, executable AI solution.
+                The North Point AI Launchpad is your definitive first step in leveraging AI to gain a
+                competitive edge. This fixed-fee, two-week program transforms your business challenges
+                into a concrete, executable AI solution with clear production economics.
               </p>
               <p>
-                <b>We don't build generic chatbots; we build business value.</b>
+                <strong>We don't build generic chatbots; we build business value.</strong>
               </p>
               <p>
-              Using your company's proprietary data and the market-leading services from AWS, we will build a tangible, working prototype of a customised AI solution. This is not a theoretical exercise - it's a functioning proof of concept that validates your specific use case.
+                Using your company's proprietary data and market-leading AWS AI services (including Amazon
+                Bedrock, SageMaker, and others), we build a tangible, working prototype of a customized AI
+                solution. This is not a theoretical exercise—it's a functioning proof of concept that validates
+                your specific use case and provides a clear path to production deployment.
               </p>
             </CardContent>
           </Card>
@@ -218,15 +224,15 @@ Schedule Your Strategy Call
               <ul>
                 <li>
                   <FaFlask />
-                  A customised AI Proof of Concept built and validated on AWS.
+                  A working AI Proof of Concept built with your data and validated on AWS infrastructure
                 </li>
                 <li>
                   <FaChartPie />
-                  A stategic business plan with a clear executive summary and a full breakdown of the projected production costs.
+                  Complete production economics: executive summary with detailed cost projections and ROI analysis
                 </li>
                 <li>
                   <FaRoad />
-                  A step-by-step path-to-production roadmap that outlines exactly how to tuen the prototype into a scalable, enterprise-grade solution.
+                  Step-by-step implementation roadmap outlining exactly how to scale the prototype into an enterprise-grade solution
                 </li>
               </ul>
               <CTAButton

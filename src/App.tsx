@@ -6,7 +6,6 @@ import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
 import AboutSection from './components/AboutSection';
-import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import AwsProfitabilityResilienceBlueprint from './pages/AwsProfitabilityResilienceBlueprint';
@@ -44,7 +43,6 @@ function App() {
                 <HeroSection />
                 <ServicesSection />
                 <AboutSection />
-                <TestimonialsSection />
                 <ContactSection />
               </>
             } />

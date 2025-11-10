@@ -94,21 +94,21 @@ const AboutSection: React.FC = () => {
           viewport={{ once: true }}
         >
           <p>
-            As a specialist AWS consultancy, we are committed to integrating the latest
-            cloud technologies into your business with expert precision. Our team of
-            AWS-certified professionals brings deep expertise in cloud architecture,
-            migration, and optimization to help you achieve your digital transformation goals.
+            As specialist AWS consultants, we deliver measurable outcomes: clients typically
+            see 35% reductions in cloud spend while improving security posture and operational
+            resilience. Our AWS-certified team brings deep expertise in cloud architecture,
+            migration, and optimization.
           </p>
           <p>
-            We leverage AWS funding programs to deliver free Well-Architected Reviews and
-            AI Proof of Concepts, ensuring you can explore cloud solutions without initial
-            investment. Our proven methodologies, including the AWS Migration Acceleration
-            Program (MAP), guarantee smooth transitions from on-premise to cloud infrastructure.
+            We leverage proven AWS frameworks and methodologies—including Well-Architected Reviews
+            and the Migration Acceleration Program (MAP)—to accelerate your cloud journey. Our
+            approach combines technical excellence with strategic guidance to identify quick wins
+            and long-term optimizations.
           </p>
           <p>
-            Partner with us to unlock the full potential of AWS cloud services. We combine
-            technical excellence with strategic guidance to accelerate your journey to the
-            cloud, reduce costs, and drive innovation across your organization.
+            Partner with us to transform your AWS infrastructure. We offer risk-free engagement
+            models that align our success with yours, delivering lower costs, stronger security,
+            and faster innovation without the typical consulting overhead.
           </p>
         </Content>
       </Container>
