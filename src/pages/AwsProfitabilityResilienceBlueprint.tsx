@@ -267,11 +267,11 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             </CardContent>
           </Card>
 
+          <ProcessTimelineSection />
+          <FAQSection />
+
         </ContentSection>
         
-        <ProcessTimelineSection />
-        <FAQSection />
-
         <FeatureGrid>
           {features.map((feature, index) => (
             <FeatureCard
