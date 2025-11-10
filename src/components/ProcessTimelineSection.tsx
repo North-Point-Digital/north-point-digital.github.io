@@ -5,8 +5,8 @@ import { FaSearch, FaTools, FaFileAlt } from 'react-icons/fa';
 
 const Section = styled.section`
   padding: 5rem 2rem;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.78) 0%, rgba(118, 75, 162, 0.82) 50%, rgba(37, 24, 75, 0.9) 100%);
   position: relative;
+  background: rgba(255, 255, 255, 0.04);
 `;
 
 const Container = styled.div`
