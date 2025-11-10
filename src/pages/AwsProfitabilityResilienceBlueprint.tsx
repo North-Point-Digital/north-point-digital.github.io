@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaClipboardCheck, FaShieldAlt, FaDollarSign, FaAward } from 'react-icons/fa';
@@ -31,7 +31,13 @@ const PageWrapper = styled.div`
 
 const HeroSection = styled.section`
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
+  min-height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
 `;
 
 const PageContainer = styled.div`
@@ -76,6 +82,8 @@ const CTAButton = styled(motion.button)`
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 `;
+
+const CTA_LINK = 'https://calendly.com/david-northpointdigital/30min';
 
 const ContentSection = styled.section`
   display: grid;
@@ -165,6 +173,61 @@ const FeatureCard = styled(motion.div)`
   }
 `;
 
+const CTAHighlight = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(12px);
+`;
+
+const CTAHeading = styled.h3`
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: white;
+`;
+
+const CTAText = styled.p`
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const CTAButtonRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+const SecondaryCTAButton = styled(CTAButton)`
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+`;
+
+const FinalCTASection = styled(motion.section)`
+  margin-top: 6rem;
+  text-align: center;
+  color: white;
+`;
+
+const FinalCTATitle = styled.h2`
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+`;
+
+const FinalCTAText = styled.p`
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2.5rem;
+`;
+
 const AwsProfitabilityResilienceBlueprint: React.FC = () => {
   const features = [
     {
@@ -184,10 +247,28 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
     },
   ];
 
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  useLayoutEffect(() => {
+    const previousRestoration = window.history.scrollRestoration;
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    heroRef.current?.scrollIntoView({ behavior: 'auto', block: 'start', inline: 'nearest' });
+
+    return () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = previousRestoration ?? 'auto';
+      }
+    };
+  }, []);
+
   return (
     <PageWrapper>
       <PageContainer>
-        <HeroSection>
+        <HeroSection ref={heroRef}>
           <Title
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -209,6 +290,10 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            as={motion.a}
+            href={CTA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Book A Call Today
           </CTAButton>
@@ -262,12 +347,50 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-              >Book A Call Today
-            </CTAButton>
+                as={motion.a}
+                href={CTA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book A Call Today
+              </CTAButton>
             </CardContent>
           </Card>
 
           <ProcessTimelineSection framed />
+          <CTAHighlight
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <CTAHeading>Ready for rapid cost and security wins?</CTAHeading>
+            <CTAText>
+              Kick off your Security & Cost Optimization Blueprint and get actionable changes in motion within two weeks.
+            </CTAText>
+            <CTAButtonRow>
+              <CTAButton
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                as={motion.a}
+                href={CTA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book A Call Today
+              </CTAButton>
+              <SecondaryCTAButton
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                as={motion.a}
+                href={CTA_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                See Available Times
+              </SecondaryCTAButton>
+            </CTAButtonRow>
+          </CTAHighlight>
           <FAQSection framed />
 
         </ContentSection>
@@ -286,6 +409,40 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             </FeatureCard>
           ))}
         </FeatureGrid>
+
+        <FinalCTASection
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <FinalCTATitle>Let’s transform your AWS foundation</FinalCTATitle>
+          <FinalCTAText>
+            Book a discovery call and we’ll deliver a tailored optimization roadmap with measurable ROI.
+          </FinalCTAText>
+          <CTAButtonRow>
+            <CTAButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              as={motion.a}
+              href={CTA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Schedule Your Call
+            </CTAButton>
+            <SecondaryCTAButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              as={motion.a}
+              href={CTA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Talk With An Expert
+            </SecondaryCTAButton>
+          </CTAButtonRow>
+        </FinalCTASection>
       </PageContainer>
     </PageWrapper>
   );
