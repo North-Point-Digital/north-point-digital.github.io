@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaClipboardCheck, FaChartLine, FaShieldAlt, FaDollarSign, FaRocket, FaAward } from 'react-icons/fa';
+import { FaClipboardCheck, FaShieldAlt, FaDollarSign, FaAward } from 'react-icons/fa';
 import CounterSection from '../components/CounterSection';
+import ProcessTimelineSection from '../components/ProcessTimelineSection';
+import FAQSection from '../components/FAQSection';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -282,6 +284,9 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
           ))}
         </FeatureGrid>
       </PageContainer>
+      
+      <ProcessTimelineSection />
+      <FAQSection />
     </PageWrapper>
   );
 };

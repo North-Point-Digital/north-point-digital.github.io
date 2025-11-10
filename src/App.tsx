@@ -5,7 +5,9 @@ import { GlobalStyles, theme } from './styles/GlobalStyles';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
+import IndustryStatsSection from './components/IndustryStatsSection';
 import AboutSection from './components/AboutSection';
+import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import AwsProfitabilityResilienceBlueprint from './pages/AwsProfitabilityResilienceBlueprint';
@@ -41,8 +43,10 @@ function App() {
             <Route path="/" element={
               <>
                 <HeroSection />
+                <IndustryStatsSection />
                 <ServicesSection />
                 <AboutSection />
+                <FAQSection />
                 <ContactSection />
               </>
             } />
