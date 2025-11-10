@@ -5,7 +5,7 @@ import { FaSearch, FaTools, FaFileAlt } from 'react-icons/fa';
 
 const Section = styled.section`
   padding: 5rem 2rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
   position: relative;
 `;
 
@@ -64,9 +64,9 @@ const TimelineItem = styled(motion.div)<{ $align: 'left' | 'right' }>`
 `;
 
 const TimelineContent = styled.div<{ $align: 'left' | 'right' }>`
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   padding: 2rem;
   width: 45%;
@@ -105,9 +105,9 @@ const TimelineIcon = styled.div`
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -144,7 +144,7 @@ const StepList = styled.ul`
   padding: 0;
   
   li {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.95);
     padding: 0.5rem 0;
     display: flex;
     align-items: flex-start;
