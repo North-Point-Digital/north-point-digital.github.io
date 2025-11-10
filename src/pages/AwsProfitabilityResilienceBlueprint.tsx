@@ -223,9 +223,12 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             <CardTitle>Your Blueprint To Secure and Cost Effective Infrastructure</CardTitle>
             <CardContent>
               <p>
-                Our AWS Cost Optimization & Resilience Blueprint is a comprehensive service built on 
-                the foundation of AWS Well-Architected Reviews. We go beyond standard assessments 
-                to deliver actionable insights and remediations that directly impact your operational costs and your security posture.
+                Our AWS Cost Optimization & Resilience Blueprint is a comprehensive audit focused on two of the six pillars of AWS's Well Architechted Framework. 
+                We look at your AWS accounts and infrastructure then apply our cost saving strategies, create daily and monthly budget alerts tailored to your business.
+              </p>
+              <p>
+                It is more important than ever to ensure that your cloud environment is safe from attack, with infrastructure misconfigurations and poor cloud security one of the leading causes of data breaches.
+                Our seasoned experts will identify and remediate any high-risk security we find, giving you immediate value.
               </p>
               <p>
                 <ul>
