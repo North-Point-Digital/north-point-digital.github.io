@@ -267,8 +267,8 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             </CardContent>
           </Card>
 
-          <ProcessTimelineSection />
-          <FAQSection />
+          <ProcessTimelineSection framed />
+          <FAQSection framed />
 
         </ContentSection>
         

@@ -3,10 +3,14 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaSearch, FaTools, FaFileAlt } from 'react-icons/fa';
 
-const Section = styled.section`
+const Section = styled.section<{ $framed?: boolean }>`
   padding: 5rem 2rem;
   position: relative;
-  background: rgba(255, 255, 255, 0.04);
+  background: ${({ $framed }) => $framed ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.05)'};
+  border: ${({ $framed }) => $framed ? '1px solid rgba(255, 255, 255, 0.2)' : 'none'};
+  border-radius: ${({ $framed }) => $framed ? '20px' : '0'};
+  backdrop-filter: ${({ $framed }) => $framed ? 'blur(14px)' : 'none'};
+  overflow: ${({ $framed }) => $framed ? 'hidden' : 'visible'};
 `;
 
 const Container = styled.div`
@@ -163,7 +167,11 @@ const StepList = styled.ul`
   }
 `;
 
-const ProcessTimelineSection: React.FC = () => {
+interface ProcessTimelineSectionProps {
+  framed?: boolean;
+}
+
+const ProcessTimelineSection: React.FC<ProcessTimelineSectionProps> = ({ framed }) => {
   const timelineSteps = [
     {
       icon: <FaSearch />,
@@ -213,7 +221,7 @@ const ProcessTimelineSection: React.FC = () => {
   };
 
   return (
-    <Section>
+    <Section $framed={framed}>
       <Container>
         <SectionHeader>
           <Title

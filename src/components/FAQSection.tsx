@@ -3,10 +3,14 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
 
-const Section = styled.section`
+const Section = styled.section<{ $framed?: boolean }>`
   padding: 5rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: ${({ $framed }) => $framed ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.05)'};
+  border: ${({ $framed }) => $framed ? '1px solid rgba(255, 255, 255, 0.2)' : 'none'};
+  border-radius: ${({ $framed }) => $framed ? '20px' : '0'};
+  backdrop-filter: ${({ $framed }) => $framed ? 'blur(14px)' : 'none'};
   position: relative;
+  overflow: ${({ $framed }) => $framed ? 'hidden' : 'visible'};
 `;
 
 const Container = styled.div`
@@ -118,7 +122,11 @@ interface FAQItemData {
   answer: React.ReactNode;
 }
 
-const FAQSection: React.FC = () => {
+interface FAQSectionProps {
+  framed?: boolean;
+}
+
+const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs: FAQItemData[] = [
@@ -229,7 +237,7 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <Section>
+    <Section $framed={framed}>
       <Container>
         <SectionHeader>
           <Title
