@@ -42,7 +42,7 @@ const Timeline = styled.div`
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.3) 100%);
     transform: translateX(-50%);
     
     @media (max-width: 768px) {
@@ -64,9 +64,10 @@ const TimelineItem = styled(motion.div)<{ $align: 'left' | 'right' }>`
 `;
 
 const TimelineContent = styled.div<{ $align: 'left' | 'right' }>`
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 20px 40px rgba(12, 18, 46, 0.25);
   border-radius: 22px;
   padding: 2.25rem;
   width: 45%;
@@ -105,8 +106,8 @@ const TimelineIcon = styled.div`
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(16px);
   border: 2px solid rgba(255, 255, 255, 0.55);
   border-radius: 50%;
   display: flex;
@@ -127,7 +128,7 @@ const TimelineIcon = styled.div`
 const Week = styled.div`
   font-size: 0.9rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
@@ -154,7 +155,7 @@ const StepList = styled.ul`
     
     &:before {
       content: "✓";
-      color: white;
+      color: rgba(255, 255, 255, 0.9);
       font-weight: bold;
       flex-shrink: 0;
       margin-top: 0.1rem;
