@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 
 const FooterWrapper = styled.footer`
@@ -95,6 +96,17 @@ const BottomBar = styled.div`
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
+
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  }
 `;
 
 const Footer: React.FC = () => {
@@ -148,7 +160,7 @@ const Footer: React.FC = () => {
       </FooterContent>
       
       <BottomBar>
-        <p>&copy; 2025 North Point Digital. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <p>&copy; 2025 North Point Digital. All rights reserved. | <Link to="/privacy-policy">Privacy Policy</Link> | Terms of Service</p>
       </BottomBar>
     </FooterWrapper>
   );

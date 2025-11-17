@@ -12,6 +12,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import AwsProfitabilityResilienceBlueprint from './pages/AwsProfitabilityResilienceBlueprint';
 import AILaunchpad from './pages/AILaunchpad';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import ScrollToTop from './components/ScrollToTop';
 import { initGA, logPageView } from './utils/analytics';
 
@@ -55,6 +56,9 @@ function App() {
             } />
             <Route path="/ai-launchpad" element={
               <AILaunchpad />
+            } />
+            <Route path="/privacy-policy" element={
+              <PrivacyPolicy />
             } />
           </Routes>
         </main>
