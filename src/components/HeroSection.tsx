@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaArrowRight, FaCode, FaCloud, FaShieldAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { FaArrowRight, FaCode, FaCloud, FaShieldAlt, FaDownload } from 'react-icons/fa';
 import { trackButtonClick } from '../utils/analytics';
 
 const HeroContainer = styled.section`
@@ -106,6 +107,9 @@ const SecondaryButton = styled(motion.button)`
   font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   transition: all 0.3s ease;
 
   &:hover {
@@ -169,6 +173,8 @@ const FloatingElement = styled(motion.div)`
 `;
 
 const HeroSection: React.FC = () => {
+  const navigate = useNavigate();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -263,6 +269,16 @@ const HeroSection: React.FC = () => {
             >
               Get Started <FaArrowRight />
             </PrimaryButton>
+            <SecondaryButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                trackButtonClick('Hero Download Playbook');
+                navigate('/ai-adoption-playbook');
+              }}
+            >
+              <FaDownload /> Free AI Playbook
+            </SecondaryButton>
           </CTAContainer>
         </TextContent>
 
