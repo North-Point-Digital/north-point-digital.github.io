@@ -213,6 +213,10 @@ const Navigation: React.FC = () => {
             <CTAButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                setIsOpen(false);
+                navigate('/contact');
+              }}
             >
               Contact Us
             </CTAButton>

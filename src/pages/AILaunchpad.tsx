@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaChartPie, FaRoad, FaFlask } from 'react-icons/fa';
-import HubSpotForm from '../components/HubSpotForm';
-import SimpleContactForm from '../components/SimpleContactForm';
-import { HUBSPOT_CONFIG } from '../config/hubspot';
+import { useNavigate } from 'react-router-dom';
+import { FaChartPie, FaRoad, FaFlask, FaDownload } from 'react-icons/fa';
+import FAQSection from '../components/FAQSection';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -53,6 +52,19 @@ const CTAButton = styled(motion.button)`
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
+`;
+
+const CTAButtonRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+const SecondaryCTAButton = styled(CTAButton)`
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.6);
 `;
 
 const ContentSection = styled.section`
@@ -138,6 +150,31 @@ const FeatureCard = styled(motion.div)`
   }
 `;
 
+const CTAHighlight = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(12px);
+`;
+
+const CTAHeading = styled.h3`
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: white;
+`;
+
+const CTAText = styled.p`
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 const FormWrapper = styled.div`
   .hs-form {
     width: 100%;
@@ -199,8 +236,8 @@ const FormWrapper = styled.div`
 `;
 
 const AILaunchpad: React.FC = () => {
-  const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && 
-                              !HUBSPOT_CONFIG.forms.contact.includes('YOUR_');
+  const navigate = useNavigate();
+  const CTA_LINK = 'https://calendly.com/david-northpointdigital/30min';
 
   const features = [
     {
@@ -239,19 +276,31 @@ const AILaunchpad: React.FC = () => {
             From idea to working AI prototype in 14 days. Fixed-fee engagement with complete
             production costings and implementation roadmap.
           </Subtitle>
-          <CTAButton
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const formSection = document.getElementById('ai-launchpad-form');
-              formSection?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-Schedule Your Strategy Call
-          </CTAButton>
+          <CTAButtonRow>
+            <CTAButton
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              as={motion.a}
+              href={CTA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book A Call Today
+            </CTAButton>
+            <SecondaryCTAButton
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/ai-adoption-playbook')}
+            >
+              <FaDownload style={{ marginRight: '0.5rem' }} /> Download Free Playbook
+            </SecondaryCTAButton>
+          </CTAButtonRow>
         </HeroSection>
 
         <ContentSection>
@@ -300,19 +349,25 @@ Schedule Your Strategy Call
                   Step-by-step implementation roadmap outlining exactly how to scale the prototype into an enterprise-grade solution
                 </li>
               </ul>
-              <CTAButton
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const formSection = document.getElementById('ai-launchpad-form');
-              formSection?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-Schedule Your Strategy Call
-          </CTAButton>
+              <CTAButtonRow style={{ marginTop: '2rem' }}>
+                <CTAButton
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  as={motion.a}
+                  href={CTA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book A Call Today
+                </CTAButton>
+                <SecondaryCTAButton
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate('/ai-adoption-playbook')}
+                >
+                  <FaDownload style={{ marginRight: '0.5rem' }} /> Download Free Playbook
+                </SecondaryCTAButton>
+              </CTAButtonRow>
             </CardContent>
           </Card>
         </ContentSection>
@@ -332,35 +387,39 @@ Schedule Your Strategy Call
           ))}
         </FeatureGrid>
 
-        <Card
-          id="ai-launchpad-form"
+        <CTAHighlight
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           style={{ marginTop: '3rem' }}
         >
-          <CardTitle style={{ textAlign: 'center' }}>Ready to Launch Your AI Journey?</CardTitle>
-          <CardContent>
-            <p style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              Schedule a strategy call to discuss your AI use case and learn how we can help.
-            </p>
-            {isHubSpotConfigured ? (
-              <FormWrapper>
-                <HubSpotForm 
-                  formType="contact"
-                  region={HUBSPOT_CONFIG.region}
-                  onFormSubmit={() => console.log('AI Launchpad contact form submitted!')}
-                />
-              </FormWrapper>
-            ) : (
-              <SimpleContactForm 
-                onSubmit={(data) => {
-                  console.log('AI Launchpad contact form submitted:', data);
-                }}
-              />
-            )}
-          </CardContent>
-        </Card>
+          <CTAHeading>Ready to validate your AI strategy?</CTAHeading>
+          <CTAText>Book a free strategy call or download the playbook to get started.</CTAText>
+          <CTAButtonRow>
+            <CTAButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              as={motion.a}
+              href={CTA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book A Call Today
+            </CTAButton>
+            <SecondaryCTAButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/ai-adoption-playbook')}
+            >
+              <FaDownload style={{ marginRight: '0.5rem' }} /> Download Free Playbook
+            </SecondaryCTAButton>
+          </CTAButtonRow>
+        </CTAHighlight>
+
+        <div style={{ marginTop: '5rem' }}>
+          <FAQSection framed />
+        </div>
       </PageContainer>
     </PageWrapper>
   );
