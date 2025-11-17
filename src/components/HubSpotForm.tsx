@@ -22,6 +22,7 @@ const HubSpotForm: React.FC<HubSpotFormProps> = ({
 }) => {
   const formRef = useRef<HTMLDivElement>(null);
   const scriptLoaded = useRef(false);
+  const formCreated = useRef(false);
 
   useEffect(() => {
     // Check if HubSpot is configured
@@ -51,8 +52,13 @@ const HubSpotForm: React.FC<HubSpotFormProps> = ({
     };
 
     const createForm = () => {
-      if (window.hbspt && formRef.current) {
-        // Clear any existing form
+      if (window.hbspt && formRef.current && !formCreated.current) {
+        const existingForm = formRef.current.querySelector('form');
+        if (existingForm) {
+          return;
+        }
+        
+        formCreated.current = true;
         formRef.current.innerHTML = '';
         
         window.hbspt.forms.create({
@@ -77,11 +83,11 @@ const HubSpotForm: React.FC<HubSpotFormProps> = ({
     // Load script and create form
     loadHubSpotScript();
 
-    // Cleanup function
     return () => {
       if (formRef.current) {
         formRef.current.innerHTML = '';
       }
+      formCreated.current = false;
     };
   }, [formType, onFormSubmit, region, cssClass]);
 
