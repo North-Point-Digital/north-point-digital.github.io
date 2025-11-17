@@ -213,13 +213,13 @@ const AIAdoptionPlaybook: React.FC = () => {
     },
     {
       icon: <FaChartLine />,
-      title: 'ROI Calculator',
-      description: 'Tools to measure and track your AI investment returns'
+      title: 'Implementation Roadmap',
+      description: 'Clear path from planning to production deployment'
     },
     {
       icon: <FaRobot />,
-      title: 'Use Case Templates',
-      description: 'Ready-to-use templates for common AI applications'
+      title: 'Use Case Examples',
+      description: 'Real-world AI applications tailored for SMBs'
     }
   ];
 
