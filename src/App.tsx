@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import AwsProfitabilityResilienceBlueprint from './pages/AwsProfitabilityResilienceBlueprint';
 import AILaunchpad from './pages/AILaunchpad';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import AIAdoptionPlaybook from './pages/AIAdoptionPlaybook';
 import ScrollToTop from './components/ScrollToTop';
 import { initGA, logPageView } from './utils/analytics';
 
@@ -59,6 +60,9 @@ function App() {
             } />
             <Route path="/privacy-policy" element={
               <PrivacyPolicy />
+            } />
+            <Route path="/ai-adoption-playbook" element={
+              <AIAdoptionPlaybook />
             } />
           </Routes>
         </main>

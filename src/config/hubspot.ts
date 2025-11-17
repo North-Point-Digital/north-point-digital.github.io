@@ -2,14 +2,16 @@
 // Replace these values with your actual HubSpot Portal ID and Form IDs
 
 export const HUBSPOT_CONFIG = {
-  portalId: 'YOUR_PORTAL_ID', // Replace with your HubSpot Portal ID
+  portalId: '146637185',
   forms: {
-    contact: 'YOUR_CONTACT_FORM_ID', // Replace with your Contact Form ID
-    newsletter: 'YOUR_NEWSLETTER_FORM_ID', // Replace with your Newsletter Form ID
-    demo: 'YOUR_DEMO_FORM_ID', // Replace with your Demo Request Form ID
-    aiLaunchpad: 'YOUR_AI_LAUNCHPAD_FORM_ID', // Replace with AI Launchpad Form ID
-    awsBlueprint: 'YOUR_AWS_BLUEPRINT_FORM_ID' // Replace with AWS Blueprint Form ID
-  }
+    contact: 'YOUR_CONTACT_FORM_ID',
+    newsletter: 'YOUR_NEWSLETTER_FORM_ID',
+    demo: 'YOUR_DEMO_FORM_ID',
+    aiLaunchpad: 'YOUR_AI_LAUNCHPAD_FORM_ID',
+    awsBlueprint: 'YOUR_AWS_BLUEPRINT_FORM_ID',
+    aiPlaybook: '7af7a93c-1b12-4a8f-9bde-cd6d9b3f5ff4'
+  },
+  region: 'eu1'
 };
 
 // Form submission tracking
