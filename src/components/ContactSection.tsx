@@ -128,6 +128,7 @@ const ContactSection: React.FC = () => {
           {isHubSpotConfigured ? (
             <HubSpotForm 
               formType="contact"
+              region={HUBSPOT_CONFIG.region}
               onFormSubmit={() => console.log('HubSpot contact form submitted!')}
             />
           ) : (

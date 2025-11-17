@@ -4,7 +4,7 @@
 export const HUBSPOT_CONFIG = {
   portalId: '146637185',
   forms: {
-    contact: 'YOUR_CONTACT_FORM_ID',
+    contact: '1b9d81cb-ba65-4307-bdad-642bfe0f6c3c',
     newsletter: 'YOUR_NEWSLETTER_FORM_ID',
     demo: 'YOUR_DEMO_FORM_ID',
     aiLaunchpad: 'YOUR_AI_LAUNCHPAD_FORM_ID',

@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaChartPie, FaRoad, FaFlask } from 'react-icons/fa';
-// import HubSpotFormWrapper from '../components/HubSpotFormWrapper';
+import HubSpotForm from '../components/HubSpotForm';
+import SimpleContactForm from '../components/SimpleContactForm';
+import { HUBSPOT_CONFIG } from '../config/hubspot';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -136,7 +138,70 @@ const FeatureCard = styled(motion.div)`
   }
 `;
 
+const FormWrapper = styled.div`
+  .hs-form {
+    width: 100%;
+  }
+
+  .hs-form-field {
+    margin-bottom: 1.5rem;
+  }
+
+  .hs-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .hs-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+
+    &:hover, &:focus {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.15);
+      outline: none;
+    }
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .hs-button {
+    padding: 1rem 2rem;
+    background: white;
+    color: #2f80ed;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .hs-error-msgs {
+    color: #ffcccc;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+`;
+
 const AILaunchpad: React.FC = () => {
+  const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && 
+                              !HUBSPOT_CONFIG.forms.contact.includes('YOUR_');
+
   const features = [
     {
       icon: <FaFlask />,
@@ -275,18 +340,26 @@ Schedule Your Strategy Call
           style={{ marginTop: '3rem' }}
         >
           <CardTitle style={{ textAlign: 'center' }}>Ready to Launch Your AI Journey?</CardTitle>
-          {/* <HubSpotFormWrapper
-            formType="aiLaunchpad"
-            onFormSubmit={() => console.log('AI Launchpad form submitted!')}
-          /> */}
-          <div style={{ 
-            padding: '2rem', 
-            textAlign: 'center',
-            color: 'rgba(255, 255, 255, 0.9)'
-          }}>
-            <p>Contact form coming soon!</p>
-            <p style={{ fontSize: '0.9rem', marginTop: '1rem' }}>HubSpot integration will be enabled once configured.</p>
-          </div>
+          <CardContent>
+            <p style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              Schedule a strategy call to discuss your AI use case and learn how we can help.
+            </p>
+            {isHubSpotConfigured ? (
+              <FormWrapper>
+                <HubSpotForm 
+                  formType="contact"
+                  region={HUBSPOT_CONFIG.region}
+                  onFormSubmit={() => console.log('AI Launchpad contact form submitted!')}
+                />
+              </FormWrapper>
+            ) : (
+              <SimpleContactForm 
+                onSubmit={(data) => {
+                  console.log('AI Launchpad contact form submitted:', data);
+                }}
+              />
+            )}
+          </CardContent>
         </Card>
       </PageContainer>
     </PageWrapper>

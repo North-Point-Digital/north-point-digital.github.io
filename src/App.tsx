@@ -14,6 +14,7 @@ import AwsProfitabilityResilienceBlueprint from './pages/AwsProfitabilityResilie
 import AILaunchpad from './pages/AILaunchpad';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import AIAdoptionPlaybook from './pages/AIAdoptionPlaybook';
+import ContactUs from './pages/ContactUs';
 import ScrollToTop from './components/ScrollToTop';
 import { initGA, logPageView } from './utils/analytics';
 
@@ -63,6 +64,9 @@ function App() {
             } />
             <Route path="/ai-adoption-playbook" element={
               <AIAdoptionPlaybook />
+            } />
+            <Route path="/contact" element={
+              <ContactUs />
             } />
           </Routes>
         </main>

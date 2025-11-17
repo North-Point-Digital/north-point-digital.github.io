@@ -263,8 +263,7 @@ const HeroSection: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => {
                 trackButtonClick('Hero Get Started');
-                const contactSection = document.getElementById('contact');
-                contactSection?.scrollIntoView({ behavior: 'smooth' });
+                navigate('/contact');
               }}
             >
               Get Started <FaArrowRight />
