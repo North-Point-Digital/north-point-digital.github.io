@@ -132,11 +132,11 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
 
   const faqs: FAQItemData[] = [
     {
-      question: "Why should I trust a new consultancy?",
+      question: "Why should I trust your consultancy?",
       answer: (
         <>
           <p>
-            <strong>Fair question.</strong> We're new as a company, but not new to AWS. Our team brings enterprise-level cloud expertise—the kind previously only available to Fortune 500 companies—now accessible to growing businesses.
+            <strong>Our team brings enterprise-level cloud expertise</strong>—the kind previously only available to Fortune 500 companies—now accessible to growing businesses.
           </p>
           <p>
             Here's what sets us apart:
@@ -148,7 +148,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
             <li>Risk-free engagement: If we don't identify at least 25% in potential savings, you don't pay</li>
           </ul>
           <p>
-            We're building our reputation one client at a time by delivering measurable results, not selling vague consulting hours.
+            We deliver measurable results, not vague consulting hours. Our track record speaks for itself.
           </p>
         </>
       )
