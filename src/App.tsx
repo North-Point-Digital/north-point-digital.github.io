@@ -9,6 +9,7 @@ import IndustryStatsSection from './components/IndustryStatsSection';
 import AboutSection from './components/AboutSection';
 import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
+import LogoCarousel from './components/LogoCarousel';
 import Footer from './components/Footer';
 import AwsProfitabilityResilienceBlueprint from './pages/AwsProfitabilityResilienceBlueprint';
 import AILaunchpad from './pages/AILaunchpad';
@@ -46,6 +47,23 @@ function App() {
             <Route path="/" element={
               <>
                 <HeroSection />
+                <LogoCarousel 
+                  logos={[
+                    '/logos/client1-logo.jpeg',
+                    '/logos/client2-logo.png',
+                    '/logos/client3-logo.png',
+                    '/logos/client4-logo.svg',
+                    '/logos/client5-logo.png',
+                    '/logos/client6-logo.webp',
+                    '/logos/client7-logo.png',
+                    '/logos/client8-logo.png',
+                    '/logos/client9-logo.jpeg',
+                    '/logos/client10-logo.jpeg',
+                    '/logos/client11-logo.jpeg',
+                  ]}
+                  logosWithBackground={['/logos/client4-logo.svg', '/logos/client5-logo.png']}
+                  title="Trusted Partners"
+                />
                 <IndustryStatsSection />
                 <ServicesSection />
                 <AboutSection />
