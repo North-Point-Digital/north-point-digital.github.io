@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaClipboardCheck, FaCloud, FaShieldAlt, FaRobot, FaDatabase, FaChartLine, FaExchangeAlt } from 'react-icons/fa';
 import { trackServiceClick } from '../utils/analytics';
+import CalendlyCTA from './CTAButton';
 
 const Section = styled.section`
   padding: 5rem 2rem;
@@ -281,6 +282,8 @@ const ServicesSection: React.FC = () => {
             );
           })}
         </BentoGrid>
+
+        <CalendlyCTA delay={0.7} />
       </Container>
     </Section>
   );

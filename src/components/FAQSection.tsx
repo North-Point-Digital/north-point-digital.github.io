@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
+import CalendlyCTA from './CTAButton';
 
 const Section = styled.section<{ $framed?: boolean }>`
   padding: 5rem 2rem;
@@ -289,6 +290,8 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
             </FAQItem>
           ))}
         </FAQList>
+
+        <CalendlyCTA delay={0.8} />
       </Container>
     </Section>
   );

@@ -66,6 +66,41 @@ const Subtitle = styled(motion.p)`
   line-height: 1.6;
 `;
 
+const AWSBadge = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  img {
+    height: 40px;
+    width: auto;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  span {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+`;
+
 const CTAContainer = styled(motion.div)`
   display: flex;
   gap: 1rem;
@@ -90,6 +125,7 @@ const PrimaryButton = styled(motion.button)`
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
+  text-decoration: none;
 
   &:hover {
     transform: translateY(-2px);
@@ -257,16 +293,23 @@ const HeroSection: React.FC = () => {
             Expert AWS consultancy delivering Well-Architected Reviews, AI Proof of Concepts,
             and seamless cloud migrations with proven results.
           </Subtitle>
+          <AWSBadge variants={itemVariants}>
+            <img src="/aws-logo.png" alt="AWS Partner" />
+            <span>Official AWS Partner</span>
+          </AWSBadge>
           <CTAContainer variants={itemVariants}>
             <PrimaryButton
+              as="a"
+              href="https://calendly.com/david-northpointdigital/north-point-digital-initial-call"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {
-                trackButtonClick('Hero Get Started');
-                navigate('/contact');
+                trackButtonClick('Hero Schedule Consultation');
               }}
             >
-              Get Started <FaArrowRight />
+              Schedule a Free Consultation <FaArrowRight />
             </PrimaryButton>
             <SecondaryButton
               whileHover={{ scale: 1.05 }}

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaChartLine, FaExclamationTriangle, FaAws } from 'react-icons/fa';
+import CalendlyCTA from './CTAButton';
 
 const Section = styled.section`
   padding: 5rem 2rem;
@@ -177,6 +178,8 @@ const IndustryStatsSection: React.FC = () => {
         <Source>
           Sources: AWS, Gartner, IBM Security Reports
         </Source>
+
+        <CalendlyCTA delay={0.6} />
       </Container>
     </Section>
   );
