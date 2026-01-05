@@ -77,7 +77,7 @@ function App() {
                     {
                       name: "Mark Bridgett",
                       role: "Principal AWS Solutions Architect",
-                      bio: "15+ years of enterprise cloud expertise, specializing in AWS cost optimization and security.",
+                      bio: "15+ years of enterprise cloud expertise, specializing in blockchain and web3 infrastructure.",
                       image: "/team/mark-bridgett.png"
                     },
                     {
