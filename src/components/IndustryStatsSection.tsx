@@ -98,7 +98,7 @@ const IndustryStatsSection: React.FC = () => {
       icon: <FaChartLine />,
       number: "78%",
       label: "of companies overspend on AWS",
-      description: "Due to misconfiguration, over-provisioning, and lack of optimization strategies"
+      description: "Due to misconfiguration, over-provisioning, and lack of optimisation strategies"
     },
     {
       icon: <FaExclamationTriangle />,

@@ -321,7 +321,7 @@ const AILaunchpad: React.FC = () => {
               </p>
               <p>
                 Using your company's proprietary data and market-leading AWS AI services (including Amazon
-                Bedrock, SageMaker, and others), we build a tangible, working prototype of a customized AI
+                Bedrock, SageMaker, and others), we build a tangible, working prototype of a customised AI
                 solution. This is not a theoretical exercise—it's a functioning proof of concept that validates
                 your specific use case and provides a clear path to production deployment.
               </p>

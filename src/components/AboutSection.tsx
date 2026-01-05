@@ -178,13 +178,13 @@ const AboutSection: React.FC = () => {
               As specialist AWS consultants, we deliver measurable outcomes: clients typically
               see 35% reductions in cloud spend while improving security posture and operational
               resilience. Our AWS-certified team brings deep expertise in cloud architecture,
-              migration, and optimization.
+              migration, and optimisation.
             </p>
             <p>
               We leverage proven AWS frameworks and methodologies—including Well-Architected Reviews
               and the Migration Acceleration Program (MAP)—to accelerate your cloud journey. Our
               approach combines technical excellence with strategic guidance to identify quick wins
-              and long-term optimizations.
+              and long-term optimisations.
             </p>
             <p>
               Partner with us to transform your AWS infrastructure. We offer risk-free engagement

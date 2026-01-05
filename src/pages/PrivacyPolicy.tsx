@@ -124,7 +124,7 @@ const PrivacyPolicy: React.FC = () => {
                 <li>Provide, maintain, and improve our services</li>
                 <li>Respond to your inquiries and fulfill your requests</li>
                 <li>Send you marketing communications about our services (with your consent)</li>
-                <li>Analyze website usage and improve user experience</li>
+                <li>Analyse website usage and improve user experience</li>
                 <li>Detect, prevent, and address technical issues and security threats</li>
                 <li>Comply with legal obligations and enforce our policies</li>
               </ul>
@@ -181,7 +181,7 @@ const PrivacyPolicy: React.FC = () => {
             <SectionTitle>7. Data Security</SectionTitle>
             <Content>
               <p>
-                We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.
+                We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.
               </p>
             </Content>
           </Section>

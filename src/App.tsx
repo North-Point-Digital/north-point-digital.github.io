@@ -74,37 +74,37 @@ function App() {
                     {
                       name: "David Turnbull",
                       role: "Founder & AWS Solutions Architect",
-                      bio: "10+ years of enterprise cloud expertise, specializing in AWS cost optimization and security.",
+                      bio: "10+ years of enterprise cloud expertise, specialising in AWS cost optimisation and security.",
                       image: "/team/david-turnbull.png"
                     },
                     {
                       name: "Mark Bridgett",
                       role: "Principal AWS Solutions Architect",
-                      bio: "15+ years of enterprise cloud expertise, specializing in blockchain and web3 infrastructure.",
+                      bio: "15+ years of enterprise cloud expertise, specialising in blockchain and web3 infrastructure.",
                       image: "/team/mark-bridgett.png"
                     },
                     {
                       name: "Ross Haselhurst",
                       role: "Head of Business Development",
-                      bio: "10+ years experience in the technology industry, specializing in business development and sales.",
+                      bio: "10+ years experience in the technology industry, specialising in business development and sales.",
                       image: "/team/ross-haselhurst.jpeg"
                     },
                     {
                       name: "Krystian Nowak",
                       role: "Senior Software Engineer",
-                      bio: "10+ years experience in the technology industry, specializing in software engineering and development.",
+                      bio: "10+ years experience in the technology industry, specialising in software engineering and development.",
                       image: "/team/krystian-nowak.jpeg"
                     },
                     {
                       name: "Sarah Turnbull",
                       role: "Head of Delivery",
-                      bio: "10+ years experience in the technology industry, specializing in delivery and project management.",
+                      bio: "10+ years experience in the technology industry, specialising in delivery and project management.",
                       image: "/team/sarah-turnbull.jpeg"
                     },
                     {
                       name: "Matthew Squires",
                       role: "Head of Marketing",
-                      bio: "10+ years experience in the technology industry, specializing in marketing and branding.",
+                      bio: "10+ years experience in the technology industry, specialising in marketing and branding.",
                       image: "/team/matthew-squires.jpeg"
                     }
                   ]}

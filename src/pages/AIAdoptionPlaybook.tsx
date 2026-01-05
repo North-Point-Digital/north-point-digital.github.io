@@ -239,7 +239,7 @@ const AIAdoptionPlaybook: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Your comprehensive guide to successfully implementing AI in your organization. 
+            Your comprehensive guide to successfully implementing AI in your organisation. 
             Learn proven strategies, avoid common pitfalls, and accelerate your AI journey.
           </Subtitle>
         </HeroSection>

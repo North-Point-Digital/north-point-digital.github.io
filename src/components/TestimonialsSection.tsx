@@ -161,7 +161,7 @@ const TestimonialsSection: React.FC = () => {
       avatar: "LA",
     },
     {
-      text: "The database optimization they performed improved our query times by 300%. Incredible technical knowledge!",
+      text: "The database optimisation they performed improved our query times by 300%. Incredible technical knowledge!",
       author: "James Wilson",
       position: "Tech Lead, DataDrive",
       rating: 5,

@@ -138,9 +138,9 @@ const ServicesSection: React.FC = () => {
   const services = [
     {
       icon: <FaClipboardCheck />,
-      title: 'Security & Cost Optimization Blueprint',
+      title: 'Security & Cost Optimisation Blueprint',
       description: 'Comprehensive Well-Architected Review to slash costs and strengthen security.',
-      features: ['Target 25%+ Cost Reduction', 'Security Hardening', 'Performance Optimization', 'No Upfront Cost'],
+      features: ['Target 25%+ Cost Reduction', 'Security Hardening', 'Performance Optimisation', 'No Upfront Cost'],
       large: true,
       link: '/aws-profitability-resilience-blueprint',
     },

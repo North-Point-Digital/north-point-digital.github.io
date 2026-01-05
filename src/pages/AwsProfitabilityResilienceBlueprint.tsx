@@ -232,7 +232,7 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
   const features = [
     {
       icon: <FaDollarSign />,
-      title: "Cost Optimization",
+      title: "Cost Optimisation",
       description: "Identify and eliminate waste in your AWS spending"
     },
     {
@@ -274,7 +274,7 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Security & Cost Optimization Blueprint
+            Security & Cost Optimisation Blueprint
           </Title>
           <Subtitle
             initial={{ opacity: 0, y: 20 }}
@@ -310,8 +310,8 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
             <CardTitle>Your Blueprint to Secure and Cost-Effective Infrastructure</CardTitle>
             <CardContent>
               <p>
-                Our Security & Cost Optimization Blueprint is a comprehensive Well-Architected Review
-                focused on the two pillars that deliver immediate ROI: Cost Optimization and Security.
+                Our Security & Cost Optimisation Blueprint is a comprehensive Well-Architected Review
+                focused on the two pillars that deliver immediate ROI: Cost Optimisation and Security.
                 This isn't a theoretical audit—we identify actionable improvements and remediate critical
                 issues during the engagement.
               </p>
@@ -329,7 +329,7 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
                   </li>
                   <li>
                     <FaClipboardCheck />
-                    Detailed cost optimization roadmap with tagging strategies and budget alerts (targeting 25%+ reduction)
+                    Detailed cost optimisation roadmap with tagging strategies and budget alerts (targeting 25%+ reduction)
                   </li>
                   <li>
                     <FaClipboardCheck />
@@ -366,7 +366,7 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
           >
             <CTAHeading>Ready for rapid cost and security wins?</CTAHeading>
             <CTAText>
-              Kick off your Security & Cost Optimization Blueprint and get actionable changes in motion within two weeks.
+              Kick off your Security & Cost Optimisation Blueprint and get actionable changes in motion within two weeks.
             </CTAText>
             <CTAButtonRow>
               <CTAButton
@@ -418,7 +418,7 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
         >
           <FinalCTATitle>Let’s transform your AWS foundation</FinalCTATitle>
           <FinalCTAText>
-            Book a discovery call and we’ll deliver a tailored optimization roadmap with measurable ROI.
+            Book a discovery call and we'll deliver a tailored optimisation roadmap with measurable ROI.
           </FinalCTAText>
           <CTAButtonRow>
             <CTAButton

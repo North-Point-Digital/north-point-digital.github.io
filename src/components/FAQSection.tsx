@@ -171,7 +171,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
           <ul>
             <li>AWS-certified consultants with 10+ years enterprise cloud experience</li>
             <li>Former senior engineers from leading consultancies and tech companies</li>
-            <li>Deep expertise in AWS Well-Architected Framework and cost optimization</li>
+            <li>Deep expertise in AWS Well-Architected Framework and cost optimisation</li>
             <li>Risk-free engagement: If we don't identify at least 25% in potential savings, you don't pay</li>
           </ul>
           <p>
@@ -188,11 +188,11 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
             <strong>Then you don't pay.</strong> That's our guarantee.
           </p>
           <p>
-            Our Security & Cost Optimization Blueprint is designed to be risk-free. We're confident in our ability to identify significant savings because:
+            Our Security & Cost Optimisation Blueprint is designed to be risk-free. We're confident in our ability to identify significant savings because:
           </p>
           <ul>
             <li>78% of companies overspend on AWS due to common misconfigurations</li>
-            <li>Most organizations lack proper tagging, Reserved Instance strategies, and right-sizing</li>
+            <li>Most organisations lack proper tagging, Reserved Instance strategies, and right-sizing</li>
             <li>We've developed proven methodologies for uncovering hidden waste</li>
           </ul>
           <p>
@@ -209,10 +209,10 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
             <strong>Two weeks from start to finish.</strong>
           </p>
           <p>
-            Week 1: We audit your infrastructure, analyze costs, and assess security vulnerabilities. You'll receive an initial findings report with quick wins.
+            Week 1: We audit your infrastructure, analyse costs, and assess security vulnerabilities. You'll receive an initial findings report with quick wins.
           </p>
           <p>
-            Week 2: We implement critical optimizations, remediate security issues, set up budget alerts and tagging strategies, and deliver your comprehensive Well-Architected report with a long-term roadmap.
+            Week 2: We implement critical optimisations, remediate security issues, set up budget alerts and tagging strategies, and deliver your comprehensive Well-Architected report with a long-term roadmap.
           </p>
           <p>
             Plus, you get 30 days of support included to ensure smooth implementation of our recommendations.
@@ -244,10 +244,10 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
             <strong>We're specialists, not generalists.</strong>
           </p>
           <p>
-            Most consultancies offer generic "cloud services" across multiple providers. We focus exclusively on AWS optimization—security, cost reduction, and performance. This specialization means:
+            Most consultancies offer generic "cloud services" across multiple providers. We focus exclusively on AWS optimisation—security, cost reduction, and performance. This specialisation means:
           </p>
           <ul>
-            <li>Deep expertise in AWS-specific cost optimization strategies</li>
+            <li>Deep expertise in AWS-specific cost optimisation strategies</li>
             <li>Fixed-fee engagements with concrete deliverables, not open-ended hourly billing</li>
             <li>Focus on immediate ROI, not theoretical recommendations</li>
             <li>Boutique service with direct access to senior engineers (no junior staff padding hours)</li>

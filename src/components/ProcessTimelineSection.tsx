@@ -188,10 +188,10 @@ const ProcessTimelineSection: React.FC<ProcessTimelineSectionProps> = ({ framed 
     {
       icon: <FaTools />,
       week: "Week 2",
-      title: "Implementation & Optimization",
+      title: "Implementation & Optimisation",
       items: [
         "Remediation of critical security issues",
-        "Cost optimization implementation",
+        "Cost optimisation implementation",
         "Budget alerts & tagging setup",
         "Performance tuning"
       ],
@@ -203,7 +203,7 @@ const ProcessTimelineSection: React.FC<ProcessTimelineSectionProps> = ({ framed 
       title: "Final Report & Roadmap",
       items: [
         "Comprehensive Well-Architected report",
-        "Long-term optimization roadmap",
+        "Long-term optimisation roadmap",
         "Knowledge transfer session",
         "30-day support included"
       ],

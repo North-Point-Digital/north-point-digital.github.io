@@ -372,7 +372,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     {
       Icon: FaShieldAlt,
       title: 'AWS Certified',
-      description: 'Deep expertise in security and optimization',
+      description: 'Deep expertise in security and optimisation',
     },
   ];
 
