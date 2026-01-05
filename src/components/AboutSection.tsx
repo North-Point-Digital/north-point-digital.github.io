@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import CalendlyCTA from './CTAButton';
+import { trackVideoPlay, trackVideoPause, trackVideoComplete, trackSectionView } from '../utils/analytics';
 
 const Section = styled.section`
   padding: 5rem 2rem;
@@ -86,8 +87,23 @@ const Video = styled.video`
 
 
 const AboutSection: React.FC = () => {
+  const handleVideoPlay = () => {
+    trackVideoPlay('About Us Video');
+  };
+
+  const handleVideoPause = () => {
+    trackVideoPause('About Us Video');
+  };
+
+  const handleVideoEnded = () => {
+    trackVideoComplete('About Us Video');
+  };
+
   return (
-    <Section id="about">
+    <Section 
+      id="about"
+      onMouseEnter={() => trackSectionView('About Us')}
+    >
       <FloatingShape
         animate={{
           x: [0, -50, 0],
@@ -162,6 +178,9 @@ const AboutSection: React.FC = () => {
               controls
               playsInline
               preload="auto"
+              onPlay={handleVideoPlay}
+              onPause={handleVideoPause}
+              onEnded={handleVideoEnded}
             >
               <source src="/about-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.

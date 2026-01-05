@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaLinkedinIn } from 'react-icons/fa';
+import { trackExternalLink, trackNavigationClick } from '../utils/analytics';
 
 const FooterWrapper = styled.footer`
   background: rgba(0, 0, 0, 0.9);
@@ -146,12 +147,24 @@ const Footer: React.FC = () => {
             We're committed to delivering excellence and driving your success.
           </p>
           <SocialLinks>
-            <a href="https://x.com/n0rth_p0int" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+            <a 
+              href="https://x.com/n0rth_p0int" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="X (Twitter)"
+              onClick={() => trackExternalLink('https://x.com/n0rth_p0int', 'X (Twitter)')}
+            >
               <XIcon viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </XIcon>
             </a>
-            <a href="https://www.linkedin.com/company/north-point-digital-ai/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a 
+              href="https://www.linkedin.com/company/north-point-digital-ai/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="LinkedIn"
+              onClick={() => trackExternalLink('https://www.linkedin.com/company/north-point-digital-ai/', 'LinkedIn')}
+            >
               <FaLinkedinIn />
             </a>
           </SocialLinks>
@@ -160,9 +173,30 @@ const Footer: React.FC = () => {
         <FooterSection>
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li>
+              <a 
+                href="#services"
+                onClick={() => trackNavigationClick('Services', '#services')}
+              >
+                Services
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#about"
+                onClick={() => trackNavigationClick('About Us', '#about')}
+              >
+                About Us
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#contact"
+                onClick={() => trackNavigationClick('Contact', '#contact')}
+              >
+                Contact
+              </a>
+            </li>
           </ul>
         </FooterSection>
         

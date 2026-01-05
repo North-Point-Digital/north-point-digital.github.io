@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { trackButtonClick } from '../utils/analytics';
 
 const CTAContainer = styled(motion.div)`
   display: flex;
@@ -47,6 +48,7 @@ const CalendlyCTA: React.FC<CTAButtonProps> = ({ delay = 0.5 }) => {
         href="https://calendly.com/david-northpointdigital/north-point-digital-initial-call"
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackButtonClick('Schedule a Free Consultation', 'cta_button')}
       >
         Schedule a Free Consultation
       </CTAButton>

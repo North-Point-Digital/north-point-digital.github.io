@@ -19,6 +19,7 @@ import AIAdoptionPlaybook from './pages/AIAdoptionPlaybook';
 import ContactUs from './pages/ContactUs';
 import ScrollToTop from './components/ScrollToTop';
 import { initGA, logPageView } from './utils/analytics';
+import { useScrollTracking } from './hooks/useScrollTracking';
 
 // Analytics component to track page views
 const Analytics = () => {
@@ -32,6 +33,8 @@ const Analytics = () => {
 };
 
 function App() {
+  useScrollTracking(); // Track scroll depth
+
   useEffect(() => {
     initGA();
   }, []);

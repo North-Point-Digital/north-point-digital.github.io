@@ -14,16 +14,9 @@ export const HUBSPOT_CONFIG = {
   region: 'eu1'
 };
 
-// Form submission tracking
-export const trackFormSubmission = (formName: string) => {
-  // Track form submission in Google Analytics if available
-  if (window.gtag) {
-    window.gtag('event', 'form_submit', {
-      event_category: 'engagement',
-      event_label: formName
-    });
-  }
-  
-  // You can add other tracking here (e.g., Facebook Pixel, etc.)
-  console.log(`Form submitted: ${formName}`);
+// Form submission tracking - use the centralized analytics function
+import { trackFormSubmission as trackForm } from '../utils/analytics';
+
+export const trackFormSubmission = (formName: string, formType?: string) => {
+  trackForm(formName, formType);
 };

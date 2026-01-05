@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
 import CalendlyCTA from './CTAButton';
+import { trackFAQOpen, trackSectionView } from '../utils/analytics';
 
 const Section = styled.section<{ $framed?: boolean }>`
   padding: 5rem 2rem;
@@ -234,11 +235,19 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
   ];
 
   const toggleFAQ = (index: number) => {
+    const isOpening = openIndex !== index;
     setOpenIndex(openIndex === index ? null : index);
+    
+    if (isOpening) {
+      trackFAQOpen(faqs[index].question);
+    }
   };
 
   return (
-    <Section $framed={framed}>
+    <Section 
+      $framed={framed}
+      onMouseEnter={() => trackSectionView('FAQ')}
+    >
       <Container>
         <SectionHeader>
           <Title

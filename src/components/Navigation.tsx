@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { trackNavigationClick, trackButtonClick } from '../utils/analytics';
 
 const NavContainer = styled(motion.nav)<{ scrolled: boolean }>`
   position: fixed;
@@ -152,9 +153,11 @@ const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, linkName: string) => {
     e.preventDefault();
     setIsOpen(false);
+    
+    trackNavigationClick(linkName, path);
     
     if (path === '/') {
       navigate('/');
@@ -204,7 +207,7 @@ const Navigation: React.FC = () => {
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
-              <a href={item.path} onClick={(e) => handleNavClick(e, item.path)}>
+              <a href={item.path} onClick={(e) => handleNavClick(e, item.path, item.name)}>
                 {item.name}
               </a>
             </NavLink>
@@ -215,6 +218,7 @@ const Navigation: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => {
                 setIsOpen(false);
+                trackButtonClick('Contact Us', 'navigation');
                 navigate('/contact');
               }}
             >
