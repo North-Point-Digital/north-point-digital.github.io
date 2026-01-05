@@ -8,7 +8,7 @@ const isGAAvailable = (): boolean => {
 
 // Log page view
 export const logPageView = (path?: string) => {
-  if (!isGAAvailable()) return;
+  if (!isGAAvailable() || !window.gtag) return;
   
   const pagePath = path || window.location.pathname + window.location.search;
   
@@ -33,7 +33,7 @@ export const logEvent = (
     [key: string]: any;
   }
 ) => {
-  if (!isGAAvailable()) return;
+  if (!isGAAvailable() || !window.gtag) return;
   
   window.gtag('event', eventName, eventParams);
 };

@@ -130,7 +130,7 @@ interface FAQSectionProps {
 
 const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const hasTracked = useRef(false);
 
   useEffect(() => {
@@ -270,10 +270,8 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
   };
 
   return (
-    <Section 
-      $framed={framed}
-      ref={sectionRef}
-    >
+    <div ref={sectionRef}>
+      <Section $framed={framed}>
       <Container>
         <SectionHeader>
           <Title
@@ -328,7 +326,8 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
 
         <CalendlyCTA delay={0.8} />
       </Container>
-    </Section>
+      </Section>
+    </div>
   );
 };
 

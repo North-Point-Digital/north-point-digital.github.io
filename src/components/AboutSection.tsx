@@ -87,7 +87,7 @@ const Video = styled.video`
 
 
 const AboutSection: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const hasTracked = useRef(false);
 
   useEffect(() => {
@@ -127,10 +127,8 @@ const AboutSection: React.FC = () => {
   };
 
   return (
-    <Section 
-      id="about"
-      ref={sectionRef}
-    >
+    <div ref={sectionRef}>
+      <Section id="about">
       <FloatingShape
         animate={{
           x: [0, -50, 0],
@@ -217,7 +215,8 @@ const AboutSection: React.FC = () => {
 
         <CalendlyCTA delay={0.5} />
       </Container>
-    </Section>
+      </Section>
+    </div>
   );
 };
 

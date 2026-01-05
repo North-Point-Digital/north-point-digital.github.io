@@ -1,5 +1,6 @@
 // HubSpot Configuration
 // Replace these values with your actual HubSpot Portal ID and Form IDs
+import { trackFormSubmission as trackForm } from '../utils/analytics';
 
 export const HUBSPOT_CONFIG = {
   portalId: '146637185',
@@ -15,8 +16,6 @@ export const HUBSPOT_CONFIG = {
 };
 
 // Form submission tracking - use the centralized analytics function
-import { trackFormSubmission as trackForm } from '../utils/analytics';
-
 export const trackFormSubmission = (formName: string, formType?: string) => {
   trackForm(formName, formType);
 };
