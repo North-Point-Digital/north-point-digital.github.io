@@ -9,8 +9,19 @@ const Section = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
+`;
+
+const ContentWrapper = styled(motion.div)`
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -35,6 +46,7 @@ const Content = styled(motion.div)`
   font-size: 1rem;
   color: #555;
   line-height: 1.8;
+  flex: 1;
 
   p {
     margin-bottom: 1.5rem;
@@ -52,26 +64,23 @@ const FloatingShape = styled(motion.div)`
 `;
 
 const VideoContainer = styled(motion.div)`
-  margin: 3rem 0;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  background: #000;
-  position: relative;
-  padding-top: 56.25%;
-  width: 100%;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  background: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
 `;
 
 const Video = styled.video`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-width: 100%;
+  display: block;
 `;
 
 const AboutSection: React.FC = () => {
@@ -110,48 +119,53 @@ const AboutSection: React.FC = () => {
           </Subtitle>
         </SectionHeader>
 
-        <VideoContainer
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+        <ContentWrapper
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <Video
-            controls
-            playsInline
-            preload="metadata"
-            poster=""
+          <Content
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
           >
-            <source src="/about-video.mp4" type="video/mp4" />
-            <source src="/about-video.webm" type="video/webm" />
-            Your browser does not support the video tag.
-          </Video>
-        </VideoContainer>
+            <p>
+              As specialist AWS consultants, we deliver measurable outcomes: clients typically
+              see 35% reductions in cloud spend while improving security posture and operational
+              resilience. Our AWS-certified team brings deep expertise in cloud architecture,
+              migration, and optimization.
+            </p>
+            <p>
+              We leverage proven AWS frameworks and methodologies—including Well-Architected Reviews
+              and the Migration Acceleration Program (MAP)—to accelerate your cloud journey. Our
+              approach combines technical excellence with strategic guidance to identify quick wins
+              and long-term optimizations.
+            </p>
+            <p>
+              Partner with us to transform your AWS infrastructure. We offer risk-free engagement
+              models that align our success with yours, delivering lower costs, stronger security,
+              and faster innovation without the typical consulting overhead.
+            </p>
+          </Content>
 
-        <Content
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <p>
-            As specialist AWS consultants, we deliver measurable outcomes: clients typically
-            see 35% reductions in cloud spend while improving security posture and operational
-            resilience. Our AWS-certified team brings deep expertise in cloud architecture,
-            migration, and optimization.
-          </p>
-          <p>
-            We leverage proven AWS frameworks and methodologies—including Well-Architected Reviews
-            and the Migration Acceleration Program (MAP)—to accelerate your cloud journey. Our
-            approach combines technical excellence with strategic guidance to identify quick wins
-            and long-term optimizations.
-          </p>
-          <p>
-            Partner with us to transform your AWS infrastructure. We offer risk-free engagement
-            models that align our success with yours, delivering lower costs, stronger security,
-            and faster innovation without the typical consulting overhead.
-          </p>
-        </Content>
+          <VideoContainer
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Video
+              controls
+              playsInline
+              preload="auto"
+            >
+              <source src="/about-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </Video>
+          </VideoContainer>
+        </ContentWrapper>
       </Container>
     </Section>
   );
