@@ -51,6 +51,29 @@ const FloatingShape = styled(motion.div)`
   z-index: -1;
 `;
 
+const VideoContainer = styled(motion.div)`
+  margin: 3rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background: #000;
+  position: relative;
+  padding-top: 56.25%;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const Video = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 const AboutSection: React.FC = () => {
   return (
     <Section id="about">
@@ -87,10 +110,28 @@ const AboutSection: React.FC = () => {
           </Subtitle>
         </SectionHeader>
 
+        <VideoContainer
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <Video
+            controls
+            playsInline
+            preload="metadata"
+            poster=""
+          >
+            <source src="/about-video.mp4" type="video/mp4" />
+            <source src="/about-video.webm" type="video/webm" />
+            Your browser does not support the video tag.
+          </Video>
+        </VideoContainer>
+
         <Content
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
           <p>
