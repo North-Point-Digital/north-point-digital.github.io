@@ -6,7 +6,6 @@ const SCROLL_DEPTHS = [25, 50, 75, 100];
 const TRACKED_DEPTHS = new Set<number>();
 
 export const useScrollTracking = () => {
-  const hasTrackedInitial = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {

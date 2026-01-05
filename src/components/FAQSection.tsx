@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
@@ -130,6 +130,32 @@ interface FAQSectionProps {
 
 const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const hasTracked = useRef(false);
+
+  useEffect(() => {
+    if (!sectionRef.current || hasTracked.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasTracked.current) {
+            hasTracked.current = true;
+            trackSectionView('FAQ');
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const faqs: FAQItemData[] = [
     {
@@ -246,7 +272,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ framed }) => {
   return (
     <Section 
       $framed={framed}
-      onMouseEnter={() => trackSectionView('FAQ')}
+      ref={sectionRef}
     >
       <Container>
         <SectionHeader>

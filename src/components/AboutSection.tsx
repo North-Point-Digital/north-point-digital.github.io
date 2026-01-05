@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import CalendlyCTA from './CTAButton';
@@ -87,6 +87,33 @@ const Video = styled.video`
 
 
 const AboutSection: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const hasTracked = useRef(false);
+
+  useEffect(() => {
+    if (!sectionRef.current || hasTracked.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasTracked.current) {
+            hasTracked.current = true;
+            trackSectionView('About Us');
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const handleVideoPlay = () => {
     trackVideoPlay('About Us Video');
   };
@@ -102,7 +129,7 @@ const AboutSection: React.FC = () => {
   return (
     <Section 
       id="about"
-      onMouseEnter={() => trackSectionView('About Us')}
+      ref={sectionRef}
     >
       <FloatingShape
         animate={{
