@@ -7,6 +7,7 @@ import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
 import IndustryStatsSection from './components/IndustryStatsSection';
 import AboutSection from './components/AboutSection';
+import TeamSection from './components/TeamSection';
 import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import LogoCarousel from './components/LogoCarousel';
@@ -46,8 +47,7 @@ function App() {
           <Routes>
             <Route path="/" element={
               <>
-                <HeroSection />
-                <LogoCarousel 
+                <HeroSection 
                   logos={[
                     '/logos/client1-logo.jpeg',
                     '/logos/client2-logo.png',
@@ -62,11 +62,50 @@ function App() {
                     '/logos/client11-logo.jpeg',
                   ]}
                   logosWithBackground={['/logos/client4-logo.svg', '/logos/client5-logo.png']}
-                  title="Trusted Partners"
                 />
                 <IndustryStatsSection />
                 <ServicesSection />
                 <AboutSection />
+                <TeamSection 
+                  teamMembers={[
+                    {
+                      name: "David Turnbull",
+                      role: "Founder & AWS Solutions Architect",
+                      bio: "10+ years of enterprise cloud expertise, specializing in AWS cost optimization and security.",
+                      image: "/team/david-turnbull.png"
+                    },
+                    {
+                      name: "Mark Bridgett",
+                      role: "Principal AWS Solutions Architect",
+                      bio: "15+ years of enterprise cloud expertise, specializing in AWS cost optimization and security.",
+                      image: "/team/mark-bridgett.png"
+                    },
+                    {
+                      name: "Ross Haselhurst",
+                      role: "Head of Business Development",
+                      bio: "10+ years experience in the technology industry, specializing in business development and sales.",
+                      image: "/team/ross-haselhurst.jpeg"
+                    },
+                    {
+                      name: "Krystian Nowak",
+                      role: "Senior Software Engineer",
+                      bio: "10+ years experience in the technology industry, specializing in software engineering and development.",
+                      image: "/team/krystian-nowak.jpeg"
+                    },
+                    {
+                      name: "Sarah Turnbull",
+                      role: "Head of Delivery",
+                      bio: "10+ years experience in the technology industry, specializing in delivery and project management.",
+                      image: "/team/sarah-turnbull.jpeg"
+                    },
+                    {
+                      name: "Matthew Squires",
+                      role: "Head of Marketing",
+                      bio: "10+ years experience in the technology industry, specializing in marketing and branding.",
+                      image: "/team/matthew-squires.jpeg"
+                    }
+                  ]}
+                />
                 <FAQSection />
                 <ContactSection />
               </>

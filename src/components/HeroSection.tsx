@@ -8,6 +8,7 @@ import { trackButtonClick } from '../utils/analytics';
 const HeroContainer = styled.section`
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
@@ -39,6 +40,10 @@ const HeroContent = styled(motion.div)`
   align-items: center;
   z-index: 2;
 
+  @media (max-width: 768px) {
+    gap: 2rem;
+  }
+
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -46,9 +51,18 @@ const HeroContent = styled(motion.div)`
 
 const TextContent = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 
   @media (min-width: 768px) {
     text-align: left;
+  }
+  
+  @media (max-width: 768px) {
+    > * {
+      margin-bottom: 1rem;
+    }
   }
 `;
 
@@ -57,6 +71,10 @@ const Title = styled(motion.h1)`
   margin-bottom: 1.5rem;
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const Subtitle = styled(motion.p)`
@@ -64,6 +82,12 @@ const Subtitle = styled(motion.p)`
   font-size: clamp(1.1rem, 2vw, 1.3rem);
   margin-bottom: 2rem;
   line-height: 1.6;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    line-height: 1.8;
+  }
 `;
 
 const AWSBadge = styled(motion.div)`
@@ -81,6 +105,16 @@ const AWSBadge = styled(motion.div)`
   margin-left: auto;
   margin-right: auto;
 
+  @media (max-width: 768px) {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    padding: 0.6rem 1.2rem;
+    gap: 0.5rem;
+    clear: both;
+    position: relative;
+    z-index: 10;
+  }
+
   @media (min-width: 768px) {
     justify-content: flex-start;
     margin-left: 0;
@@ -92,12 +126,20 @@ const AWSBadge = styled(motion.div)`
     width: auto;
     opacity: 1;
     transition: opacity 0.3s ease;
+    
+    @media (max-width: 768px) {
+      height: 35px;
+    }
   }
   
   span {
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.95rem;
     font-weight: 500;
+    
+    @media (max-width: 768px) {
+      font-size: 0.85rem;
+    }
   }
 `;
 
@@ -208,7 +250,92 @@ const FloatingElement = styled(motion.div)`
   z-index: 1;
 `;
 
-const HeroSection: React.FC = () => {
+const HeroCarouselContainer = styled(motion.div)`
+  width: 100%;
+  max-width: 1400px;
+  margin-top: 4rem;
+  z-index: 2;
+  position: relative;
+`;
+
+const CarouselTitle = styled.h3`
+  text-align: center;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  font-weight: 600;
+`;
+
+const CarouselWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+`;
+
+const CarouselTrack = styled(motion.div)`
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  will-change: transform;
+`;
+
+const LogoItem = styled.div<{ $hasBackground?: boolean }>`
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 150px;
+  padding: 1rem;
+  border-radius: 8px;
+  background: ${props => props.$hasBackground ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.9)'};
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    width: auto;
+    height: auto;
+  }
+  
+  img[src$=".svg"] {
+    max-width: 150px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  img[src$=".webp"] {
+    max-width: 150px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+`;
+
+interface HeroSectionProps {
+  logos?: string[];
+  logosWithBackground?: string[];
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ 
+  logos = [],
+  logosWithBackground = []
+}) => {
   const navigate = useNavigate();
   
   const containerVariants = {
@@ -248,6 +375,8 @@ const HeroSection: React.FC = () => {
       description: 'Deep expertise in security and optimization',
     },
   ];
+
+  const duplicatedLogos = logos.length > 0 ? [...logos, ...logos, ...logos] : [];
 
   return (
     <HeroContainer id="home">
@@ -339,6 +468,40 @@ const HeroSection: React.FC = () => {
           ))}
         </FeatureCards>
       </HeroContent>
+
+      {logos.length > 0 && (
+        <HeroCarouselContainer
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          <CarouselTitle>Trusted Partners</CarouselTitle>
+          <CarouselWrapper>
+            <CarouselTrack
+              animate={{
+                x: [0, -((logos.length * 150) + (logos.length * 64))],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 50,
+                  ease: "linear",
+                },
+              }}
+            >
+              {duplicatedLogos.map((logo, index) => (
+                <LogoItem 
+                  key={`${logo}-${index}`}
+                  $hasBackground={logosWithBackground.includes(logo)}
+                >
+                  <img src={logo} alt={`Logo ${index + 1}`} />
+                </LogoItem>
+              ))}
+            </CarouselTrack>
+          </CarouselWrapper>
+        </HeroCarouselContainer>
+      )}
     </HeroContainer>
   );
 };
