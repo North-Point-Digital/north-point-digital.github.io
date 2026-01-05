@@ -115,6 +115,23 @@ const BottomBar = styled.div`
   }
 `;
 
+const LegalInfo = styled.div`
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+  
+  span {
+    display: inline-block;
+    margin: 0 0.5rem;
+    
+    @media (max-width: 768px) {
+      display: block;
+      margin: 0.25rem 0;
+    }
+  }
+`;
+
 const Footer: React.FC = () => {
   return (
     <FooterWrapper>
@@ -162,6 +179,11 @@ const Footer: React.FC = () => {
       
       <BottomBar>
         <p>&copy; 2025 North Point Digital. All rights reserved. | <Link to="/privacy-policy">Privacy Policy</Link> | Terms of Service</p>
+        <LegalInfo>
+          <span>ICO Registration: [ZC055105]</span>
+          <span>|</span>
+          <span>UK Company Registration: [16516077]</span>
+        </LegalInfo>
       </BottomBar>
     </FooterWrapper>
   );
