@@ -202,7 +202,7 @@ const AboutSection: React.FC = () => {
             <Video
               controls
               playsInline
-              preload="auto"
+              preload="metadata"
               onPlay={handleVideoPlay}
               onPause={handleVideoPause}
               onEnded={handleVideoEnded}

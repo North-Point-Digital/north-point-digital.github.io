@@ -422,7 +422,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             AWS-certified experts. Proven results. Risk-free engagement.
           </Subtitle>
           <AWSBadge variants={itemVariants}>
-            <img src="/aws-logo.png" alt="AWS Partner" />
+            <img src="/aws-logo.png" alt="AWS Partner" loading="eager" />
             <span>Official AWS Partner</span>
           </AWSBadge>
           <CTAContainer variants={itemVariants}>
@@ -494,7 +494,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   key={`${logo}-${index}`}
                   $hasBackground={logosWithBackground.includes(logo)}
                 >
-                  <img src={logo} alt={`Logo ${index + 1}`} />
+                  <img src={logo} alt={`Logo ${index + 1}`} loading="lazy" />
                 </LogoItem>
               ))}
             </CarouselTrack>

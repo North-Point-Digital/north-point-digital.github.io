@@ -194,12 +194,17 @@ const TeamSection: React.FC<TeamSectionProps> = ({
                 <TeamMember key={index} variants={itemVariants}>
                   <MemberImage>
                     {hasImage ? (
-                      <img src={member.image} alt={member.name} onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const placeholder = target.parentElement?.querySelector('.placeholder-icon') as HTMLElement;
-                        if (placeholder) placeholder.style.display = 'flex';
-                      }} />
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const placeholder = target.parentElement?.querySelector('.placeholder-icon') as HTMLElement;
+                          if (placeholder) placeholder.style.display = 'flex';
+                        }} 
+                      />
                     ) : null}
                     <PlaceholderIcon className="placeholder-icon" style={{ display: hasImage ? 'none' : 'flex' }}>
                       <FaUser />

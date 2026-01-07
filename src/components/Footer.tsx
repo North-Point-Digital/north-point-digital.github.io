@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
       <FooterContent>
         <CompanyInfo>
           <h3>
-            <img src="/north-point-logo.webp" alt="North Point Digital Logo" />
+            <img src="/north-point-logo.webp" alt="North Point Digital Logo" loading="eager" />
             North Point Digital
           </h3>
           <p>

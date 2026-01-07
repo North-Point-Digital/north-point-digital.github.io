@@ -119,7 +119,7 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
                 key={`${logo}-${index}`}
                 $hasBackground={logosWithBackground.includes(logo)}
               >
-                <img src={logo} alt={`Logo ${index + 1}`} />
+                <img src={logo} alt={`Logo ${index + 1}`} loading="lazy" />
               </LogoItem>
             ))}
           </CarouselTrack>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, theme } from './styles/GlobalStyles';
@@ -11,17 +11,30 @@ import TeamSection from './components/TeamSection';
 import CaseStudySection from './components/CaseStudySection';
 import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
-import LogoCarousel from './components/LogoCarousel';
 import Footer from './components/Footer';
-import AwsProfitabilityResilienceBlueprint from './pages/AwsProfitabilityResilienceBlueprint';
-import AILaunchpad from './pages/AILaunchpad';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import AIAdoptionPlaybook from './pages/AIAdoptionPlaybook';
-import ContactUs from './pages/ContactUs';
-import CaseStudyDetail from './pages/CaseStudyDetail';
 import ScrollToTop from './components/ScrollToTop';
 import { initGA, logPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useScrollTracking';
+
+const AwsProfitabilityResilienceBlueprint = lazy(() => import('./pages/AwsProfitabilityResilienceBlueprint'));
+const AILaunchpad = lazy(() => import('./pages/AILaunchpad'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const AIAdoptionPlaybook = lazy(() => import('./pages/AIAdoptionPlaybook'));
+const ContactUs = lazy(() => import('./pages/ContactUs'));
+const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
+
+const LoadingFallback = () => (
+  <div style={{ 
+    minHeight: '100vh', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    color: 'white'
+  }}>
+    Loading...
+  </div>
+);
 
 // Analytics component to track page views
 const Analytics = () => {
@@ -117,22 +130,34 @@ function App() {
               </>
             } />
             <Route path="/aws-profitability-resilience-blueprint" element={
-              <AwsProfitabilityResilienceBlueprint />
+              <Suspense fallback={<LoadingFallback />}>
+                <AwsProfitabilityResilienceBlueprint />
+              </Suspense>
             } />
             <Route path="/ai-launchpad" element={
-              <AILaunchpad />
+              <Suspense fallback={<LoadingFallback />}>
+                <AILaunchpad />
+              </Suspense>
             } />
             <Route path="/privacy-policy" element={
-              <PrivacyPolicy />
+              <Suspense fallback={<LoadingFallback />}>
+                <PrivacyPolicy />
+              </Suspense>
             } />
             <Route path="/ai-adoption-playbook" element={
-              <AIAdoptionPlaybook />
+              <Suspense fallback={<LoadingFallback />}>
+                <AIAdoptionPlaybook />
+              </Suspense>
             } />
             <Route path="/contact" element={
-              <ContactUs />
+              <Suspense fallback={<LoadingFallback />}>
+                <ContactUs />
+              </Suspense>
             } />
             <Route path="/case-studies/:slug" element={
-              <CaseStudyDetail />
+              <Suspense fallback={<LoadingFallback />}>
+                <CaseStudyDetail />
+              </Suspense>
             } />
           </Routes>
         </main>

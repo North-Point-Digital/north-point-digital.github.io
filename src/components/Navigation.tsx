@@ -195,7 +195,7 @@ const Navigation: React.FC = () => {
         <Logo
           to="/"
         >
-          <img src="/north-point-logo.webp" alt="North Point Digital Logo" />
+          <img src="/north-point-logo.webp" alt="North Point Digital Logo" loading="eager" />
           <span>North Point Digital</span>
         </Logo>
 

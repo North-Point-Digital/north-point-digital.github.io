@@ -352,6 +352,7 @@ const CaseStudySection: React.FC<CaseStudySectionProps> = ({
                     <ClientLogo 
                       src={caseStudy.logo} 
                       alt={`${caseStudy.clientName} logo`}
+                      loading="lazy"
                       onError={(e) => {
                         (e.target as HTMLImageElement).style.display = 'none';
                       }}
