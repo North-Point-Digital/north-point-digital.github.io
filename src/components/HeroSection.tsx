@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -14,10 +14,30 @@ const HeroContainer = styled.section`
   padding: 2rem;
   position: relative;
   overflow: hidden;
-  background-image: url('/hero-bg.jpg');
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/hero-bg-optimized.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+  }
+  
+  &.image-loaded::after {
+    opacity: 1;
+  }
   
   &::before {
     content: '';
@@ -337,6 +357,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   logosWithBackground = []
 }) => {
   const navigate = useNavigate();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImageLoaded(true);
+    };
+    img.src = '/hero-bg-optimized.jpg';
+  }, []);
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -379,7 +408,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const duplicatedLogos = logos.length > 0 ? [...logos, ...logos, ...logos] : [];
 
   return (
-    <HeroContainer id="home">
+    <HeroContainer id="home" className={imageLoaded ? 'image-loaded' : ''}>
       <FloatingElement
         animate={{
           x: [0, 100, 0],
