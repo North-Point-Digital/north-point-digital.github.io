@@ -19,7 +19,11 @@ const NavContainer = styled(motion.nav)<{ scrolled: boolean }>`
   transition: all 0.3s ease;
 
   @media (max-width: 768px) {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.75rem;
   }
 `;
 
@@ -41,12 +45,30 @@ const Logo = styled(Link)`
   img {
     height: 100px;
     width: auto;
+    transition: height 0.3s ease;
+    
+    @media (max-width: 768px) {
+      height: 70px;
+    }
+    
+    @media (max-width: 480px) {
+      height: 50px;
+    }
+    
+    @media (max-width: 360px) {
+      height: 40px;
+    }
   }
   
   span {
     font-size: 1.5rem;
     font-weight: 700;
     color: white;
+    transition: font-size 0.3s ease;
+    
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
     
     @media (max-width: 480px) {
       display: none;
@@ -115,9 +137,17 @@ const MenuToggle = styled(motion.button)`
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 1001;
+  padding: 0.5rem;
+  transition: font-size 0.3s ease;
 
   @media (max-width: 768px) {
     display: block;
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    padding: 0.25rem;
   }
 `;
 
