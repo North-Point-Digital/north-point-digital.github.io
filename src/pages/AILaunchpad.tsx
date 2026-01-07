@@ -243,7 +243,7 @@ const AILaunchpad: React.FC = () => {
     {
       icon: <FaFlask />,
       title: "Working Prototype",
-      description: "AWS-powered AI PoC built with your data in 2 weeks"
+      description: "AWS-powered AI PoC built with your data in 6 weeks"
     },
     {
       icon: <FaChartPie />,
@@ -266,7 +266,7 @@ const AILaunchpad: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Validate Your AI Strategy in 2 Weeks
+            Validate Your AI Strategy in 6 Weeks
           </Title>
           <Subtitle
             initial={{ opacity: 0, y: 20 }}

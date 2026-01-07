@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaClipboardCheck, FaCloud, FaShieldAlt, FaRobot, FaDatabase, FaChartLine, FaExchangeAlt } from 'react-icons/fa';
+import { FaClipboardCheck, FaRobot, FaCloud, FaRocket } from 'react-icons/fa';
 import { trackServiceClick } from '../utils/analytics';
 import CalendlyCTA from './CTAButton';
 
@@ -37,21 +37,25 @@ const Subtitle = styled(motion.p)`
 
 const BentoGrid = styled.div`
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
   grid-template-columns: 1fr;
+  justify-items: center;
   
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+    justify-items: stretch;
   }
   
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 250px);
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: stretch;
   }
 `;
 
 const ServiceCard = styled(motion.div)<{ $large?: boolean; as?: any }>`
   background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 100%;
   height: 100%;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
@@ -63,11 +67,9 @@ const ServiceCard = styled(motion.div)<{ $large?: boolean; as?: any }>`
   cursor: pointer;
   transition: all 0.3s ease;
   
-  ${props => props.$large && `
-    @media (min-width: 1024px) {
-      grid-column: span 2;
-    }
-  `}
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
   
   &:hover {
     background: rgba(255, 255, 255, 0.15);
@@ -138,43 +140,26 @@ const ServicesSection: React.FC = () => {
   const services = [
     {
       icon: <FaClipboardCheck />,
-      title: 'Security & Cost Optimisation Blueprint',
-      description: 'Comprehensive Well-Architected Review to slash costs and strengthen security.',
-      features: ['Target 25%+ Cost Reduction', 'Security Hardening', 'Performance Optimisation', 'No Upfront Cost'],
+      title: 'Save Money',
+      description: 'Cost optimisation, right-sizing, budget alerts.',
+      features: ['25%+ Cost Reduction', 'Security Hardening', 'Performance Optimisation', 'No Upfront Cost'],
       large: true,
       link: '/aws-profitability-resilience-blueprint',
     },
     {
-      icon: <FaRobot />,
-      title: 'North Point AI Launchpad',
-      description: 'Working AI Proof of Concept with full costings and production roadmap in 2 weeks.',
-      features: ['Custom PoC Development', 'Production Cost Analysis', 'Implementation Roadmap', 'Fixed-Fee Engagement'],
+      icon: <FaCloud />,
+      title: 'Build Better',
+      description: 'Architecture, migrations, modernisation.',
+      features: ['Scalable Infrastructure', 'Cloud Migrations', 'Landing Zones', 'DevOps & SRE', 'Solutions Architecture'],
+      large: true,
+    },
+    {
+      icon: <FaRocket />,
+      title: 'Go Faster',
+      description: 'AI PoCs, automation, DevOps.',
+      features: ['AI Proof of Concept', 'Production Roadmap', 'Automation', 'Fixed-Fee Engagement'],
       large: true,
       link: '/ai-launchpad',
-    },
-    {
-      icon: <FaExchangeAlt />,
-      title: 'AWS Migrations',
-      description: 'Seamless cloud migration using AWS MAP framework.',
-      features: ['Assessment & Planning', 'Migration Execution', 'Infrastructure Modernization'],
-    },
-    {
-      icon: <FaCloud />,
-      title: 'Cloud Architecture',
-      description: 'Build scalable, resilient AWS infrastructure.',
-      features: ['DevOps', 'Solutions Architecture', 'SRE'],
-    },
-    {
-      icon: <FaDatabase />,
-      title: 'Data & Analytics',
-      description: 'Leverage AWS for powerful data insights.',
-      features: ['AI', 'Business Intelligence', 'Automation'],
-    },
-    {
-      icon: <FaShieldAlt />,
-      title: 'Security & Compliance',
-      description: 'Ensure security with AWS best practices.',
-      features: ['Audits', 'Compliance'],
     },
   ];
 
@@ -220,7 +205,7 @@ const ServicesSection: React.FC = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            Our Services
+            What We Do
           </Title>
           <Subtitle
             initial={{ opacity: 0, y: -20 }}
@@ -228,7 +213,7 @@ const ServicesSection: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            Specialist AWS consultancy delivering measurable results
+            Three ways to transform your AWS infrastructure
           </Subtitle>
         </SectionHeader>
         

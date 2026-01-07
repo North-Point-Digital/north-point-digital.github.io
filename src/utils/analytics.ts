@@ -1,9 +1,12 @@
 // Google Analytics 4 tracking using gtag (already loaded in index.html)
 // Measurement ID: G-CX6XEZX2R0
 
-// Check if gtag is available
 const isGAAvailable = (): boolean => {
-  return typeof window !== 'undefined' && typeof window.gtag === 'function';
+  if (typeof window === 'undefined') return false;
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return false;
+  }
+  return typeof window.gtag === 'function';
 };
 
 // Log page view

@@ -180,6 +180,7 @@ const Navigation: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/#services' },
     { name: 'About Us', path: '/#about' },
+    { name: 'Case Studies', path: '/#case-studies' },
     // { name: 'Testimonials', path: '/#testimonials' },
   ];
 

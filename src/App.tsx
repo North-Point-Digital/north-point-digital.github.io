@@ -8,6 +8,7 @@ import ServicesSection from './components/ServicesSection';
 import IndustryStatsSection from './components/IndustryStatsSection';
 import AboutSection from './components/AboutSection';
 import TeamSection from './components/TeamSection';
+import CaseStudySection from './components/CaseStudySection';
 import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import LogoCarousel from './components/LogoCarousel';
@@ -17,6 +18,7 @@ import AILaunchpad from './pages/AILaunchpad';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import AIAdoptionPlaybook from './pages/AIAdoptionPlaybook';
 import ContactUs from './pages/ContactUs';
+import CaseStudyDetail from './pages/CaseStudyDetail';
 import ScrollToTop from './components/ScrollToTop';
 import { initGA, logPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useScrollTracking';
@@ -109,6 +111,7 @@ function App() {
                     }
                   ]}
                 />
+                <CaseStudySection />
                 <FAQSection />
                 <ContactSection />
               </>
@@ -127,6 +130,9 @@ function App() {
             } />
             <Route path="/contact" element={
               <ContactUs />
+            } />
+            <Route path="/case-studies/:slug" element={
+              <CaseStudyDetail />
             } />
           </Routes>
         </main>

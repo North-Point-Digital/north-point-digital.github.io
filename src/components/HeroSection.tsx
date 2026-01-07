@@ -14,7 +14,7 @@ const HeroContainer = styled.section`
   padding: 2rem;
   position: relative;
   overflow: hidden;
-  background-image: url('/hero-bg.png');
+  background-image: url('/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -412,15 +412,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <TextContent>
           <Title variants={itemVariants}>
-            Reduce Your AWS Bill by 25%+
+            Save Money on your AWS bill.
             <br />
             <span style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-              While Strengthening Security
+              Period.
             </span>
           </Title>
           <Subtitle variants={itemVariants}>
-            Expert AWS consultancy delivering Well-Architected Reviews, AI Proof of Concepts,
-            and seamless cloud migrations with proven results.
+            AWS-certified experts. Proven results. Risk-free engagement.
           </Subtitle>
           <AWSBadge variants={itemVariants}>
             <img src="/aws-logo.png" alt="AWS Partner" />
