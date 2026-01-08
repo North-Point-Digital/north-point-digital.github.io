@@ -13,6 +13,7 @@ import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import BackToTop from './components/BackToTop';
 import { initGA, logPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useScrollTracking';
 
@@ -168,6 +169,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <BackToTop />
       </ThemeProvider>
     </Router>
   );
