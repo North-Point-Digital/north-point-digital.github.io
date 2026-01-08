@@ -11,6 +11,10 @@ export type IconType = 'dollar' | 'shield' | 'clock' | 'chart';
 
 export interface DetailedCaseStudy extends CaseStudy {
   slug: string;
+  pageTitle?: string;
+  pageSubtitle?: string;
+  executiveSummary?: string;
+  whyChooseUs?: string;
   detailedChallenge?: string;
   detailedSolution?: string;
   metrics?: {
@@ -111,50 +115,58 @@ export const caseStudies: DetailedCaseStudy[] = [
     ]
   },
   {
-    slug: 'healthcare-compliance-migration',
-    clientName: 'Healthcare Technology Company',
-    industry: 'HealthTech',
-    challenge: 'Compliance requirements and data security concerns with legacy infrastructure that couldn\'t scale efficiently.',
-    detailedChallenge: 'A healthcare technology company needed to migrate from legacy on-premises infrastructure to AWS while maintaining strict HIPAA compliance and ensuring patient data security. Their existing infrastructure couldn\'t scale to meet growing demand, and they lacked the expertise to design a compliant cloud architecture. The migration needed to be completed without any service disruption and with full audit trails for compliance purposes.',
-    solution: 'Designed secure, compliant AWS architecture with proper data encryption and access controls. Migrated workloads to modern AWS services with automated compliance monitoring.',
-    detailedSolution: 'We designed a HIPAA-compliant AWS architecture with end-to-end encryption, proper access controls, and comprehensive audit logging. All patient data is encrypted at rest using AWS KMS and in transit using TLS. We implemented AWS Organizations with Service Control Policies to enforce compliance requirements across all accounts. The migration was performed using AWS Application Migration Service with minimal downtime. We set up AWS Config and AWS Security Hub for continuous compliance monitoring and automated compliance reporting. All infrastructure changes are tracked through AWS CloudTrail for audit purposes.',
+    slug: 'acorn-healthtech-compliance',
+    clientName: 'Acorn (Compliance Platform)',
+    industry: 'HealthTech / SaaS',
+    pageTitle: 'Building a Secure Foundation for NHS Compliance on AWS',
+    pageSubtitle: 'How North Point Digital helped Acorn launch the "Squirrel 2" platform to streamline compliance for healthcare providers.',
+    challenge: 'Acorn needed to launch "Squirrel 2," a critical compliance platform for the NHS and healthcare providers. As an incredibly cost-conscious company, they required a secure, scalable infrastructure that could move off expensive EC2 instances while meeting strict NHS compliance standards.',
+    executiveSummary: 'Acorn is a HealthTech leader dedicated to helping healthcare providers and the NHS meet rigorous compliance standards. To launch their next-generation platform, Squirrel 2, they needed an infrastructure partner who understood that security wasn\'t just a feature—it was the entire product. North Point Digital stepped in as Fractional CTO, architecting a secure, scalable AWS environment that meets NHS Data Security and Protection Toolkit (DSPT) standards, enabling Acorn to onboard healthcare providers with absolute confidence.',
+    detailedChallenge: 'As Acorn prepared to launch Squirrel 2, they faced the "Triple Constraint" common to healthcare innovation:\n\n• Strict Regulatory Standards: The platform handles sensitive compliance data for NHS providers. Any architecture had to be "secure by design" to meet DSPT and GDPR requirements without slowing down development.\n\n• Scalability for Launch: Acorn needed to move from a development environment to a production-ready infrastructure capable of handling rapid user onboarding from large healthcare organisations.\n\n• Operational Efficiency: With limited internal DevOps resources, Acorn needed a partner to not just build the infrastructure, but to establish the "Fractional CTO" strategy for long-term management and cost optimisation.\n\n• Cost Optimisation: As an incredibly cost-conscious company, Acorn needed to redesign their infrastructure to move off expensive EC2 instances, reducing infrastructure costs while maintaining performance and security.',
+    solution: 'Acting as Fractional CTO, redesigned infrastructure to move off expensive EC2 instances, implemented a "Security-First" landing zone aligned with NHS DSPT standards, and modernised document generation using AWS Bedrock, SageMaker, and S3 vector storage.',
+    whyChooseUs: 'Acorn chose North Point Digital because they needed more than just a developer—they needed strategic leadership.\n\n• Industry-Specific Expertise: North Point Digital brought deep experience in regulated industries, understanding that "move fast and break things" doesn\'t work when patient data privacy is at stake.\n\n• Trust & Security: As an AWS Partner, North Point Digital leveraged the "most trusted healthcare cloud" to ensure the platform was built on a foundation of global compliance certifications.',
+    detailedSolution: 'North Point Digital acted as the strategic infrastructure lead, executing a modernisation and migration plan aligned with AWS Well-Architected best practices:\n\n• Secure Landing Zone: Deployed a multi-account AWS architecture with strict isolation between development and production environments to prevent data leakage.\n\n• Encryption & Compliance: Implemented end-to-end encryption (at rest and in transit) using AWS Key Management Service (KMS), ensuring Squirrel 2 met the highest standards of data sovereignty.\n\n• Automated Infrastructure: Utilised Infrastructure as Code (IaC) to automate compliance checks, ensuring that every server launched was automatically compliant with security policies.\n\n• Infrastructure Cost Optimisation: Redesigned their infrastructure architecture to move off expensive EC2 instances, implementing serverless and managed services where appropriate to significantly reduce costs while maintaining performance and security.\n\n• Document Generation Modernisation: Modernised their Document Generation infrastructure utilising core AWS services including Amazon S3 for vector storage, AWS Bedrock for embeddings, and AWS SageMaker for machine learning capabilities, enabling intelligent document processing and generation at scale.',
     results: [
-      '100% compliance with healthcare regulations',
-      '40% reduction in infrastructure costs',
-      'Improved scalability for future growth'
+      'Successful Launch of Squirrel 2: The platform went live with zero downtime, immediately serving NHS and private healthcare clients',
+      '100% Compliance Confidence: The architecture successfully passed strict due diligence, enabling Acorn to sell into highly regulated NHS trusts without friction',
+      'Scalable Foundation: The new infrastructure automatically adjusts to traffic spikes, ensuring performance never degrades for compliance officers using the tool'
     ],
     metrics: [
       {
-        label: 'Compliance',
-        value: '100%',
+        label: 'Platform Launch',
+        value: 'Zero Downtime',
         icon: 'shield' as IconType
       },
       {
-        label: 'Cost Reduction',
-        value: '40%',
-        icon: 'dollar' as IconType
+        label: 'Compliance',
+        value: '100% Confidence',
+        icon: 'shield' as IconType
       },
       {
-        label: 'Migration Time',
-        value: '4 Weeks',
-        icon: 'clock' as IconType
+        label: 'Infrastructure',
+        value: 'Auto-Scaling',
+        icon: 'chart' as IconType
       }
     ],
-    timeline: 'The migration project was completed in four weeks. Week 1-2 involved architecture design and compliance validation. Week 3 focused on the migration execution with minimal downtime. Week 4 included testing, validation, and compliance audit preparation.',
+    timeline: 'The project involved architectural design, landing zone implementation, and platform deployment. Working as Fractional CTO, we established the secure AWS foundation and successfully launched the Squirrel 2 platform with full compliance to NHS standards.',
     technologies: [
       'AWS Organizations',
+      'AWS Landing Zone',
       'AWS KMS',
       'AWS Config',
       'AWS Security Hub',
       'AWS CloudTrail',
-      'AWS Application Migration Service',
       'Amazon VPC',
-      'AWS WAF'
+      'Amazon S3',
+      'AWS WAF',
+      'AWS SageMaker',
+      'AWS Bedrock',
+      'NHS DSPT Compliance'
     ],
     testimonial: {
-      quote: 'North Point Digital not only delivered a seamless migration but ensured we maintained 100% compliance throughout the process. Their expertise in healthcare cloud architecture is exceptional.',
-      author: 'CTO',
-      role: 'Healthcare Technology Company'
+      quote: 'North Point Digital didn\'t just build our servers; they became our strategic technology partner. Their leadership allowed us to launch Squirrel 2 with the confidence that our infrastructure was as robust as the compliance solutions we sell to the NHS.',
+      author: 'Founder',
+      role: 'Acorn'
     }
   }
 ];

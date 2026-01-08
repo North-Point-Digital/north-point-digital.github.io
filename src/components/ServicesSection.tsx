@@ -152,6 +152,7 @@ const ServicesSection: React.FC = () => {
       description: 'Architecture, migrations, modernisation.',
       features: ['Scalable Infrastructure', 'Cloud Migrations', 'Landing Zones', 'DevOps & SRE', 'Solutions Architecture'],
       large: true,
+      link: '/build-better',
     },
     {
       icon: <FaRocket />,

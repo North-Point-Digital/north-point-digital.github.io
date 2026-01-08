@@ -18,6 +18,7 @@ import { useScrollTracking } from './hooks/useScrollTracking';
 
 const AwsProfitabilityResilienceBlueprint = lazy(() => import('./pages/AwsProfitabilityResilienceBlueprint'));
 const AILaunchpad = lazy(() => import('./pages/AILaunchpad'));
+const BuildBetter = lazy(() => import('./pages/BuildBetter'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const AIAdoptionPlaybook = lazy(() => import('./pages/AIAdoptionPlaybook'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
@@ -137,6 +138,11 @@ function App() {
             <Route path="/ai-launchpad" element={
               <Suspense fallback={<LoadingFallback />}>
                 <AILaunchpad />
+              </Suspense>
+            } />
+            <Route path="/build-better" element={
+              <Suspense fallback={<LoadingFallback />}>
+                <BuildBetter />
               </Suspense>
             } />
             <Route path="/privacy-policy" element={

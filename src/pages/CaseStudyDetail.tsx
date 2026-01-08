@@ -274,41 +274,73 @@ const CaseStudyDetail: React.FC = () => {
               />
             )}
             <ClientInfo>
-              <Title>{caseStudy.clientName}</Title>
+              <Title>{caseStudy.pageTitle || caseStudy.clientName}</Title>
               {caseStudy.industry && <p>{caseStudy.industry}</p>}
             </ClientInfo>
           </ClientHeader>
           <Subtitle>
-            {caseStudy.detailedChallenge || caseStudy.challenge}
+            {caseStudy.pageSubtitle || caseStudy.detailedChallenge || caseStudy.challenge}
           </Subtitle>
         </HeroSection>
 
         <ContentSection>
+          {caseStudy.executiveSummary && (
+            <Card
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <CardTitle>
+                <FaUsers />
+                Executive Summary
+              </CardTitle>
+              <CardContent>
+                <p style={{ whiteSpace: 'pre-line' }}>{caseStudy.executiveSummary}</p>
+              </CardContent>
+            </Card>
+          )}
+
           <Card
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: caseStudy.executiveSummary ? 0.1 : 0 }}
           >
             <CardTitle>
               <FaShieldAlt />
               The Challenge
             </CardTitle>
             <CardContent>
-              <p>{caseStudy.detailedChallenge || caseStudy.challenge}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>{caseStudy.detailedChallenge || caseStudy.challenge}</p>
             </CardContent>
           </Card>
+
+          {caseStudy.whyChooseUs && (
+            <Card
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: caseStudy.executiveSummary ? 0.2 : 0.1 }}
+            >
+              <CardTitle>
+                <FaUsers />
+                Why North Point Digital?
+              </CardTitle>
+              <CardContent>
+                <p style={{ whiteSpace: 'pre-line' }}>{caseStudy.whyChooseUs}</p>
+              </CardContent>
+            </Card>
+          )}
 
           <Card
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: caseStudy.executiveSummary || caseStudy.whyChooseUs ? 0.3 : 0.2 }}
           >
             <CardTitle>
               <FaCheckCircle />
               Our Solution
             </CardTitle>
             <CardContent>
-              <p>{caseStudy.detailedSolution || caseStudy.solution}</p>
+              <p style={{ whiteSpace: 'pre-line' }}>{caseStudy.detailedSolution || caseStudy.solution}</p>
               {caseStudy.technologies && caseStudy.technologies.length > 0 && (
                 <div>
                   <h3 style={{ marginTop: '2rem', marginBottom: '1rem' }}>Technologies Used:</h3>
