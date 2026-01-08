@@ -30,6 +30,13 @@
   <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM5PN5MJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      // Fix chunk loading on nested routes by setting webpack public path
+      // This must run before the main bundle loads
+      if (typeof window !== 'undefined') {
+        window.__webpack_public_path__ = '/';
+      }
+    </script>
     <div id="root"></div>
     <script>
       // Single Page Apps for GitHub Pages
