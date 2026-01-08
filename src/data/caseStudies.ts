@@ -74,45 +74,55 @@ export const caseStudies: DetailedCaseStudy[] = [
     ]
   },
   {
-    slug: 'ecommerce-platform-performance',
-    clientName: 'E-commerce Platform',
-    industry: 'Retail',
-    challenge: 'Rapid growth led to over-provisioned infrastructure and performance bottlenecks during peak traffic periods.',
-    detailedChallenge: 'An e-commerce platform experiencing rapid growth found their infrastructure struggling to handle peak traffic periods, particularly during sales events and holiday seasons. Their AWS infrastructure was over-provisioned for normal traffic but still couldn\'t handle spikes, leading to slow page load times and occasional downtime. The lack of proper auto-scaling and inefficient database queries were causing both performance issues and unnecessary costs.',
-    solution: 'Performed infrastructure audit and optimisation. Implemented auto-scaling policies, optimised database queries, and migrated to more cost-effective instance types.',
-    detailedSolution: 'We performed a comprehensive infrastructure audit and identified key bottlenecks in their application architecture. We implemented auto-scaling groups with predictive scaling policies to handle traffic spikes automatically. Database performance was improved through query optimisation, read replicas, and connection pooling. We migrated workloads to more cost-effective instance types (including Graviton2 processors where applicable) and implemented caching strategies using ElastiCache. Load balancing was optimised, and we set up CloudWatch alarms for proactive monitoring.',
+    slug: 'edsports-edtech-platform',
+    clientName: 'EDSports (EdTech Platform)',
+    industry: 'Education / Gaming',
+    pageTitle: 'Democratising Classroom E-Sports with AWS Cloud Streaming',
+    pageSubtitle: 'How North Point Digital helped EDSports deliver high-performance Minecraft Education experiences to any device, anywhere.',
+    challenge: 'EDSports wanted to bring Minecraft Education esports to schools, but most schools rely on low-spec Chromebooks that cannot run the game locally. They needed a zero-install, GDPR-compliant solution.',
+    executiveSummary: 'EDSports is an educational e-sports platform designed to engage students through the creativity and competition of Minecraft Education. However, the digital divide posed a threat: many schools rely on legacy hardware or Chromebooks incapable of running 3D games. North Point Digital architected a solution using AWS Application Streaming technology to render the game in the cloud and stream it to the browser. The result is a secure, GDPR-compliant platform that allows students to access high-fidelity educational gaming from a standard web browser.',
+    detailedChallenge: 'EDSports had a vision to gamify education, but technical logistics stood in the way:\n\n• Hardware Inequity: The majority of UK schools utilise low-power Chromebooks or aging desktops that lack the GPU power required for Minecraft Education.\n\n• Strict Data Compliance: Installing software on school networks is a bureaucratic nightmare. The solution needed to be "Zero Touch" and fully GDPR compliant, ensuring no student data was stored on local machines.\n\n• Classroom Management: Teachers needed a simple way to control the chaos—launching specific lesson maps (e.g., Capture the Flag, Parkour) without needing technical support.',
+    solution: 'Built a custom cloud-streaming platform using AWS AppStream 2.0 (WorkSpaces Family). Developed a custom web launcher that allows teachers to deploy specific game environments (Bedwars, Parkour) instantly.',
+    whyChooseUs: 'EDSports required a partner who could bridge the gap between "Cloud Infrastructure" and "User Experience."\n\n• End-User Computing (EUC) Expertise: North Point Digital holds specific expertise in AWS streaming technologies, understanding latency, frame rates, and cost-per-session economics.\n\n• Custom Application Development: Unlike standard infrastructure partners, we could build the bespoke front-end application required to make the complex backend invisible to children and teachers.',
+    detailedSolution: 'North Point Digital delivered a "Pixel Streaming" architecture that moved the heavy lifting from the classroom to the cloud:\n\n• AWS AppStream 2.0 (WorkSpaces Family): We configured a fleet of GPU-backed streaming instances that render Minecraft Education on AWS servers and stream the video feed to the student\'s browser with sub-millisecond latency.\n\n• Custom "Launcher" Application: We built a gamified frontend web application acting as a lobby. This allows students to customise avatars and enter sessions, while providing teachers with a "Command Centre" to trigger awards and gamification events.\n\n• Dynamic Environment Loading: The architecture allows dynamic injection of specific game worlds. A teacher can select "Bedwars" or "Capture the Flag" from a web menu, and the AWS infrastructure instantly spins up a session pre-loaded with that map.\n\n• GDPR-Compliant Storage: All user profiles and game states are stored in encrypted, transient cloud sessions. No data ever touches the physical school device, satisfying strict data protection requirements.',
     results: [
-      '28% cost reduction while improving performance',
-      '50% faster page load times',
-      'Zero downtime during peak traffic events'
+      '100% Hardware Agnostic: High-fidelity Minecraft now runs smoothly on $150 Chromebooks and ten-year-old laptops',
+      'Instant Access: No installation or patching required by school IT admins. Students simply log in and play',
+      'Teacher Empowerment: The custom launcher reduced setup time from 20 minutes to 30 seconds, maximising learning time'
     ],
     metrics: [
       {
-        label: 'Cost Reduction',
-        value: '28%',
-        icon: 'dollar' as IconType
-      },
-      {
-        label: 'Performance Improvement',
-        value: '50% Faster',
-        icon: 'chart' as IconType
-      },
-      {
-        label: 'Uptime During Peaks',
-        value: '100%',
+        label: 'Hardware Compatibility',
+        value: '100% Agnostic',
         icon: 'shield' as IconType
+      },
+      {
+        label: 'Setup Time',
+        value: '30 Seconds',
+        icon: 'clock' as IconType
+      },
+      {
+        label: 'Scalability',
+        value: 'Thousands Concurrent',
+        icon: 'chart' as IconType
       }
     ],
-    timeline: 'The optimisation project was completed over three weeks. Week 1 involved infrastructure analysis and planning. Week 2 focused on implementing auto-scaling and database optimisations. Week 3 included testing, monitoring setup, and performance validation.',
+    timeline: 'The project involved designing the cloud-streaming architecture, developing the custom web launcher, configuring AWS AppStream 2.0 environments, and implementing GDPR-compliant data handling. The platform was built to scale automatically and support multiple concurrent game sessions across different schools.',
     technologies: [
-      'EC2 Auto Scaling',
-      'Amazon ElastiCache',
-      'Amazon RDS',
-      'Application Load Balancer',
+      'AWS AppStream 2.0',
+      'AWS WorkSpaces',
+      'Amazon VPC',
+      'AWS IAM',
       'Amazon CloudWatch',
-      'AWS Lambda',
-      'Amazon CloudFront'
-    ]
+      'AWS Auto Scaling',
+      'Minecraft Education Edition',
+      'GDPR Compliance'
+    ],
+    testimonial: {
+      quote: 'North Point Digital took a complex technical hurdle—running 3D games on low-end hardware—and turned it into our biggest competitive advantage. Their cloud streaming solution allows us to drop into any school in the country and be up and running in seconds.',
+      author: 'Founder',
+      role: 'EDSports'
+    }
   },
   {
     slug: 'acorn-healthtech-compliance',
