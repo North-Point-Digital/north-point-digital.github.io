@@ -33,45 +33,57 @@ export interface DetailedCaseStudy extends CaseStudy {
 
 export const caseStudies: DetailedCaseStudy[] = [
   {
-    slug: 'financial-services-cost-optimisation',
-    clientName: 'Financial Services Firm',
-    industry: 'FinTech',
-    challenge: 'Facing escalating AWS costs with limited visibility into spending patterns and security vulnerabilities in their cloud infrastructure.',
-    detailedChallenge: 'A leading financial services firm was experiencing rapidly escalating AWS costs with no clear understanding of where their budget was being allocated. Their cloud infrastructure had grown organically over several years, resulting in over-provisioned resources, untagged assets, and multiple security vulnerabilities that could potentially expose sensitive financial data. The lack of proper cost allocation and budget controls made it impossible to track spending by department or project, while security gaps posed significant compliance risks.',
-    solution: 'Conducted comprehensive Well-Architected Review focusing on cost optimisation and security. Implemented proper tagging strategies, right-sized resources, and remediated critical security gaps.',
-    detailedSolution: 'We conducted a comprehensive two-week Well-Architected Review focusing on the Cost Optimisation and Security pillars. Our team implemented a systematic tagging strategy across all AWS resources, enabling proper cost allocation and budget tracking. We identified and right-sized over-provisioned EC2 instances, eliminated unused EBS volumes and snapshots, and optimised RDS database instances. For security, we remediated critical vulnerabilities including unencrypted S3 buckets, overly permissive IAM policies, and missing VPC flow logs. We also set up automated budget alerts and implemented AWS Cost Explorer dashboards for ongoing visibility.',
+    slug: 'alluvial-institutional-liquid-staking',
+    clientName: 'Alluvial (Institutional Liquid Staking)',
+    industry: 'FinTech / Web3',
+    pageTitle: 'Bridging DeFi and Compliance: Institutional Liquid Staking Architecture',
+    pageSubtitle: 'Leveraging Kubernetes and Golang to build secure, regulatory-ready staking infrastructure for Alluvial Finance.',
+    challenge: 'Institutional investors needed a compliant way to stake assets. They required the yield of staking but needed the flexibility to toggle between "Private" (compliant) and "Liquid" (public) states based on shifting regulatory landscapes.',
+    executiveSummary: 'Note: This project represents the specific domain expertise delivered by North Point Digital\'s founder prior to establishing the consultancy.\n\nAlluvial Finance operates at the cutting edge of institutional crypto, bridging the gap between traditional finance (TradFi) and decentralised finance (DeFi). The goal was to build the first "Institutional Liquid Staking" standard. To succeed, the platform needed infrastructure that was not only cryptographically secure but also operationally robust enough to satisfy institutional risk managers. The North Point Digital leadership team played a pivotal role in implementing the protocol\'s core architecture, ensuring seamless interoperability between on-chain smart contracts and off-chain cloud infrastructure.',
+    detailedChallenge: 'The project faced a unique "Regulatory Paradox" that required a complex technical solution:\n\n• The Liquidity Dilemma: Institutions wanted the liquidity of public tokens but could not hold assets that might be deemed "unregulated securities."\n\n• Infrastructure Reliability: Most DeFi projects run on fragile scripts. Alluvial needed enterprise-grade stability (99.99% uptime) for their off-chain services to manage validator performance and reporting.\n\n• Auditability: Every line of code—whether Solidity smart contracts or Go binaries—needed to pass rigorous security audits and automated testing.',
+    solution: 'Engineered a hybrid staking protocol allowing atomic swaps between Private Pools and Liquid Tokens. Built the supporting off-chain infrastructure using Golang on Kubernetes for high-availability event indexing and validator management.',
+    whyChooseUs: 'This project validates North Point Digital\'s ability to operate in high-stakes environments where a single bug can result in massive financial loss.\n\n• Hybrid Architecture: We specialise in the difficult intersection where blockchain meets the cloud (AWS/Kubernetes).\n\n• Golang Concurrency: We utilised Go\'s high-performance concurrency to handle massive streams of blockchain event data in real-time.',
+    detailedSolution: 'Our leadership team delivered a dual-layer architecture:\n\nThe "Private-to-Public" Protocol Mechanism\nWe implemented a novel staking architecture that gave institutions a safety valve.\n\n• Private Pools: Institutions stake into isolated, compliant pools.\n\n• The "regulatory Switch": Built the technical capability for these private tokens to swap into a liquid, tradeable token only if regulatory conditions were met. This future-proofed the client against SEC changes.\n\nEnterprise Off-Chain Infrastructure\nWhile the blockchain handles the money, the infrastructure handles the intelligence.\n\n• Kubernetes Hosting: Deployed resilient microservices on Kubernetes to monitor validator health and manage staking operations.\n\n• Golang Backend: Built high-performance off-chain services in Go to index blockchain data and serve APIs to institutional partners.\n\n• Unified CI/CD: Implemented a rigorous GitHub Actions pipeline that tested both the Solidity contracts and the Go infrastructure in parallel, ensuring that an update to one didn\'t break the other.',
     results: [
-      '35% reduction in monthly AWS spend',
-      'Eliminated 3 critical security vulnerabilities',
-      'Improved cost visibility with automated budget alerts'
+      'Regulatory Flexibility: Provided a technical solution to a legal problem, allowing the product to launch despite regulatory ambiguity',
+      'Audit-Ready Code: The strict CI/CD and typed Go infrastructure ensured the codebase passed multiple external security audits with flying colours',
+      'High Availability: The Kubernetes-based off-chain layer ensured that data feeds and APIs remained responsive even during periods of high network congestion'
     ],
     metrics: [
       {
-        label: 'Cost Reduction',
-        value: '35%',
-        icon: 'dollar' as IconType
-      },
-      {
-        label: 'Security Issues Resolved',
-        value: '3 Critical',
+        label: 'Infrastructure Grade',
+        value: 'Institutional',
         icon: 'shield' as IconType
       },
       {
-        label: 'Time to Implement',
-        value: '2 Weeks',
-        icon: 'clock' as IconType
+        label: 'Uptime Target',
+        value: '99.99%',
+        icon: 'shield' as IconType
+      },
+      {
+        label: 'Availability',
+        value: 'High-Availability',
+        icon: 'chart' as IconType
       }
     ],
-    timeline: 'The engagement was completed in two weeks. Week 1 focused on discovery, analysis, and identifying quick wins. Week 2 involved implementing critical optimisations, remediating security issues, and setting up monitoring and alerting systems.',
+    timeline: 'The project involved designing the hybrid staking protocol architecture, developing smart contracts for atomic state transitions, building the Golang-based event indexing system, and deploying the Kubernetes infrastructure. The unified CI/CD pipeline was implemented to streamline deployments across both on-chain and off-chain components.',
     technologies: [
-      'AWS Cost Explorer',
-      'AWS Budgets',
-      'AWS Systems Manager',
-      'AWS Config',
-      'AWS Security Hub',
-      'EC2 Auto Scaling',
-      'AWS Tag Editor'
-    ]
+      'Golang',
+      'Kubernetes',
+      'Solidity',
+      'Smart Contracts',
+      'Blockchain Event Indexing',
+      'AWS EKS',
+      'GitHub Actions',
+      'CI/CD Pipelines',
+      'Validator Management',
+      'Web3 Infrastructure'
+    ],
+    testimonial: {
+      quote: 'The architecture delivered here wasn\'t just code; it was a strategic asset. By decoupling the "private" and "liquid" states, we built a protocol that could survive and thrive regardless of how the regulatory wind blew.',
+      author: 'David Turnbull',
+      role: 'Founder & Principal Architect'
+    }
   },
   {
     slug: 'edsports-edtech-platform',
