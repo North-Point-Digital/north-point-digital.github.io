@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useMemo } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaCheckCircle, FaCalendarCheck, FaEnvelope, FaArrowLeft } from 'react-icons/fa';
+import { FaCheckCircle, FaCalendarCheck, FaEnvelope, FaArrowLeft, FaClock, FaUser, FaVideo } from 'react-icons/fa';
 import { trackGoogleAdsConversion } from '../utils/analytics';
 
 const PageWrapper = styled.div`
@@ -151,8 +151,110 @@ const SecondaryButton = styled(motion.button)`
   }
 `;
 
+const MeetingDetailsCard = styled(motion.div)`
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  color: white;
+  text-align: left;
+`;
+
+const MeetingDetailsTitle = styled.h3`
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+  
+  svg {
+    font-size: 1.8rem;
+  }
+`;
+
+const DetailRow = styled.div`
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  svg {
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    font-size: 1.3rem;
+    opacity: 0.9;
+  }
+`;
+
+const DetailContent = styled.div`
+  flex: 1;
+  
+  strong {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  span {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+`;
+
+const formatDateTime = (isoString: string): { date: string; time: string } => {
+  try {
+    const date = new Date(isoString);
+    const dateStr = date.toLocaleDateString('en-GB', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    const timeStr = date.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short'
+    });
+    return { date: dateStr, time: timeStr };
+  } catch {
+    return { date: isoString, time: '' };
+  }
+};
+
 const ThankYou: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const meetingDetails = useMemo(() => {
+    const eventStartTime = searchParams.get('event_start_time');
+    const eventEndTime = searchParams.get('event_end_time');
+    const inviteeName = searchParams.get('invitee_name');
+    const inviteeEmail = searchParams.get('invitee_email');
+    const eventTypeName = searchParams.get('event_type_name');
+
+    if (!eventStartTime) return null;
+
+    const startTime = formatDateTime(eventStartTime);
+    const endTime = eventEndTime ? formatDateTime(eventEndTime) : null;
+
+    return {
+      name: inviteeName,
+      email: inviteeEmail,
+      eventType: eventTypeName || 'Free Consultation',
+      startDate: startTime.date,
+      startTime: startTime.time,
+      endTime: endTime?.time,
+    };
+  }, [searchParams]);
 
   useEffect(() => {
     trackGoogleAdsConversion();
@@ -192,9 +294,61 @@ const ThankYou: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            We've received your booking request and we're excited to speak with you. 
-            You should receive a confirmation email shortly with all the details.
+            {meetingDetails 
+              ? `Hi ${meetingDetails.name || 'there'}, your booking is confirmed! We're excited to speak with you.`
+              : "We've received your booking request and we're excited to speak with you. You should receive a confirmation email shortly with all the details."
+            }
           </Subtitle>
+
+          {meetingDetails && (
+            <MeetingDetailsCard
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+            >
+              <MeetingDetailsTitle>
+                <FaCalendarCheck />
+                Meeting Confirmation
+              </MeetingDetailsTitle>
+              
+              <DetailRow>
+                <FaClock />
+                <DetailContent>
+                  <strong>Date & Time</strong>
+                  <span>{meetingDetails.startDate}</span>
+                  <span style={{ fontSize: '1rem', fontWeight: 400, marginTop: '0.25rem' }}>
+                    {meetingDetails.startTime}
+                    {meetingDetails.endTime && ` - ${meetingDetails.endTime}`}
+                  </span>
+                </DetailContent>
+              </DetailRow>
+
+              {meetingDetails.eventType && (
+                <DetailRow>
+                  <FaVideo />
+                  <DetailContent>
+                    <strong>Meeting Type</strong>
+                    <span>{meetingDetails.eventType}</span>
+                  </DetailContent>
+                </DetailRow>
+              )}
+
+              {meetingDetails.name && (
+                <DetailRow>
+                  <FaUser />
+                  <DetailContent>
+                    <strong>Attendee</strong>
+                    <span>{meetingDetails.name}</span>
+                    {meetingDetails.email && (
+                      <span style={{ fontSize: '0.95rem', fontWeight: 400, marginTop: '0.25rem', opacity: 0.9 }}>
+                        {meetingDetails.email}
+                      </span>
+                    )}
+                  </DetailContent>
+                </DetailRow>
+              )}
+            </MeetingDetailsCard>
+          )}
 
           <InfoSection
             initial={{ opacity: 0, y: 20 }}
