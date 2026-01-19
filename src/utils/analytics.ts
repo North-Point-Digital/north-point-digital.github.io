@@ -174,3 +174,39 @@ export const trackLogoView = (logoName?: string) => {
     event_label: logoName || 'logo_carousel',
   });
 };
+
+// Google Ads conversion tracking for call bookings
+export const trackGoogleAdsConversion = () => {
+  if (!isGAAvailable() || !window.gtag) return;
+  
+  window.gtag('event', 'conversion', {
+    'send_to': 'AW-17883979518/uoRQCMuWk-gbEP69389C'
+  });
+};
+
+// Conversion tracking for call bookings and other conversions
+export const trackConversion = (
+  conversionType: string,
+  params?: {
+    conversion_value?: number;
+    currency?: string;
+    [key: string]: any;
+  }
+) => {
+  if (!isGAAvailable() || !window.gtag) return;
+  
+  window.gtag('event', 'conversion', {
+    send_to: 'G-CX6XEZX2R0',
+    event_category: 'conversion',
+    event_label: conversionType,
+    conversion_type: conversionType,
+    ...params,
+  });
+  
+  logEvent('conversion', {
+    event_category: 'conversion',
+    event_label: conversionType,
+    conversion_type: conversionType,
+    ...params,
+  });
+};

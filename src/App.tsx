@@ -24,6 +24,7 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const AIAdoptionPlaybook = lazy(() => import('./pages/AIAdoptionPlaybook'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
 const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
+const ThankYou = lazy(() => import('./pages/ThankYou'));
 
 const LoadingFallback = () => (
   <div style={{ 
@@ -164,6 +165,11 @@ function App() {
             <Route path="/case-studies/:slug" element={
               <Suspense fallback={<LoadingFallback />}>
                 <CaseStudyDetail />
+              </Suspense>
+            } />
+            <Route path="/thank-you" element={
+              <Suspense fallback={<LoadingFallback />}>
+                <ThankYou />
               </Suspense>
             } />
           </Routes>
