@@ -5,6 +5,7 @@ import { FaRobot, FaChartLine, FaLightbulb, FaDownload } from 'react-icons/fa';
 import PlaybookLeadCaptureForm from '../components/PlaybookLeadCaptureForm';
 import HubSpotForm from '../components/HubSpotForm';
 import { HUBSPOT_CONFIG } from '../config/hubspot';
+import SEO from '../components/SEO';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -226,6 +227,34 @@ const AIAdoptionPlaybook: React.FC = () => {
   return (
     <PageWrapper>
       <PageContainer>
+        <SEO
+          title="Free AI Adoption Playbook for AWS | North Point Digital"
+          description="Download the free AI Adoption Playbook to plan, validate, and scale AI initiatives on AWS with practical guidance from cloud experts."
+          canonical="https://northpointdigital.com/ai-adoption-playbook"
+          jsonLd={{
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            headline: "AI Adoption Playbook for AWS",
+            description:
+              "A practical guide to planning, validating, and scaling AI initiatives on AWS, created by North Point Digital.",
+            author: {
+              "@type": "Organization",
+              name: "North Point Digital"
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "North Point Digital",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://northpointdigital.com/north-point-logo.webp"
+              }
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://northpointdigital.com/ai-adoption-playbook"
+            }
+          }}
+        />
         <HeroSection>
           <Title
             initial={{ opacity: 0, y: 20 }}

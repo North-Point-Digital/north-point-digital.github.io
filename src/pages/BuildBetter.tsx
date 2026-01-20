@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaCloud, FaExchangeAlt, FaCogs, FaShieldAlt, FaRocket, FaCode } from 'react-icons/fa';
 import FAQSection from '../components/FAQSection';
 import CalendlyCTA from '../components/CTAButton';
+import SEO from '../components/SEO';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -203,6 +204,29 @@ const BuildBetter: React.FC = () => {
   return (
     <PageWrapper>
       <PageContainer>
+        <SEO
+          title="Build Better on AWS: Architecture, Migrations & Modernisation | North Point Digital"
+          description="AWS architecture, migrations, landing zones, DevOps, and modernisation services to help you build scalable, secure, and resilient cloud platforms."
+          canonical="https://northpointdigital.com/build-better"
+          jsonLd={{
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Build Better on AWS",
+            description:
+              "AWS architecture, migrations, landing zones, DevOps, and modernisation services to help you build scalable, secure, and resilient cloud platforms.",
+            url: "https://northpointdigital.com/build-better",
+            provider: {
+              "@type": "Organization",
+              name: "North Point Digital",
+              url: "https://northpointdigital.com/"
+            },
+            areaServed: {
+              "@type": "Country",
+              name: "United Kingdom"
+            },
+            serviceType: "AWS Architecture, Migration and Modernisation Consulting"
+          }}
+        />
         <HeroSection>
           <Title
             initial={{ opacity: 0, y: 20 }}

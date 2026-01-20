@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { FaArrowLeft, FaChartLine, FaShieldAlt, FaCheckCircle, FaDollarSign, FaClock, FaUsers } from 'react-icons/fa';
 import CalendlyCTA from '../components/CTAButton';
 import { getCaseStudyBySlug, IconType } from '../data/caseStudies';
+import SEO from '../components/SEO';
 
 const getIconComponent = (iconType?: IconType) => {
   switch (iconType) {
@@ -250,6 +251,45 @@ const CaseStudyDetail: React.FC = () => {
   return (
     <PageWrapper>
       <PageContainer>
+        <SEO
+          title={`${caseStudy.pageTitle || caseStudy.clientName} | Case Study | North Point Digital`}
+          description={
+            caseStudy.pageSubtitle ||
+            caseStudy.executiveSummary ||
+            caseStudy.detailedChallenge ||
+            caseStudy.challenge
+          }
+          canonical={`https://northpointdigital.com/case-studies/${caseStudy.slug}`}
+          jsonLd={{
+            "@context": "https://schema.org",
+            "@type": "CaseStudy",
+            headline: caseStudy.pageTitle || caseStudy.clientName,
+            name: caseStudy.clientName,
+            description:
+              caseStudy.pageSubtitle ||
+              caseStudy.executiveSummary ||
+              caseStudy.detailedChallenge ||
+              caseStudy.challenge,
+            url: `https://northpointdigital.com/case-studies/${caseStudy.slug}`,
+            industry: caseStudy.industry,
+            author: {
+              "@type": "Organization",
+              name: "North Point Digital"
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "North Point Digital",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://northpointdigital.com/north-point-logo.webp"
+              }
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://northpointdigital.com/case-studies/${caseStudy.slug}`
+            }
+          }}
+        />
         <BackButton
           onClick={() => navigate('/#case-studies')}
           whileHover={{ scale: 1.05 }}

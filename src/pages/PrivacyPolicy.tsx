@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -78,6 +79,12 @@ const PrivacyPolicy: React.FC = () => {
   return (
     <PageWrapper>
       <PageContainer>
+        <SEO
+          title="Privacy Policy | North Point Digital"
+          description="Read the North Point Digital privacy policy to understand how we collect, use, and protect your personal data."
+          canonical="https://northpointdigital.com/privacy-policy"
+          noIndex={false}
+        />
         <ContentCard
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

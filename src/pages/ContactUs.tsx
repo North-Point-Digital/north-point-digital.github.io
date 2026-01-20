@@ -5,6 +5,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import HubSpotForm from '../components/HubSpotForm';
 import SimpleContactForm from '../components/SimpleContactForm';
 import { HUBSPOT_CONFIG } from '../config/hubspot';
+import SEO from '../components/SEO';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -217,6 +218,11 @@ const ContactUs: React.FC = () => {
   return (
     <PageWrapper>
       <PageContainer>
+        <SEO
+          title="Contact North Point Digital | AWS Cloud Consultancy"
+          description="Get in touch with North Point Digital to discuss AWS cost optimisation, security, and cloud or AI projects."
+          canonical="https://northpointdigital.com/contact"
+        />
         <HeroSection>
           <Title
             initial={{ opacity: 0, y: 20 }}

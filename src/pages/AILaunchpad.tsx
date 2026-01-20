@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { FaChartPie, FaRoad, FaFlask, FaDownload } from 'react-icons/fa';
 import FAQSection from '../components/FAQSection';
+import SEO from '../components/SEO';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -260,6 +261,29 @@ const AILaunchpad: React.FC = () => {
   return (
     <PageWrapper>
       <PageContainer>
+        <SEO
+          title="AI Launchpad: Validate Your AI Strategy in 6 Weeks | North Point Digital"
+          description="Fixed-fee AWS AI proof of concept that validates your AI strategy in six weeks with a working prototype, cost analysis, and production roadmap."
+          canonical="https://northpointdigital.com/ai-launchpad"
+          jsonLd={{
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "AI Launchpad",
+            description:
+              "Fixed-fee AWS AI proof of concept that validates your AI strategy in six weeks with a working prototype, cost analysis, and production roadmap.",
+            url: "https://northpointdigital.com/ai-launchpad",
+            provider: {
+              "@type": "Organization",
+              name: "North Point Digital",
+              url: "https://northpointdigital.com/"
+            },
+            areaServed: {
+              "@type": "Country",
+              name: "United Kingdom"
+            },
+            serviceType: "AI Proof of Concept and Strategy Validation"
+          }}
+        />
         <HeroSection>
           <Title
             initial={{ opacity: 0, y: 20 }}

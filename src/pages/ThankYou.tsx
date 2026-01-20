@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaCalendarCheck, FaEnvelope, FaArrowLeft, FaClock, FaUser, FaVideo } from 'react-icons/fa';
 import { trackGoogleAdsConversion } from '../utils/analytics';
+import SEO from '../components/SEO';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -263,6 +264,21 @@ const ThankYou: React.FC = () => {
   return (
     <PageWrapper>
       <PageContainer>
+        <SEO
+          title="Thank You for Booking | North Point Digital"
+          description="Your consultation with North Point Digital is confirmed. Check your email for calendar details and joining instructions."
+          canonical="https://northpointdigital.com/thank-you"
+          noIndex={false}
+          jsonLd={{
+            "@context": "https://schema.org",
+            "@type": "Reservation",
+            reservationStatus: "https://schema.org/ReservationConfirmed",
+            provider: {
+              "@type": "Organization",
+              name: "North Point Digital"
+            }
+          }}
+        />
         <SuccessCard
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

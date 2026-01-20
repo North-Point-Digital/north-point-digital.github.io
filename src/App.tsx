@@ -16,6 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 import BackToTop from './components/BackToTop';
 import { initGA, logPageView } from './utils/analytics';
 import { useScrollTracking } from './hooks/useScrollTracking';
+import SEO from './components/SEO';
 
 const AwsProfitabilityResilienceBlueprint = lazy(() => import('./pages/AwsProfitabilityResilienceBlueprint'));
 const AILaunchpad = lazy(() => import('./pages/AILaunchpad'));
@@ -68,6 +69,31 @@ function App() {
           <Routes>
             <Route path="/" element={
               <>
+                <SEO
+                  title="Save Money on Your AWS Bill | North Point Digital"
+                  description="AWS-certified experts helping UK businesses cut AWS costs, improve security, and accelerate cloud and AI adoption."
+                  canonical="https://northpointdigital.com/"
+                  jsonLd={[
+                    {
+                      "@context": "https://schema.org",
+                      "@type": "Organization",
+                      name: "North Point Digital",
+                      url: "https://northpointdigital.com/",
+                      logo: "https://northpointdigital.com/north-point-logo.webp"
+                    },
+                    {
+                      "@context": "https://schema.org",
+                      "@type": "WebSite",
+                      name: "North Point Digital",
+                      url: "https://northpointdigital.com/",
+                      potentialAction: {
+                        "@type": "SearchAction",
+                        target: "https://northpointdigital.com/?s={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                      }
+                    }
+                  ]}
+                />
                 <HeroSection 
                   logos={[
                     '/logos/client1-logo.jpeg',

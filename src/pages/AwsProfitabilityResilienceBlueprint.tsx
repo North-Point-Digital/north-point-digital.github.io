@@ -5,6 +5,7 @@ import { FaClipboardCheck, FaShieldAlt, FaDollarSign, FaAward } from 'react-icon
 import CounterSection from '../components/CounterSection';
 import ProcessTimelineSection from '../components/ProcessTimelineSection';
 import FAQSection from '../components/FAQSection';
+import SEO from '../components/SEO';
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -268,6 +269,29 @@ const AwsProfitabilityResilienceBlueprint: React.FC = () => {
   return (
     <PageWrapper>
       <PageContainer>
+        <SEO
+          title="Security & Cost Optimisation Blueprint | North Point Digital"
+          description="Comprehensive AWS Well-Architected review focused on security and cost optimisation, targeting 25%+ savings while strengthening your cloud posture."
+          canonical="https://northpointdigital.com/aws-profitability-resilience-blueprint"
+          jsonLd={{
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Security & Cost Optimisation Blueprint",
+            description:
+              "Comprehensive AWS Well-Architected review focused on security and cost optimisation, targeting 25%+ savings while strengthening your cloud posture.",
+            url: "https://northpointdigital.com/aws-profitability-resilience-blueprint",
+            provider: {
+              "@type": "Organization",
+              name: "North Point Digital",
+              url: "https://northpointdigital.com/"
+            },
+            areaServed: {
+              "@type": "Country",
+              name: "United Kingdom"
+            },
+            serviceType: "AWS Security and Cost Optimisation Consulting"
+          }}
+        />
         <HeroSection ref={heroRef}>
           <Title
             initial={{ opacity: 0, y: 20 }}
