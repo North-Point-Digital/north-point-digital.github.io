@@ -219,10 +219,38 @@ const Footer: React.FC = () => {
         <FooterSection>
           <h4>Services</h4>
           <ul>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Mobile Apps</a></li>
-            <li><a href="#">Cloud Solutions</a></li>
-            <li><a href="#">IT Consulting</a></li>
+            <li>
+              <Link 
+                to="/aws-profitability-resilience-blueprint"
+                onClick={() => trackNavigationClick('Security & Cost Blueprint', '/aws-profitability-resilience-blueprint')}
+              >
+                Security & Cost Blueprint
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/build-better"
+                onClick={() => trackNavigationClick('Build Better', '/build-better')}
+              >
+                Build Better
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/ai-launchpad"
+                onClick={() => trackNavigationClick('AI Launchpad', '/ai-launchpad')}
+              >
+                AI Launchpad
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/contact"
+                onClick={() => trackNavigationClick('Contact', '/contact')}
+              >
+                Get In Touch
+              </Link>
+            </li>
           </ul>
         </FooterSection>
       </FooterContent>

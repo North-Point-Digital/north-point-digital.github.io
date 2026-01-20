@@ -73,7 +73,7 @@ function App() {
               <>
                 <SEO
                   title="Save Money on Your AWS Bill | North Point Digital"
-                  description="AWS-certified experts helping UK businesses cut AWS costs, improve security, and accelerate cloud and AI adoption."
+                  description="AWS-certified experts helping UK businesses cut AWS costs by 25%+, improve security, and accelerate cloud and AI adoption. Risk-free engagement."
                   canonical="https://northpointdigital.com/"
                   jsonLd={[
                     {
