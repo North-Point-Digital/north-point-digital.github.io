@@ -69,6 +69,19 @@ const CTAButton = styled(motion.a)`
   }
 `;
 
+const CTAButtonRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+const SecondaryCTAButton = styled(CTAButton)`
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+`;
+
 const CTA_LINK = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call';
 
 const ContentSection = styled.section`
@@ -242,18 +255,32 @@ const BuildBetter: React.FC = () => {
           >
             Architecture, migrations, and modernisation. Transform your AWS infrastructure with scalable, secure, and resilient solutions.
           </Subtitle>
-          <CTAButton
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={CTA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Book A Call Today
-          </CTAButton>
+          <CTAButtonRow>
+            <CTAButton
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href={CTA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book A Call Today
+            </CTAButton>
+            <SecondaryCTAButton
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://mra.northpointdigital.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Migration Readiness Assessment
+            </SecondaryCTAButton>
+          </CTAButtonRow>
         </HeroSection>
 
         <ContentSection>

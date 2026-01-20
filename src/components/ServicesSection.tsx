@@ -136,6 +136,27 @@ const FloatingShape = styled(motion.div)`
   z-index: -1;
 `;
 
+const MRAButton = styled.button`
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: white;
+    color: #2d8659;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+`;
+
 const ServicesSection: React.FC = () => {
   const services = [
     {
@@ -240,6 +261,17 @@ const ServicesSection: React.FC = () => {
                     <li key={idx}>{feature}</li>
                   ))}
                 </ul>
+                {service.title === 'Build Better' && (
+                  <MRAButton
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      window.open('https://mra.northpointdigital.com', '_blank', 'noopener,noreferrer');
+                    }}
+                  >
+                    Launch Migration Readiness Assessment
+                  </MRAButton>
+                )}
               </>
             );
 
