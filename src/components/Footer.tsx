@@ -198,6 +198,14 @@ const Footer: React.FC = () => {
               </a>
             </li>
             <li>
+              <Link 
+                to="/blog"
+                onClick={() => trackNavigationClick('Blog', '/blog')}
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
               <a 
                 href="#contact"
                 onClick={() => trackNavigationClick('Contact', '#contact')}

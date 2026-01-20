@@ -26,6 +26,8 @@ const AIAdoptionPlaybook = lazy(() => import('./pages/AIAdoptionPlaybook'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
 const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
 const ThankYou = lazy(() => import('./pages/ThankYou'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
 
 const LoadingFallback = () => (
   <div style={{ 
@@ -166,6 +168,16 @@ function App() {
             <Route path="/ai-launchpad" element={
               <Suspense fallback={<LoadingFallback />}>
                 <AILaunchpad />
+              </Suspense>
+            } />
+            <Route path="/blog" element={
+              <Suspense fallback={<LoadingFallback />}>
+                <Blog />
+              </Suspense>
+            } />
+            <Route path="/blog/:slug" element={
+              <Suspense fallback={<LoadingFallback />}>
+                <BlogPost />
               </Suspense>
             } />
             <Route path="/build-better" element={

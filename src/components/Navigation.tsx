@@ -203,6 +203,8 @@ const Navigation: React.FC = () => {
         const element = document.getElementById(section);
         element?.scrollIntoView({ behavior: 'smooth' });
       }
+    } else {
+      navigate(path);
     }
   };
 
@@ -211,6 +213,7 @@ const Navigation: React.FC = () => {
     { name: 'Services', path: '/#services' },
     { name: 'About Us', path: '/#about' },
     { name: 'Case Studies', path: '/#case-studies' },
+    { name: 'Blog', path: '/blog' },
     // { name: 'Testimonials', path: '/#testimonials' },
   ];
 
