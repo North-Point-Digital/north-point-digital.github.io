@@ -55,11 +55,14 @@ export const blogPosts: BlogPost[] = [
         into the way people already work: budgets, alerts, and simple monthly reviews tied to
         your AWS accounts and applications.
       </p>
-      <p>
-        At North Point Digital we use our Security &amp; Cost Optimisation Blueprint to find these
-        quick wins in the first few weeks, while also giving you a longer-term roadmap for deeper
-        modernisation work.
-      </p>
+      <div class="callout callout-tip">
+        <span class="callout-title">Pro Tip</span>
+        <p>
+          At North Point Digital we use our Security &amp; Cost Optimisation Blueprint to find these
+          quick wins in the first few weeks, while also giving you a longer-term roadmap for deeper
+          modernisation work.
+        </p>
+      </div>
     `,
     author: 'David Turnbull',
     authorRole: 'Founder & AWS Solutions Architect',

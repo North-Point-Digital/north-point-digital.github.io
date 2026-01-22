@@ -96,6 +96,91 @@ const ArticleBody = styled.div`
     padding: 0.15rem 0.35rem;
     border-radius: 4px;
   }
+
+  .callout {
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-left: 3.5rem;
+    
+    &::before {
+      position: absolute;
+      left: 1.25rem;
+      top: 1.5rem;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    
+    &.callout-info {
+      background: rgba(56, 189, 248, 0.15);
+      border-left: 4px solid rgba(56, 189, 248, 0.4);
+      
+      &::before {
+        content: 'ℹ️';
+      }
+    }
+    
+    &.callout-tip {
+      background: rgba(251, 191, 36, 0.15);
+      border-left: 4px solid rgba(251, 191, 36, 0.4);
+      
+      &::before {
+        content: '💡';
+      }
+    }
+    
+    &.callout-warning {
+      background: rgba(239, 68, 68, 0.15);
+      border-left: 4px solid rgba(239, 68, 68, 0.4);
+      
+      &::before {
+        content: '⚠️';
+      }
+    }
+    
+    &.callout-success {
+      background: rgba(34, 197, 94, 0.15);
+      border-left: 4px solid rgba(34, 197, 94, 0.4);
+      
+      &::before {
+        content: '✅';
+      }
+    }
+    
+    .callout-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: white;
+      display: block;
+    }
+    
+    p {
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.95);
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    ul, ol {
+      margin-left: 1.25rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+    
+    li {
+      margin-bottom: 0.4rem;
+      line-height: 1.7;
+    }
+  }
 `;
 
 const BlogPost: React.FC = () => {
