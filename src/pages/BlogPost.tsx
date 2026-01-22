@@ -50,6 +50,21 @@ const Meta = styled.div`
   margin-bottom: 2rem;
 `;
 
+const FeaturedImage = styled(motion.img)`
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  @media (max-width: 768px) {
+    max-height: 300px;
+    border-radius: 15px;
+  }
+`;
+
 const ArticleBody = styled.div`
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
@@ -211,6 +226,9 @@ const BlogPost: React.FC = () => {
     post.seoMeta?.metaDescription || post.excerpt || `${post.title} from North Point Digital.`;
   const canonical = `https://northpointdigital.com/blog/${post.slug}`;
 
+  const imageUrl = post.featuredImage || post.thumbnailImage;
+  const ogImage = post.seoMeta?.ogImage || imageUrl || 'https://northpointdigital.com/north-point-logo.webp';
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -234,12 +252,24 @@ const BlogPost: React.FC = () => {
       '@type': 'WebPage',
       '@id': canonical,
     },
+    ...(imageUrl && {
+      image: {
+        '@type': 'ImageObject',
+        url: imageUrl.startsWith('http') ? imageUrl : `https://northpointdigital.com${imageUrl}`,
+      },
+    }),
   };
 
   return (
     <PageWrapper>
       <PageContainer>
-        <SEO title={`${post.title} | Blog | North Point Digital`} description={description} canonical={canonical} jsonLd={jsonLd} />
+        <SEO 
+          title={`${post.title} | Blog | North Point Digital`} 
+          description={description} 
+          canonical={canonical} 
+          jsonLd={jsonLd}
+          ogImage={ogImage}
+        />
         <BackButton
           onClick={() => navigate('/blog')}
           whileHover={{ scale: 1.05 }}
@@ -259,6 +289,16 @@ const BlogPost: React.FC = () => {
           {post.author}
           {post.authorRole ? `, ${post.authorRole}` : ''}
         </Meta>
+        {post.featuredImage && (
+          <FeaturedImage
+            src={post.featuredImage}
+            alt={post.title}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            loading="eager"
+          />
+        )}
         <ArticleBody dangerouslySetInnerHTML={{ __html: post.content }} />
       </PageContainer>
     </PageWrapper>

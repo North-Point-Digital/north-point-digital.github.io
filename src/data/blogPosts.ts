@@ -8,10 +8,12 @@ export interface BlogPost {
   publishDate: string;
   lastUpdated?: string;
   featuredImage?: string;
+  thumbnailImage?: string;
   category?: string;
   tags?: string[];
   seoMeta?: {
     metaDescription: string;
+    ogImage?: string;
   };
 }
 

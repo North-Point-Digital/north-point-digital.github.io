@@ -53,7 +53,7 @@ const BlogCard = styled(motion.article)`
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
-  padding: 2.5rem;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -64,6 +64,39 @@ const BlogCard = styled(motion.article)`
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
+`;
+
+const ThumbnailImageWrapper = styled(motion.div)`
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+    z-index: 1;
+  }
+`;
+
+const ThumbnailImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+`;
+
+const CardContent = styled.div`
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 const BlogTitle = styled.h2`
@@ -143,22 +176,38 @@ const Blog: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
             >
-              <BlogTitle>{post.title}</BlogTitle>
-              <Meta>
-                {post.publishDate && (
-                  <>
-                    {new Date(post.publishDate).toLocaleDateString('en-GB', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
-                    {' · '}
-                  </>
-                )}
-                {post.author}
-              </Meta>
-              <Excerpt>{post.excerpt}</Excerpt>
-              <ReadMoreLink to={`/blog/${post.slug}`}>Read article</ReadMoreLink>
+              {post.thumbnailImage && (
+                <ThumbnailImageWrapper
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <ThumbnailImage 
+                    src={post.thumbnailImage} 
+                    alt={post.title}
+                    loading="lazy"
+                  />
+                </ThumbnailImageWrapper>
+              )}
+              <CardContent>
+                <BlogTitle>{post.title}</BlogTitle>
+                <Meta>
+                  {post.publishDate && (
+                    <>
+                      {new Date(post.publishDate).toLocaleDateString('en-GB', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                      {' · '}
+                    </>
+                  )}
+                  {post.author}
+                </Meta>
+                <Excerpt>{post.excerpt}</Excerpt>
+                <ReadMoreLink to={`/blog/${post.slug}`}>Read article</ReadMoreLink>
+              </CardContent>
             </BlogCard>
           ))}
         </BlogGrid>
