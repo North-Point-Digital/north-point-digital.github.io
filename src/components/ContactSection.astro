@@ -1,0 +1,25 @@
+---
+import HubSpotForm from './HubSpotForm';
+import SimpleContactForm from './SimpleContactForm';
+import { HUBSPOT_CONFIG } from '../config/hubspot';
+
+const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' &&
+                            !HUBSPOT_CONFIG.forms.contact.includes('YOUR_');
+---
+
+<section id="contact" class="section-padding bg-[#f3f4f6] relative">
+  <div class="container-narrow">
+    <div class="text-center mb-12">
+      <h2 class="text-h2 text-[#333] mb-4">Contact Us</h2>
+      <p class="text-xl text-[#666] max-w-[600px] mx-auto">We'd love to hear from you. Fill out the form below to get started!</p>
+    </div>
+
+    <div class="max-w-[600px] mx-auto">
+      {isHubSpotConfigured ? (
+        <HubSpotForm client:idle formType="contact" region={HUBSPOT_CONFIG.region} />
+      ) : (
+        <SimpleContactForm client:idle />
+      )}
+    </div>
+  </div>
+</section>

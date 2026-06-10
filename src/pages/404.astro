@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found | North Point Digital" description="The page you're looking for doesn't exist." noIndex={true}>
+  <section class="min-h-[70vh] flex items-center justify-center section-padding">
+    <div class="text-center">
+      <h1 class="text-[clamp(4rem,10vw,8rem)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">404</h1>
+      <h2 class="text-2xl tablet:text-3xl text-white/90 mb-6">Page Not Found</h2>
+      <p class="text-white/70 text-lg mb-8 max-w-md mx-auto">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <a href="/" class="cta-primary inline-block">
+        Back to Home
+      </a>
+    </div>
+  </section>
+</BaseLayout>

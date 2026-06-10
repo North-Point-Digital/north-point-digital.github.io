@@ -1,278 +1,100 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { trackNavigationClick, trackButtonClick } from '../utils/analytics';
 
-const NavContainer = styled(motion.nav)<{ scrolled: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 1rem 2rem;
-  background: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
-  backdrop-filter: ${props => props.scrolled ? 'blur(10px)' : 'none'};
-  -webkit-backdrop-filter: ${props => props.scrolled ? 'blur(10px)' : 'none'};
-  border-bottom: ${props => props.scrolled ? '1px solid rgba(255, 255, 255, 0.2)' : 'none'};
-  transition: all 0.3s ease;
+const BarsIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em">
+    <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" />
+  </svg>
+);
 
-  @media (max-width: 768px) {
-    padding: 0.75rem 1rem;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 0.5rem 0.75rem;
-  }
-`;
+const TimesIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" fill="currentColor" width="1em" height="1em">
+    <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+  </svg>
+);
 
-const NavContent = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/#services' },
+  { name: 'About Us', path: '/#about' },
+  { name: 'Case Studies', path: '/#case-studies' },
+  { name: 'Blog', path: '/blog' },
+];
 
-const Logo = styled(Link)`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  
-  img {
-    height: 100px;
-    width: auto;
-    transition: height 0.3s ease;
-    
-    @media (max-width: 768px) {
-      height: 70px;
-    }
-    
-    @media (max-width: 480px) {
-      height: 50px;
-    }
-    
-    @media (max-width: 360px) {
-      height: 40px;
-    }
-  }
-  
-  span {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
-    transition: font-size 0.3s ease;
-    
-    @media (max-width: 768px) {
-      font-size: 1.2rem;
-    }
-    
-    @media (max-width: 480px) {
-      display: none;
-    }
-  }
-`;
-
-const NavLinks = styled.ul<{ isOpen: boolean }>`
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    position: fixed;
-    top: 0;
-    right: ${props => props.isOpen ? '0' : '-100%'};
-    height: 100vh;
-    width: 70%;
-    max-width: 300px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    flex-direction: column;
-    justify-content: center;
-    gap: 3rem;
-    transition: right 0.3s ease;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-  }
-`;
-
-const NavLink = styled(motion.li)`
-  a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
-    position: relative;
-
-    &:hover {
-      opacity: 0.8;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: white;
-      transition: width 0.3s ease;
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
-  }
-`;
-
-const MenuToggle = styled(motion.button)`
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 0.5rem;
-  transition: font-size 0.3s ease;
-
-  @media (max-width: 768px) {
-    display: block;
-    font-size: 1.3rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.1rem;
-    padding: 0.25rem;
-  }
-`;
-
-const CTAButton = styled(motion.button)`
-  padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-`;
-
-const Navigation: React.FC = () => {
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string, linkName: string) => {
-    e.preventDefault();
+  const handleNavClick = (path: string, linkName: string) => {
     setIsOpen(false);
-    
     trackNavigationClick(linkName, path);
-    
-    if (path === '/') {
-      navigate('/');
-    } else if (path.startsWith('/#')) {
-      const section = path.substring(2);
-      if (location.pathname !== '/') {
-        navigate('/');
-        setTimeout(() => {
-          const element = document.getElementById(section);
-          element?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      } else {
-        const element = document.getElementById(section);
-        element?.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      navigate(path);
-    }
   };
 
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/#services' },
-    { name: 'About Us', path: '/#about' },
-    { name: 'Case Studies', path: '/#case-studies' },
-    { name: 'Blog', path: '/blog' },
-    // { name: 'Testimonials', path: '/#testimonials' },
-  ];
-
   return (
-    <NavContainer
-      scrolled={scrolled}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-[1000] px-8 py-4 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/10 backdrop-blur-[10px] border-b border-white/20'
+          : 'bg-transparent'
+      } max-md:px-4 max-md:py-3 max-[480px]:px-3 max-[480px]:py-2`}
     >
-      <NavContent>
-        <Logo
-          to="/"
-        >
-          <img src="/north-point-logo.webp" alt="North Point Digital Logo" loading="eager" />
-          <span>North Point Digital</span>
-        </Logo>
+      <div className="max-w-[1440px] mx-auto flex justify-between items-center">
+        <a href="/" className="flex items-center gap-2 no-underline">
+          <img
+            src="/north-point-logo.webp"
+            alt="North Point Digital Logo"
+            loading="eager"
+            className="h-[100px] w-auto transition-all duration-300 max-md:h-[70px] max-[480px]:h-[50px] max-[360px]:h-[40px]"
+          />
+          <span className="text-2xl font-bold text-white transition-all duration-300 max-md:text-xl max-[480px]:hidden">
+            North Point Digital
+          </span>
+        </a>
 
-        <NavLinks isOpen={isOpen}>
-          {navItems.map((item, index) => (
-            <NavLink
-              key={item.name}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <a href={item.path} onClick={(e) => handleNavClick(e, item.path, item.name)}>
+        <ul
+          className={`flex list-none gap-8 items-center max-md:fixed max-md:top-0 max-md:h-screen max-md:w-[70%] max-md:max-w-[300px] max-md:bg-white/10 max-md:backdrop-blur-[20px] max-md:flex-col max-md:justify-center max-md:gap-12 max-md:border-l max-md:border-white/20 max-md:transition-all max-md:duration-300 ${
+            isOpen ? 'max-md:right-0' : 'max-md:right-[-100%]'
+          }`}
+        >
+          {navItems.map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.path}
+                onClick={() => handleNavClick(item.path, item.name)}
+                className="text-white no-underline font-medium hover:opacity-80 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+              >
                 {item.name}
               </a>
-            </NavLink>
+            </li>
           ))}
-          <NavLink>
-            <CTAButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+          <li>
+            <a
+              href="/contact"
               onClick={() => {
                 setIsOpen(false);
                 trackButtonClick('Contact Us', 'navigation');
-                navigate('/contact');
               }}
+              className="py-3 px-6 bg-white/20 border border-white/30 text-white font-semibold rounded-full cursor-pointer transition-all duration-300 hover:bg-white/30 hover:-translate-y-0.5 hover:shadow-lg"
             >
               Contact Us
-            </CTAButton>
-          </NavLink>
-        </NavLinks>
+            </a>
+          </li>
+        </ul>
 
-        <MenuToggle
+        <button
           onClick={() => setIsOpen(!isOpen)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          className="hidden max-md:block bg-transparent border-none text-white text-2xl cursor-pointer z-[1001] p-2 max-md:text-xl max-[480px]:text-lg max-[480px]:p-1"
+          aria-label="Toggle menu"
         >
-          <AnimatePresence mode="wait">
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </AnimatePresence>
-        </MenuToggle>
-      </NavContent>
-    </NavContainer>
+          {isOpen ? <TimesIcon /> : <BarsIcon />}
+        </button>
+      </div>
+    </nav>
   );
-};
-
-export default Navigation;
+}

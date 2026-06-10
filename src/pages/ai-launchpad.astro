@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { buildFaqJsonLd } from '../data/faqs';
+
+const CTA_LINK = 'https://calendly.com/david-northpointdigital/30min';
+const siteUrl = 'https://northpointdigital.com';
+const features = [
+  { title: 'Working Prototype', description: 'AWS-powered AI PoC built with your data in 6 weeks' },
+  { title: 'Full Cost Analysis', description: 'Complete business case with production cost projections' },
+  { title: 'Production Roadmap', description: 'Clear path to scalable, enterprise-grade AI solution' },
+];
+---
+
+<BaseLayout
+  title="AI Launchpad: Validate Your AI Strategy in 6 Weeks | North Point Digital"
+  description="Fixed-fee AWS AI proof of concept that validates your AI strategy in six weeks with a working prototype, cost analysis, and production roadmap."
+  canonical="https://northpointdigital.com/ai-launchpad"
+  breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Services', url: `${siteUrl}/#services` }, { name: 'AI Launchpad', url: `${siteUrl}/ai-launchpad` }]}
+  jsonLd={[
+    { "@context": "https://schema.org", "@type": "Service", name: "AI Launchpad", description: "Fixed-fee AWS AI proof of concept that validates your AI strategy in six weeks with a working prototype, cost analysis, and production roadmap.", url: `${siteUrl}/ai-launchpad`, provider: { "@type": "Organization", name: "North Point Digital", url: `${siteUrl}/` }, areaServed: { "@type": "Country", name: "United Kingdom" }, serviceType: "AI Proof of Concept and Strategy Validation" },
+    buildFaqJsonLd(),
+  ]}
+>
+  <div class="min-h-screen bg-gradient-to-br from-[#56ccf2] to-[#2f80ed] pt-20">
+    <div class="max-w-[1200px] mx-auto px-8 py-16">
+      <section class="text-center mb-20">
+        <h1 class="text-h1 text-white mb-4 font-bold fade-in">Validate Your AI Strategy in 6 Weeks</h1>
+        <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 mb-12 max-w-[800px] mx-auto fade-in fade-in-delay-1">From idea to working AI prototype in 14 days. Fixed-fee engagement with complete production costings and implementation roadmap.</p>
+        <div class="flex flex-wrap justify-center gap-4 fade-in fade-in-delay-2">
+          <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-[#2f80ed] rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Book A Call Today</a>
+          <a href="/ai-adoption-playbook" class="py-4 px-10 bg-transparent text-white border border-white/60 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Download Free Playbook</a>
+        </div>
+      </section>
+
+      <section class="grid gap-12 mb-20">
+        <div class="glass-card p-12 text-white">
+          <h2 class="text-[2rem] mb-6">The North Point AI Launchpad Program</h2>
+          <div class="text-lg leading-loose text-white/90">
+            <p class="mb-6">The North Point AI Launchpad is your definitive first step in leveraging AI to gain a competitive edge. This fixed-fee, two-week program transforms your business challenges into a concrete, executable AI solution with clear production economics.</p>
+            <p class="mb-6"><strong>We don't build generic chatbots; we build business value.</strong></p>
+            <p class="mb-6">Using your company's proprietary data and market-leading AWS AI services (including Amazon Bedrock, SageMaker, and others), we build a tangible, working prototype of a customised AI solution. This is not a theoretical exercise—it's a functioning proof of concept that validates your specific use case and provides a clear path to production deployment.</p>
+          </div>
+        </div>
+
+        <div class="glass-card p-12 text-white">
+          <h2 class="text-[2rem] mb-6">What You'll Walk Away With</h2>
+          <div class="text-lg leading-loose text-white/90">
+            <ul class="list-none p-0">
+              <li class="py-2">A working AI Proof of Concept built with your data and validated on AWS infrastructure</li>
+              <li class="py-2">Complete production economics: executive summary with detailed cost projections and ROI analysis</li>
+              <li class="py-2">Step-by-step implementation roadmap outlining exactly how to scale the prototype into an enterprise-grade solution</li>
+            </ul>
+            <div class="flex flex-wrap justify-center gap-4 mt-8">
+              <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-[#2f80ed] rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Book A Call Today</a>
+              <a href="/ai-adoption-playbook" class="py-4 px-10 bg-transparent text-white border border-white/60 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Download Free Playbook</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 mt-12">
+        {features.map((f) => (
+          <div class="glass-card text-center p-8 hover:-translate-y-[5px] hover:bg-white/15">
+            <h3 class="text-white text-xl mb-2">{f.title}</h3>
+            <p class="text-white/80">{f.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-white/[0.12] border border-white/25 rounded-[20px] p-12 text-center text-white backdrop-blur-[12px] mt-12">
+        <h3 class="text-[clamp(1.8rem,4vw,2.5rem)] mb-4">Ready to validate your AI strategy?</h3>
+        <p class="text-lg text-white/85 mb-8 max-w-[640px] mx-auto">Book a free strategy call or download the playbook to get started.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-[#2f80ed] rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Book A Call Today</a>
+          <a href="/ai-adoption-playbook" class="py-4 px-10 bg-transparent text-white border border-white/60 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Download Free Playbook</a>
+        </div>
+      </div>
+
+      <div class="mt-20">
+        <FAQSection framed />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HubSpotForm from '../components/HubSpotForm';
+import PlaybookLeadCaptureForm from '../components/PlaybookLeadCaptureForm';
+import { HUBSPOT_CONFIG } from '../config/hubspot';
+
+const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && !HUBSPOT_CONFIG.forms.aiPlaybook.includes('YOUR_');
+const siteUrl = 'https://northpointdigital.com';
+
+const benefits = [
+  { title: 'Strategic Framework', description: 'Step-by-step guide to building your AI adoption strategy' },
+  { title: 'Implementation Roadmap', description: 'Clear path from planning to production deployment' },
+  { title: 'Use Case Examples', description: 'Real-world AI applications tailored for SMBs' },
+];
+---
+
+<BaseLayout
+  title="Free AI Adoption Playbook for AWS | North Point Digital"
+  description="Download the free AI Adoption Playbook to plan, validate, and scale AI initiatives on AWS with practical guidance from cloud experts."
+  canonical="https://northpointdigital.com/ai-adoption-playbook"
+  breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'AI Adoption Playbook', url: `${siteUrl}/ai-adoption-playbook` }]}
+  jsonLd={{ "@context": "https://schema.org", "@type": "TechArticle", headline: "AI Adoption Playbook for AWS", description: "A practical guide to planning, validating, and scaling AI initiatives on AWS, created by North Point Digital.", author: { "@type": "Organization", name: "North Point Digital" }, publisher: { "@type": "Organization", name: "North Point Digital", logo: { "@type": "ImageObject", url: `${siteUrl}/north-point-logo.webp` } }, mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}/ai-adoption-playbook` } }}
+>
+  <div class="min-h-screen bg-gradient-primary pt-20">
+    <div class="max-w-[1200px] mx-auto px-8 py-16">
+      <section class="text-center mb-16">
+        <h1 class="text-h1 text-white mb-4 font-bold fade-in">AI Adoption Strategy Playbook</h1>
+        <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 mb-8 max-w-[800px] mx-auto fade-in fade-in-delay-1">Your comprehensive guide to successfully implementing AI in your organisation. Learn proven strategies, avoid common pitfalls, and accelerate your AI journey.</p>
+      </section>
+
+      <div class="grid grid-cols-1 gap-12 mb-16 md:grid-cols-2 md:items-start">
+        <div class="glass-card p-12 text-white">
+          <h2 class="text-[2rem] mb-6">What's Inside</h2>
+          <ul class="list-none p-0">
+            {benefits.map((b) => (
+              <li class="py-4 border-b border-white/10 last:border-none">
+                <div>
+                  <h3 class="text-xl mb-2 text-white">{b.title}</h3>
+                  <p class="text-white/80 leading-relaxed">{b.description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-[20px] p-12 shadow-xl">
+          <h2 class="text-3xl text-[#333] mb-4 text-center">Download Your Free Playbook</h2>
+          <p class="text-[#666] text-center mb-8 leading-relaxed">Fill out the form below to receive instant access to the AI Adoption Strategy Playbook</p>
+          {isHubSpotConfigured ? (
+            <HubSpotForm client:idle formType="aiPlaybook" region={HUBSPOT_CONFIG.region} />
+          ) : (
+            <PlaybookLeadCaptureForm client:idle />
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

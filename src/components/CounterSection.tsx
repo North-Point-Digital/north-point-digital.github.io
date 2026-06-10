@@ -1,19 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import CounterWidget from './CounterWidget';
-
-const CounterSectionContainer = styled.section`
-  margin: 3rem 0;
-`;
-
-const CounterGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-`;
 
 const CounterSection: React.FC = () => {
   const counters = [
@@ -34,8 +20,8 @@ const CounterSection: React.FC = () => {
   ];
 
   return (
-    <CounterSectionContainer>
-      <CounterGrid>
+    <section className="my-12">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 max-w-[600px] mx-auto">
         {counters.map((counter, index) => (
           <CounterWidget
             key={index}
@@ -46,9 +32,9 @@ const CounterSection: React.FC = () => {
             delay={counter.delay}
           />
         ))}
-      </CounterGrid>
-    </CounterSectionContainer>
+      </div>
+    </section>
   );
 };
 
-export default CounterSection; 
+export default CounterSection;

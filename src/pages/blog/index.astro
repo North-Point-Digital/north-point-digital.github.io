@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const siteUrl = 'https://northpointdigital.com';
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+
+const blogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'AWS & Cloud Strategy Blog',
+  description: 'Articles on AWS cost optimisation, landing zones, and cloud strategy from North Point Digital.',
+  url: `${siteUrl}/blog`,
+  publisher: { '@type': 'Organization', name: 'North Point Digital', logo: { '@type': 'ImageObject', url: `${siteUrl}/north-point-logo.webp` } },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: posts.map((post, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${siteUrl}/blog/${post.slug}`,
+      name: post.data.title,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="AWS & Cloud Strategy Blog | North Point Digital"
+  description="Articles on AWS cost optimisation, landing zones, and cloud strategy from North Point Digital."
+  canonical="https://northpointdigital.com/blog"
+  breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Blog', url: `${siteUrl}/blog` }]}
+  jsonLd={blogJsonLd}
+>
+  <div class="min-h-screen bg-gradient-primary pt-20">
+    <div class="max-w-[1200px] mx-auto px-8 py-16">
+      <section class="text-center mb-16">
+        <h1 class="text-h1 text-white mb-4 font-bold fade-in">Insights from the Field</h1>
+        <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 mb-10 max-w-[800px] mx-auto fade-in fade-in-delay-1">
+          Practical articles on AWS cost optimisation, landing zones, and cloud architecture for
+          technology leaders who care about outcomes, not buzzwords.
+        </p>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {posts.map((post) => (
+          <article class="glass-card overflow-hidden flex flex-col h-full">
+            {post.data.thumbnailImage && (
+              <div class="w-full h-[200px] relative overflow-hidden bg-gradient-to-br from-primary/30 to-secondary/30">
+                <img src={post.data.thumbnailImage} alt={post.data.title} loading="lazy" class="w-full h-full object-cover block" />
+              </div>
+            )}
+            <div class="p-10 flex flex-col flex-1">
+              <h2 class="text-[1.6rem] mb-3 text-white">{post.data.title}</h2>
+              <div class="text-sm text-white/70 mb-4">
+                {new Date(post.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
+                {' · '}
+                {post.data.author}
+              </div>
+              <p class="text-white/85 mb-6 leading-relaxed">{post.data.excerpt}</p>
+              <a href={`/blog/${post.slug}`} class="mt-auto self-start py-3 px-6 rounded-full border border-white/80 text-white no-underline font-semibold text-[0.95rem] transition-all duration-300 hover:bg-white hover:text-primary hover:-translate-y-0.5 hover:shadow-lg">
+                Read article
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

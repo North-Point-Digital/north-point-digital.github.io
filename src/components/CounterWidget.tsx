@@ -1,42 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
-const CounterContainer = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  color: white;
-  min-height: 120px;
-`;
-
-const CounterNumber = styled.div`
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: white;
-  margin-bottom: 0.3rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-`;
-
-const CounterText = styled.div`
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
-`;
 
 interface CounterWidgetProps {
   endValue: number;
-  duration?: number; // Animation duration in seconds
-  suffix?: string; // Text to append after the number (e.g., "+", "%")
-  text: string; // The descriptive text below the counter
-  delay?: number; // Delay before starting the animation
+  duration?: number;
+  suffix?: string;
+  text: string;
+  delay?: number;
 }
 
 const CounterWidget: React.FC<CounterWidgetProps> = ({
@@ -55,14 +24,12 @@ const CounterWidget: React.FC<CounterWidgetProps> = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isAnimatingRef.current) {
-          // Reset counter and start animation
           setCount(0);
           isAnimatingRef.current = true;
           setTimeout(() => {
             animateCounter();
           }, delay * 1000);
         } else if (!entry.isIntersecting && isAnimatingRef.current) {
-          // Reset when going out of view
           setCount(0);
           isAnimatingRef.current = false;
           if (animationRef.current) {
@@ -92,11 +59,9 @@ const CounterWidget: React.FC<CounterWidgetProps> = ({
     const updateCounter = () => {
       const now = Date.now();
       const progress = Math.min((now - startTime) / (duration * 1000), 1);
-      
-      // Use easing function for smoother animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       const currentCount = Math.floor(easeOutQuart * endValue);
-      
+
       setCount(currentCount);
 
       if (progress < 1 && isAnimatingRef.current) {
@@ -110,18 +75,18 @@ const CounterWidget: React.FC<CounterWidgetProps> = ({
   };
 
   return (
-    <CounterContainer
+    <div
       ref={counterRef}
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6 }}
+      className="flex flex-col items-center justify-center text-center p-6 bg-white/10 backdrop-blur-[10px] border border-white/20 rounded-[15px] text-white min-h-[120px]"
     >
-      <CounterNumber>
+      <div className="text-[clamp(2rem,4vw,3rem)] font-bold text-white mb-1 font-[Inter,-apple-system,BlinkMacSystemFont,sans-serif]">
         {count}{suffix}
-      </CounterNumber>
-      <CounterText>{text}</CounterText>
-    </CounterContainer>
+      </div>
+      <div className="text-[clamp(0.9rem,1.5vw,1rem)] text-white/90 font-medium">
+        {text}
+      </div>
+    </div>
   );
 };
 
-export default CounterWidget; 
+export default CounterWidget;

@@ -1,0 +1,64 @@
+---
+import CalendlyCTA from './CalendlyCTA.astro';
+---
+
+<section id="about" class="section-padding bg-[#f9f9f9] relative">
+  <div class="container-default">
+    <div class="text-center mb-12">
+      <h2 class="text-h2 text-[#333] mb-4">About Us</h2>
+      <p class="text-xl text-[#666] max-w-[600px] mx-auto">Your trusted AWS Partner for cloud transformation</p>
+    </div>
+
+    <div class="flex gap-12 items-start max-md:flex-col max-md:gap-8 opacity-0" data-animate-on-scroll>
+      <div class="flex-1 text-base text-[#555] leading-loose">
+        <p class="mb-6">
+          As specialist AWS consultants, we deliver measurable outcomes: clients typically
+          see 35% reductions in cloud spend while improving security posture and operational
+          resilience. Our AWS-certified team brings deep expertise in cloud architecture,
+          migration, and optimisation.
+        </p>
+        <p class="mb-6">
+          We leverage proven AWS frameworks and methodologies—including Well-Architected Reviews
+          and the Migration Acceleration Program (MAP)—to accelerate your cloud journey. Our
+          approach combines technical excellence with strategic guidance to identify quick wins
+          and long-term optimisations.
+        </p>
+        <p class="mb-6">
+          Partner with us to transform your AWS infrastructure. We offer risk-free engagement
+          models that align our success with yours, delivering lower costs, stronger security,
+          and faster innovation without the typical consulting overhead.
+        </p>
+      </div>
+
+      <div class="flex-1 min-w-0 max-w-full rounded-xl overflow-hidden shadow-lg bg-[#f9f9f9] flex items-center justify-center">
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          class="w-full h-auto max-w-full block"
+          data-track-video="About Us Video"
+        >
+          <source src="/about-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <CalendlyCTA />
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-track-video]').forEach((video) => {
+    const name = video.dataset.trackVideo;
+    video.addEventListener('play', () => {
+      if (typeof window.gtag === 'function') window.gtag('event', 'video_play', { event_category: 'media', event_label: name, video_name: name });
+    });
+    video.addEventListener('pause', () => {
+      if (typeof window.gtag === 'function') window.gtag('event', 'video_pause', { event_category: 'media', event_label: name, video_name: name });
+    });
+    video.addEventListener('ended', () => {
+      if (typeof window.gtag === 'function') window.gtag('event', 'video_complete', { event_category: 'media', event_label: name, video_name: name });
+    });
+  });
+</script>

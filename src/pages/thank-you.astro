@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Thank You for Booking | North Point Digital"
+  description="Your consultation with North Point Digital is confirmed. Check your email for calendar details and joining instructions."
+  canonical="https://northpointdigital.com/thank-you"
+  jsonLd={{ "@context": "https://schema.org", "@type": "Reservation", reservationStatus: "https://schema.org/ReservationConfirmed", provider: { "@type": "Organization", name: "North Point Digital" } }}
+>
+  <div class="min-h-screen bg-gradient-primary pt-20 flex items-center justify-center">
+    <div class="max-w-[800px] mx-auto px-8 py-16 w-full">
+      <div class="bg-white rounded-[20px] p-16 px-12 shadow-xl text-center">
+        <div class="w-[100px] h-[100px] mx-auto mb-8 bg-gradient-primary rounded-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h1 class="text-[clamp(2rem,4vw,3rem)] text-[#333] mb-4 font-bold">Thank You for Booking!</h1>
+        <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-[#666] mb-8 leading-relaxed" id="thank-you-subtitle">We've received your booking request and we're excited to speak with you. You should receive a confirmation email shortly with all the details.</p>
+
+        <div id="meeting-details" class="hidden bg-gradient-primary rounded-[15px] p-10 my-8 text-white text-left"></div>
+
+        <div class="bg-[#f8f9fa] rounded-[15px] p-8 my-8 text-left">
+          <h3 class="text-xl text-[#333] mb-4">What Happens Next?</h3>
+          <ul class="list-disc pl-6 m-0">
+            <li class="py-3 text-[#666] leading-relaxed">You'll receive a calendar confirmation email with meeting details</li>
+            <li class="py-3 text-[#666] leading-relaxed">We'll send you a brief pre-call questionnaire to help us prepare</li>
+            <li class="py-3 text-[#666] leading-relaxed">Our team will review your requirements before the call</li>
+            <li class="py-3 text-[#666] leading-relaxed">During the call, we'll discuss how we can help save money on your AWS bill</li>
+          </ul>
+        </div>
+
+        <div class="bg-[#f8f9fa] rounded-[15px] p-8 my-8 text-left">
+          <h3 class="text-xl text-[#333] mb-4">Need to Make Changes?</h3>
+          <ul class="list-disc pl-6 m-0">
+            <li class="py-3 text-[#666] leading-relaxed">Check your email for the calendar confirmation</li>
+            <li class="py-3 text-[#666] leading-relaxed">Use the reschedule link in the email if you need to change the time</li>
+            <li class="py-3 text-[#666] leading-relaxed">Contact us at contact@northpointdigital.com for any questions</li>
+          </ul>
+        </div>
+
+        <div class="flex gap-4 justify-center flex-wrap mt-8">
+          <a href="/" class="inline-flex items-center gap-2 py-4 px-8 bg-gradient-primary text-white no-underline rounded-[10px] font-semibold text-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">Return to Home</a>
+          <button onclick="history.back()" class="inline-flex items-center gap-2 py-4 px-8 bg-transparent text-primary border-2 border-primary no-underline rounded-[10px] font-semibold text-lg transition-all duration-300 cursor-pointer hover:bg-primary hover:text-white hover:-translate-y-0.5">← Go Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', { 'send_to': 'AW-17883979518/uoRQCMuWk-gbEP69389C' });
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const startTime = params.get('event_start_time');
+  if (startTime) {
+    const name = params.get('invitee_name');
+    const email = params.get('invitee_email');
+    const eventType = params.get('event_type_name') || 'Free Consultation';
+    const start = new Date(startTime);
+    const endParam = params.get('event_end_time');
+
+    const subtitle = document.getElementById('thank-you-subtitle');
+    if (subtitle && name) {
+      subtitle.textContent = `Hi ${name}, your booking is confirmed! We're excited to speak with you.`;
+    }
+
+    const details = document.getElementById('meeting-details');
+    if (details) {
+      details.classList.remove('hidden');
+      let html = `<h3 class="text-2xl mb-6 text-white">Meeting Confirmation</h3>`;
+      html += `<div class="mb-5"><strong class="block text-sm opacity-90 uppercase tracking-wider mb-1">Date & Time</strong><span class="block text-lg font-semibold">${start.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span><span class="block mt-1 font-normal">${start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })}${endParam ? ` - ${new Date(endParam).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })}` : ''}</span></div>`;
+      if (eventType) html += `<div class="mb-5"><strong class="block text-sm opacity-90 uppercase tracking-wider mb-1">Meeting Type</strong><span class="block text-lg font-semibold">${eventType}</span></div>`;
+      if (name) html += `<div class="mb-5"><strong class="block text-sm opacity-90 uppercase tracking-wider mb-1">Attendee</strong><span class="block text-lg font-semibold">${name}</span>${email ? `<span class="block mt-1 text-[0.95rem] opacity-90">${email}</span>` : ''}</div>`;
+      details.innerHTML = html;
+    }
+  }
+</script>

@@ -1,0 +1,256 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop';
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  noIndex?: boolean;
+  jsonLd?: any | any[];
+  ogImage?: string;
+  ogType?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  publishDate?: string;
+  modifiedDate?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  noIndex,
+  jsonLd,
+  ogImage,
+  ogType = 'website',
+  breadcrumbs,
+  publishDate,
+  modifiedDate,
+} = Astro.props;
+
+const siteUrl = 'https://northpointdigital.com';
+const robots = noIndex ? 'noindex,nofollow' : 'index,follow';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const imageUrl = ogImage
+  ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`)
+  : `${siteUrl}/north-point-logo.webp`;
+
+const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+if (breadcrumbs && breadcrumbs.length > 0) {
+  jsonLdArray.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  });
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+    <link rel="icon" href="/north-point-logo.webp" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta name="theme-color" content="#667eea" />
+    <meta name="robots" content={robots} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="North Point Digital" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@n0rth_p0int" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={imageUrl} />
+
+    {publishDate && <meta property="article:published_time" content={publishDate} />}
+    {modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
+
+    {jsonLdArray.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+    ))}
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CX6XEZX2R0"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CX6XEZX2R0', {
+        send_page_view: true,
+        cookie_flags: 'SameSite=None;Secure',
+      });
+    </script>
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TM5PN5MJ');
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM5PN5MJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <Navigation client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <BackToTop client:visible />
+    <script is:inline>
+      (function() {
+        var g = typeof window.gtag === 'function' ? window.gtag : null;
+        if (!g) return;
+
+        // Scroll-triggered fade-in animation
+        var animObs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('fade-in'); });
+        }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+        document.querySelectorAll('[data-animate-on-scroll]').forEach(function(el) { animObs.observe(el); });
+
+        // Section visibility tracking
+        var trackedSections = {};
+        var secObs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              var id = e.target.id || e.target.dataset.section;
+              if (id && !trackedSections[id]) {
+                trackedSections[id] = true;
+                g('event', 'section_view', { event_category: 'engagement', section_name: id });
+              }
+            }
+          });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('section[id], [data-section]').forEach(function(el) { secObs.observe(el); });
+
+        // Scroll depth tracking (25/50/75/100)
+        var depthMarks = [25, 50, 75, 100];
+        var depthFired = {};
+        function checkDepth() {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          if (docHeight <= 0) return;
+          var pct = Math.round((scrollTop / docHeight) * 100);
+          depthMarks.forEach(function(mark) {
+            if (pct >= mark && !depthFired[mark]) {
+              depthFired[mark] = true;
+              g('event', 'scroll_depth', { event_category: 'engagement', event_label: mark + '%', scroll_depth: mark });
+            }
+          });
+        }
+        var scrollTimer;
+        window.addEventListener('scroll', function() {
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(checkDepth, 150);
+        }, { passive: true });
+
+        // Engagement time tracking (30s, 60s, 120s, 300s)
+        var timeMilestones = [30, 60, 120, 300];
+        var timeIdx = 0;
+        var pageStart = Date.now();
+        var timeCheck = setInterval(function() {
+          if (timeIdx >= timeMilestones.length) { clearInterval(timeCheck); return; }
+          var elapsed = Math.floor((Date.now() - pageStart) / 1000);
+          if (elapsed >= timeMilestones[timeIdx]) {
+            g('event', 'engaged_time', { event_category: 'engagement', event_label: timeMilestones[timeIdx] + 's', time_seconds: timeMilestones[timeIdx] });
+            timeIdx++;
+          }
+        }, 5000);
+
+        // CTA click tracking (data-track-cta)
+        document.querySelectorAll('[data-track-cta]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            var name = el.dataset.trackCta;
+            if (name) {
+              g('event', 'cta_click', { event_category: 'engagement', event_label: name, button_name: name });
+            }
+          });
+        });
+
+        // Service click tracking (data-track-service)
+        document.querySelectorAll('[data-track-service]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            var name = el.dataset.trackService;
+            if (name) {
+              g('event', 'service_click', { event_category: 'services', event_label: name, service_name: name });
+            }
+          });
+        });
+
+        // Outbound link tracking (all external links)
+        document.querySelectorAll('a[href^="http"]').forEach(function(el) {
+          var href = el.href;
+          if (href.indexOf(window.location.hostname) !== -1) return;
+          el.addEventListener('click', function() {
+            var isCalendly = href.indexOf('calendly.com') !== -1;
+            g('event', 'outbound_click', {
+              event_category: isCalendly ? 'conversion' : 'outbound',
+              event_label: el.textContent.trim().substring(0, 80) || href,
+              link_url: href,
+              link_text: el.textContent.trim().substring(0, 80),
+            });
+            if (isCalendly) {
+              g('event', 'generate_lead', {
+                event_category: 'conversion',
+                event_label: 'Calendly Booking Click',
+                link_url: href,
+                currency: 'GBP',
+                value: 1,
+              });
+            }
+          });
+        });
+
+        // mailto tracking
+        document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            g('event', 'contact_click', { event_category: 'contact', event_label: 'email', contact_method: 'email' });
+          });
+        });
+
+        // tel tracking
+        document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            g('event', 'contact_click', { event_category: 'contact', event_label: 'phone', contact_method: 'phone' });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const siteUrl = 'https://northpointdigital.com';
+const description = post.data.metaDescription || post.data.excerpt || `${post.data.title} from North Point Digital.`;
+const canonical = `${siteUrl}/blog/${post.slug}`;
+const ogImage = post.data.ogImage || post.data.featuredImage || post.data.thumbnailImage || `${siteUrl}/north-point-logo.webp`;
+const publishDate = post.data.publishDate;
+const modifiedDate = post.data.lastUpdated || post.data.publishDate;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description,
+  image: ogImage,
+  author: { '@type': 'Person', name: post.data.author },
+  publisher: { '@type': 'Organization', name: 'North Point Digital', logo: { '@type': 'ImageObject', url: `${siteUrl}/north-point-logo.webp` } },
+  datePublished: publishDate,
+  dateModified: modifiedDate,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+  wordCount: post.body?.split(/\s+/).length || 0,
+};
+
+const breadcrumbs = [
+  { name: 'Home', url: siteUrl },
+  { name: 'Blog', url: `${siteUrl}/blog` },
+  { name: post.data.title, url: canonical },
+];
+---
+
+<BaseLayout title={`${post.data.title} | Blog | North Point Digital`} description={description} canonical={canonical} jsonLd={jsonLd} ogImage={ogImage} breadcrumbs={breadcrumbs} ogType="article" publishDate={publishDate} modifiedDate={modifiedDate}>
+  <div class="min-h-screen bg-gradient-primary pt-20">
+    <div class="max-w-[900px] mx-auto px-8 py-16">
+      <a href="/blog" class="inline-flex items-center gap-2 py-2 px-5 mb-8 rounded-full border border-white/30 bg-white/[0.08] text-white font-medium no-underline transition-all duration-300 hover:bg-white/15 hover:-translate-x-1">
+        ← Back to blog
+      </a>
+      <h1 class="text-[clamp(2.25rem,4vw,3rem)] text-white mb-3">{post.data.title}</h1>
+      <div class="text-[0.95rem] text-white/75 mb-8">
+        {new Date(post.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+        {' · '}
+        {post.data.author}
+        {post.data.authorRole ? `, ${post.data.authorRole}` : ''}
+      </div>
+      {post.data.featuredImage && (
+        <img src={post.data.featuredImage} alt={post.data.title} loading="eager" class="w-full max-h-[500px] object-cover rounded-[20px] mb-10 shadow-xl border border-white/20 max-md:max-h-[300px] max-md:rounded-[15px]" />
+      )}
+      <div data-article-content class="bg-white/[0.06] backdrop-blur-[12px] rounded-[20px] border border-white/20 p-10 text-white/90 leading-loose text-lg prose prose-invert prose-headings:text-white prose-h2:text-[1.6rem] prose-h2:mt-7 prose-h2:mb-3 prose-h3:text-[1.3rem] prose-h3:mt-7 prose-h3:mb-3 prose-p:mb-4 prose-ul:ml-5 prose-ul:mb-4 prose-li:mb-1.5 prose-code:font-mono prose-code:text-[0.95em] prose-code:bg-black/40 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded max-w-none [&_.callout]:rounded-xl [&_.callout]:p-6 [&_.callout]:my-8 [&_.callout]:backdrop-blur-[10px] [&_.callout]:shadow-md [&_.callout]:relative [&_.callout]:pl-14 [&_.callout-tip]:bg-amber-400/15 [&_.callout-tip]:border-l-4 [&_.callout-tip]:border-amber-400/40 [&_.callout-title]:text-lg [&_.callout-title]:font-semibold [&_.callout-title]:mb-2 [&_.callout-title]:text-white [&_.callout-title]:block [&_blockquote]:border-l-4 [&_blockquote]:border-amber-400/40 [&_blockquote]:bg-amber-400/10 [&_blockquote]:rounded-xl [&_blockquote]:p-6 [&_blockquote]:my-8 [&_blockquote]:italic [&_blockquote_p:last-child]:mb-0">
+        <Content />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function() {
+    var g = typeof window.gtag === 'function' ? window.gtag : null;
+    if (!g) return;
+
+    var article = document.querySelector('[data-article-content]');
+    if (!article) return;
+
+    var articleTitle = document.title;
+    var readStart = Date.now();
+    var readMarks = [30, 60, 120, 180];
+    var readIdx = 0;
+
+    var readCheck = setInterval(function() {
+      if (readIdx >= readMarks.length) { clearInterval(readCheck); return; }
+      var elapsed = Math.floor((Date.now() - readStart) / 1000);
+      if (elapsed >= readMarks[readIdx]) {
+        g('event', 'article_read_time', {
+          event_category: 'blog_engagement',
+          event_label: readMarks[readIdx] + 's',
+          article_title: articleTitle,
+          time_seconds: readMarks[readIdx],
+        });
+        readIdx++;
+      }
+    }, 5000);
+
+    var artRect = article.getBoundingClientRect();
+    var artDepthFired = {};
+    var artMarks = [25, 50, 75, 100];
+    function checkArticleScroll() {
+      var rect = article.getBoundingClientRect();
+      var artHeight = article.scrollHeight || article.offsetHeight;
+      var viewBottom = window.innerHeight;
+      var scrolled = viewBottom - rect.top;
+      if (artHeight <= 0 || scrolled < 0) return;
+      var pct = Math.min(Math.round((scrolled / artHeight) * 100), 100);
+      artMarks.forEach(function(mark) {
+        if (pct >= mark && !artDepthFired[mark]) {
+          artDepthFired[mark] = true;
+          g('event', 'article_scroll_depth', {
+            event_category: 'blog_engagement',
+            event_label: mark + '%',
+            article_title: articleTitle,
+            scroll_depth: mark,
+          });
+        }
+      });
+    }
+    var artTimer;
+    window.addEventListener('scroll', function() {
+      clearTimeout(artTimer);
+      artTimer = setTimeout(checkArticleScroll, 150);
+    }, { passive: true });
+
+    window.addEventListener('beforeunload', function() {
+      var totalTime = Math.floor((Date.now() - readStart) / 1000);
+      if (totalTime > 5 && navigator.sendBeacon) {
+        var payload = JSON.stringify([{
+          en: 'article_exit',
+          ep: { event_category: 'blog_engagement', article_title: articleTitle, total_read_seconds: totalTime },
+        }]);
+        navigator.sendBeacon(
+          'https://www.google-analytics.com/g/collect?v=2&tid=G-CX6XEZX2R0&cid=' + (document.cookie.match(/_ga=GA\d+\.\d+\.(\d+\.\d+)/) || ['','0.0'])[1],
+          ''
+        );
+      }
+    });
+  })();
+</script>

@@ -1,82 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
-const Form = styled.form`
-  display: grid;
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Label = styled.label`
-  color: #555;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-`;
-
-const Input = styled.input`
-  padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  
-  &:hover, &:focus {
-    border-color: #667eea;
-    outline: none;
-  }
-`;
-
-const Textarea = styled.textarea`
-  padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  resize: vertical;
-  min-height: 120px;
-  transition: all 0.3s ease;
-  
-  &:hover, &:focus {
-    border-color: #667eea;
-    outline: none;
-  }
-`;
-
-const Button = styled(motion.button)`
-  padding: 0.75rem 2rem;
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: #5661d5;
-  }
-  
-  &:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-`;
-
-const SuccessMessage = styled(motion.div)`
-  padding: 1rem;
-  background: #d4edda;
-  color: #155724;
-  border-radius: 4px;
-  text-align: center;
-  margin-top: 1rem;
-`;
+import { trackFormSubmission } from '../utils/analytics';
 
 interface SimpleContactFormProps {
   onSubmit?: (data: any) => void;
@@ -102,19 +25,17 @@ const SimpleContactForm: React.FC<SimpleContactFormProps> = ({ onSubmit }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     if (onSubmit) {
       onSubmit(formData);
     }
-    
-    console.log('Form submitted:', formData);
+
+    trackFormSubmission('contact_form', 'contact');
     setShowSuccess(true);
     setIsSubmitting(false);
-    
-    // Reset form after 3 seconds
+
     setTimeout(() => {
       setFormData({ name: '', email: '', company: '', message: '' });
       setShowSuccess(false);
@@ -123,10 +44,10 @@ const SimpleContactForm: React.FC<SimpleContactFormProps> = ({ onSubmit }) => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label htmlFor="name">Name *</Label>
-          <Input
+      <form onSubmit={handleSubmit} className="grid gap-6 max-w-[600px] mx-auto">
+        <div className="flex flex-col">
+          <label htmlFor="name" className="text-[#555] mb-2 font-medium">Name *</label>
+          <input
             type="text"
             id="name"
             name="name"
@@ -134,12 +55,13 @@ const SimpleContactForm: React.FC<SimpleContactFormProps> = ({ onSubmit }) => {
             onChange={handleChange}
             required
             disabled={isSubmitting}
+            className="px-4 py-3 border border-[#ddd] rounded focus:border-primary hover:border-primary outline-none transition-all duration-300"
           />
-        </FormGroup>
-        
-        <FormGroup>
-          <Label htmlFor="email">Email *</Label>
-          <Input
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="email" className="text-[#555] mb-2 font-medium">Email *</label>
+          <input
             type="email"
             id="email"
             name="email"
@@ -147,51 +69,49 @@ const SimpleContactForm: React.FC<SimpleContactFormProps> = ({ onSubmit }) => {
             onChange={handleChange}
             required
             disabled={isSubmitting}
+            className="px-4 py-3 border border-[#ddd] rounded focus:border-primary hover:border-primary outline-none transition-all duration-300"
           />
-        </FormGroup>
-        
-        <FormGroup>
-          <Label htmlFor="company">Company</Label>
-          <Input
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="company" className="text-[#555] mb-2 font-medium">Company</label>
+          <input
             type="text"
             id="company"
             name="company"
             value={formData.company}
             onChange={handleChange}
             disabled={isSubmitting}
+            className="px-4 py-3 border border-[#ddd] rounded focus:border-primary hover:border-primary outline-none transition-all duration-300"
           />
-        </FormGroup>
-        
-        <FormGroup>
-          <Label htmlFor="message">Message *</Label>
-          <Textarea
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="message" className="text-[#555] mb-2 font-medium">Message *</label>
+          <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
             required
             disabled={isSubmitting}
+            className="px-4 py-3 border border-[#ddd] rounded focus:border-primary hover:border-primary outline-none transition-all duration-300 resize-y min-h-[120px]"
           />
-        </FormGroup>
-        
-        <Button
+        </div>
+
+        <button
           type="submit"
           disabled={isSubmitting}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          className="px-8 py-3 bg-primary text-white border-none rounded font-semibold text-lg cursor-pointer transition-all duration-300 hover:bg-[#5661d5] hover:scale-[1.02] active:scale-[0.98] disabled:bg-[#ccc] disabled:cursor-not-allowed"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
-        </Button>
-      </Form>
-      
+        </button>
+      </form>
+
       {showSuccess && (
-        <SuccessMessage
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-        >
+        <div className="p-4 bg-[#d4edda] text-[#155724] rounded text-center mt-4 animate-[fadeInUp_0.3s_ease-out]">
           Thank you! Your message has been sent successfully.
-        </SuccessMessage>
+        </div>
       )}
     </>
   );

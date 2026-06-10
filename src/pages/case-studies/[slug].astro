@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import CalendlyCTA from '../../components/CalendlyCTA.astro';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('caseStudies');
+  return studies.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props;
+const data = study.data;
+const siteUrl = 'https://northpointdigital.com';
+
+const description = data.pageSubtitle || data.executiveSummary || data.detailedChallenge || data.challenge;
+const canonical = `${siteUrl}/case-studies/${study.slug}`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: data.pageTitle || data.clientName,
+  name: data.clientName,
+  description,
+  url: canonical,
+  industry: data.industry,
+  image: data.logo ? `${siteUrl}${data.logo}` : `${siteUrl}/north-point-logo.webp`,
+  author: { "@type": "Organization", name: "North Point Digital" },
+  publisher: { "@type": "Organization", name: "North Point Digital", logo: { "@type": "ImageObject", url: `${siteUrl}/north-point-logo.webp` } },
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+};
+const breadcrumbs = [
+  { name: 'Home', url: siteUrl },
+  { name: 'Case Studies', url: `${siteUrl}/#case-studies` },
+  { name: data.clientName, url: canonical },
+];
+---
+
+<BaseLayout title={`${data.pageTitle || data.clientName} | Case Study | North Point Digital`} description={description} canonical={canonical} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
+  <div class="min-h-screen bg-gradient-primary pt-20 relative overflow-hidden">
+    <div class="max-w-[1200px] mx-auto px-8 py-16 relative z-[2]">
+      <a href="/#case-studies" class="flex items-center gap-2 py-3 px-6 glass rounded-full font-semibold text-white no-underline mb-8 w-fit transition-all duration-300 hover:bg-white/20 hover:-translate-x-[5px]">
+        ← Back to Case Studies
+      </a>
+
+      <section class="text-center mb-16">
+        <div class="flex items-center justify-center gap-8 mb-8 max-md:flex-col max-md:gap-4">
+          {data.logo && (
+            <img src={data.logo} alt={`${data.clientName} logo`} class="w-[120px] h-[120px] object-contain rounded-xl bg-white/10 p-4 backdrop-blur-[10px] border border-white/20" />
+          )}
+          <div class="text-left max-md:text-center">
+            <h1 class="text-h2 text-white mb-2">{data.pageTitle || data.clientName}</h1>
+            {data.industry && <p class="text-white/80 text-xl">{data.industry}</p>}
+          </div>
+        </div>
+        <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-white/90 max-w-[800px] mx-auto mb-12 leading-relaxed">
+          {data.pageSubtitle || data.detailedChallenge || data.challenge}
+        </p>
+      </section>
+
+      <section class="grid gap-12 mb-16">
+        {data.executiveSummary && (
+          <div class="glass-card p-12 text-white">
+            <h2 class="text-[2rem] mb-6 text-white">Executive Summary</h2>
+            <div class="text-lg leading-loose text-white/90 whitespace-pre-line">{data.executiveSummary}</div>
+          </div>
+        )}
+
+        <div class="glass-card p-12 text-white">
+          <h2 class="text-[2rem] mb-6 text-white">The Challenge</h2>
+          <div class="text-lg leading-loose text-white/90 whitespace-pre-line">{data.detailedChallenge || data.challenge}</div>
+        </div>
+
+        {data.whyChooseUs && (
+          <div class="glass-card p-12 text-white">
+            <h2 class="text-[2rem] mb-6 text-white">Why North Point Digital?</h2>
+            <div class="text-lg leading-loose text-white/90 whitespace-pre-line">{data.whyChooseUs}</div>
+          </div>
+        )}
+
+        <div class="glass-card p-12 text-white">
+          <h2 class="text-[2rem] mb-6 text-white">Our Solution</h2>
+          <div class="text-lg leading-loose text-white/90 whitespace-pre-line">{data.detailedSolution || data.solution}</div>
+          {data.technologies && data.technologies.length > 0 && (
+            <div class="mt-8">
+              <h3 class="text-white mb-4">Technologies Used:</h3>
+              <ul class="list-none p-0">
+                {data.technologies.map((tech) => (
+                  <li class="py-3 border-b border-white/10 last:border-none text-white/90">{tech}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {data.metrics && data.metrics.length > 0 && (
+          <div class="glass-card p-12 text-white">
+            <h2 class="text-[2rem] mb-6 text-white">Key Metrics</h2>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8 mt-8">
+              {data.metrics.map((metric) => (
+                <div class="glass-card text-center p-8">
+                  <h3 class="text-[2rem] text-white mb-2">{metric.value}</h3>
+                  <p class="text-white/80">{metric.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div class="glass-card p-12 text-white">
+          <h2 class="text-[2rem] mb-6 text-white">Results</h2>
+          <ul class="list-none p-0">
+            {data.results.map((result) => (
+              <li class="py-3 border-b border-white/10 last:border-none text-white/90">{result}</li>
+            ))}
+          </ul>
+        </div>
+
+        {data.testimonial && (
+          <div class="glass-card p-12 text-white">
+            <h2 class="text-[2rem] mb-6 text-white">Client Testimonial</h2>
+            <blockquote class="italic text-xl leading-loose mb-6 border-l-4 border-white/30 pl-6">
+              "{data.testimonial.quote}"
+            </blockquote>
+            <p>
+              <strong>{data.testimonial.author}</strong>
+              {data.testimonial.role && `, ${data.testimonial.role}`}
+            </p>
+          </div>
+        )}
+
+        {data.timeline && (
+          <div class="glass-card p-12 text-white">
+            <h2 class="text-[2rem] mb-6 text-white">Timeline</h2>
+            <p class="text-lg leading-loose text-white/90">{data.timeline}</p>
+          </div>
+        )}
+      </section>
+
+      <CalendlyCTA />
+    </div>
+  </div>
+</BaseLayout>

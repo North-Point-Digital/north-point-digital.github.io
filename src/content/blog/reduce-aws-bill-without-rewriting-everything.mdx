@@ -1,0 +1,34 @@
+---
+title: "How to Reduce Your AWS Bill Without Rewriting Everything"
+excerpt: "A practical, operator-focused guide to cutting AWS costs using tagging, right-sizing, and quick-win changes that do not stall delivery."
+author: "David Turnbull"
+authorRole: "Founder & AWS Solutions Architect"
+publishDate: "2025-01-27"
+category: "AWS Cost Optimisation"
+tags: ["AWS", "Cost Optimisation", "Cloud Governance"]
+metaDescription: "A practical guide to reducing your AWS bill without a full re-architecture, focusing on tagging, right-sizing and no-regret operational changes."
+---
+
+## Stop Treating Cost Optimisation as a One-Off Project
+
+Most teams know their AWS bill is too high, but the idea of a full re-architecture feels unrealistic. The good news is you can unlock meaningful savings without a two-year migration programme. The key is to treat cost optimisation as an ongoing **operations discipline**, not a one-off event.
+
+### 1. Get Visibility First: Tagging and Cost Allocation
+
+You cannot optimise what you cannot see. Start by enforcing a simple tagging model across accounts: `Environment`, `Application`, `Owner`, and `CostCentre`. Once tags are consistent, you can break the bill down by team and workload, and have sensible conversations about value versus spend.
+
+### 2. Target the No-Regret Changes
+
+Before you touch application code, look for changes that are operational only:
+
+- Right-size consistently under-utilised instances.
+- Move cold data to cheaper storage tiers.
+- Turn off non-production environments out-of-hours.
+
+These actions can usually be implemented by the platform team with very low risk and immediate measurable impact.
+
+### 3. Build Guard Rails, Not Hero Dashboards
+
+Fancy cost dashboards are useless if engineers ignore them. Instead, wire cost signals into the way people already work: budgets, alerts, and simple monthly reviews tied to your AWS accounts and applications.
+
+> **Pro Tip:** At North Point Digital we use our Security & Cost Optimisation Blueprint to find these quick wins in the first few weeks, while also giving you a longer-term roadmap for deeper modernisation work.

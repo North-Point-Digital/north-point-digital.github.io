@@ -1,0 +1,87 @@
+---
+interface Props {
+  logos?: string[];
+  logosWithBackground?: string[];
+}
+const { logos = [], logosWithBackground = [] } = Astro.props;
+const duplicatedLogos = logos.length > 0 ? [...logos, ...logos, ...logos] : [];
+---
+
+<section id="home" class="min-h-screen flex flex-col items-center justify-center p-8 relative overflow-hidden bg-gradient-primary bg-cover bg-center bg-no-repeat after:content-[''] after:absolute after:inset-0 after:bg-[url('/hero-bg-optimized.jpg')] after:bg-cover after:bg-center after:opacity-0 after:transition-opacity after:duration-500 after:z-0 before:content-[''] before:absolute before:inset-0 before:bg-black/50 before:z-[1]" data-hero>
+  <div class="absolute w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_70%)] rounded-full blur-[40px] z-[1] top-[10%] left-[-10%] animate-[float_20s_linear_infinite]"></div>
+  <div class="absolute w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_70%)] rounded-full blur-[40px] z-[1] bottom-[10%] right-[-10%] animate-[float_25s_linear_infinite_reverse]"></div>
+
+  <div class="max-w-[1200px] w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-12 items-center z-[2] fade-in">
+    <div class="text-center md:text-left flex flex-col max-md:[&>*]:mb-4">
+      <h1 class="text-white mb-6 text-h1 leading-[1.1] max-md:mb-4 fade-in fade-in-delay-1">
+        Save Money on your AWS bill.
+        <br />
+        <span class="text-white/90">Period.</span>
+      </h1>
+      <p class="text-white/90 text-[clamp(1.1rem,2vw,1.3rem)] mb-8 leading-relaxed max-md:mb-10 max-md:pb-6 max-md:leading-loose fade-in fade-in-delay-2">
+        AWS-certified experts. Proven results. Risk-free engagement.
+      </p>
+      <div class="flex items-center gap-3 mb-8 justify-center md:justify-start bg-white/10 backdrop-blur-[10px] py-3 px-6 rounded-full border border-white/20 w-fit mx-auto md:mx-0 max-md:mt-10 max-md:mb-8 fade-in fade-in-delay-2">
+        <img src="/aws-logo.png" alt="AWS Partner" loading="eager" class="h-10 w-auto max-md:h-[35px]" />
+        <span class="text-white/90 text-[0.95rem] font-medium max-md:text-[0.85rem]">Official AWS Partner</span>
+      </div>
+      <div class="flex gap-4 flex-wrap justify-center md:justify-start fade-in fade-in-delay-3">
+        <a
+          href="https://calendly.com/david-northpointdigital/north-point-digital-initial-call"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="py-4 px-8 bg-white text-primary border-none rounded-full font-semibold text-lg flex items-center gap-2 transition-all duration-300 no-underline hover:-translate-y-0.5 hover:shadow-xl"
+          data-track-cta="Hero Schedule Consultation"
+        >
+          Schedule a Free Consultation →
+        </a>
+        <a
+          href="/ai-adoption-playbook"
+          class="py-4 px-8 bg-white/10 backdrop-blur-[10px] text-white border-2 border-white/30 rounded-full font-semibold text-lg flex items-center gap-2 transition-all duration-300 hover:bg-white/20 hover:-translate-y-0.5 hover:shadow-xl"
+          data-track-cta="Hero Download Playbook"
+        >
+          Free AI Playbook
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] md:grid-cols-3 gap-4 fade-in fade-in-delay-4">
+      <div class="glass-card text-center p-8">
+        <h3 class="text-white text-xl mb-2">Expert Reviews</h3>
+        <p class="text-white/80 text-sm">Well-Architected Reviews & AI PoCs with immediate ROI</p>
+      </div>
+      <div class="glass-card text-center p-8">
+        <h3 class="text-white text-xl mb-2">Cloud Migration</h3>
+        <p class="text-white/80 text-sm">Seamless AWS migration with proven frameworks</p>
+      </div>
+      <div class="glass-card text-center p-8">
+        <h3 class="text-white text-xl mb-2">AWS Certified</h3>
+        <p class="text-white/80 text-sm">Deep expertise in security and optimisation</p>
+      </div>
+    </div>
+  </div>
+
+  {logos.length > 0 && (
+    <div class="w-full max-w-[1400px] mt-16 z-[2] relative fade-in fade-in-delay-5">
+      <h3 class="text-center text-[clamp(1.2rem,2.5vw,1.5rem)] text-white/90 mb-8 font-semibold">Trusted Partners</h3>
+      <div class="relative overflow-hidden w-full">
+        <div class="flex gap-16 items-center animate-[marquee_50s_linear_infinite]" style={`width: ${duplicatedLogos.length * 214}px`}>
+          {duplicatedLogos.map((logo, index) => (
+            <div class={`flex-shrink-0 flex items-center justify-center h-20 w-[150px] p-4 rounded-lg ${logosWithBackground.includes(logo) ? 'bg-white/95' : 'bg-white/90'} backdrop-blur-[10px] border border-white/30 opacity-90 transition-all duration-300 hover:opacity-100 hover:-translate-y-0.5 hover:bg-white hover:shadow-lg`}>
+              <img src={logo} alt={`Logo ${(index % logos.length) + 1}`} loading="lazy" class="max-w-full max-h-full object-contain" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+</section>
+
+<script>
+  const hero = document.querySelector('[data-hero]');
+  if (hero) {
+    const img = new Image();
+    img.onload = () => hero.classList.add('hero-bg-loaded');
+    img.src = '/hero-bg-optimized.jpg';
+  }
+</script>

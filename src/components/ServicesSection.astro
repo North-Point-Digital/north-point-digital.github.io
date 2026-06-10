@@ -1,0 +1,62 @@
+---
+import CalendlyCTA from './CalendlyCTA.astro';
+
+const services = [
+  {
+    title: 'Save Money',
+    description: 'Cost optimisation, right-sizing, budget alerts.',
+    features: ['25%+ Cost Reduction', 'Security Hardening', 'Performance Optimisation', 'No Upfront Cost'],
+    link: '/aws-profitability-resilience-blueprint',
+  },
+  {
+    title: 'Build Better',
+    description: 'Architecture, migrations, modernisation.',
+    features: ['Scalable Infrastructure', 'Cloud Migrations', 'Landing Zones', 'DevOps & SRE', 'Solutions Architecture'],
+    link: '/build-better',
+    showMRA: true,
+  },
+  {
+    title: 'Go Faster',
+    description: 'AI PoCs, automation, DevOps.',
+    features: ['AI Proof of Concept', 'Production Roadmap', 'Automation', 'Fixed-Fee Engagement'],
+    link: '/ai-launchpad',
+  },
+];
+---
+
+<section id="services" class="section-padding relative overflow-hidden">
+  <div class="container-wide">
+    <div class="text-center mb-16">
+      <h2 class="text-h2 text-white mb-4">What We Do</h2>
+      <p class="text-xl text-white/80 max-w-[600px] mx-auto">Three ways to transform your AWS infrastructure</p>
+    </div>
+
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-stretch opacity-0" data-animate-on-scroll>
+      {services.map((service) => (
+        <div class="glass-card w-full max-w-full h-full p-8 pb-12 relative overflow-hidden cursor-pointer [&:hover_svg]:scale-110 flex flex-col">
+          <a href={service.link} class="no-underline text-inherit flex-1 block" data-track-service={service.title}>
+            <h3 class="text-white text-2xl mb-4">{service.title}</h3>
+            <p class="text-white/80 leading-relaxed">{service.description}</p>
+            <ul class="list-none mt-4">
+              {service.features.map((feature) => (
+                <li class="text-white/70 py-1">{feature}</li>
+              ))}
+            </ul>
+          </a>
+          {service.showMRA && (
+            <a
+              href="https://mra.northpointdigital.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-block py-2.5 px-5 rounded-full border border-white/80 bg-transparent text-white font-semibold text-sm cursor-pointer transition-all duration-300 hover:bg-white hover:text-[#2d8659] hover:-translate-y-0.5 hover:shadow-lg w-fit"
+            >
+              Launch Migration Readiness Assessment
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <CalendlyCTA />
+  </div>
+</section>

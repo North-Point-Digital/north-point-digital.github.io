@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CalendlyCTA from '../components/CalendlyCTA.astro';
+import { buildFaqJsonLd } from '../data/faqs';
+
+const CTA_LINK = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call';
+const siteUrl = 'https://northpointdigital.com';
+
+const features = [
+  { title: 'Scalable Infrastructure', description: 'Design and build AWS infrastructure that grows with your business' },
+  { title: 'Cloud Migrations', description: 'Seamless migration to AWS using proven frameworks and methodologies' },
+  { title: 'Landing Zones', description: 'Multi-account AWS architecture with security and governance built-in' },
+  { title: 'DevOps & SRE', description: 'Automated CI/CD pipelines and reliable, scalable operations' },
+  { title: 'Solutions Architecture', description: 'Enterprise-grade architecture designed for performance and security' },
+  { title: 'Modernisation', description: 'Transform legacy systems into cloud-native, modern applications' },
+];
+
+const cards = [
+  { title: 'What We Build', content: "We design and implement AWS infrastructure that's built to last. From initial architecture to full-scale migrations, we deliver solutions that are scalable, secure, and optimised for performance.", showFeatures: true },
+  { title: 'Cloud Migrations', content: "Moving to AWS doesn't have to be complex. We use proven migration frameworks including AWS Migration Acceleration Program (MAP) to ensure smooth, risk-free transitions.", items: ['Assessment and planning to identify migration strategy', 'Phased migration execution with minimal downtime', 'Infrastructure modernisation during migration', 'Post-migration optimisation and support'] },
+  { title: 'Landing Zones & Multi-Account Architecture', content: 'Enterprise-grade AWS Landing Zones provide a secure, scalable foundation for your cloud operations. We design multi-account architectures with proper governance, security, and cost management built in from day one.', items: ['Multi-account AWS Organisation structure', 'Centralised security and compliance controls', 'Automated account provisioning and governance', 'Cost allocation and budget management'] },
+  { title: 'DevOps & Site Reliability Engineering', content: 'Automate deployments, improve reliability, and scale operations with modern DevOps practices. We build CI/CD pipelines, implement infrastructure as code, and establish SRE practices that keep your systems running smoothly.', items: ['CI/CD pipeline design and implementation', 'Infrastructure as Code (Terraform, CloudFormation, CDK)', 'Monitoring, alerting, and observability', 'Automated testing and deployment strategies'] },
+  { title: 'Solutions Architecture', content: 'Every business is unique. We design custom AWS architectures tailored to your specific requirements, ensuring optimal performance, security, and cost efficiency.', items: ['Requirements analysis and architecture design', 'High-availability and disaster recovery planning', 'Security-first design principles', 'Performance optimisation and scaling strategies'] },
+];
+---
+
+<BaseLayout
+  title="Build Better on AWS: Architecture, Migrations & Modernisation | North Point Digital"
+  description="AWS architecture, migrations, landing zones, DevOps, and modernisation services to help you build scalable, secure, and resilient cloud platforms."
+  canonical="https://northpointdigital.com/build-better"
+  breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Services', url: `${siteUrl}/#services` }, { name: 'Build Better', url: `${siteUrl}/build-better` }]}
+  jsonLd={[
+    { "@context": "https://schema.org", "@type": "Service", name: "Build Better on AWS", description: "AWS architecture, migrations, landing zones, DevOps, and modernisation services.", url: `${siteUrl}/build-better`, provider: { "@type": "Organization", name: "North Point Digital", url: `${siteUrl}/` }, areaServed: { "@type": "Country", name: "United Kingdom" }, serviceType: "AWS Architecture, Migration and Modernisation Consulting" },
+    buildFaqJsonLd(),
+  ]}
+>
+  <div class="min-h-screen bg-gradient-to-br from-[#2d8659] to-[#1e5f3f] pt-20 relative overflow-hidden">
+    <div class="max-w-[1200px] mx-auto px-8 py-16 relative z-[2]">
+      <section class="text-center mb-16 min-h-[calc(100vh-200px)] flex flex-col justify-center items-center py-12">
+        <h1 class="text-h1 text-white mb-4 font-bold fade-in">Build Better</h1>
+        <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 mb-12 max-w-[800px] mx-auto leading-relaxed fade-in fade-in-delay-1">Architecture, migrations, and modernisation. Transform your AWS infrastructure with scalable, secure, and resilient solutions.</p>
+        <div class="flex flex-wrap justify-center gap-4 fade-in fade-in-delay-2">
+          <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-[#2d8659] rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Book A Call Today</a>
+          <a href="https://mra.northpointdigital.com" target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-transparent text-white border border-white/70 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Migration Readiness Assessment</a>
+        </div>
+      </section>
+
+      <section class="grid gap-12 mb-20">
+        {cards.map((card) => (
+          <div class="glass-card p-12 text-white">
+            <h2 class="text-[2rem] mb-6">{card.title}</h2>
+            <div class="text-lg leading-loose text-white/90">
+              <p class="mb-6">{card.content}</p>
+              {card.showFeatures && (
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 mt-8">
+                  {features.map((f) => (
+                    <div class="glass-card text-center p-8">
+                      <h3 class="text-xl text-white mb-2">{f.title}</h3>
+                      <p class="text-white/80 leading-relaxed">{f.description}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {card.items && (
+                <ul class="list-none p-0">
+                  {card.items.map((item) => (
+                    <li class="py-3 border-b border-white/10 last:border-none">{item}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <CalendlyCTA />
+
+      <div class="mt-20">
+        <FAQSection framed />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

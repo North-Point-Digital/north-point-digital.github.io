@@ -1,0 +1,51 @@
+---
+import CalendlyCTA from './CalendlyCTA.astro';
+import { faqs } from '../data/faqs';
+
+interface Props {
+  framed?: boolean;
+}
+
+const { framed = false } = Astro.props;
+
+const sectionClasses = framed
+  ? 'section-padding bg-white/[0.08] border border-white/20 rounded-[20px] backdrop-blur-[14px] relative overflow-hidden'
+  : 'section-padding bg-white/5 relative';
+---
+
+<section class={sectionClasses} id={framed ? undefined : 'faq'} data-section="faq">
+  <div class="container-narrow">
+    <div class="text-center mb-16">
+      <h2 class="text-h2 text-white mb-4">Frequently Asked Questions</h2>
+      <p class="text-xl text-white/80">Everything you need to know about working with us</p>
+    </div>
+
+    <div class="flex flex-col gap-4" data-faq-container>
+      {faqs.map((faq, index) => (
+        <details class="glass rounded-[15px] overflow-hidden transition-all duration-300 hover:bg-white/[0.12] group" open={index === 0} data-faq-question={faq.question}>
+          <summary class="w-full p-6 text-white text-xl font-semibold text-left cursor-pointer flex justify-between items-center gap-4 list-none [&::-webkit-details-marker]:hidden">
+            {faq.question}
+            <span class="flex-shrink-0 transition-transform duration-300 group-open:rotate-180">▼</span>
+          </summary>
+          <div class="px-6 pb-6 text-white/80 text-lg leading-relaxed [&_p]:mb-4 [&_p:last-child]:mb-0 [&_strong]:text-white [&_strong]:font-semibold [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4 [&_ul_li]:py-2" set:html={faq.answer} />
+        </details>
+      ))}
+    </div>
+
+    {!framed && <CalendlyCTA />}
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('[data-faq-question]').forEach(function(el) {
+    el.addEventListener('toggle', function() {
+      if (el.open && typeof window.gtag === 'function') {
+        window.gtag('event', 'faq_open', {
+          event_category: 'engagement',
+          event_label: el.dataset.faqQuestion,
+          question: el.dataset.faqQuestion,
+        });
+      }
+    });
+  });
+</script>

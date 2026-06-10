@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import IndustryStatsSection from '../components/IndustryStatsSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import TeamSection from '../components/TeamSection.astro';
+import CaseStudySection from '../components/CaseStudySection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { buildFaqJsonLd } from '../data/faqs';
+
+const teamMembers = [
+  { name: "David Turnbull", role: "Founder & AWS Solutions Architect", bio: "10+ years of enterprise cloud expertise, specialising in AWS cost optimisation and security.", image: "/team/david-turnbull.png" },
+  { name: "Mark Bridgett", role: "Principal AWS Solutions Architect", bio: "15+ years of enterprise cloud expertise, specialising in blockchain and web3 infrastructure.", image: "/team/mark-bridgett.png" },
+  { name: "Ross Haselhurst", role: "Head of Business Development", bio: "10+ years experience in the technology industry, specialising in business development and sales.", image: "/team/ross-haselhurst.jpeg" },
+  { name: "Krystian Nowak", role: "Senior Software Engineer", bio: "10+ years experience in the technology industry, specialising in software engineering and development.", image: "/team/krystian-nowak.jpeg" },
+  { name: "Sarah Turnbull", role: "Head of Delivery", bio: "10+ years experience in the technology industry, specialising in delivery and project management.", image: "/team/sarah-turnbull.jpeg" },
+  { name: "Matthew Squires", role: "Head of Marketing", bio: "10+ years experience in the technology industry, specialising in marketing and branding.", image: "/team/matthew-squires.jpeg" },
+];
+
+const logos = [
+  '/logos/client1-logo.jpeg', '/logos/client2-logo.png', '/logos/client3-logo.png',
+  '/logos/client4-logo.svg', '/logos/client5-logo.png', '/logos/client6-logo.webp',
+  '/logos/client7-logo.png', '/logos/client8-logo.png', '/logos/client9-logo.jpeg',
+  '/logos/client10-logo.jpeg', '/logos/client11-logo.jpeg',
+];
+
+const logosWithBackground = ['/logos/client4-logo.svg', '/logos/client5-logo.png'];
+---
+
+<BaseLayout
+  title="Save Money on Your AWS Bill | North Point Digital"
+  description="AWS-certified experts helping UK businesses cut AWS costs by 25%+, improve security, and accelerate cloud and AI adoption. Risk-free engagement."
+  canonical="https://northpointdigital.com/"
+  jsonLd={[
+    { "@context": "https://schema.org", "@type": "Organization", name: "North Point Digital", url: "https://northpointdigital.com/", logo: "https://northpointdigital.com/north-point-logo.webp", sameAs: ["https://www.linkedin.com/company/north-point-digital-ai/", "https://x.com/n0rth_p0int"], contactPoint: { "@type": "ContactPoint", email: "contact@northpointdigital.com", contactType: "sales" } },
+    { "@context": "https://schema.org", "@type": "WebSite", name: "North Point Digital", url: "https://northpointdigital.com/" },
+    { "@context": "https://schema.org", "@type": "ProfessionalService", name: "North Point Digital", url: "https://northpointdigital.com/", description: "AWS-certified experts helping UK businesses cut AWS costs by 25%+, improve security, and accelerate cloud and AI adoption.", email: "contact@northpointdigital.com", areaServed: { "@type": "Country", name: "United Kingdom" }, priceRange: "$$", image: "https://northpointdigital.com/north-point-logo.webp" },
+    buildFaqJsonLd(),
+  ]}
+>
+  <HeroSection logos={logos} logosWithBackground={logosWithBackground} />
+  <IndustryStatsSection />
+  <ServicesSection />
+  <AboutSection />
+  <TeamSection teamMembers={teamMembers} />
+  <CaseStudySection />
+  <FAQSection />
+  <ContactSection />
+</BaseLayout>
