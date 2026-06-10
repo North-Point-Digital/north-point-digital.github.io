@@ -13,6 +13,10 @@ export const faqs: FAQ[] = [
     answer: `<p>Three things:</p><ul><li><strong>A problem worth solving</strong> — a process that eats hours, questions your data could answer, work that queues up. If you're not sure which one to pick, that's what the first week is for.</li><li><strong>Some of your data</strong> — even a sample. We build the prototype on your data, not a demo dataset, because that's the only way the result means anything.</li><li><strong>Someone who can say yes</strong> — a sponsor who'll watch the weekly demos and make the call at the end.</li></ul><p>You don't need an AI strategy document. The Launchpad usually replaces one.</p>`,
   },
   {
+    question: "We're not on AWS — does that matter?",
+    answer: `<p><strong>Not at all.</strong> The AI prototype runs on infrastructure we set up and manage. Your systems stay exactly where they are — on-prem, Microsoft, Google, or nothing more than spreadsheets and email.</p><p>We connect to your data through exports or simple integrations, and if the pilot goes to production, we run the infrastructure side. You never need to log into AWS or learn what any of it means — that's the part you're paying us for.</p><p>The only offer that requires AWS is the cost-saving Blueprint, for the obvious reason that it reviews an AWS bill.</p>`,
+  },
+  {
     question: 'How long do engagements take?',
     answer: `<p><strong>The Blueprint takes two weeks. The AI Launchpad takes six.</strong> Both are fixed-fee, priced before we start.</p><p>Blueprint: week one is the audit — costs, security, architecture — with an initial findings report. Week two we implement: critical fixes, budget alerts, tagging, tuning. You end with a full Well-Architected report and roadmap.</p><p>Launchpad: week one we scope the use case and look at your data. Weeks two to five we build, with a demo every week. Week six you get the working prototype, production costings and a route to live.</p><p>Both come with 30 days of support after delivery.</p>`,
   },

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import LogoWall from '../components/LogoWall.astro';
 import IndustryStatsSection from '../components/IndustryStatsSection.astro';
+import AIExamplesSection from '../components/AIExamplesSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
 import HowWeWork from '../components/HowWeWork.astro';
 import CaseStudySection from '../components/CaseStudySection.astro';
@@ -30,19 +31,20 @@ const logos = [
 ---
 
 <BaseLayout
-  title="AI Adoption & AWS Consultancy for UK Businesses | North Point Digital"
-  description="Fixed-fee AI proofs of concept on AWS, delivered in six weeks. UK AWS partner for AI adoption, cost optimisation, and cloud done properly."
+  title="Practical AI for UK Small Businesses | North Point Digital"
+  description="Working AI for your business in six weeks, fixed fee — wherever your systems live. UK consultancy and AWS partner for AI adoption, cost optimisation, and cloud done properly."
   canonical="https://northpointdigital.com/"
   jsonLd={[
     { "@context": "https://schema.org", "@type": "Organization", name: "North Point Digital", url: "https://northpointdigital.com/", logo: "https://northpointdigital.com/north-point-logo.webp", sameAs: ["https://www.linkedin.com/company/north-point-digital-ai/", "https://x.com/n0rth_p0int"], contactPoint: { "@type": "ContactPoint", email: "contact@northpointdigital.com", contactType: "sales" } },
     { "@context": "https://schema.org", "@type": "WebSite", name: "North Point Digital", url: "https://northpointdigital.com/" },
-    { "@context": "https://schema.org", "@type": "ProfessionalService", name: "North Point Digital", url: "https://northpointdigital.com/", description: "UK AWS partner helping businesses adopt AI with fixed-fee proofs of concept, cut AWS costs by 25%+, and build secure, resilient cloud platforms.", email: "contact@northpointdigital.com", areaServed: { "@type": "Country", name: "United Kingdom" }, priceRange: "$$", image: "https://northpointdigital.com/north-point-logo.webp", knowsAbout: ["AWS", "AI adoption", "Cloud cost optimisation", "Cloud migration", "Well-Architected Reviews"] },
+    { "@context": "https://schema.org", "@type": "ProfessionalService", name: "North Point Digital", url: "https://northpointdigital.com/", description: "UK consultancy helping small businesses put AI to work with fixed-fee proofs of concept — whatever their current systems — plus AWS cost optimisation, security and cloud platforms.", email: "contact@northpointdigital.com", areaServed: { "@type": "Country", name: "United Kingdom" }, priceRange: "$$", image: "https://northpointdigital.com/north-point-logo.webp", knowsAbout: ["AI adoption", "Artificial intelligence for small business", "AWS", "Cloud cost optimisation", "Cloud migration", "Well-Architected Reviews"] },
     buildFaqJsonLd(),
   ]}
 >
   <HeroSection />
   <LogoWall logos={logos} invertLogos={['/logos/client4-logo.svg']} />
   <IndustryStatsSection />
+  <AIExamplesSection />
   <ServicesSection />
   <HowWeWork />
   <CaseStudySection />
