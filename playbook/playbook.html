@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>The AI Adoption Playbook — North Point Digital</title>
+<style>
+  @font-face {
+    font-family: 'Geist Variable';
+    src: url('../node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2') format('woff2');
+    font-weight: 100 900;
+  }
+  @font-face {
+    font-family: 'Geist Mono Variable';
+    src: url('../node_modules/@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2') format('woff2');
+    font-weight: 100 900;
+  }
+
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Geist Variable', -apple-system, sans-serif;
+    color: #334155;
+    font-size: 11.5pt;
+    line-height: 1.55;
+  }
+
+  .page {
+    width: 210mm;
+    height: 296mm;
+    padding: 22mm 20mm 18mm;
+    position: relative;
+    page-break-after: always;
+    overflow: hidden;
+  }
+
+  .dots {
+    position: absolute; inset: 0; opacity: 0.5; pointer-events: none;
+    background-image: radial-gradient(circle, #94a3b8 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse at top, black 0%, transparent 55%);
+  }
+  .tint {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at top, #dbeafe 0%, transparent 60%);
+  }
+
+  h1, h2, h3 { color: #0f172a; letter-spacing: -0.02em; line-height: 1.15; }
+  h2 { font-size: 23pt; margin-bottom: 14pt; }
+  h3 { font-size: 13pt; margin: 14pt 0 5pt; }
+  p { margin-bottom: 8pt; }
+  ul { margin: 0 0 8pt 16pt; }
+  li { margin-bottom: 4pt; }
+  strong { color: #0f172a; }
+
+  .eyebrow {
+    font-family: 'Geist Mono Variable', monospace;
+    font-size: 8.5pt; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #2563eb; margin-bottom: 8pt;
+  }
+
+  .footer {
+    position: absolute; bottom: 10mm; left: 20mm; right: 20mm;
+    display: flex; justify-content: space-between;
+    font-family: 'Geist Mono Variable', monospace;
+    font-size: 7.5pt; color: #94a3b8;
+  }
+
+  .callout {
+    border: 1px solid #bfdbfe; background: #eff6ff;
+    border-radius: 10px; padding: 12pt 14pt; margin: 12pt 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .check { color: #2563eb; font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10pt 0; font-size: 10pt; }
+  th { text-align: left; color: #0f172a; border-bottom: 1.5px solid #cbd5e1; padding: 5pt 8pt 5pt 0; }
+  td { border-bottom: 1px solid #e2e8f0; padding: 5pt 8pt 5pt 0; vertical-align: top; }
+
+  .mono { font-family: 'Geist Mono Variable', monospace; }
+  .blue { color: #2563eb; }
+
+  /* Cover */
+  .cover { display: flex; flex-direction: column; }
+  .cover .brand { display: flex; align-items: center; gap: 10pt; }
+  .cover .brand img { height: 34pt; width: 34pt; }
+  .cover .brand span { font-weight: 600; font-size: 14pt; color: #0f172a; }
+  .cover h1 { font-size: 42pt; margin-top: 110pt; letter-spacing: -0.03em; }
+  .cover .sub { font-size: 15pt; color: #475569; margin-top: 16pt; max-width: 130mm; }
+  .cover .meta {
+    margin-top: auto; font-family: 'Geist Mono Variable', monospace;
+    font-size: 9pt; color: #64748b;
+  }
+</style>
+</head>
+<body>
+
+<!-- Cover -->
+<div class="page cover">
+  <div class="tint"></div>
+  <div class="dots"></div>
+  <div class="brand" style="position:relative">
+    <img src="../public/north-point-logo.webp" alt="">
+    <span>North Point Digital</span>
+  </div>
+  <h1 style="position:relative">The AI Adoption<br>Playbook</h1>
+  <p class="sub" style="position:relative">A practical guide for small businesses: how to pick a use case worth proving, what AI really costs, and how to get working software instead of a strategy deck.</p>
+  <div class="meta">2026 edition · northpointdigital.com</div>
+</div>
+
+<!-- Page 2: Read this first -->
+<div class="page">
+  <p class="eyebrow">Before anything else</p>
+  <h2>Read this first</h2>
+  <p>This playbook exists because most of what's written about AI for business is either hype or homework. The hype tells you AI will transform everything and shows you nothing. The homework reads like an enterprise IT project. Neither helps the owner of a twenty-person business decide what to actually do on Monday.</p>
+  <p>Here's the context that matters. UK government research published in February 2026 found that only <strong>16% of UK businesses use any AI at all</strong>. Whatever you've been led to feel by the headlines, you are not behind — but the gap between businesses that put AI to work and those that don't is opening now, and early movers are buying their advantage cheaply.</p>
+  <p>The second thing worth knowing: when AI projects fail, it's almost never the technology. They fail before that — wrong use case, unprepared data, no definition of success, or a build that quietly became a science project. Every chapter in this playbook targets one of those failure points.</p>
+  <div class="callout">
+    <p><strong>How to use this:</strong> read it once (twenty minutes), then work through the steps with your own business in mind. By the end you should have a candidate use case, a rough cost expectation, and a list of questions that will keep any provider honest — including us.</p>
+  </div>
+  <h3>What's inside</h3>
+  <ul>
+    <li><strong>Step 1</strong> — Pick the job, not the technology</li>
+    <li><strong>Step 2</strong> — The data readiness check</li>
+    <li><strong>Step 3</strong> — What it actually costs</li>
+    <li><strong>Step 4</strong> — Build it, buy it, or use no-code?</li>
+    <li><strong>Step 5</strong> — Prove it in six weeks</li>
+    <li><strong>Step 6</strong> — Questions that keep providers honest</li>
+  </ul>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>02</span></div>
+</div>
+
+<!-- Page 3: Step 1 -->
+<div class="page">
+  <p class="eyebrow">Step 1</p>
+  <h2>Pick the job, not the technology</h2>
+  <p>Projects that start with "we should do something with AI" stall. Projects that start with "this task eats eleven hours a week" tend to work. The difference is the direction of travel: a job looking for a tool succeeds far more often than a tool looking for a job.</p>
+  <p>The best candidate jobs share three traits: they're <strong>repetitive</strong> (done weekly or daily), they're <strong>rule-ish</strong> (a competent new hire could learn them from examples), and the <strong>information already exists</strong> somewhere in your business — in an inbox, a folder, a system.</p>
+  <h3>What this looks like in a real small business</h3>
+  <table>
+    <tr><th style="width:38%">Now</th><th>With AI</th></tr>
+    <tr><td>The inbox fills with the same twenty questions every week</td><td>Replies drafted from your past answers; a human checks and sends</td></tr>
+    <tr><td>Someone retypes invoices and delivery notes into the system</td><td>Amounts, dates and terms land in your accounts package on their own</td></tr>
+    <tr><td>The answer is in a manual or an old proposal — somewhere</td><td>Ask in plain English, get the answer with its source</td></tr>
+    <tr><td>Quotes start from a blank page</td><td>A draft estimate based on what similar jobs actually cost you</td></tr>
+    <tr><td>Call notes live in notebooks; the CRM is always behind</td><td>Meetings summarised and filed against the right customer</td></tr>
+    <tr><td>Every support ticket waits in one queue</td><td>Tickets sorted and routed, a suggested reply already drafted</td></tr>
+  </table>
+  <div class="callout">
+    <p><strong>The ten-minute exercise:</strong> ask your team what they retype, re-answer or re-look-up every week. Estimate the hours. Multiply by fifty. That number, in pounds, is the budget conversation — and the task at the top of the list is your candidate use case.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>03</span></div>
+</div>
+
+<!-- Page 4: Step 2 -->
+<div class="page">
+  <p class="eyebrow">Step 2</p>
+  <h2>The data readiness check</h2>
+  <p>AI is only as useful as the information you can put in front of it. Data readiness is the single biggest driver of cost and timeline in small-business AI projects — published industry analyses consistently find data preparation adds <strong>40–60% to budgets</strong> when nobody scoped it up front.</p>
+  <p>The good news: checking your own readiness takes an afternoon, not a consultancy engagement. For your candidate use case from Step 1, answer these honestly:</p>
+  <h3>The five questions</h3>
+  <ul>
+    <li><span class="check">1.</span> <strong>Where does the information live?</strong> One system is ideal. Two or three is normal. "Scattered across five tools and a shared drive" is workable but costs more.</li>
+    <li><span class="check">2.</span> <strong>Can you export it?</strong> If you can produce a spreadsheet or a folder of documents today, you're ready to prove something. If exporting needs your IT supplier's help, get that conversation started now.</li>
+    <li><span class="check">3.</span> <strong>Is there enough history?</strong> A few hundred past examples (emails answered, invoices processed, quotes written) is plenty for a proof of concept. Ten examples is not.</li>
+    <li><span class="check">4.</span> <strong>Is anything sensitive in there?</strong> Customer personal data means GDPR applies — not a blocker, but it shapes where and how the AI runs. Flag it early.</li>
+    <li><span class="check">5.</span> <strong>Who knows the data best?</strong> Name the person. A pilot without them assigned a few hours a week will drift.</li>
+  </ul>
+  <div class="callout">
+    <p><strong>Scoring it:</strong> mostly comfortable answers put you at the affordable end of any quote you'll receive. Two or more awkward answers doesn't mean stop — it means the first week of any engagement should be data scoping, and a provider who skips that step is guessing with your money.</p>
+  </div>
+  <p>One myth worth retiring: you do not need a "data warehouse", a particular cloud provider, or any internal technical capability to start. Exports and email are enough to prove a use case. The infrastructure question belongs after the proof, not before it.</p>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>04</span></div>
+</div>
+
+<!-- Page 5: Step 3 -->
+<div class="page">
+  <p class="eyebrow">Step 3</p>
+  <h2>What it actually costs</h2>
+  <p>Almost nobody in this industry publishes prices, which makes budgeting feel like guesswork. It isn't. Here are the real UK price bands as of 2026, drawn from published price guides and our own quoting:</p>
+  <table>
+    <tr><th style="width:30%">Engagement</th><th style="width:25%">Typical UK price</th><th>What you get</th></tr>
+    <tr><td>Feasibility check</td><td class="mono">£5k–£15k</td><td>4–6 weeks, one narrow question answered, usually throwaway code</td></tr>
+    <tr><td>Proof of concept</td><td class="mono">£15k–£85k</td><td>6–12 weeks, working software on your data, production costings</td></tr>
+    <tr><td>Production build</td><td class="mono">£75k+</td><td>The full system, integrated and supported — only after a proof</td></tr>
+  </table>
+  <p>Behind the spread sit day rates: UK freelance AI practitioners charge roughly £400–£800 a day, specialist consultancies £1,200–£2,500, and the big firms more again. Twenty to thirty senior days is a normal proof of concept — multiply through and the bands stop looking arbitrary.</p>
+  <h3>The costs nobody quotes</h3>
+  <ul>
+    <li><strong>Running costs.</strong> A pilot costs tens to low hundreds of pounds a month to run. Production can differ sharply. Any proposal without a running-cost estimate is incomplete.</li>
+    <li><strong>Data preparation.</strong> The 40–60% surprise from Step 2 — make sure it's inside the quote, not waiting behind it.</li>
+    <li><strong>Your own time.</strong> Plan for a few hours a week from the person who knows the work. Pilots that get no internal attention quietly die.</li>
+  </ul>
+  <div class="callout">
+    <p><strong>Insist on a fixed fee.</strong> A proof of concept is a defined question with an end date; an open-ended day rate hands all the risk to you. Roughly half of UK SME engagements are now fixed-price — a provider who won't fix a price for their own recommended scope is telling you something.</p>
+  </div>
+  <p>Worth checking before you assume the headline price: Innovate UK has run AI proof-of-concept grant rounds funding up to 70% of eligible costs for micro and small businesses on larger projects. Eligibility shifts round to round, but ten minutes of checking can change the maths.</p>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>05</span></div>
+</div>
+
+<!-- Page 6: Step 4 -->
+<div class="page">
+  <p class="eyebrow">Step 4</p>
+  <h2>Build it, buy it, or use no-code?</h2>
+  <p>Not every use case needs a consultancy, and a guide that pretended otherwise would deserve your scepticism. The honest decision tree:</p>
+  <h3>Off-the-shelf is enough when…</h3>
+  <p>The job is generic — drafting documents, summarising meetings, general research. ChatGPT, Claude or Copilot at £15–25 per person per month covers it. Train your team on it (Step 1's exercise works here too) and bank the easy win. No project required.</p>
+  <h3>No-code tools are enough when…</h3>
+  <p>The job is a simple, low-stakes workflow — a basic chatbot answering from a single document, a form that triggers a templated email. Tools like the current crop of no-code AI builders genuinely handle this, cheaply. Their limit arrives the moment a prototype becomes <em>load-bearing</em>: when real customers, real data volumes and real edge cases hit it. A quiet failure in a toy is a learning experience; in your quoting process it's a liability.</p>
+  <h3>Bespoke (and help) earns its keep when…</h3>
+  <ul>
+    <li>The AI must read <strong>your</strong> history — your answers, your pricing, your documents — not general knowledge</li>
+    <li>It must write into systems you rely on (accounts, CRM, support desk)</li>
+    <li>Errors carry a real cost: wrong prices quoted, wrong customers emailed, compliance exposure</li>
+    <li>Customer personal data is involved and "we pasted it into a chatbot" won't survive a GDPR question</li>
+  </ul>
+  <div class="callout">
+    <p><strong>The pattern that works:</strong> start everyone on off-the-shelf tools this month — it costs little and builds intuition. In parallel, take the one use case with real money attached through a structured proof. The off-the-shelf habit pays for the coffee; the proven use case pays for the year.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>06</span></div>
+</div>
+
+<!-- Page 7: Step 5 -->
+<div class="page">
+  <p class="eyebrow">Step 5</p>
+  <h2>Prove it in six weeks</h2>
+  <p>However you source the work, the proof phase should follow the same shape. Six weeks is enough to prove or disprove almost any small-business use case — engagements that run longer than that before showing working software are drifting.</p>
+  <h3>The shape</h3>
+  <table>
+    <tr><th style="width:22%">Weeks</th><th>What happens</th></tr>
+    <tr><td class="mono">Week 1</td><td>Scope: pick the use case, inspect the data, agree what the prototype must prove — and what result means "stop"</td></tr>
+    <tr><td class="mono">Weeks 2–5</td><td>Build, with a demo every week. You watch it take shape and steer while changing course is still cheap</td></tr>
+    <tr><td class="mono">Week 6</td><td>Working prototype, running costs on one page, a written route to production — or a documented reason not to proceed</td></tr>
+  </table>
+  <h3>The rules that keep it honest</h3>
+  <ul>
+    <li><strong>One use case.</strong> Not a platform. The narrower the question, the cheaper the answer.</li>
+    <li><strong>Your data from week one.</strong> A demo on sample data proves the vendor can demo. Only your data proves anything about your business.</li>
+    <li><strong>Agree the kill criteria up front.</strong> Decide before building what accuracy, speed or adoption number means "don't proceed". A pilot that can't fail is a brochure.</li>
+    <li><strong>Weekly demos, no exceptions.</strong> If you can't see progress, you're funding a surprise.</li>
+    <li><strong>"Don't proceed" is a result.</strong> A documented no after six weeks beats eighteen months of maybe — and costs a tenth as much.</li>
+  </ul>
+  <div class="callout">
+    <p><strong>What you should hold at the end</strong> — whoever does the work: software you can put in front of users, honest production running costs, a written route to live, and ownership of the code and prompts. A slide deck with a roadmap is not a proof of concept, whatever the invoice says.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>07</span></div>
+</div>
+
+<!-- Page 8: Step 6 -->
+<div class="page">
+  <p class="eyebrow">Step 6</p>
+  <h2>Questions that keep providers honest</h2>
+  <p>Take these to any conversation — including one with us. Good providers answer them quickly and in writing; the other kind change the subject.</p>
+  <ul>
+    <li><strong>"What's the fixed price for the scope you're recommending?"</strong> Watch for day rates dressed as estimates.</li>
+    <li><strong>"What will it cost to run in production, monthly?"</strong> If the thinking hasn't been done, the proposal is incomplete.</li>
+    <li><strong>"What happens if the pilot shows it doesn't work?"</strong> The honest answer involves the phrase "we tell you to stop".</li>
+    <li><strong>"Who owns the code, prompts and any trained models?"</strong> The answer should be: you. Otherwise you're renting, and the price should say so.</li>
+    <li><strong>"Where does our data go, and who can see it?"</strong> You want named infrastructure and a straight GDPR answer, not reassurance.</li>
+    <li><strong>"Who exactly does the work?"</strong> Meet the engineers, not just the salesperson. Ask whether the people on the call are the people on the project.</li>
+    <li><strong>"Can I speak to a past client?"</strong> One reference call tells you more than any deck.</li>
+    <li><strong>"What do you need from us, and how many hours a week?"</strong> A provider who says "nothing" hasn't done this before.</li>
+  </ul>
+  <h3>Five ways projects stall (so you can spot them early)</h3>
+  <ul>
+    <li>The use case was chosen in a boardroom, not from the work itself</li>
+    <li>Data scoping was skipped and surfaced later as cost and delay</li>
+    <li>Success was never defined, so the pilot could neither succeed nor fail</li>
+    <li>The prototype impressed everyone and integrated with nothing</li>
+    <li>No one inside the business owned it, so it ended with the invoice</li>
+  </ul>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>08</span></div>
+</div>
+
+<!-- Page 9: About / next step -->
+<div class="page">
+  <div class="tint"></div>
+  <div class="dots"></div>
+  <div style="position:relative">
+  <p class="eyebrow">If you want help</p>
+  <h2>Who we are, and the offer</h2>
+  <p>North Point Digital is a UK-based team of AWS-certified architects and engineers. We spent the last decade inside enterprise cloud estates — building them, migrating them, finding where the money goes — and we now put that engineering into AI for small businesses.</p>
+  <p>Everything this playbook recommends is how we actually work:</p>
+  <ul>
+    <li><strong>The AI Launchpad</strong> — a six-week proof of concept exactly as described in Step 5: your data, weekly demos, working software, honest costings, and a documented recommendation either way. Typically <strong>£15,000–£25,000, fixed</strong>, agreed in writing before we start. You don't need to be technical, or on any particular cloud.</li>
+    <li><strong>The Security &amp; Cost Optimisation Blueprint</strong> — for AWS customers: a two-week review targeting 25%+ savings, with a written guarantee — if we don't find at least 25% in potential savings, you don't pay. Across 20+ reviews, the average found is 30%.</li>
+  </ul>
+  <p>No long-term contracts on anything. The first call is thirty minutes, free, with an engineer — and if there's no fit, we'll say so on the call.</p>
+  <div class="callout">
+    <p><strong>Book a free call:</strong> northpointdigital.com — or email <span class="blue">contact@northpointdigital.com</span> and tell us about the task at the top of your Step 1 list.</p>
+  </div>
+  <p style="margin-top:14pt; font-size:9.5pt; color:#64748b;">Sources for figures used in this guide: UK government AI adoption research (Feb 2026); published UK AI consultancy price guides (2026); industry analyses of AI project cost overruns; Innovate UK grant programme documentation. Detailed citations at northpointdigital.com/blog.</p>
+  </div>
+  <div class="footer"><span>© 2026 North Point Digital</span><span>09</span></div>
+</div>
+
+</body>
+</html>

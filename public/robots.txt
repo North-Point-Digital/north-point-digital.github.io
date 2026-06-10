@@ -3,5 +3,6 @@ Allow: /
 
 Disallow: /thank-you
 Disallow: /404
+Disallow: /downloads/
 
 Sitemap: https://northpointdigital.com/sitemap-index.xml
