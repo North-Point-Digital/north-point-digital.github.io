@@ -53,7 +53,7 @@ const phases = [
   canonical="https://northpointdigital.com/ai-launchpad"
   breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Services', url: `${siteUrl}/#services` }, { name: 'AI Launchpad', url: `${siteUrl}/ai-launchpad` }]}
   jsonLd={[
-    { "@context": "https://schema.org", "@type": "Service", name: "AI Launchpad", description: "Fixed-fee AWS AI proof of concept that validates your AI strategy in six weeks with a working prototype, cost analysis, and production roadmap.", url: `${siteUrl}/ai-launchpad`, provider: { "@type": "Organization", name: "North Point Digital", url: `${siteUrl}/` }, areaServed: { "@type": "Country", name: "United Kingdom" }, serviceType: "AI Proof of Concept and Strategy Validation" },
+    { "@context": "https://schema.org", "@type": "Service", name: "AI Launchpad", description: "Fixed-fee AI proof of concept that validates your AI strategy in six weeks with a working prototype, cost analysis, and production roadmap.", url: `${siteUrl}/ai-launchpad`, provider: { "@type": "Organization", name: "North Point Digital", url: `${siteUrl}/` }, areaServed: { "@type": "Country", name: "United Kingdom" }, serviceType: "AI Proof of Concept and Strategy Validation", offers: { "@type": "AggregateOffer", priceCurrency: "GBP", lowPrice: "15000", highPrice: "25000", description: "Fixed fee agreed before the engagement starts; position in the range depends on data readiness." } },
     buildFaqJsonLd(),
   ]}
 >
@@ -143,6 +143,50 @@ const phases = [
       <p class="mt-8 text-center text-sm text-slate-500">
         Indicative shape — the exact split depends on your use case and data.
       </p>
+    </div>
+  </section>
+
+  <section class="section border-t border-slate-200 bg-slate-50">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-4">Pricing</p>
+        <h2 class="text-h2">What it costs</h2>
+      </div>
+
+      <div class="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 lg:grid-cols-2">
+        <div class="card lg:p-10">
+          <p class="font-mono text-3xl font-semibold tracking-tight text-slate-900">£15,000–£25,000</p>
+          <p class="mt-1 text-sm font-medium text-slate-500">fixed fee, agreed in writing before we start</p>
+          <p class="mt-5 leading-relaxed text-slate-600">
+            Where you land in that range depends mostly on data readiness. If what
+            the AI needs lives in one system and exports cleanly, you're at the
+            bottom of it. If it's scattered across five tools and a shared drive,
+            the scoping week earns its keep — and the quote reflects the extra work
+            honestly, before you commit.
+          </p>
+          <p class="mt-4 leading-relaxed text-slate-600">
+            The fee covers everything above: the working prototype, production
+            costings, the roadmap, and handover. Once agreed, it doesn't move.
+          </p>
+        </div>
+
+        <div class="card border-accent/30 bg-gradient-to-b from-accent-tint/60 to-white lg:p-10">
+          <p class="eyebrow mb-3">Founding clients</p>
+          <h3 class="text-xl font-semibold text-slate-900">Roughly half the usual fee</h3>
+          <p class="mt-4 leading-relaxed text-slate-600">
+            We're building our public case-study library and we're open about it:
+            our first three Launchpad clients get the full engagement at roughly
+            half the usual fee, in exchange for a named case study and a reference
+            call. Same scope, same team, same deliverables.
+          </p>
+          <p class="mt-4 leading-relaxed text-slate-600">
+            When the three slots are gone, they're gone.
+          </p>
+          <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary mt-6" data-track-cta="Launchpad Founding Slot">
+            Ask about a founding slot
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 

@@ -13,6 +13,10 @@ export const faqs: FAQ[] = [
     answer: `<p>Three things:</p><ul><li><strong>A problem worth solving</strong> — a process that eats hours, questions your data could answer, work that queues up. If you're not sure which one to pick, that's what the first week is for.</li><li><strong>Some of your data</strong> — even a sample. We build the prototype on your data, not a demo dataset, because that's the only way the result means anything.</li><li><strong>Someone who can say yes</strong> — a sponsor who'll watch the weekly demos and make the call at the end.</li></ul><p>You don't need an AI strategy document. The Launchpad usually replaces one.</p>`,
   },
   {
+    question: 'What does the AI Launchpad cost?',
+    answer: `<p><strong>Typically £15,000–£25,000, fixed.</strong> Where you land in that range depends mostly on data readiness — how much work it takes to get your data cleanly in front of the model. The exact figure is agreed in writing before we start, and it doesn't move after that.</p><p>We're currently offering our first three Launchpad clients roughly half the usual fee, in exchange for a named case study and a reference call.</p><p>The Security &amp; Cost Optimisation Blueprint is priced differently: no upfront cost, and if we don't find at least 25% in potential savings, no fee at all.</p>`,
+  },
+  {
     question: "We're not on AWS — does that matter?",
     answer: `<p><strong>Not at all.</strong> The AI prototype runs on infrastructure we set up and manage. Your systems stay exactly where they are — on-prem, Microsoft, Google, or nothing more than spreadsheets and email.</p><p>We connect to your data through exports or simple integrations, and if the pilot goes to production, we run the infrastructure side. You never need to log into AWS or learn what any of it means — that's the part you're paying us for.</p><p>The only offer that requires AWS is the cost-saving Blueprint, for the obvious reason that it reviews an AWS bill.</p>`,
   },

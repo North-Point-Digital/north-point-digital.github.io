@@ -105,7 +105,9 @@ of concept, whatever the invoice says.
 ---
 
 *Our own version of this is the [AI Launchpad](/ai-launchpad): a fixed-fee,
-six-week proof of concept with the deliverables above, priced before we start.
-If you'd rather sense-check a quote you already have, [book a free
-call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call)
+six-week proof of concept with the deliverables above — typically
+£15,000–£25,000 depending on data readiness, agreed in writing before we
+start. Yes, we just published our prices in a blog post; we think more of the
+industry should. If you'd rather sense-check a quote you already have, [book a
+free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call)
 — we'll tell you if it's fair.*
