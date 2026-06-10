@@ -1,0 +1,48 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogIndex from '../../components/BlogIndex.astro';
+import { sortByDate, uniqueCategories, POSTS_PER_PAGE } from '../../utils/blog';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const posts = sortByDate(await getCollection('blog'));
+  return paginate(posts, { pageSize: POSTS_PER_PAGE });
+};
+
+const { page } = Astro.props;
+const allPosts = sortByDate(await getCollection('blog'));
+const categories = uniqueCategories(allPosts);
+
+const siteUrl = 'https://northpointdigital.com';
+const pageSuffix = page.currentPage > 1 ? ` – Page ${page.currentPage}` : '';
+const canonical = `${siteUrl}${page.url.current}${page.url.current.endsWith('/') ? '' : '/'}`.replace(/\/$/, page.currentPage > 1 ? '' : '/');
+
+const blogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'AI & Cloud Blog',
+  description: 'Practical articles on AI adoption, AWS cost optimisation, and cloud architecture from North Point Digital.',
+  url: `${siteUrl}${page.url.current}`,
+  publisher: { '@type': 'Organization', name: 'North Point Digital', logo: { '@type': 'ImageObject', url: `${siteUrl}/north-point-logo.webp` } },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: page.data.map((post, i) => ({
+      '@type': 'ListItem',
+      position: page.start + i + 1,
+      url: `${siteUrl}/blog/${post.slug}`,
+      name: post.data.title,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title={`AI & Cloud Blog${pageSuffix} | North Point Digital`}
+  description="Practical articles on AI adoption, AWS cost optimisation, and cloud architecture from North Point Digital."
+  canonical={`${siteUrl}${page.url.current}`}
+  breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Blog', url: `${siteUrl}/blog` }]}
+  jsonLd={blogJsonLd}
+>
+  <BlogIndex page={page} categories={categories} />
+</BaseLayout>
