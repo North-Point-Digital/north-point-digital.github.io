@@ -1,0 +1,54 @@
+---
+---
+
+<div id="cookie-banner" class="fixed inset-x-4 bottom-4 z-[60] hidden" role="region" aria-label="Cookie consent">
+  <div class="card mx-auto max-w-xl !p-5 shadow-lg">
+    <p class="text-sm leading-relaxed text-slate-600">
+      We use cookies to see how the site is used and to measure advertising —
+      that's all. Everything on the site works without them.
+      <a href="/privacy-policy" class="font-medium text-accent no-underline hover:underline">Privacy policy</a>
+    </p>
+    <div class="mt-4 flex flex-col gap-2.5 sm:flex-row">
+      <button type="button" class="btn-primary flex-1 !px-5 !py-2.5 text-sm" data-consent-accept>
+        Accept cookies
+      </button>
+      <button type="button" class="btn-secondary flex-1 !px-5 !py-2.5 text-sm" data-consent-reject>
+        Reject non-essential
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'np-consent';
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+
+    function apply(choice) {
+      try { localStorage.setItem(KEY, choice); } catch (e) {}
+      var v = choice === 'granted' ? 'granted' : 'denied';
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          ad_storage: v,
+          ad_user_data: v,
+          ad_personalization: v,
+          analytics_storage: v,
+        });
+      }
+      banner.classList.add('hidden');
+    }
+
+    banner.querySelector('[data-consent-accept]').addEventListener('click', function () { apply('granted'); });
+    banner.querySelector('[data-consent-reject]').addEventListener('click', function () { apply('denied'); });
+
+    if (!stored()) banner.classList.remove('hidden');
+
+    // Footer "Cookie settings" link reopens the banner so a choice can be changed.
+    document.addEventListener('np-consent-open', function () { banner.classList.remove('hidden'); });
+  })();
+</script>

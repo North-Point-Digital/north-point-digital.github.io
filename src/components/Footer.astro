@@ -97,7 +97,18 @@ const serviceLinks = [
         © {year} North Point Digital. Registered in England &amp; Wales, company no. 00000000.
         Registered office: [registered office address].
       </p>
-      <a href="/privacy-policy" class="text-slate-400 no-underline transition-colors duration-fast hover:text-white">Privacy policy</a>
+      <span class="flex items-center gap-5">
+        <a href="/privacy-policy" class="text-slate-400 no-underline transition-colors duration-fast hover:text-white">Privacy policy</a>
+        <button type="button" class="text-slate-400 transition-colors duration-fast hover:text-white" data-cookie-settings>
+          Cookie settings
+        </button>
+      </span>
     </div>
   </div>
 </footer>
+
+<script>
+  document.querySelector('[data-cookie-settings]')?.addEventListener('click', () => {
+    document.dispatchEvent(new CustomEvent('np-consent-open'));
+  });
+</script>
