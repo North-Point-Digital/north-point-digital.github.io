@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HubSpotForm from '../components/HubSpotForm';
-import SimpleContactForm from '../components/SimpleContactForm';
 import { HUBSPOT_CONFIG } from '../config/hubspot';
 
 const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && !HUBSPOT_CONFIG.forms.contact.includes('YOUR_');
@@ -63,7 +62,10 @@ const siteUrl = 'https://northpointdigital.com';
             {isHubSpotConfigured ? (
               <HubSpotForm client:idle formType="contact" region={HUBSPOT_CONFIG.region} />
             ) : (
-              <SimpleContactForm client:idle />
+              <p class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center text-slate-600">
+                Email us at <a href="mailto:contact@northpointdigital.com" class="font-medium text-accent no-underline hover:underline">contact@northpointdigital.com</a>
+                {' '}and we'll reply within one working day.
+              </p>
             )}
           </div>
         </div>

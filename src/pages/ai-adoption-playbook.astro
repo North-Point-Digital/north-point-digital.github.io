@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HubSpotForm from '../components/HubSpotForm';
-import PlaybookLeadCaptureForm from '../components/PlaybookLeadCaptureForm';
 import { HUBSPOT_CONFIG } from '../config/hubspot';
 
 const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && !HUBSPOT_CONFIG.forms.aiPlaybook.includes('YOUR_');
@@ -63,7 +62,10 @@ const benefits = [
             {isHubSpotConfigured ? (
               <HubSpotForm client:idle formType="aiPlaybook" region={HUBSPOT_CONFIG.region} />
             ) : (
-              <PlaybookLeadCaptureForm client:idle />
+              <p class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center text-slate-600">
+                Email <a href="mailto:contact@northpointdigital.com?subject=AI%20Adoption%20Playbook" class="font-medium text-accent no-underline hover:underline">contact@northpointdigital.com</a>
+                {' '}with the subject "Playbook" and we'll send it straight over.
+              </p>
             )}
           </div>
         </div>
