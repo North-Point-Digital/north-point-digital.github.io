@@ -1,6 +1,6 @@
 # North Point Digital — Website Redesign Spec
 
-_Last updated: June 2026. Owner: David Turnbull. Status: approved — in build._
+_Last updated: June 2026. Owner: David Turnbull. Status: shipped (all four slices)._
 
 **Decisions (10 Jun 2026):** Hero = "Most AI projects stall. Yours won't." · AI
 Launchpad is a six-week engagement (fix the 2-week copy) · Footer company details =
