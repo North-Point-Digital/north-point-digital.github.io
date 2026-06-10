@@ -5,24 +5,28 @@ export interface FAQ {
 
 export const faqs: FAQ[] = [
   {
-    question: 'Why should I trust your consultancy?',
-    answer: `<p><strong>Our team brings enterprise-level cloud expertise</strong>—the kind previously only available to Fortune 500 companies—now accessible to growing businesses.</p><p>Here's what sets us apart:</p><ul><li>AWS-certified consultants with 10+ years enterprise cloud experience</li><li>Former senior engineers from leading consultancies and tech companies</li><li>Deep expertise in AWS Well-Architected Framework and cost optimisation</li><li>Risk-free engagement: If we don't identify at least 25% in potential savings, you don't pay</li></ul><p>We deliver measurable results, not vague consulting hours. Our track record speaks for itself.</p>`,
-  },
-  {
     question: "What if you don't find 25% in savings?",
-    answer: `<p><strong>Then you don't pay.</strong> That's our guarantee.</p><p>Our Security & Cost Optimisation Blueprint is designed to be risk-free. We're confident in our ability to identify significant savings because:</p><ul><li>78% of companies overspend on AWS due to common misconfigurations</li><li>Most organisations lack proper tagging, Reserved Instance strategies, and right-sizing</li><li>We've developed proven methodologies for uncovering hidden waste</li></ul><p>If we can't find at least 25% in potential cost reductions during our review, the engagement is free. No questions asked.</p>`,
+    answer: `<p><strong>Then the review is free.</strong></p><p>That's the deal on our Security & Cost Optimisation Blueprint: if we can't find at least 25% in potential cost reductions, you don't pay. We can offer that because 78% of companies overspend on AWS, and the causes are usually the same — no tagging discipline, no Reserved Instance strategy, instances sized for a launch day that never came.</p><p>In 20+ reviews so far, we've averaged 30% in savings found.</p>`,
   },
   {
-    question: 'How long does the Blueprint engagement take?',
-    answer: `<p><strong>Two weeks from start to finish.</strong></p><p>Week 1: We audit your infrastructure, analyse costs, and assess security vulnerabilities. You'll receive an initial findings report with quick wins.</p><p>Week 2: We implement critical optimisations, remediate security issues, set up budget alerts and tagging strategies, and deliver your comprehensive Well-Architected report with a long-term roadmap.</p><p>Plus, you get 30 days of support included to ensure smooth implementation of our recommendations.</p>`,
+    question: 'What do we need to bring to an AI Launchpad?',
+    answer: `<p>Three things:</p><ul><li><strong>A problem worth solving</strong> — a process that eats hours, questions your data could answer, work that queues up. If you're not sure which one to pick, that's what the first week is for.</li><li><strong>Some of your data</strong> — even a sample. We build the prototype on your data, not a demo dataset, because that's the only way the result means anything.</li><li><strong>Someone who can say yes</strong> — a sponsor who'll watch the weekly demos and make the call at the end.</li></ul><p>You don't need an AI strategy document. The Launchpad usually replaces one.</p>`,
+  },
+  {
+    question: 'How long do engagements take?',
+    answer: `<p><strong>The Blueprint takes two weeks. The AI Launchpad takes six.</strong> Both are fixed-fee, priced before we start.</p><p>Blueprint: week one is the audit — costs, security, architecture — with an initial findings report. Week two we implement: critical fixes, budget alerts, tagging, tuning. You end with a full Well-Architected report and roadmap.</p><p>Launchpad: week one we scope the use case and look at your data. Weeks two to five we build, with a demo every week. Week six you get the working prototype, production costings and a route to live.</p><p>Both come with 30 days of support after delivery.</p>`,
   },
   {
     question: 'Do you require long-term contracts?',
-    answer: `<p><strong>No.</strong> We believe in earning your business with results, not locking you into contracts.</p><p>Our Blueprint is a fixed-fee, two-week engagement with clear deliverables. If you want ongoing support afterward, great—but there's zero obligation. Many clients engage us for the Blueprint, implement our recommendations independently, and come back when they need help with new projects.</p><p>We're consultants, not account managers looking for recurring revenue at your expense.</p>`,
+    answer: `<p><strong>No.</strong> Every engagement is fixed-fee with a defined end date, and there's nothing to cancel afterwards.</p><p>Plenty of clients take the Blueprint report, implement it themselves, and come back months later with a new project. That suits us fine — we'd rather be invited back than locked in.</p>`,
   },
   {
     question: 'What makes you different from other AWS consultancies?',
-    answer: `<p><strong>We're specialists, not generalists.</strong></p><p>Most consultancies offer generic "cloud services" across multiple providers. We focus exclusively on AWS optimisation—security, cost reduction, and performance. This specialisation means:</p><ul><li>Deep expertise in AWS-specific cost optimisation strategies</li><li>Fixed-fee engagements with concrete deliverables, not open-ended hourly billing</li><li>Focus on immediate ROI, not theoretical recommendations</li><li>Boutique service with direct access to senior engineers (no junior staff padding hours)</li></ul><p>We do one thing exceptionally well: make your AWS infrastructure lean, secure, and profitable.</p>`,
+    answer: `<p><strong>We only do AWS, and we put senior engineers on every engagement.</strong></p><ul><li>The people you meet on the first call are the people who do the work — no junior staff padding hours</li><li>Fixed fees with named deliverables, not open-ended day rates</li><li>We fix critical issues during a review rather than listing them in a PDF</li><li>If we don't find 25% in savings on a Blueprint, you don't pay</li></ul>`,
+  },
+  {
+    question: 'Why should I trust your consultancy?',
+    answer: `<p>Fair question — every consultancy says they're experts. Here's what you can check:</p><ul><li>We're an official AWS Partner, and our consultants hold AWS certifications with 10+ years of enterprise cloud work behind them</li><li>Our case studies name the clients and the numbers — zero-downtime launches, NHS compliance sign-off, 30-second Minecraft deployments</li><li>The Blueprint guarantee is in writing: no 25% savings found, no fee</li><li>The first call is free, and the people on it are engineers</li></ul>`,
   },
 ];
 

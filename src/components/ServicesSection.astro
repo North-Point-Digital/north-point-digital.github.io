@@ -6,20 +6,22 @@ const supportingServices = [
     title: 'Cut your AWS bill',
     name: 'Security & Cost Optimisation Blueprint',
     description:
-      'A Well-Architected review focused on the two pillars that pay for themselves: cost and security. We target 25%+ savings and fix critical issues as we find them.',
-    features: ['25%+ cost reduction target', 'Security remediation included', 'No upfront cost'],
+      'A two-week Well-Architected review of the pillars that pay for themselves: cost and security. We fix critical issues while we’re in there — and if we don’t find 25% in savings, you don’t pay.',
+    features: ['No savings found, no fee', 'Security fixes included', 'Report and roadmap in two weeks'],
     link: '/aws-profitability-resilience-blueprint',
     trackName: 'Save Money',
+    icon: 'M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6',
   },
   {
-    title: 'Build on solid ground',
+    title: 'Foundations that hold up',
     name: 'Build Better on AWS',
     description:
-      'Architecture, migrations, landing zones and DevOps for teams that need AWS done properly — including AWS-funded migration programmes.',
-    features: ['Cloud migrations & MAP', 'Landing zones & governance', 'DevOps & SRE'],
+      'Architecture, migrations, landing zones and DevOps — with AWS MAP funding where your workload qualifies. For teams that want deployments to be boring.',
+    features: ['Cloud migrations & MAP funding', 'Landing zones & governance', 'DevOps & SRE'],
     link: '/build-better',
     trackName: 'Build Better',
     mra: true,
+    icon: 'M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6',
   },
 ];
 ---
@@ -40,11 +42,11 @@ const supportingServices = [
         <div class="flex flex-col gap-8 lg:flex-row lg:items-start">
           <div class="flex-1">
             <p class="eyebrow mb-3">Flagship · AI Launchpad</p>
-            <h3 class="text-2xl font-semibold text-slate-900">Put AI to work</h3>
+            <h3 class="text-2xl font-semibold text-slate-900">Ship working AI in six weeks</h3>
             <p class="mt-3 max-w-xl leading-relaxed text-slate-600">
-              A fixed-fee, six-week proof of concept built with your data on AWS —
-              Bedrock, SageMaker and friends. You get working software, production
-              costings and a roadmap. Not slideware.
+              A fixed-fee proof of concept built with your data on AWS — Bedrock,
+              SageMaker and whatever else the job needs. Weekly demos while we build.
+              At the end: software your board can try, with the running costs attached.
             </p>
             <ul class="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
               {['Working prototype on your data', 'Production cost projections', 'Implementation roadmap', 'Fixed fee, six weeks'].map((f) => (
@@ -86,6 +88,11 @@ const supportingServices = [
 
       {supportingServices.map((service) => (
         <article class="card card-hover flex flex-col">
+          <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-accent-tint">
+            <svg class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d={service.icon} />
+            </svg>
+          </div>
           <p class="eyebrow mb-3">{service.name}</p>
           <h3 class="text-xl font-semibold text-slate-900">{service.title}</h3>
           <p class="mt-3 leading-relaxed text-slate-600">{service.description}</p>

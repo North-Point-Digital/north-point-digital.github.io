@@ -4,60 +4,115 @@ const CALENDLY = 'https://calendly.com/david-northpointdigital/north-point-digit
 
 <section id="home" class="relative overflow-hidden bg-white pt-16">
   <div
-    class="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_at_top,#eff6ff_0%,transparent_65%)]"
+    class="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(ellipse_at_top,#eff6ff_0%,transparent_65%)]"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,#cbd5e1_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_at_top,black_0%,transparent_60%)] opacity-40"
     aria-hidden="true"
   >
   </div>
 
-  <div class="container-site relative flex flex-col items-center py-24 text-center md:py-32">
-    <p class="eyebrow mb-6">AI on AWS · UK consultancy</p>
+  <div class="container-site relative grid grid-cols-1 items-center gap-14 py-20 md:py-28 lg:grid-cols-[7fr_5fr]">
+    <div class="text-center lg:text-left">
+      <p class="eyebrow mb-6">AI on AWS · UK consultancy</p>
 
-    <h1 class="max-w-4xl text-h1">
-      Most AI projects stall.<br />
-      <span class="text-accent">Yours won't.</span>
-    </h1>
+      <h1 class="text-h1">
+        Most AI projects stall.<br />
+        <span class="text-accent">Yours won't.</span>
+      </h1>
 
-    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-      Working AI on AWS in six weeks, fixed fee, with costings you can take to your
-      board. Built by a UK team that has spent a decade cutting cloud bills and
-      tightening security.
-    </p>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl lg:mx-0">
+        We build working AI on AWS in six weeks, for a fixed fee, with running costs
+        your board can read. Funded, more often than not, by what we cut from your
+        cloud bill.
+      </p>
 
-    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-      <a
-        href={CALENDLY}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-primary"
-        data-track-cta="Hero Book a Call"
-      >
-        Book a free call
-        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </a>
-      <a href="/ai-adoption-playbook" class="btn-secondary" data-track-cta="Hero Download Playbook">
-        Get the AI Adoption Playbook
-      </a>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+        <a
+          href={CALENDLY}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+          data-track-cta="Hero Book a Call"
+        >
+          Book a free call
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/ai-adoption-playbook" class="btn-secondary" data-track-cta="Hero Download Playbook">
+          Get the AI Adoption Playbook
+        </a>
+      </div>
+
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-500 lg:justify-start">
+        <span class="flex items-center gap-2.5">
+          <img src="/aws-logo.png" alt="Amazon Web Services" width="34" height="20" class="h-5 w-auto" loading="eager" />
+          Official AWS Partner
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          Fixed-fee engagements
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          No long-term contracts
+        </span>
+      </div>
     </div>
 
-    <div class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-500">
-      <span class="flex items-center gap-2.5">
-        <img src="/aws-logo.png" alt="Amazon Web Services" width="34" height="20" class="h-5 w-auto" loading="eager" />
-        Official AWS Partner
-      </span>
-      <span class="flex items-center gap-2">
-        <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 6L9 17l-5-5" />
-        </svg>
-        Fixed-fee engagements
-      </span>
-      <span class="flex items-center gap-2">
-        <svg class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M20 6L9 17l-5-5" />
-        </svg>
-        No long-term contracts
-      </span>
-    </div>
+    {/* Your data flowing into a working AI system — drawn, not stock */}
+    <svg class="mx-auto hidden w-full max-w-[460px] lg:block" viewBox="0 0 460 400" fill="none" aria-hidden="true">
+      <defs>
+        <marker id="hero-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0L8 4L0 8z" fill="#94a3b8" />
+        </marker>
+      </defs>
+
+      <g stroke="#cbd5e1" stroke-width="1.5">
+        <rect x="12" y="32" width="128" height="48" rx="10" fill="#f8fafc" />
+        <rect x="12" y="176" width="128" height="48" rx="10" fill="#f8fafc" />
+        <rect x="12" y="320" width="128" height="48" rx="10" fill="#f8fafc" />
+      </g>
+      <text x="76" y="52" text-anchor="middle" fill="#64748b" font-size="11" font-family="ui-monospace, monospace">your documents</text>
+      <text x="76" y="68" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="600" font-family="ui-monospace, monospace">contracts.pdf</text>
+      <text x="76" y="196" text-anchor="middle" fill="#64748b" font-size="11" font-family="ui-monospace, monospace">your systems</text>
+      <text x="76" y="212" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="600" font-family="ui-monospace, monospace">crm_export.csv</text>
+      <text x="76" y="340" text-anchor="middle" fill="#64748b" font-size="11" font-family="ui-monospace, monospace">your inbox</text>
+      <text x="76" y="356" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="600" font-family="ui-monospace, monospace">support tickets</text>
+
+      <g stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#hero-arrow)">
+        <path d="M140 56 C 190 56, 180 168, 218 184" />
+        <path d="M140 200 L 214 200" />
+        <path d="M140 344 C 190 344, 180 232, 218 216" />
+      </g>
+
+      <rect x="222" y="158" width="148" height="84" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" />
+      <text x="296" y="190" text-anchor="middle" fill="#2563eb" font-size="14" font-weight="600" font-family="ui-monospace, monospace">your AI</text>
+      <text x="296" y="210" text-anchor="middle" fill="#64748b" font-size="11" font-family="ui-monospace, monospace">on AWS Bedrock</text>
+      <rect x="252" y="222" width="88" height="2.5" rx="1.25" fill="#bfdbfe" />
+
+      <g stroke="#94a3b8" stroke-width="1.5" marker-end="url(#hero-arrow)">
+        <path d="M370 184 C 400 178, 400 124, 414 116" />
+        <path d="M370 216 C 400 222, 400 276, 414 284" />
+      </g>
+
+      <g stroke="#cbd5e1" stroke-width="1.5">
+        <rect x="332" y="76" width="116" height="44" rx="10" fill="#ffffff" />
+        <rect x="332" y="280" width="116" height="44" rx="10" fill="#ffffff" />
+      </g>
+      <text x="390" y="95" text-anchor="middle" fill="#64748b" font-size="11" font-family="ui-monospace, monospace">answers in</text>
+      <text x="390" y="110" text-anchor="middle" fill="#059669" font-size="13" font-weight="600" font-family="ui-monospace, monospace">seconds</text>
+      <text x="390" y="299" text-anchor="middle" fill="#64748b" font-size="11" font-family="ui-monospace, monospace">hours saved</text>
+      <text x="390" y="314" text-anchor="middle" fill="#059669" font-size="13" font-weight="600" font-family="ui-monospace, monospace">every week</text>
+
+      <text x="296" y="262" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="ui-monospace, monospace">six weeks · fixed fee</text>
+    </svg>
   </div>
 </section>
