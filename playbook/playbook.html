@@ -125,6 +125,7 @@
     <li><strong>Step 2</strong> — The data readiness check</li>
     <li><strong>Step 3</strong> — What it actually costs</li>
     <li><strong>Step 4</strong> — Build it, buy it, or use no-code?</li>
+    <li><strong>The landscape</strong> — Everyday AI tools · agents &amp; harnesses · orchestration</li>
     <li><strong>Step 5</strong> — Prove it in six weeks</li>
     <li><strong>Step 6</strong> — Questions that keep providers honest</li>
   </ul>
@@ -221,7 +222,66 @@
   <div class="footer"><span>The AI Adoption Playbook</span><span>06</span></div>
 </div>
 
-<!-- Page 7: Step 5 -->
+<!-- Page 7: Landscape — everyday tools -->
+<div class="page">
+  <p class="eyebrow">The landscape · Everyday tools</p>
+  <h2>The assistants your team should already be using</h2>
+  <p>Before any project, there's the £20-a-month tier: general-purpose AI assistants. As of mid-2026, four frontier models sit close together at the top — closer than the marketing suggests — and each has a personality worth knowing:</p>
+  <table>
+    <tr><th style="width:28%">Tool</th><th>Worth knowing</th></tr>
+    <tr><td><strong>Claude</strong> (Anthropic)</td><td>Consistently strong on writing and coding; the most natural-sounding text and a steady voice across long documents — useful for customer-facing copy</td></tr>
+    <tr><td><strong>ChatGPT</strong> (OpenAI, GPT-5.5)</td><td>The safe generalist: neck-and-neck with Claude on coding, a favourite for creative work</td></tr>
+    <tr><td><strong>Gemini</strong> (Google, 3.1 Pro)</td><td>Leads on reasoning and reads enormous amounts of text in one go — hand it the whole document pile. Also the cheapest frontier option per call</td></tr>
+    <tr><td><strong>Microsoft Copilot</strong></td><td>Less a model than a delivery mechanism: frontier AI inside Word, Excel, Outlook and Teams. If your business lives in Microsoft 365, it's the lowest-friction starting point</td></tr>
+  </table>
+  <p>The pattern to notice: there is <strong>no "best" model</strong>, and the rankings reshuffle every few months. That's good news — it means prices keep falling and you should never marry one vendor.</p>
+  <div class="callout">
+    <p><strong>The two rules that outlast every release cycle:</strong> test on your own data, because a benchmark says nothing about how a model handles <em>your</em> invoices and <em>your</em> customers; and keep whatever you build swappable, so the underlying model can change without starting again.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>07</span></div>
+</div>
+
+<!-- Page 8: Landscape — agents & harnesses -->
+<div class="page">
+  <p class="eyebrow">The landscape · Agentic AI</p>
+  <h2>Agents and harnesses, in plain English</h2>
+  <p><strong>A chatbot answers. An agent acts.</strong> That's the whole distinction. An agent doesn't just tell you what to write back to a customer — it reads the message, looks up the order, drafts the reply and files the record, then asks a human to approve. The examples in Step 1 are all agent work.</p>
+  <p>Agents are also genuinely early. Gartner expects around 40% of enterprise applications to include task-specific agents by the end of 2026 — up from fewer than 5% in 2025 — while Deloitte found only about a fifth of companies have a mature way of governing them. Translation: real momentum, lagging guardrails. The opportunity and the caution are the same fact.</p>
+  <h3>The harness: the part that does the work</h3>
+  <p>The model gets the headlines, but a model on its own is a very capable text box. What turns it into something that can do a job is the layer wrapped around it — the <strong>harness</strong>: the tools the agent can use, the memory it keeps, and the guardrails, approvals and audit trail that make it trustworthy. If the model is the engine, the harness is the rest of the car.</p>
+  <ul>
+    <li><strong>Hermes</strong> (Nous Research) — an open-source harness that wraps around any model and gives it tools, layered memory and long-running, multi-agent structure. The thesis: a small team with open tooling can stand up an agent rivalling commercial offerings, without handing data to a single vendor.</li>
+    <li><strong>OpenClaw</strong> — a self-hosted, MIT-licensed gateway connecting the chat apps your team already uses (WhatsApp, Slack, Teams, iMessage) to an agent you run yourself. Its quiet superpower is adoption: nobody has to learn a new app.</li>
+    <li><strong>Coding agents</strong> like Claude Code sit in the same family — agents with a harness purpose-built for software work, often driven from the tools above.</li>
+  </ul>
+  <div class="callout">
+    <p><strong>The rule that matters more than the tooling:</strong> keep a person at the decision point. Let the agent do the legwork; let a human approve anything that touches money, customers or reputation. Every stable small-business agent we've seen follows it.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>08</span></div>
+</div>
+
+<!-- Page 9: Landscape — orchestration -->
+<div class="page">
+  <p class="eyebrow">The landscape · Orchestration</p>
+  <h2>One agent or many?</h2>
+  <p>Once one agent works, the temptation is to wire up a whole team of them. Sometimes that's the breakthrough; often it's complexity you didn't need. A <strong>single agent</strong> — one model in a loop with good tools — is simpler, cheaper, far easier to debug, and handles more than people expect. Start there.</p>
+  <h3>The tools you'll hear named</h3>
+  <table>
+    <tr><th style="width:25%">Tool</th><th>What it is, honestly</th></tr>
+    <tr><td><strong>n8n</strong></td><td>Workflow automation with AI steps — visual flows connecting your apps, with model calls in the middle. The most small-business-friendly entry point: many "agent" needs are really an n8n workflow with one clever step</td></tr>
+    <tr><td><strong>CrewAI</strong></td><td>Role-based agent "crews" modelled on a human team. Fast to prototype; its convenient abstractions can get in the way at production scale, and observability is weaker</td></tr>
+    <tr><td><strong>LangGraph</strong></td><td>Work modelled as a graph of steps with state, checkpoints and human-in-the-loop approvals. The sensible default when a workflow needs branching or auditability</td></tr>
+    <tr><td><strong>Vendor SDKs</strong></td><td>The OpenAI Agents SDK and Anthropic's Claude Agent SDK — often the quickest path for a single agent with a tool or two, no framework overhead</td></tr>
+  </table>
+  <h3>When many beats one — and when it doesn't</h3>
+  <p>Multi-agent earns its keep when the work genuinely splits into roles with different tools and the volume justifies the overhead. It is <strong>not</strong> worth it while you're still experimenting — or, most importantly, while you can't yet reliably observe and debug <em>one</em> agent. Adding agents to a system you can't see into doesn't add capability; it adds places for things to go wrong quietly.</p>
+  <div class="callout">
+    <p><strong>For most small businesses the honest sequence is:</strong> assistants first (previous page), then one agent on one workflow with a human approval step, then — only if the numbers demand it — orchestration. Skipping steps is how demos happen and value doesn't.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>09</span></div>
+</div>
+
+<!-- Page 10: Step 5 -->
 <div class="page">
   <p class="eyebrow">Step 5</p>
   <h2>Prove it in six weeks</h2>
@@ -244,10 +304,10 @@
   <div class="callout">
     <p><strong>What you should hold at the end</strong> — whoever does the work: software you can put in front of users, honest production running costs, a written route to live, and ownership of the code and prompts. A slide deck with a roadmap is not a proof of concept, whatever the invoice says.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>07</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>10</span></div>
 </div>
 
-<!-- Page 8: Step 6 -->
+<!-- Page 11: Step 6 -->
 <div class="page">
   <p class="eyebrow">Step 6</p>
   <h2>Questions that keep providers honest</h2>
@@ -270,10 +330,10 @@
     <li>The prototype impressed everyone and integrated with nothing</li>
     <li>No one inside the business owned it, so it ended with the invoice</li>
   </ul>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>08</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>11</span></div>
 </div>
 
-<!-- Page 9: About / next step -->
+<!-- Page 12: About / next step -->
 <div class="page">
   <div class="tint"></div>
   <div class="dots"></div>
@@ -292,7 +352,7 @@
   </div>
   <p style="margin-top:14pt; font-size:9.5pt; color:#64748b;">Sources for figures used in this guide: UK government AI adoption research (Feb 2026); published UK AI consultancy price guides (2026); industry analyses of AI project cost overruns; Innovate UK grant programme documentation. Detailed citations at northpointdigital.com/blog.</p>
   </div>
-  <div class="footer"><span>© 2026 North Point Digital</span><span>09</span></div>
+  <div class="footer"><span>© 2026 North Point Digital</span><span>12</span></div>
 </div>
 
 </body>
