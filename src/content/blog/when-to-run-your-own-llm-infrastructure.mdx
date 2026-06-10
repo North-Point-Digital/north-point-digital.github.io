@@ -1,0 +1,63 @@
+---
+title: "Should You Run Your Own LLM? When Self-Hosting Pays Off, and When It Doesn't"
+excerpt: "Self-hosting an AI model sounds cheaper and more private. Usually it's neither. A business-first guide to API vs managed vs self-hosted — and the costs people forget to count."
+author: "David Turnbull"
+authorRole: "Founder & AWS Solutions Architect"
+publishDate: "2026-06-10"
+category: "AI Infrastructure"
+tags: ["AI", "LLM", "AI Infrastructure"]
+metaDescription: "When should a business run its own LLM infrastructure, and when should it use an API or managed service? A plain-English guide to the cost, privacy and control trade-offs."
+---
+
+## Running your own AI sounds cheaper and safer. Usually it's neither.
+
+Two instincts push businesses towards hosting their own AI model. The first is cost: stop paying a few pennies every time someone uses it, and run it yourself. The second is privacy: keep our data inside our own walls. Both are reasonable. Both, once you add up the full picture, are usually wrong — and the cases where they're right are specific enough that you'll know if you're one of them.
+
+Here's how to tell which side of the line you're on, without the hype in either direction.
+
+### There are three options, not two
+
+The debate usually gets framed as "pay a provider" versus "run it ourselves." There's a third option in the middle that most people forget, and it's often the right answer:
+
+- **A provider's API** — OpenAI, Anthropic, Google and the rest. You send a request, you get an answer, you pay per use. Nothing to run.
+- **A managed open model** — services like AWS Bedrock or SageMaker let you use open-weight models without touching a server, and the model runs inside your own cloud account so your data stays there.
+- **Self-hosting** — you take an open-weight model (Llama, Mistral, Qwen, DeepSeek and others have closed much of the gap with the closed models) and run it on your own GPUs. Full control, and full responsibility.
+
+Most "should we self-host?" conversations are really "we want control and privacy" — and the managed middle option delivers most of that without the hard part.
+
+### What self-hosting actually costs
+
+The number everyone quotes — the GPU rental rate — is the smallest part of the bill. A capable GPU rents for a few dollars an hour, and smaller open models run on fairly modest hardware. If that were the whole cost, self-hosting would be a no-brainer.
+
+It isn't, because you also take on everything around the model: scaling it up and down with demand, keeping it online, patching it, updating it, monitoring it, securing it — and paying the people who do all of that. You're not buying a cheaper model. You're hiring a team. For most businesses, the all-in cost of self-hosting comfortably exceeds the API bill it was supposed to replace, because the API bill never included a salaried platform engineer.
+
+### When self-hosting genuinely makes sense
+
+There are real reasons to do it. If one of these is you, it's worth taking seriously:
+
+- **Hard data-residency or compliance rules** that won't let data leave a specific environment, and that a managed service in your own cloud doesn't satisfy.
+- **Very high, sustained volume,** where the per-use cost of an API genuinely overtakes the cost of running your own.
+- **Deep customisation** — a fine-tuned open model that's a core part of your product, not a convenience.
+- **Latency, offline or edge requirements** that a hosted API can't meet.
+
+### When to stay on an API or managed service
+
+- **You're below the volume where the maths flips** — which covers most small and mid-sized businesses.
+- **You don't have an ops or ML team,** and you don't want the cost and distraction of building one.
+- **Your privacy requirement is already met** by enterprise terms or by running a managed open model in your own cloud account. It usually is.
+
+### The privacy point, said plainly
+
+"In the cloud" does not mean "exposed." Under the enterprise terms of the major providers, your inputs aren't used to train their models. And with a managed service like Bedrock or SageMaker, the model runs inside your own AWS account — your data doesn't leave your boundary. For the large majority of compliance needs, that is enough, and it doesn't require you to rack a single GPU.
+
+### A simple test
+
+Add up the real annual cost of self-hosting — cloud GPUs or hardware, **plus** the people to run it — and put it next to your projected API or managed-service bill. If self-hosting isn't clearly cheaper, *and* you don't have a hard data-residency reason you can name, the API or managed route wins. It's not the brave answer, but it's usually the right one.
+
+> **Pro Tip:** We're an AWS Partner and deliberately model-agnostic, so we'll happily set you up on Bedrock, on SageMaker, or fully self-hosted. We'll also tell you honestly that most businesses don't need to self-host — and if you genuinely do, running that infrastructure is exactly the part you pay us for, so you never have to log into it.
+
+## Not sure whether to host your own model or use a service?
+
+A free 30-minute call with an engineer who has built it both ways. Tell us your volumes and your constraints, and we'll tell you which option is cheaper and simpler for *you*.
+
+[Book a free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call), or read up first with the [2026 AI model landscape](/blog/best-ai-models-2026-for-business).
