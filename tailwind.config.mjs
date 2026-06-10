@@ -11,13 +11,6 @@ export default {
           tint: '#eff6ff',
         },
         ink: '#0f172a',
-        // Legacy palette — only inner pages not yet redesigned. Remove in slice 3.
-        primary: '#667eea',
-        secondary: '#764ba2',
-      },
-      backgroundImage: {
-        // Legacy gradients — remove in slice 3.
-        'gradient-primary': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       },
       fontFamily: {
         sans: [

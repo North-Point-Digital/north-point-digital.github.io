@@ -6,12 +6,6 @@ import { HUBSPOT_CONFIG } from '../config/hubspot';
 
 const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && !HUBSPOT_CONFIG.forms.contact.includes('YOUR_');
 const siteUrl = 'https://northpointdigital.com';
-
-const contactInfo = [
-  { title: 'Email Us', description: 'Get in touch via email for inquiries and support', detail: 'contact@northpointdigital.com', isEmail: true },
-  { title: 'Call Us', description: 'Speak directly with our team for immediate assistance', detail: 'Available during business hours', isEmail: false },
-  { title: 'Location', description: 'Our team is ready to help with your cloud transformation', detail: 'Remote-first consultancy serving clients globally', isEmail: false },
-];
 ---
 
 <BaseLayout
@@ -21,43 +15,58 @@ const contactInfo = [
   breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Contact', url: `${siteUrl}/contact` }]}
   jsonLd={{ "@context": "https://schema.org", "@type": "ContactPage", name: "Contact North Point Digital", url: `${siteUrl}/contact`, mainEntity: { "@type": "Organization", name: "North Point Digital", email: "contact@northpointdigital.com", url: `${siteUrl}/` } }}
 >
-  <div class="min-h-screen bg-gradient-primary pt-20">
-    <div class="max-w-[1200px] mx-auto px-8 py-16">
-      <section class="text-center mb-16">
-        <h1 class="text-h1 text-white mb-4 font-bold fade-in">Get In Touch</h1>
-        <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 mb-8 max-w-[800px] mx-auto fade-in fade-in-delay-1">Ready to transform your AWS infrastructure? Let's discuss how we can help reduce costs, improve security, and accelerate your AI journey.</p>
-      </section>
+  <section class="relative overflow-hidden bg-white pt-16">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[360px] bg-[radial-gradient(ellipse_at_top,#eff6ff_0%,transparent_65%)]" aria-hidden="true"></div>
+    <div class="container-site relative py-20 md:py-24">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-6">Contact</p>
+        <h1 class="text-h1">Get in touch</h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600 md:text-xl">
+          Tell us what you're working on — AI, costs, security, a migration — and
+          we'll come back with a straight answer.
+        </p>
+      </div>
 
-      <div class="grid grid-cols-1 gap-12 mb-16 md:grid-cols-2 md:items-start">
-        <div class="glass-card p-12 text-white">
-          <h2 class="text-[2rem] mb-6">Contact Information</h2>
-          <ul class="list-none p-0">
-            {contactInfo.map((c) => (
-              <li class="py-6 border-b border-white/10 last:border-none">
-                <div>
-                  <h3 class="text-xl mb-2 text-white">{c.title}</h3>
-                  <p class="text-white/80 leading-relaxed">{c.description}</p>
-                  {c.isEmail ? (
-                    <a href={`mailto:${c.detail}`} class="text-white no-underline hover:underline mt-2 inline-block font-medium">{c.detail}</a>
-                  ) : (
-                    <p class="font-medium mt-2">{c.detail}</p>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
+      <div class="mx-auto mt-14 grid max-w-5xl grid-cols-1 items-start gap-8 lg:grid-cols-[2fr_3fr]">
+        <div class="space-y-4">
+          <div class="card">
+            <h2 class="text-lg font-semibold text-slate-900">Email</h2>
+            <p class="mt-2 text-slate-600">For anything — enquiries, questions, or just to introduce yourself.</p>
+            <a href="mailto:contact@northpointdigital.com" class="mt-3 inline-block font-medium text-accent no-underline hover:underline">
+              contact@northpointdigital.com
+            </a>
+          </div>
+          <div class="card">
+            <h2 class="text-lg font-semibold text-slate-900">Prefer to talk?</h2>
+            <p class="mt-2 text-slate-600">Book a free 30-minute call directly into the calendar.</p>
+            <a
+              href="https://calendly.com/david-northpointdigital/north-point-digital-initial-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-3 inline-block font-medium text-accent no-underline hover:underline"
+              data-track-cta="Contact Book a Call"
+            >
+              Book a free call →
+            </a>
+          </div>
+          <div class="card">
+            <h2 class="text-lg font-semibold text-slate-900">Where we are</h2>
+            <p class="mt-2 text-slate-600">A remote-first consultancy based in the UK, working with clients wherever AWS is.</p>
+          </div>
         </div>
 
-        <div class="bg-white rounded-[20px] p-12 shadow-xl">
-          <h2 class="text-3xl text-[#333] mb-4 text-center">Send Us a Message</h2>
-          <p class="text-[#666] text-center mb-8 leading-relaxed">Fill out the form below and our team will get back to you within 24 hours</p>
-          {isHubSpotConfigured ? (
-            <HubSpotForm client:idle formType="contact" region={HUBSPOT_CONFIG.region} />
-          ) : (
-            <SimpleContactForm client:idle />
-          )}
+        <div class="card lg:p-10">
+          <h2 class="text-xl font-semibold text-slate-900">Send us a message</h2>
+          <p class="mt-2 text-slate-600">We aim to reply within one working day.</p>
+          <div class="mt-6">
+            {isHubSpotConfigured ? (
+              <HubSpotForm client:idle formType="contact" region={HUBSPOT_CONFIG.region} />
+            ) : (
+              <SimpleContactForm client:idle />
+            )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>

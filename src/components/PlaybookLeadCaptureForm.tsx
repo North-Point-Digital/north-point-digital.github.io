@@ -14,7 +14,7 @@ interface PlaybookLeadCaptureFormProps {
   onSubmit: (data: FormData) => void;
 }
 
-const inputStyles = 'px-4 py-3 border border-[#ddd] rounded text-base transition-all duration-300 hover:border-primary focus:border-primary outline-none';
+const inputStyles = 'px-4 py-3 border border-slate-300 rounded-lg text-base transition-colors duration-200 hover:border-slate-400 focus:border-accent outline-none';
 const errorInputStyles = 'border-[#dc3545]';
 
 const PlaybookLeadCaptureForm: React.FC<PlaybookLeadCaptureFormProps> = ({ onSubmit }) => {
@@ -182,7 +182,7 @@ const PlaybookLeadCaptureForm: React.FC<PlaybookLeadCaptureFormProps> = ({ onSub
       <button
         type="submit"
         disabled={isSubmitting}
-        className="px-8 py-4 bg-primary text-white border-none rounded font-semibold text-lg cursor-pointer transition-all duration-300 hover:bg-[#5661d5] hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+        className="px-8 py-4 bg-accent text-white border-none rounded-lg font-semibold text-lg cursor-pointer transition-colors duration-200 hover:bg-accent-hover disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Processing...' : 'Download Playbook'}
       </button>

@@ -55,7 +55,7 @@ const SimpleContactForm: React.FC<SimpleContactFormProps> = ({ onSubmit }) => {
             onChange={handleChange}
             required
             disabled={isSubmitting}
-            className="px-4 py-3 border border-[#ddd] rounded focus:border-primary hover:border-primary outline-none transition-all duration-300"
+            className="px-4 py-3 border border-slate-300 rounded-lg focus:border-accent hover:border-slate-400 outline-none transition-colors duration-200"
           />
         </div>
 
@@ -69,7 +69,7 @@ const SimpleContactForm: React.FC<SimpleContactFormProps> = ({ onSubmit }) => {
             onChange={handleChange}
             required
             disabled={isSubmitting}
-            className="px-4 py-3 border border-[#ddd] rounded focus:border-primary hover:border-primary outline-none transition-all duration-300"
+            className="px-4 py-3 border border-slate-300 rounded-lg focus:border-accent hover:border-slate-400 outline-none transition-colors duration-200"
           />
         </div>
 
@@ -82,7 +82,7 @@ const SimpleContactForm: React.FC<SimpleContactFormProps> = ({ onSubmit }) => {
             value={formData.company}
             onChange={handleChange}
             disabled={isSubmitting}
-            className="px-4 py-3 border border-[#ddd] rounded focus:border-primary hover:border-primary outline-none transition-all duration-300"
+            className="px-4 py-3 border border-slate-300 rounded-lg focus:border-accent hover:border-slate-400 outline-none transition-colors duration-200"
           />
         </div>
 
@@ -95,14 +95,14 @@ const SimpleContactForm: React.FC<SimpleContactFormProps> = ({ onSubmit }) => {
             onChange={handleChange}
             required
             disabled={isSubmitting}
-            className="px-4 py-3 border border-[#ddd] rounded focus:border-primary hover:border-primary outline-none transition-all duration-300 resize-y min-h-[120px]"
+            className="px-4 py-3 border border-slate-300 rounded-lg focus:border-accent hover:border-slate-400 outline-none transition-colors duration-200 resize-y min-h-[120px]"
           />
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="px-8 py-3 bg-primary text-white border-none rounded font-semibold text-lg cursor-pointer transition-all duration-300 hover:bg-[#5661d5] hover:scale-[1.02] active:scale-[0.98] disabled:bg-[#ccc] disabled:cursor-not-allowed"
+          className="px-8 py-3 bg-accent text-white border-none rounded-lg font-semibold text-lg cursor-pointer transition-colors duration-200 hover:bg-accent-hover disabled:bg-slate-300 disabled:cursor-not-allowed"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>

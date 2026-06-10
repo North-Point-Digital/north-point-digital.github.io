@@ -8,72 +8,77 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   canonical="https://northpointdigital.com/thank-you"
   jsonLd={{ "@context": "https://schema.org", "@type": "Reservation", reservationStatus: "https://schema.org/ReservationConfirmed", provider: { "@type": "Organization", name: "North Point Digital" } }}
 >
-  <div class="min-h-screen bg-gradient-primary pt-20 flex items-center justify-center">
-    <div class="max-w-[800px] mx-auto px-8 py-16 w-full">
-      <div class="bg-white rounded-[20px] p-16 px-12 shadow-xl text-center">
-        <div class="w-[100px] h-[100px] mx-auto mb-8 bg-gradient-primary rounded-full flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  <section class="flex min-h-screen items-center justify-center bg-slate-50 pt-16">
+    <div class="container-site max-w-3xl py-16">
+      <div class="card p-10 text-center md:p-14">
+        <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-accent-tint">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 text-accent" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
-        <h1 class="text-[clamp(2rem,4vw,3rem)] text-[#333] mb-4 font-bold">Thank You for Booking!</h1>
-        <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-[#666] mb-8 leading-relaxed" id="thank-you-subtitle">We've received your booking request and we're excited to speak with you. You should receive a confirmation email shortly with all the details.</p>
+        <h1 class="mt-8 text-[clamp(1.875rem,3.5vw,2.5rem)] font-semibold tracking-tight text-slate-900">Thanks — you're booked in</h1>
+        <p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-slate-600" id="thank-you-subtitle">
+          We've received your booking and we're looking forward to the call. A
+          confirmation email with the details is on its way.
+        </p>
 
-        <div id="meeting-details" class="hidden bg-gradient-primary rounded-[15px] p-10 my-8 text-white text-left"></div>
+        <div id="meeting-details" class="my-8 hidden rounded-2xl border border-slate-200 bg-slate-50 p-8 text-left"></div>
 
-        <div class="bg-[#f8f9fa] rounded-[15px] p-8 my-8 text-left">
-          <h3 class="text-xl text-[#333] mb-4">What Happens Next?</h3>
-          <ul class="list-disc pl-6 m-0">
-            <li class="py-3 text-[#666] leading-relaxed">You'll receive a calendar confirmation email with meeting details</li>
-            <li class="py-3 text-[#666] leading-relaxed">We'll send you a brief pre-call questionnaire to help us prepare</li>
-            <li class="py-3 text-[#666] leading-relaxed">Our team will review your requirements before the call</li>
-            <li class="py-3 text-[#666] leading-relaxed">During the call, we'll discuss how we can help save money on your AWS bill</li>
+        <div class="my-8 rounded-2xl border border-slate-200 bg-slate-50 p-8 text-left">
+          <h2 class="text-lg font-semibold text-slate-900">What happens next</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-6 leading-relaxed text-slate-600">
+            <li>You'll get a calendar confirmation email with the meeting details</li>
+            <li>We'll send a short pre-call questionnaire so we arrive prepared</li>
+            <li>We'll review your requirements before the call</li>
+            <li>On the call, we'll talk through where AI and cost savings fit your estate</li>
           </ul>
         </div>
 
-        <div class="bg-[#f8f9fa] rounded-[15px] p-8 my-8 text-left">
-          <h3 class="text-xl text-[#333] mb-4">Need to Make Changes?</h3>
-          <ul class="list-disc pl-6 m-0">
-            <li class="py-3 text-[#666] leading-relaxed">Check your email for the calendar confirmation</li>
-            <li class="py-3 text-[#666] leading-relaxed">Use the reschedule link in the email if you need to change the time</li>
-            <li class="py-3 text-[#666] leading-relaxed">Contact us at contact@northpointdigital.com for any questions</li>
+        <div class="my-8 rounded-2xl border border-slate-200 bg-slate-50 p-8 text-left">
+          <h2 class="text-lg font-semibold text-slate-900">Need to make changes?</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-6 leading-relaxed text-slate-600">
+            <li>Check your email for the calendar confirmation</li>
+            <li>Use the reschedule link in the email to change the time</li>
+            <li>Or email <a href="mailto:contact@northpointdigital.com" class="font-medium text-accent no-underline hover:underline">contact@northpointdigital.com</a> with any questions</li>
           </ul>
         </div>
 
-        <div class="flex gap-4 justify-center flex-wrap mt-8">
-          <a href="/" class="inline-flex items-center gap-2 py-4 px-8 bg-gradient-primary text-white no-underline rounded-[10px] font-semibold text-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">Return to Home</a>
-          <button onclick="history.back()" class="inline-flex items-center gap-2 py-4 px-8 bg-transparent text-primary border-2 border-primary no-underline rounded-[10px] font-semibold text-lg transition-all duration-300 cursor-pointer hover:bg-primary hover:text-white hover:-translate-y-0.5">← Go Back</button>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/" class="btn-primary">Return to the homepage</a>
+          <button onclick="history.back()" class="btn-secondary">← Go back</button>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>
 
-<script>
+<script is:inline>
   if (typeof window.gtag === 'function') {
     window.gtag('event', 'conversion', { 'send_to': 'AW-17883979518/uoRQCMuWk-gbEP69389C' });
   }
 
-  const params = new URLSearchParams(window.location.search);
-  const startTime = params.get('event_start_time');
-  if (startTime) {
-    const name = params.get('invitee_name');
-    const email = params.get('invitee_email');
-    const eventType = params.get('event_type_name') || 'Free Consultation';
-    const start = new Date(startTime);
-    const endParam = params.get('event_end_time');
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var startTime = params.get('event_start_time');
+    if (!startTime) return;
 
-    const subtitle = document.getElementById('thank-you-subtitle');
+    var name = params.get('invitee_name');
+    var email = params.get('invitee_email');
+    var eventType = params.get('event_type_name') || 'Free Consultation';
+    var start = new Date(startTime);
+    var endParam = params.get('event_end_time');
+
+    var subtitle = document.getElementById('thank-you-subtitle');
     if (subtitle && name) {
-      subtitle.textContent = `Hi ${name}, your booking is confirmed! We're excited to speak with you.`;
+      subtitle.textContent = 'Hi ' + name + ", your booking is confirmed — we're looking forward to speaking with you.";
     }
 
-    const details = document.getElementById('meeting-details');
+    var details = document.getElementById('meeting-details');
     if (details) {
       details.classList.remove('hidden');
-      let html = `<h3 class="text-2xl mb-6 text-white">Meeting Confirmation</h3>`;
-      html += `<div class="mb-5"><strong class="block text-sm opacity-90 uppercase tracking-wider mb-1">Date & Time</strong><span class="block text-lg font-semibold">${start.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span><span class="block mt-1 font-normal">${start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })}${endParam ? ` - ${new Date(endParam).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })}` : ''}</span></div>`;
-      if (eventType) html += `<div class="mb-5"><strong class="block text-sm opacity-90 uppercase tracking-wider mb-1">Meeting Type</strong><span class="block text-lg font-semibold">${eventType}</span></div>`;
-      if (name) html += `<div class="mb-5"><strong class="block text-sm opacity-90 uppercase tracking-wider mb-1">Attendee</strong><span class="block text-lg font-semibold">${name}</span>${email ? `<span class="block mt-1 text-[0.95rem] opacity-90">${email}</span>` : ''}</div>`;
+      var html = '<h2 class="text-lg font-semibold text-slate-900">Meeting confirmation</h2>';
+      html += '<div class="mt-4"><strong class="block text-xs uppercase tracking-wider text-slate-500">Date &amp; time</strong><span class="mt-1 block font-semibold text-slate-900">' + start.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + '</span><span class="mt-0.5 block text-slate-600">' + start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }) + (endParam ? ' – ' + new Date(endParam).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' }) : '') + '</span></div>';
+      if (eventType) html += '<div class="mt-4"><strong class="block text-xs uppercase tracking-wider text-slate-500">Meeting type</strong><span class="mt-1 block font-semibold text-slate-900">' + eventType + '</span></div>';
+      if (name) html += '<div class="mt-4"><strong class="block text-xs uppercase tracking-wider text-slate-500">Attendee</strong><span class="mt-1 block font-semibold text-slate-900">' + name + '</span>' + (email ? '<span class="mt-0.5 block text-sm text-slate-600">' + email + '</span>' : '') + '</div>';
       details.innerHTML = html;
     }
-  }
+  })();
 </script>

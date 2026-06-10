@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import CalendlyCTA from '../../components/CalendlyCTA.astro';
+import ClosingCTA from '../../components/ClosingCTA.astro';
 
 export async function getStaticPaths() {
   const studies = await getCollection('caseStudies');
@@ -35,110 +35,119 @@ const breadcrumbs = [
   { name: 'Case Studies', url: `${siteUrl}/#case-studies` },
   { name: data.clientName, url: canonical },
 ];
+
+const sections = [
+  data.executiveSummary && { title: 'Executive summary', body: data.executiveSummary },
+  { title: 'The challenge', body: data.detailedChallenge || data.challenge },
+  data.whyChooseUs && { title: 'Why North Point Digital', body: data.whyChooseUs },
+].filter(Boolean);
 ---
 
 <BaseLayout title={`${data.pageTitle || data.clientName} | Case Study | North Point Digital`} description={description} canonical={canonical} jsonLd={jsonLd} breadcrumbs={breadcrumbs}>
-  <div class="min-h-screen bg-gradient-primary pt-20 relative overflow-hidden">
-    <div class="max-w-[1200px] mx-auto px-8 py-16 relative z-[2]">
-      <a href="/#case-studies" class="flex items-center gap-2 py-3 px-6 glass rounded-full font-semibold text-white no-underline mb-8 w-fit transition-all duration-300 hover:bg-white/20 hover:-translate-x-[5px]">
-        ← Back to Case Studies
+  <article class="bg-white pt-16">
+    <div class="container-site max-w-4xl py-16">
+      <a href="/#case-studies" class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 no-underline transition-colors duration-fast hover:text-slate-900">
+        ← Back to case studies
       </a>
 
-      <section class="text-center mb-16">
-        <div class="flex items-center justify-center gap-8 mb-8 max-md:flex-col max-md:gap-4">
-          {data.logo && (
-            <img src={data.logo} alt={`${data.clientName} logo`} class="w-[120px] h-[120px] object-contain rounded-xl bg-white/10 p-4 backdrop-blur-[10px] border border-white/20" />
-          )}
-          <div class="text-left max-md:text-center">
-            <h1 class="text-h2 text-white mb-2">{data.pageTitle || data.clientName}</h1>
-            {data.industry && <p class="text-white/80 text-xl">{data.industry}</p>}
-          </div>
+      <header class="mt-8 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        {data.logo && (
+          <img
+            src={data.logo}
+            alt={`${data.clientName} logo`}
+            width="88"
+            height="88"
+            class="h-20 w-20 rounded-xl border border-slate-200 bg-white object-contain p-3"
+          />
+        )}
+        <div>
+          <h1 class="text-[clamp(1.875rem,3.5vw,2.5rem)] font-semibold leading-tight tracking-tight text-slate-900">
+            {data.pageTitle || data.clientName}
+          </h1>
+          {data.industry && <p class="mt-2 text-lg text-slate-500">{data.industry}</p>}
         </div>
-        <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-white/90 max-w-[800px] mx-auto mb-12 leading-relaxed">
-          {data.pageSubtitle || data.detailedChallenge || data.challenge}
+      </header>
+
+      {(data.pageSubtitle || data.challenge) && (
+        <p class="mt-6 text-lg leading-relaxed text-slate-600">
+          {data.pageSubtitle || data.challenge}
         </p>
-      </section>
+      )}
 
-      <section class="grid gap-12 mb-16">
-        {data.executiveSummary && (
-          <div class="glass-card p-12 text-white">
-            <h2 class="text-[2rem] mb-6 text-white">Executive Summary</h2>
-            <div class="text-lg leading-loose text-white/90 whitespace-pre-line">{data.executiveSummary}</div>
-          </div>
-        )}
+      <div class="mt-12 space-y-12">
+        {sections.map((section) => (
+          <section>
+            <h2 class="text-2xl font-semibold tracking-tight text-slate-900">{section.title}</h2>
+            <div class="mt-4 whitespace-pre-line text-lg leading-relaxed text-slate-600">{section.body}</div>
+          </section>
+        ))}
 
-        <div class="glass-card p-12 text-white">
-          <h2 class="text-[2rem] mb-6 text-white">The Challenge</h2>
-          <div class="text-lg leading-loose text-white/90 whitespace-pre-line">{data.detailedChallenge || data.challenge}</div>
-        </div>
-
-        {data.whyChooseUs && (
-          <div class="glass-card p-12 text-white">
-            <h2 class="text-[2rem] mb-6 text-white">Why North Point Digital?</h2>
-            <div class="text-lg leading-loose text-white/90 whitespace-pre-line">{data.whyChooseUs}</div>
-          </div>
-        )}
-
-        <div class="glass-card p-12 text-white">
-          <h2 class="text-[2rem] mb-6 text-white">Our Solution</h2>
-          <div class="text-lg leading-loose text-white/90 whitespace-pre-line">{data.detailedSolution || data.solution}</div>
+        <section>
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-900">Our solution</h2>
+          <div class="mt-4 whitespace-pre-line text-lg leading-relaxed text-slate-600">{data.detailedSolution || data.solution}</div>
           {data.technologies && data.technologies.length > 0 && (
             <div class="mt-8">
-              <h3 class="text-white mb-4">Technologies Used:</h3>
-              <ul class="list-none p-0">
+              <h3 class="text-lg font-semibold text-slate-900">Technologies used</h3>
+              <ul class="mt-4 flex flex-wrap gap-2">
                 {data.technologies.map((tech) => (
-                  <li class="py-3 border-b border-white/10 last:border-none text-white/90">{tech}</li>
+                  <li class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 font-mono text-sm text-slate-700">{tech}</li>
                 ))}
               </ul>
             </div>
           )}
-        </div>
+        </section>
 
         {data.metrics && data.metrics.length > 0 && (
-          <div class="glass-card p-12 text-white">
-            <h2 class="text-[2rem] mb-6 text-white">Key Metrics</h2>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8 mt-8">
+          <section>
+            <h2 class="text-2xl font-semibold tracking-tight text-slate-900">Key metrics</h2>
+            <dl class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {data.metrics.map((metric) => (
-                <div class="glass-card text-center p-8">
-                  <h3 class="text-[2rem] text-white mb-2">{metric.value}</h3>
-                  <p class="text-white/80">{metric.label}</p>
+                <div class="card !p-6 text-center">
+                  <dd class="font-mono text-3xl font-semibold tracking-tight text-slate-900">{metric.value}</dd>
+                  <dt class="mt-1 text-sm text-slate-600">{metric.label}</dt>
                 </div>
               ))}
-            </div>
-          </div>
+            </dl>
+          </section>
         )}
 
-        <div class="glass-card p-12 text-white">
-          <h2 class="text-[2rem] mb-6 text-white">Results</h2>
-          <ul class="list-none p-0">
+        <section>
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-900">Results</h2>
+          <ul class="mt-5 space-y-3">
             {data.results.map((result) => (
-              <li class="py-3 border-b border-white/10 last:border-none text-white/90">{result}</li>
+              <li class="flex items-start gap-3 text-lg leading-relaxed text-slate-600">
+                <svg class="mt-1.5 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {result}
+              </li>
             ))}
           </ul>
-        </div>
+        </section>
 
         {data.testimonial && (
-          <div class="glass-card p-12 text-white">
-            <h2 class="text-[2rem] mb-6 text-white">Client Testimonial</h2>
-            <blockquote class="italic text-xl leading-loose mb-6 border-l-4 border-white/30 pl-6">
-              "{data.testimonial.quote}"
+          <section class="rounded-2xl border border-slate-200 bg-slate-50 p-8 md:p-10">
+            <blockquote class="text-xl leading-relaxed text-slate-700">
+              “{data.testimonial.quote}”
             </blockquote>
-            <p>
-              <strong>{data.testimonial.author}</strong>
-              {data.testimonial.role && `, ${data.testimonial.role}`}
+            <p class="mt-5 font-semibold text-slate-900">
+              {data.testimonial.author}<span class="font-normal text-slate-500">{data.testimonial.role && `, ${data.testimonial.role}`}</span>
             </p>
-          </div>
+          </section>
         )}
 
         {data.timeline && (
-          <div class="glass-card p-12 text-white">
-            <h2 class="text-[2rem] mb-6 text-white">Timeline</h2>
-            <p class="text-lg leading-loose text-white/90">{data.timeline}</p>
-          </div>
+          <section>
+            <h2 class="text-2xl font-semibold tracking-tight text-slate-900">Timeline</h2>
+            <p class="mt-4 text-lg leading-relaxed text-slate-600">{data.timeline}</p>
+          </section>
         )}
-      </section>
-
-      <CalendlyCTA />
+      </div>
     </div>
-  </div>
+  </article>
+
+  <ClosingCTA
+    title="Facing something similar?"
+    subtitle="Book a free 30-minute call and we'll talk through how we'd approach it."
+  />
 </BaseLayout>

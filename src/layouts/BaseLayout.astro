@@ -154,26 +154,19 @@ if (breadcrumbs && breadcrumbs.length > 0) {
       (function() {
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        var revealTargets = document.querySelectorAll('[data-reveal], [data-animate-on-scroll]');
+        var revealTargets = document.querySelectorAll('[data-reveal]');
         if (!reduceMotion && 'IntersectionObserver' in window) {
           var obs = new IntersectionObserver(function(entries) {
             entries.forEach(function(e) {
               if (!e.isIntersecting) return;
-              if (e.target.hasAttribute('data-reveal')) {
-                e.target.classList.add('reveal-in');
-              } else {
-                e.target.classList.add('fade-in');
-              }
+              e.target.classList.add('reveal-in');
               obs.unobserve(e.target);
             });
           }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
           revealTargets.forEach(function(el) {
-            if (el.hasAttribute('data-reveal')) el.classList.add('reveal-init');
+            el.classList.add('reveal-init');
             obs.observe(el);
           });
-        } else {
-          // No observer or reduced motion: make sure legacy opacity-0 content shows.
-          revealTargets.forEach(function(el) { el.classList.remove('opacity-0'); el.classList.add('fade-in'); });
         }
 
         var topBtn = document.querySelector('[data-back-to-top]');
