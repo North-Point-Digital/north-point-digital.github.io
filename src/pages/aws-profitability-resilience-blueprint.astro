@@ -1,22 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQSection from '../components/FAQSection.astro';
-import CounterSection from '../components/CounterSection';
+import ClosingCTA from '../components/ClosingCTA.astro';
 import { buildFaqJsonLd } from '../data/faqs';
 
 const CTA_LINK = 'https://calendly.com/david-northpointdigital/30min';
 const siteUrl = 'https://northpointdigital.com';
 
-const features = [
-  { title: 'Cost Optimisation', description: 'Identify and eliminate waste in your AWS spending' },
-  { title: 'Enhanced Security', description: 'Implement best practices for cloud security' },
-  { title: 'Best Practices', description: 'Align with AWS Well-Architected Framework' },
+const stats = [
+  { number: '20+', label: 'reviews completed' },
+  { number: '30%', label: 'average savings found' },
+  { number: '£0', label: 'upfront cost' },
 ];
 
 const timelineSteps = [
-  { week: 'Week 1', title: 'Discovery & Analysis', items: ['Comprehensive account audit & cost analysis', 'Security vulnerability assessment', 'Architecture review', 'Initial findings report with quick wins'] },
-  { week: 'Week 2', title: 'Implementation & Optimisation', items: ['Remediation of critical security issues', 'Cost optimisation implementation', 'Budget alerts & tagging setup', 'Performance tuning'] },
-  { week: 'Delivery', title: 'Final Report & Roadmap', items: ['Comprehensive Well-Architected report', 'Long-term optimisation roadmap', 'Knowledge transfer session', '30-day support included'] },
+  {
+    week: 'Week 1',
+    title: 'Discovery & analysis',
+    items: [
+      'Full account audit and cost analysis',
+      'Security vulnerability assessment',
+      'Architecture review',
+      'Initial findings report with quick wins',
+    ],
+  },
+  {
+    week: 'Week 2',
+    title: 'Implementation & optimisation',
+    items: [
+      'Remediation of critical security issues',
+      'Cost optimisation implementation',
+      'Budget alerts and tagging setup',
+      'Performance tuning',
+    ],
+  },
+  {
+    week: 'Delivery',
+    title: 'Final report & roadmap',
+    items: [
+      'Full Well-Architected report',
+      'Long-term optimisation roadmap',
+      'Knowledge transfer session',
+      '30 days of support included',
+    ],
+  },
 ];
 ---
 
@@ -30,93 +57,96 @@ const timelineSteps = [
     buildFaqJsonLd(),
   ]}
 >
-  <div class="min-h-screen bg-gradient-primary pt-20 relative overflow-hidden bg-[url('/product_offer_hero_bg.png')] bg-cover bg-center before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary/70 before:to-secondary/70 before:z-[1]">
-    <div class="max-w-[1200px] mx-auto px-8 py-16 relative z-[2]">
-      <section class="text-center mb-12 min-h-[calc(100vh-140px)] flex flex-col justify-center items-center py-12">
-        <h1 class="text-h1 text-white mb-4 font-bold fade-in">Security & Cost Optimisation Blueprint</h1>
-        <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 mb-12 max-w-[800px] mx-auto fade-in fade-in-delay-1">
-          Comprehensive Well-Architected Review that targets 25%+ cost reduction while strengthening security. Risk-free engagement with no upfront cost.
-        </p>
-        <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-primary border-none rounded-full font-semibold text-xl cursor-pointer transition-all duration-300 no-underline hover:-translate-y-0.5 hover:shadow-xl fade-in fade-in-delay-2">
-          Book A Call Today
+  <section class="relative overflow-hidden bg-white pt-16">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,#eff6ff_0%,transparent_65%)]" aria-hidden="true"></div>
+    <div class="container-site relative flex flex-col items-center py-20 text-center md:py-28">
+      <p class="eyebrow mb-6">Well-Architected review · No upfront cost</p>
+      <h1 class="max-w-4xl text-h1">Security &amp; Cost Optimisation Blueprint</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
+        A Well-Architected review of your AWS estate, focused on the two pillars that
+        pay for themselves: cost and security. We target 25%+ savings and fix critical
+        issues while we're in there — not after the report lands.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary" data-track-cta="Blueprint Book a Call">
+          Book a free call
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
         </a>
-        <div class="mt-12 w-full max-w-[600px]">
-          <CounterSection client:visible />
-        </div>
-      </section>
-
-      <section class="grid gap-12 mb-20">
-        <div class="glass-card p-12 text-white">
-          <h2 class="text-[2rem] mb-6">Your Blueprint to Secure and Cost-Effective Infrastructure</h2>
-          <div class="text-lg leading-loose text-white/90">
-            <p class="mb-6">Our Security & Cost Optimisation Blueprint is a comprehensive Well-Architected Review focused on the two pillars that deliver immediate ROI: Cost Optimisation and Security. This isn't a theoretical audit—we identify actionable improvements and remediate critical issues during the engagement.</p>
-            <p class="mb-6">We audit your AWS accounts and infrastructure, applying proven cost-saving strategies, implementing budget alerts, and targeting a minimum 25% reduction in your AWS spend. With infrastructure misconfigurations being a leading cause of data breaches, our experts identify and remediate high-risk security vulnerabilities during the review—delivering immediate value.</p>
-            <ul class="list-none p-0">
-              <li class="py-2">Complete infrastructure assessment by AWS-certified experts</li>
-              <li class="py-2">Detailed cost optimisation roadmap with tagging strategies and budget alerts (targeting 25%+ reduction)</li>
-              <li class="py-2">Security vulnerability remediation—we fix critical issues during the engagement</li>
-              <li class="py-2">Risk-free engagement with no upfront cost and no long-term commitments</li>
-            </ul>
-            <div class="mt-8">
-              <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-primary border-none rounded-full font-semibold text-xl cursor-pointer transition-all duration-300 no-underline hover:-translate-y-0.5 hover:shadow-xl inline-block">Book A Call Today</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card p-12 backdrop-blur-[14px] border border-white/20 rounded-[20px] overflow-hidden">
-          <div class="text-center mb-16">
-            <h2 class="text-h2 text-white mb-4">How It Works</h2>
-            <p class="text-xl text-white/80 max-w-[700px] mx-auto">Complete Well-Architected Review in just 2 weeks</p>
-          </div>
-          <div class="relative before:content-[''] before:absolute before:left-1/2 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-white/65 before:to-white/30 before:-translate-x-1/2 max-md:before:left-5">
-            {timelineSteps.map((step, index) => (
-              <div class={`flex py-8 relative max-md:justify-start max-md:pl-[60px] ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] bg-white/[0.28] backdrop-blur-[16px] border-2 border-white/55 rounded-full flex items-center justify-center z-[2] text-sm font-bold text-white uppercase tracking-wide max-md:left-5">
-                  {step.week.replace('Week ', 'W')}
-                </div>
-                <div class="glass-card p-9 w-[45%] max-md:w-full">
-                  <div class="text-sm font-semibold text-white/80 uppercase tracking-wider mb-2">{step.week}</div>
-                  <h3 class="text-2xl text-white mb-4">{step.title}</h3>
-                  <ul class="list-none p-0">
-                    {step.items.map((item) => (
-                      <li class="text-white/95 py-2 leading-relaxed">{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div class="bg-white/[0.12] border border-white/25 rounded-[20px] p-12 text-center text-white backdrop-blur-[12px]">
-          <h3 class="text-[clamp(1.8rem,4vw,2.5rem)] mb-4 text-white">Ready for rapid cost and security wins?</h3>
-          <p class="text-lg text-white/85 mb-8 max-w-[640px] mx-auto">Kick off your Security & Cost Optimisation Blueprint and get actionable changes in motion within two weeks.</p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-primary rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Book A Call Today</a>
-            <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-transparent text-white border border-white/60 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">See Available Times</a>
-          </div>
-        </div>
-
-        <FAQSection framed />
-      </section>
-
-      <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 mt-12">
-        {features.map((feature) => (
-          <div class="glass-card text-center p-8 hover:-translate-y-[5px] hover:bg-white/15">
-            <h3 class="text-white text-xl mb-2">{feature.title}</h3>
-            <p class="text-white/80">{feature.description}</p>
-          </div>
-        ))}
       </div>
 
-      <section class="mt-24 text-center text-white">
-        <h2 class="text-h2 mb-4">Let's transform your AWS foundation</h2>
-        <p class="text-lg text-white/85 mb-10">Book a discovery call and we'll deliver a tailored optimisation roadmap with measurable ROI.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-primary rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Schedule Your Call</a>
-          <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-transparent text-white border border-white/60 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Talk With An Expert</a>
-        </div>
-      </section>
+      <dl class="mt-14 grid w-full max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
+        {stats.map((stat) => (
+          <div class="card !p-6 text-center">
+            <dt class="order-2 mt-1 text-sm text-slate-600">{stat.label}</dt>
+            <dd class="order-1 font-mono text-3xl font-semibold tracking-tight text-slate-900">{stat.number}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
-  </div>
+  </section>
+
+  <section class="section border-t border-slate-200 bg-slate-50">
+    <div class="container-site max-w-4xl">
+      <div class="text-center">
+        <p class="eyebrow mb-4">Why it works</p>
+        <h2 class="text-h2">An audit that fixes things</h2>
+      </div>
+      <div class="mx-auto mt-8 max-w-2xl space-y-5 text-lg leading-relaxed text-slate-600">
+        <p>
+          Most cloud audits end with a PDF and a handshake. The Blueprint doesn't. We
+          audit your AWS accounts against the Well-Architected Framework, then apply
+          the cost-saving changes and remediate high-risk security findings during the
+          engagement itself.
+        </p>
+        <p>
+          Misconfigured infrastructure is one of the leading causes of data breaches,
+          and most AWS estates carry waste that nobody has had time to chase down.
+          Two weeks of focused work usually sorts the worst of both.
+        </p>
+        <ul class="list-disc space-y-2 pl-6">
+          <li>Complete infrastructure assessment by AWS-certified engineers</li>
+          <li>Cost optimisation roadmap with tagging strategy and budget alerts, targeting 25%+ reduction</li>
+          <li>Critical security issues fixed during the review, not just listed</li>
+          <li>No upfront cost and no long-term commitment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-4">How it runs</p>
+        <h2 class="text-h2">Two weeks, then the report</h2>
+      </div>
+      <ol class="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3" data-reveal>
+        {timelineSteps.map((step) => (
+          <li class="card h-full">
+            <span class="font-mono text-sm font-medium text-accent">{step.week}</span>
+            <h3 class="mt-3 text-lg font-semibold text-slate-900">{step.title}</h3>
+            <ul class="mt-3 space-y-2">
+              {step.items.map((item) => (
+                <li class="flex items-start gap-2.5 text-[0.95rem] leading-relaxed text-slate-600">
+                  <svg class="mt-1 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <FAQSection framed />
+
+  <ClosingCTA
+    title="Ready for quick cost and security wins?"
+    subtitle="Book a free call and we'll tell you what a Blueprint would likely find in your estate."
+    calendly={CTA_LINK}
+  />
 </BaseLayout>

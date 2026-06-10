@@ -1,16 +1,22 @@
 ---
-const CALENDLY = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call';
+interface Props {
+  title?: string;
+  subtitle?: string;
+  calendly?: string;
+}
+
+const {
+  title = 'Find out what AI could do for your business',
+  subtitle = "A free 30-minute call with an engineer, not a salesperson. If there's no fit, we'll say so.",
+  calendly = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call',
+} = Astro.props;
+const CALENDLY = calendly;
 ---
 
 <section id="contact" class="bg-slate-900">
   <div class="container-site py-20 text-center md:py-28">
-    <h2 class="mx-auto max-w-2xl text-h2 !text-white">
-      Find out what AI could do for your business
-    </h2>
-    <p class="mx-auto mt-4 max-w-xl text-lg text-slate-400">
-      A free 30-minute call with an engineer, not a salesperson. If there's no fit,
-      we'll say so.
-    </p>
+    <h2 class="mx-auto max-w-2xl text-h2 !text-white">{title}</h2>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-slate-400">{subtitle}</p>
     <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
       <a
         href={CALENDLY}

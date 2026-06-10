@@ -1,14 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQSection from '../components/FAQSection.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
 import { buildFaqJsonLd } from '../data/faqs';
 
 const CTA_LINK = 'https://calendly.com/david-northpointdigital/30min';
 const siteUrl = 'https://northpointdigital.com';
-const features = [
-  { title: 'Working Prototype', description: 'AWS-powered AI PoC built with your data in 6 weeks' },
-  { title: 'Full Cost Analysis', description: 'Complete business case with production cost projections' },
-  { title: 'Production Roadmap', description: 'Clear path to scalable, enterprise-grade AI solution' },
+
+const deliverables = [
+  {
+    title: 'A working prototype',
+    description:
+      'Built with your data on AWS — Bedrock, SageMaker and the services that fit your case. Software you can put in front of users, not a slide deck.',
+  },
+  {
+    title: 'Production costings',
+    description:
+      'An executive summary with running-cost projections and ROI analysis, so the decision to proceed (or not) is a financial one, not a hopeful one.',
+  },
+  {
+    title: 'A route to live',
+    description:
+      'A step-by-step roadmap for taking the prototype to a production deployment — architecture, security, and the order to do things in.',
+  },
+];
+
+const phases = [
+  {
+    label: 'Week 1',
+    title: 'Scope',
+    description:
+      'We pick the use case together, look at your data, and agree exactly what the prototype has to prove.',
+  },
+  {
+    label: 'Weeks 2–5',
+    title: 'Build',
+    description:
+      'We build the proof of concept on AWS with your data. Weekly demos — you watch it take shape and steer as we go.',
+  },
+  {
+    label: 'Week 6',
+    title: 'Prove',
+    description:
+      'Working prototype, production costings and roadmap, handed over with a session for your team.',
+  },
 ];
 ---
 
@@ -22,64 +57,80 @@ const features = [
     buildFaqJsonLd(),
   ]}
 >
-  <div class="min-h-screen bg-gradient-to-br from-[#56ccf2] to-[#2f80ed] pt-20">
-    <div class="max-w-[1200px] mx-auto px-8 py-16">
-      <section class="text-center mb-20">
-        <h1 class="text-h1 text-white mb-4 font-bold fade-in">Validate Your AI Strategy in 6 Weeks</h1>
-        <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 mb-12 max-w-[800px] mx-auto fade-in fade-in-delay-1">From idea to working AI prototype in 14 days. Fixed-fee engagement with complete production costings and implementation roadmap.</p>
-        <div class="flex flex-wrap justify-center gap-4 fade-in fade-in-delay-2">
-          <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-[#2f80ed] rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Book A Call Today</a>
-          <a href="/ai-adoption-playbook" class="py-4 px-10 bg-transparent text-white border border-white/60 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Download Free Playbook</a>
-        </div>
-      </section>
+  <section class="relative overflow-hidden bg-white pt-16">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,#eff6ff_0%,transparent_65%)]" aria-hidden="true"></div>
+    <div class="container-site relative flex flex-col items-center py-20 text-center md:py-28">
+      <p class="eyebrow mb-6">AI Launchpad · Fixed fee</p>
+      <h1 class="max-w-4xl text-h1">Validate your AI strategy in six weeks</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
+        A fixed-fee proof of concept built with your data on AWS. You finish with
+        working software, production costings and a route to live — or a clear,
+        documented reason not to proceed. Both are worth knowing.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary" data-track-cta="Launchpad Book a Call">
+          Book a free call
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/ai-adoption-playbook" class="btn-secondary" data-track-cta="Launchpad Download Playbook">
+          Get the AI Adoption Playbook
+        </a>
+      </div>
+    </div>
+  </section>
 
-      <section class="grid gap-12 mb-20">
-        <div class="glass-card p-12 text-white">
-          <h2 class="text-[2rem] mb-6">The North Point AI Launchpad Program</h2>
-          <div class="text-lg leading-loose text-white/90">
-            <p class="mb-6">The North Point AI Launchpad is your definitive first step in leveraging AI to gain a competitive edge. This fixed-fee, two-week program transforms your business challenges into a concrete, executable AI solution with clear production economics.</p>
-            <p class="mb-6"><strong>We don't build generic chatbots; we build business value.</strong></p>
-            <p class="mb-6">Using your company's proprietary data and market-leading AWS AI services (including Amazon Bedrock, SageMaker, and others), we build a tangible, working prototype of a customised AI solution. This is not a theoretical exercise—it's a functioning proof of concept that validates your specific use case and provides a clear path to production deployment.</p>
-          </div>
-        </div>
-
-        <div class="glass-card p-12 text-white">
-          <h2 class="text-[2rem] mb-6">What You'll Walk Away With</h2>
-          <div class="text-lg leading-loose text-white/90">
-            <ul class="list-none p-0">
-              <li class="py-2">A working AI Proof of Concept built with your data and validated on AWS infrastructure</li>
-              <li class="py-2">Complete production economics: executive summary with detailed cost projections and ROI analysis</li>
-              <li class="py-2">Step-by-step implementation roadmap outlining exactly how to scale the prototype into an enterprise-grade solution</li>
-            </ul>
-            <div class="flex flex-wrap justify-center gap-4 mt-8">
-              <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-[#2f80ed] rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Book A Call Today</a>
-              <a href="/ai-adoption-playbook" class="py-4 px-10 bg-transparent text-white border border-white/60 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Download Free Playbook</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 mt-12">
-        {features.map((f) => (
-          <div class="glass-card text-center p-8 hover:-translate-y-[5px] hover:bg-white/15">
-            <h3 class="text-white text-xl mb-2">{f.title}</h3>
-            <p class="text-white/80">{f.description}</p>
+  <section class="section border-t border-slate-200 bg-slate-50">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-4">What you get</p>
+        <h2 class="text-h2">Three deliverables, no slideware</h2>
+        <p class="mt-4 text-lg text-slate-600">
+          We don't build generic chatbots. The Launchpad exists to prove — or
+          disprove — a specific use case with your own data.
+        </p>
+      </div>
+      <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3" data-reveal>
+        {deliverables.map((d) => (
+          <div class="card">
+            <h3 class="text-lg font-semibold text-slate-900">{d.title}</h3>
+            <p class="mt-3 leading-relaxed text-slate-600">{d.description}</p>
           </div>
         ))}
       </div>
-
-      <div class="bg-white/[0.12] border border-white/25 rounded-[20px] p-12 text-center text-white backdrop-blur-[12px] mt-12">
-        <h3 class="text-[clamp(1.8rem,4vw,2.5rem)] mb-4">Ready to validate your AI strategy?</h3>
-        <p class="text-lg text-white/85 mb-8 max-w-[640px] mx-auto">Book a free strategy call or download the playbook to get started.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="py-4 px-10 bg-white text-[#2f80ed] rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Book A Call Today</a>
-          <a href="/ai-adoption-playbook" class="py-4 px-10 bg-transparent text-white border border-white/60 rounded-full font-semibold text-xl no-underline transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">Download Free Playbook</a>
-        </div>
-      </div>
-
-      <div class="mt-20">
-        <FAQSection framed />
-      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-4">How it runs</p>
+        <h2 class="text-h2">Six weeks, start to finish</h2>
+        <p class="mt-4 text-lg text-slate-600">
+          The price is fixed before we start, and you see progress every week.
+        </p>
+      </div>
+      <ol class="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3" data-reveal>
+        {phases.map((phase) => (
+          <li class="card h-full">
+            <span class="font-mono text-sm font-medium text-accent">{phase.label}</span>
+            <h3 class="mt-3 text-lg font-semibold text-slate-900">{phase.title}</h3>
+            <p class="mt-2 text-[0.95rem] leading-relaxed text-slate-600">{phase.description}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-8 text-center text-sm text-slate-500">
+        Indicative shape — the exact split depends on your use case and data.
+      </p>
+    </div>
+  </section>
+
+  <FAQSection framed />
+
+  <ClosingCTA
+    title="Got a use case in mind?"
+    subtitle="Bring it to a free 30-minute call. We'll tell you honestly whether a Launchpad would prove it — and what it would cost."
+    calendly={CTA_LINK}
+  />
 </BaseLayout>

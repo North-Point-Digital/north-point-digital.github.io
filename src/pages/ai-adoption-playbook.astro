@@ -8,9 +8,18 @@ const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && !HUB
 const siteUrl = 'https://northpointdigital.com';
 
 const benefits = [
-  { title: 'Strategic Framework', description: 'Step-by-step guide to building your AI adoption strategy' },
-  { title: 'Implementation Roadmap', description: 'Clear path from planning to production deployment' },
-  { title: 'Use Case Examples', description: 'Real-world AI applications tailored for SMBs' },
+  {
+    title: 'A strategy you can defend',
+    description: 'A step-by-step framework for picking AI use cases that survive contact with the budget meeting.',
+  },
+  {
+    title: 'An implementation route',
+    description: 'The path from idea to production on AWS, including the bits most write-ups skip — data readiness and running costs.',
+  },
+  {
+    title: 'Use cases that fit',
+    description: 'Worked examples sized for small and mid-sized businesses, not enterprise science projects.',
+  },
 ];
 ---
 
@@ -21,38 +30,43 @@ const benefits = [
   breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'AI Adoption Playbook', url: `${siteUrl}/ai-adoption-playbook` }]}
   jsonLd={{ "@context": "https://schema.org", "@type": "TechArticle", headline: "AI Adoption Playbook for AWS", description: "A practical guide to planning, validating, and scaling AI initiatives on AWS, created by North Point Digital.", author: { "@type": "Organization", name: "North Point Digital" }, publisher: { "@type": "Organization", name: "North Point Digital", logo: { "@type": "ImageObject", url: `${siteUrl}/north-point-logo.webp` } }, mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}/ai-adoption-playbook` } }}
 >
-  <div class="min-h-screen bg-gradient-primary pt-20">
-    <div class="max-w-[1200px] mx-auto px-8 py-16">
-      <section class="text-center mb-16">
-        <h1 class="text-h1 text-white mb-4 font-bold fade-in">AI Adoption Strategy Playbook</h1>
-        <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 mb-8 max-w-[800px] mx-auto fade-in fade-in-delay-1">Your comprehensive guide to successfully implementing AI in your organisation. Learn proven strategies, avoid common pitfalls, and accelerate your AI journey.</p>
-      </section>
+  <section class="relative overflow-hidden bg-white pt-16">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,#eff6ff_0%,transparent_65%)]" aria-hidden="true"></div>
+    <div class="container-site relative py-20 md:py-24">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-6">Free download</p>
+        <h1 class="text-h1">The AI Adoption Playbook</h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600 md:text-xl">
+          A practical guide to planning, validating and scaling AI in your
+          organisation — written for people who have to make it work, not just
+          announce it.
+        </p>
+      </div>
 
-      <div class="grid grid-cols-1 gap-12 mb-16 md:grid-cols-2 md:items-start">
-        <div class="glass-card p-12 text-white">
-          <h2 class="text-[2rem] mb-6">What's Inside</h2>
-          <ul class="list-none p-0">
-            {benefits.map((b) => (
-              <li class="py-4 border-b border-white/10 last:border-none">
-                <div>
-                  <h3 class="text-xl mb-2 text-white">{b.title}</h3>
-                  <p class="text-white/80 leading-relaxed">{b.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+      <div class="mx-auto mt-14 grid max-w-5xl grid-cols-1 items-start gap-8 lg:grid-cols-2">
+        <div class="space-y-4">
+          {benefits.map((b) => (
+            <div class="card">
+              <h2 class="text-lg font-semibold text-slate-900">{b.title}</h2>
+              <p class="mt-2 leading-relaxed text-slate-600">{b.description}</p>
+            </div>
+          ))}
         </div>
 
-        <div class="bg-white rounded-[20px] p-12 shadow-xl">
-          <h2 class="text-3xl text-[#333] mb-4 text-center">Download Your Free Playbook</h2>
-          <p class="text-[#666] text-center mb-8 leading-relaxed">Fill out the form below to receive instant access to the AI Adoption Strategy Playbook</p>
-          {isHubSpotConfigured ? (
-            <HubSpotForm client:idle formType="aiPlaybook" region={HUBSPOT_CONFIG.region} />
-          ) : (
-            <PlaybookLeadCaptureForm client:idle />
-          )}
+        <div class="card lg:p-10">
+          <h2 class="text-center text-xl font-semibold text-slate-900">Get the playbook</h2>
+          <p class="mt-2 text-center text-slate-600">
+            Fill in the form and we'll send it straight over.
+          </p>
+          <div class="mt-6">
+            {isHubSpotConfigured ? (
+              <HubSpotForm client:idle formType="aiPlaybook" region={HUBSPOT_CONFIG.region} />
+            ) : (
+              <PlaybookLeadCaptureForm client:idle />
+            )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>
