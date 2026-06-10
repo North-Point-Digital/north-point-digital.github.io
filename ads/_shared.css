@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'Geist Variable';
+  src: url('../node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+}
+@font-face {
+  font-family: 'Geist Mono Variable';
+  src: url('../node_modules/@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Geist Variable', -apple-system, sans-serif;
+  background: #ffffff;
+  color: #0f172a;
+  overflow: hidden;
+  position: relative;
+}
+
+.tint {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, #dbeafe 0%, transparent 70%);
+}
+
+.dots {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: radial-gradient(circle, #94a3b8 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at top, black 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse at top, black 0%, transparent 70%);
+}
+
+.frame {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand img { display: block; }
+
+.brand span {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.headline {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #0f172a;
+}
+
+.headline em {
+  font-style: normal;
+  color: #2563eb;
+}
+
+.sub {
+  color: #475569;
+  line-height: 1.45;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.cta {
+  display: inline-block;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.site {
+  font-family: 'Geist Mono Variable', monospace;
+  color: #64748b;
+}
