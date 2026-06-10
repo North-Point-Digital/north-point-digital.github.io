@@ -1,6 +1,6 @@
 ---
 title: "Train or Fine-Tune Your Own AI Model? When It's Worth It, and When It Isn't"
-excerpt: "'Should we train our own AI?' is usually the wrong question. A plain guide to the difference between training, fine-tuning and just using your own data — and when each is actually worth it."
+excerpt: "'Should we train our own AI?' is usually the wrong question. A plain guide to the difference between training, fine-tuning and just using your own data, and when each is actually worth it."
 author: "David Turnbull"
 authorRole: "Founder & AWS Solutions Architect"
 publishDate: "2026-06-10"
@@ -9,39 +9,39 @@ tags: ["AI", "Fine-Tuning", "AI Strategy"]
 metaDescription: "When should a business train or fine-tune its own AI model, and when should it not? A jargon-free guide to fine-tuning vs RAG vs prompting, with the costs that actually matter."
 ---
 
-## "Should we train our own AI?" — usually, no, and that's a relief
+## "Should we train our own AI?" Usually, no, and that's a relief
 
-Somewhere between the first impressive demo and the first board meeting, a tempting idea takes hold: we should have *our own* AI model. It sounds like ownership, defensibility, a moat. In reality, for almost every business asking the question, training your own model is the expensive answer to a problem you don't have — and the thing you actually want is far cheaper to get.
+Somewhere between the first impressive demo and the first board meeting, a tempting idea takes hold: we should have *our own* AI model. It sounds like ownership, defensibility, a moat. In reality, for almost every business asking the question, training your own model is the expensive answer to a problem you don't have. The thing you actually want is far cheaper to get.
 
 The confusion comes from three very different things being squashed into one phrase. Untangle them and the decision gets easy.
 
 ### Three things people mean by "our own model"
 
-- **Training from scratch.** Building a model from nothing, on your own data, with your own compute. This is what the big labs do, and it costs millions. Unless you are a well-funded AI company, this is not on the table — and that's fine, because it's almost never what you need.
+- **Training from scratch.** Building a model from nothing, on your own data, with your own compute. This is what the big labs do, and it costs millions. Unless you are a well-funded AI company, this is not on the table, and that's fine, because it's almost never what you need.
 - **Fine-tuning.** Taking an existing model and nudging its behaviour using your examples, so it answers more like you want it to.
-- **Using your own data with an off-the-shelf model.** Giving a normal model access to your documents and information, through prompting and retrieval. This is what most people *actually* mean when they say "our own model" — and it requires no training at all.
+- **Using your own data with an off-the-shelf model.** Giving a normal model access to your documents and information, through prompting and retrieval. This is what most people *actually* mean when they say "our own model", and it requires no training at all.
 
 ### The rule that cuts through it
 
-Here's the distinction that decides almost every case: **fine-tuning changes how a model behaves; retrieval changes what it knows right now.** Put your stable behaviour — tone, format, the way you handle a task — into fine-tuning. Put your changing knowledge — prices, policies, customer records, this week's facts — into retrieval.
+Here's the distinction that decides almost every case: **fine-tuning changes how a model behaves; retrieval changes what it knows right now.** Put your stable behaviour (tone, format, the way you handle a task) into fine-tuning. Put your changing knowledge (prices, policies, customer records, this week's facts) into retrieval.
 
-Most business needs are knowledge problems wearing a behaviour costume. "It needs to answer from our handbook." "It needs to use our current pricing." "It needs to know our products." None of those is a reason to train anything. That's retrieval — usually called RAG, retrieval-augmented generation — and it means giving an ordinary model the right document at the right moment.
+Most business needs are knowledge problems wearing a behaviour costume. "It needs to answer from our handbook." "It needs to use our current pricing." "It needs to know our products." None of those is a reason to train anything. That's retrieval (usually called RAG, retrieval-augmented generation), and it means giving an ordinary model the right document at the right moment.
 
 ### When fine-tuning is genuinely worth it
 
 Fine-tuning earns its place in a narrower set of cases:
 
-- **You need the same style or format every single time** — every output in your house voice, or in a rigid structure a general model keeps drifting from.
+- **You need the same style or format every single time:** every output in your house voice, or in a rigid structure a general model keeps drifting from.
 - **It's one narrow, repetitive task at high volume,** and a smaller fine-tuned model would be faster and cheaper per use than calling a big general one.
-- **You have the examples to teach it** — typically hundreds of good, clean ones — and a way to measure whether the result is actually better.
+- **You have the examples to teach it,** typically hundreds of good, clean ones, and a way to measure whether the result is actually better.
 
-The compute cost is no longer the obstacle it once was. By late 2025 a top-end GPU rented for roughly $3 an hour, and fine-tuning a small model with modern techniques is a job of hours and tens of dollars, not weeks and thousands. But compute was never the real cost. The real cost is the data preparation, the evaluation, and the upkeep — and that's the part the demos never show.
+The compute cost is no longer the obstacle it once was. By late 2025 a top-end GPU rented for roughly $3 an hour, and fine-tuning a small model with modern techniques is a job of hours and tens of dollars, not weeks and thousands. But compute was never the real cost. The real cost is the data preparation, the evaluation, and the upkeep. That's the part the demos never show.
 
 ### When not to (which is most of the time)
 
 - **You mainly need it to use your own information.** That's retrieval, not fine-tuning. Reach for RAG first.
 - **You don't have clean examples or a way to score "better."** Without those, fine-tuning is guesswork you pay for.
-- **The base models keep improving.** A model you fine-tune today can be quietly overtaken by next quarter's general release — at which point you either fall behind or redo the work. Fine-tuning is a commitment to maintain, not a one-off.
+- **The base models keep improving.** A model you fine-tune today can be quietly overtaken by next quarter's general release, at which point you either fall behind or redo the work. Fine-tuning is a commitment to maintain, not a one-off.
 - **You're chasing the idea of owning a model** rather than a specific, measurable need. That's an expensive way to buy a feeling.
 
 ### The sensible order for a business
@@ -50,12 +50,12 @@ Work down this list and stop at the first thing that solves your problem. Most b
 
 1. **Prompt it properly.** A huge share of "the AI isn't good enough" is really "the instructions weren't." Our [prompt engineering guide](/blog/prompt-engineering-guide-for-business) covers this.
 2. **Give it your data with retrieval.** Point an off-the-shelf model at your documents so it answers from them, with the source attached.
-3. **Then, if a specific behaviour or scale need remains, fine-tune** — with the data and the measurement to back it.
+3. **Then, if a specific behaviour or scale need remains, fine-tune,** with the data and the measurement to back it.
 
-> **Pro Tip:** When we build an [AI Launchpad](/ai-launchpad), we almost always prove the use case with good prompting and your own data first. We only fine-tune when the numbers clearly justify it — and a fair amount of our value is telling clients, honestly, when they don't need to.
+> **Pro Tip:** When we build an [AI Launchpad](/ai-launchpad), we almost always prove the use case with good prompting and your own data first. We only fine-tune when the numbers clearly justify it. A fair amount of our value is telling clients, honestly, when they don't need to.
 
 ## Wondering whether your use case actually needs a custom model?
 
-A free 30-minute call with an engineer. Describe the problem and we'll tell you the cheapest thing that solves it — whether that's a prompt, your data, or a fine-tuned model.
+A free 30-minute call with an engineer. Describe the problem and we'll tell you the cheapest thing that solves it, whether that's a prompt, your data, or a fine-tuned model.
 
 [Book a free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call) or [see how the AI Launchpad works](/ai-launchpad).

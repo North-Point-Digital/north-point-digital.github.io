@@ -1,55 +1,55 @@
 ---
 title: "Demystifying AI Jargon: A Plain-English Glossary for Business Owners"
-excerpt: "Tokens, RAG, fine-tuning, agents, hallucinations — the AI words that actually come up in sales meetings, explained in plain English, with why each one matters to your business."
+excerpt: "Tokens, RAG, fine-tuning, agents, hallucinations: the AI words that actually come up in sales meetings, explained in plain English, with why each one matters to your business."
 author: "David Turnbull"
 authorRole: "Founder & AWS Solutions Architect"
 publishDate: "2026-06-10"
 category: "AI Explainers"
 tags: ["AI", "Glossary", "AI Explainers"]
-metaDescription: "A plain-English glossary of the AI jargon business owners actually encounter — LLM, token, RAG, fine-tuning, agent, hallucination and more — with why each term matters."
+metaDescription: "A plain-English glossary of the AI jargon business owners actually encounter (LLM, token, RAG, fine-tuning, agent, hallucination and more), with why each term matters."
 ---
 
 ## You don't need the jargon. You just need to not be blinded by it.
 
-Every industry hides behind its vocabulary, and AI is worse than most — partly because the words are new, and partly because a fog of jargon is very useful to anyone hoping to sell you something you don't understand. You don't need to speak fluent machine learning to make good decisions. You do need enough to ask the right questions and spot when an answer is waffle.
+Every industry hides behind its vocabulary, and AI is worse than most, partly because the words are new, and partly because a fog of jargon is very useful to anyone hoping to sell you something you don't understand. You don't need to speak fluent machine learning to make good decisions. You do need enough to ask the right questions and spot when an answer is waffle.
 
 Here are the terms that genuinely come up, in plain English, with a line on why each one matters to you. Keep it as a reference for the next time a vendor reaches for a word you'd rather they explained.
 
 ### The basics
 
-- **LLM (Large Language Model).** The engine behind tools like ChatGPT and Claude — a system trained on enormous amounts of text that's very good at predicting useful words in response to yours. When someone says "the model," this is usually what they mean.
-- **Token.** The unit AI reads and writes in — roughly a few characters, so a short word is one token and a long one is two or three. It matters because you're billed per token, and "tokens equal money": longer inputs and outputs cost more.
-- **Prompt.** The instruction you give the model. Getting more out of AI is mostly about giving better prompts — enough that it's a small skill in itself, which we cover in our [prompt engineering guide](/blog/prompt-engineering-guide-for-business).
-- **Context window.** How much the model can "hold in its head" at once — your prompt plus any documents you've given it. Too much at once and the earliest details start to slip, which is why how you feed it information matters.
+- **LLM (Large Language Model).** The engine behind tools like ChatGPT and Claude: a system trained on enormous amounts of text that's very good at predicting useful words in response to yours. When someone says "the model," this is usually what they mean.
+- **Token.** The unit AI reads and writes in: roughly a few characters, so a short word is one token and a long one is two or three. It matters because you're billed per token, and "tokens equal money": longer inputs and outputs cost more.
+- **Prompt.** The instruction you give the model. Getting more out of AI is mostly about giving better prompts, enough that it's a small skill in itself, which we cover in our [prompt engineering guide](/blog/prompt-engineering-guide-for-business).
+- **Context window.** How much the model can "hold in its head" at once: your prompt plus any documents you've given it. Too much at once and the earliest details start to slip, which is why how you feed it information matters.
 - **Hallucination.** When a model states something false with complete confidence. It's the single most important word on this list: AI doesn't know when it's wrong, so anything that matters needs checking or grounding in your real documents.
 
 ### How it's built and trained
 
-- **Training.** Teaching a model by showing it vast amounts of data. Building a model from scratch is a job for big labs with budgets to match — almost no business needs to do this.
-- **Fine-tuning.** Taking an existing model and adjusting its *behaviour* with your own examples — useful for a consistent style or a narrow task, but rarely the first thing you need. We cover when it's worth it in [this guide](/blog/when-to-fine-tune-your-own-ai-model).
-- **Parameters.** The internal dials a model learns during training, counted in billions. More isn't automatically better — a smaller model can beat a larger one on a specific job, and usually costs less to run.
-- **Open vs closed models.** Closed models (like GPT or Claude) are used through a provider. Open-weight models (like Llama, Mistral or Qwen) can be downloaded and run yourself. Which to choose is a real decision with cost and control trade-offs — more in [when to run your own LLM](/blog/when-to-run-your-own-llm-infrastructure).
-- **Inference.** The act of actually *using* a trained model to get an answer — as opposed to training it. When people talk about "inference costs," they mean what it costs every time the model does a piece of work.
+- **Training.** Teaching a model by showing it vast amounts of data. Building a model from scratch is a job for big labs with budgets to match. Almost no business needs to do this.
+- **Fine-tuning.** Taking an existing model and adjusting its *behaviour* with your own examples: useful for a consistent style or a narrow task, but rarely the first thing you need. We cover when it's worth it in [this guide](/blog/when-to-fine-tune-your-own-ai-model).
+- **Parameters.** The internal dials a model learns during training, counted in billions. More isn't automatically better: a smaller model can beat a larger one on a specific job, and usually costs less to run.
+- **Open vs closed models.** Closed models (like GPT or Claude) are used through a provider. Open-weight models (like Llama, Mistral or Qwen) can be downloaded and run yourself. Which to choose is a real decision with cost and control trade-offs. More in [when to run your own LLM](/blog/when-to-run-your-own-llm-infrastructure).
+- **Inference.** The act of actually *using* a trained model to get an answer, as opposed to training it. When people talk about "inference costs," they mean what it costs every time the model does a piece of work.
 
 ### How it's used on your data
 
-- **RAG (Retrieval-Augmented Generation).** A method for letting a model answer from *your* documents by fetching the relevant passage and handing it over at the moment of the question. It's how you get AI to answer from your handbook or policies without retraining anything — and the usual answer to "can it use our data?".
+- **RAG (Retrieval-Augmented Generation).** A method for letting a model answer from *your* documents by fetching the relevant passage and handing it over at the moment of the question. It's how you get AI to answer from your handbook or policies without retraining anything. It's also the usual answer to "can it use our data?".
 - **Embedding / vector.** A way of turning text into numbers so a computer can find things by meaning rather than exact words. It's the quiet machinery that makes RAG and "search that actually understands the question" work.
-- **Context engineering.** The growing craft of giving a model the *right* information at the right time — not just a well-worded prompt, but the supporting documents and data around it. Often it matters more than the prompt itself.
-- **Agent.** AI that doesn't just answer but *does* — working through several steps and using tools to complete a task, ideally with a person approving the important bits. We explain it properly in [what is an AI agent](/blog/what-is-an-ai-agent).
-- **MCP (Model Context Protocol).** An emerging standard for plugging AI into your tools and data — think of it as a common adapter so a model can safely reach your systems without a bespoke integration each time.
-- **Multimodal.** A model that handles more than text — images, audio, sometimes video. Useful when the job involves reading a scanned form or a photo, not just typed words.
-- **Reasoning model.** A model that's encouraged to "think through" a problem in steps before answering. Better for genuinely hard problems, usually slower and dearer — so worth it for the hard 10%, overkill for the easy 90%.
+- **Context engineering.** The growing craft of giving a model the *right* information at the right time: not just a well-worded prompt, but the supporting documents and data around it. Often it matters more than the prompt itself.
+- **Agent.** AI that doesn't just answer but *does*: working through several steps and using tools to complete a task, ideally with a person approving the important bits. We explain it properly in [what is an AI agent](/blog/what-is-an-ai-agent).
+- **MCP (Model Context Protocol).** An emerging standard for plugging AI into your tools and data: think of it as a common adapter so a model can safely reach your systems without a bespoke integration each time.
+- **Multimodal.** A model that handles more than text: images, audio, sometimes video. Useful when the job involves reading a scanned form or a photo, not just typed words.
+- **Reasoning model.** A model that's encouraged to "think through" a problem in steps before answering. Better for genuinely hard problems, usually slower and dearer, so worth it for the hard 10%, overkill for the easy 90%.
 - **Guardrails.** The limits and checks placed around an AI system to keep it on-task and safe. The presence (or absence) of guardrails is a fair question to ask any vendor putting AI near your customers.
 
 ### The one habit worth keeping
 
-If a vendor uses a word that isn't on this list and can't explain it in a sentence a non-technical colleague would understand, that's worth noting. The good ones can always translate. Clear language is usually a sign of clear thinking — and you're allowed to expect both.
+If a vendor uses a word that isn't on this list and can't explain it in a sentence a non-technical colleague would understand, that's worth noting. The good ones can always translate. Clear language is usually a sign of clear thinking. And you're allowed to expect both.
 
 > **Pro Tip:** If you'd like a short, jargon-free starting point for actually putting AI to work, our free [AI Adoption Playbook](/ai-adoption-playbook) walks through picking a first use case, getting your data ready, and what it costs to run.
 
 ## Want a straight answer about AI, in plain English?
 
-A free 30-minute call with an engineer who won't hide behind the vocabulary. Bring your questions — including the ones you think are too basic to ask.
+A free 30-minute call with an engineer who won't hide behind the vocabulary. Bring your questions, including the ones you think are too basic to ask.
 
 [Book a free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call).

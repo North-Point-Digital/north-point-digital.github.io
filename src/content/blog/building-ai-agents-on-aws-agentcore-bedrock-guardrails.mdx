@@ -1,63 +1,63 @@
 ---
 title: "Building AI Agents on AWS: AgentCore, Bedrock Guardrails and the Pieces That Matter"
-excerpt: "The hard part of a production agent isn't the model — it's the infrastructure around it. A guide to the AWS building blocks for agents: Bedrock AgentCore, Bedrock Guardrails and how they fit."
+excerpt: "The hard part of a production agent isn't the model. It's the infrastructure around it. A guide to the AWS building blocks for agents: Bedrock AgentCore, Bedrock Guardrails and how they fit."
 author: "David Turnbull"
 authorRole: "Founder & AWS Solutions Architect"
 publishDate: "2026-06-10"
 category: "AI Infrastructure"
 tags: ["AWS", "AI Agents", "AI Infrastructure"]
-metaDescription: "A practical guide to building AI agents on AWS — what Amazon Bedrock AgentCore and Bedrock Guardrails do, how they fit with your framework and model, and when to use the managed route."
+metaDescription: "A practical guide to building AI agents on AWS: what Amazon Bedrock AgentCore and Bedrock Guardrails do, how they fit with your framework and model, and when to use the managed route."
 ---
 
 ## You don't need to build the agent plumbing from scratch
 
-The hard part of a production AI agent is rarely the model. It's everything around it: running it securely, giving it memory and access to your tools, keeping it on the rails when it meets a real customer, and being able to see what it did afterwards. That plumbing is where agent projects quietly succeed or fail — and it's exactly the part AWS has spent the last year turning into managed building blocks.
+The hard part of a production AI agent is rarely the model. It's everything around it: running it securely, giving it memory and access to your tools, keeping it on the rails when it meets a real customer, and being able to see what it did afterwards. That plumbing is where agent projects quietly succeed or fail, and it's exactly the part AWS has spent the last year turning into managed building blocks.
 
 If you're an AWS customer, or weighing up whether to be, here's what those pieces are and when they earn their place. We'll keep it practical rather than a feature tour. (For the groundwork on agents themselves, see [what is an AI agent](/blog/what-is-an-ai-agent).)
 
-### Amazon Bedrock AgentCore — the managed platform
+### Amazon Bedrock AgentCore, the managed platform
 
-Amazon Bedrock AgentCore is a modular, fully managed set of services for building, deploying and operating agents at scale. The important word is *modular*: it's a collection of composable services you can use together or pick from individually, and — usefully — it's framework- and model-agnostic. It works with the orchestration framework of your choice (Strands Agents, LangGraph, CrewAI and others) and with any model, whether or not that model is hosted on Bedrock.
+Amazon Bedrock AgentCore is a modular, fully managed set of services for building, deploying and operating agents at scale. The important word is *modular*: it's a collection of composable services you can use together or pick from individually, and, usefully, it's framework- and model-agnostic. It works with the orchestration framework of your choice (Strands Agents, LangGraph, CrewAI and others) and with any model, whether or not that model is hosted on Bedrock.
 
 The components that matter most:
 
-- **Runtime** — a secure, serverless environment to run your agents. Each session runs in its own isolated microVM, with separate compute, memory and filesystem, so one user's session can't bleed into another's. For anyone handling multiple customers or regulated data, that isolation is the headline.
-- **Memory** — managed, persistent memory so an agent can remember facts and context across a conversation and across time, without you building a memory store yourself.
-- **Gateway** — turns your existing APIs and AWS Lambda functions into tools the agent can use, so connecting an agent to your real systems is configuration rather than a custom build.
-- **Identity** — access control for what an agent is allowed to touch, on behalf of which user.
-- **Observability** — tracing, dashboards and metrics (built on OpenTelemetry) so you can actually see what the agent did and why, and fix it when it misbehaves.
+- **Runtime.** A secure, serverless environment to run your agents. Each session runs in its own isolated microVM, with separate compute, memory and filesystem, so one user's session can't bleed into another's. For anyone handling multiple customers or regulated data, that isolation is the headline.
+- **Memory.** Managed, persistent memory so an agent can remember facts and context across a conversation and across time, without you building a memory store yourself.
+- **Gateway.** Turns your existing APIs and AWS Lambda functions into tools the agent can use, so connecting an agent to your real systems is configuration rather than a custom build.
+- **Identity.** Access control for what an agent is allowed to touch, on behalf of which user.
+- **Observability.** Tracing, dashboards and metrics (built on OpenTelemetry) so you can actually see what the agent did and why, and fix it when it misbehaves.
 
-There's more in the box — sandboxed Browser and Code Interpreter tools, policy controls and evaluations — but the pattern is the point: these are the unglamorous, load-bearing parts of a production agent, offered as managed services so you don't have to build and secure them yourself.
+There's more in the box (sandboxed Browser and Code Interpreter tools, policy controls and evaluations), but the pattern is the point: these are the unglamorous, load-bearing parts of a production agent, offered as managed services so you don't have to build and secure them yourself.
 
-### Amazon Bedrock Guardrails — keeping the agent on the rails
+### Amazon Bedrock Guardrails, keeping the agent on the rails
 
 A capable agent connected to your systems is exactly as useful, and exactly as risky, as the limits you put around it. Amazon Bedrock Guardrails is the configurable safety layer for that, and it offers six kinds of safeguard you can mix to fit your use case:
 
-- **Content filters** — screen out harmful categories (hate, insults, sexual content, violence, misconduct) and detect prompt-injection attacks.
-- **Denied topics** — define subjects the agent must stay away from. A bank, for instance, can stop its assistant ever drifting into investment advice.
-- **Word filters** — block specific terms, competitor names or profanity.
-- **Sensitive information filters** — detect and either block or mask personal data such as names, addresses and identification numbers, in both what users type and what the model replies.
-- **Contextual grounding checks** — catch answers that aren't actually grounded in your source material, which is most of what people mean by "hallucination".
-- **Automated Reasoning checks** — apply formal logic to flag statements that are false or rest on unstated assumptions.
+- **Content filters.** Screen out harmful categories (hate, insults, sexual content, violence, misconduct) and detect prompt-injection attacks.
+- **Denied topics.** Define subjects the agent must stay away from. A bank, for instance, can stop its assistant ever drifting into investment advice.
+- **Word filters.** Block specific terms, competitor names or profanity.
+- **Sensitive information filters.** Detect and either block or mask personal data such as names, addresses and identification numbers, in both what users type and what the model replies.
+- **Contextual grounding checks.** Catch answers that aren't actually grounded in your source material, which is most of what people mean by "hallucination".
+- **Automated Reasoning checks.** Apply formal logic to flag statements that are false or rest on unstated assumptions.
 
-For regulated work, that last group is the difference between a clever demo and something you can put near a customer. The PII handling and grounding checks are precisely what a compliance team will ask about first — and being able to point at them is what lets a project clear review instead of stalling in it.
+For regulated work, that last group is the difference between a clever demo and something you can put near a customer. The PII handling and grounding checks are precisely what a compliance team will ask about first, and being able to point at them is what lets a project clear review instead of stalling in it.
 
 ### How the pieces fit together
 
 It helps to see the layers. The **model** does the reasoning and is swappable. Your **framework** (Strands, LangGraph, CrewAI) handles the [orchestration](/blog/agent-orchestration-pros-and-cons). **AgentCore** provides the runtime, memory, tools and observability. **Guardrails** wraps the whole thing in safety policy. None of these locks you into a single model, and you can adopt them one at a time.
 
-It's also worth saying plainly: choosing AWS here doesn't mean going "all-in on AWS". AgentCore is deliberately framework- and model-agnostic, and the infrastructure is the part you can hand off entirely — you never need to log into the console or learn what a microVM is. That's the part you'd pay a partner to run.
+It's also worth saying plainly: choosing AWS here doesn't mean going "all-in on AWS". AgentCore is deliberately framework- and model-agnostic, and the infrastructure is the part you can hand off entirely. You never need to log into the console or learn what a microVM is. That's the part you'd pay a partner to run.
 
 ### Managed building blocks, or roll your own?
 
-The honest comparison: managed services like AgentCore and Guardrails get you to a secure, observable, compliant agent quickly, with far less to build and maintain — which suits most businesses, and especially regulated ones. Rolling your own with an open harness like Hermes or OpenClaw (which we cover in [the harness deep dive](/blog/agent-harnesses-hermes-openclaw-business-value)) gives you maximum control and independence, but you take on the running, securing and updating yourself — the same trade-off as [self-hosting an LLM](/blog/when-to-run-your-own-llm-infrastructure).
+The honest comparison: managed services like AgentCore and Guardrails get you to a secure, observable, compliant agent quickly, with far less to build and maintain, which suits most businesses, and especially regulated ones. Rolling your own with an open harness like Hermes or OpenClaw (which we cover in [the harness deep dive](/blog/agent-harnesses-hermes-openclaw-business-value)) gives you maximum control and independence, but you take on the running, securing and updating yourself, the same trade-off as [self-hosting an LLM](/blog/when-to-run-your-own-llm-infrastructure).
 
-For the large majority of businesses, the managed building blocks are the better starting point. You can always take more control later; it's much harder to bolt safety and observability onto something you shipped without them.
+For the large majority of businesses, the managed building blocks are the better starting point. You can always take more control later, and it's much harder to bolt safety and observability onto something you shipped without them.
 
-> **Pro Tip:** As an AWS Partner, we build on AgentCore and Bedrock Guardrails by default — and reach for self-hosted only when there's a genuine reason. An [AI Launchpad](/ai-launchpad) proves one agent on your data, with the guardrails and isolation a real deployment needs, before you commit to anything bigger.
+> **Pro Tip:** As an AWS Partner, we build on AgentCore and Bedrock Guardrails by default, and reach for self-hosted only when there's a genuine reason. An [AI Launchpad](/ai-launchpad) proves one agent on your data, with the guardrails and isolation a real deployment needs, before you commit to anything bigger.
 
 ## Want to build an agent that would actually pass a security review?
 
-A free 30-minute call with an AWS-certified engineer. Bring the use case; we'll map it to the right AWS pieces and tell you honestly what it takes to run safely.
+A free 30-minute call with an AWS-certified engineer. Bring the use case, and we'll map it to the right AWS pieces and tell you honestly what it takes to run safely.
 
 [Book a free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call) or explore [Build Better on AWS](/build-better).

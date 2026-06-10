@@ -1,6 +1,6 @@
 ---
 title: "Prompt Engineering: A Practical Guide for Business, With Examples"
-excerpt: "Most 'bad AI results' are really bad prompts. Six plain-English techniques — with real before-and-after examples — to get usable output for everyday business tasks."
+excerpt: "Most 'bad AI results' are really bad prompts. Six plain-English techniques, with real before-and-after examples, to get usable output for everyday business tasks."
 author: "David Turnbull"
 authorRole: "Founder & AWS Solutions Architect"
 publishDate: "2026-06-10"
@@ -11,11 +11,11 @@ metaDescription: "A no-jargon guide to writing prompts that get usable results f
 
 ## Most "bad AI results" are actually bad prompts
 
-If you've tried one of the big AI tools and come away thinking it's overhyped, it's worth a second look — because nine times out of ten the tool isn't the problem. The instructions are. Modern models are very good at doing what you ask, and not much good at guessing what you meant. Tighten the ask and the output usually changes from "generic waffle" to "I could actually send this."
+If you've tried one of the big AI tools and come away thinking it's overhyped, it's worth a second look. Nine times out of ten the tool isn't the problem. The instructions are. Modern models are very good at doing what you ask, and not much good at guessing what you meant. Tighten the ask and the output usually changes from "generic waffle" to "I could actually send this."
 
 That's all prompt engineering really is: the small craft of asking well. You don't need to be technical, and you don't need to memorise anything clever. The techniques below come straight from the published guidance of the people who build these models, and each one comes with a before-and-after you can copy today.
 
-### 1. Be specific — the model takes you literally
+### 1. Be specific: the model takes you literally
 
 The single biggest improvement most people can make is to stop being vague. A short, fuzzy prompt gets a short, fuzzy answer.
 
@@ -25,7 +25,7 @@ The single biggest improvement most people can make is to stop being vague. A sh
 
 Same tool, completely different result. You're not hoping it reads your mind; you're telling it the tone, the length, the facts and the outcome you want.
 
-### 2. Give it the context — including the "why"
+### 2. Give it the context, including the "why"
 
 Models do better work when they understand the situation, just like a new starter would. A line or two of background is usually enough.
 
@@ -37,13 +37,13 @@ Telling it *who the summary is for and why* changes what it chooses to keep.
 
 ### 3. Show it an example (this is the big one)
 
-If you want output in a particular style, show it one. Giving an example or two — sometimes called "few-shot" prompting — is one of the most reliable techniques there is, and it's still strongly recommended by model makers like Anthropic and OpenAI.
+If you want output in a particular style, show it one. Giving an example or two, sometimes called "few-shot" prompting, is one of the most reliable techniques there is, and it's still strongly recommended by model makers like Anthropic and OpenAI.
 
 **Prompt:** "Write product descriptions in the style of these two examples, then write one for the third product.
 
-Example 1 — Oak Dining Table: 'Solid British oak, built to be argued over at Christmas for the next forty years. Seats six, seats eight if everyone's friendly.'
+Example 1 (Oak Dining Table): 'Solid British oak, built to be argued over at Christmas for the next forty years. Seats six, seats eight if everyone's friendly.'
 
-Example 2 — Wool Throw: 'The blanket that ends the thermostat debate. Lambswool, machine-washable, suspiciously hard to give back once someone's claimed it.'
+Example 2 (Wool Throw): 'The blanket that ends the thermostat debate. Lambswool, machine-washable, suspiciously hard to give back once someone's claimed it.'
 
 Now write one for: Ceramic Mug, 350ml, dishwasher safe."
 
@@ -57,7 +57,7 @@ Telling the model who to be sets the tone and the level of detail without you ha
 
 **After:** "You're an experienced recruiter who hires for small businesses. Review this job advert and tell me three things that would put off good candidates, and how to fix each one."
 
-The role does a lot of quiet work — it sets expertise, tone and what "good" looks like.
+The role does a lot of quiet work: it sets expertise, tone and what "good" looks like.
 
 ### 5. Ask for the format you actually want
 
@@ -67,27 +67,27 @@ If you know what shape the answer should take, say so. It saves you reformatting
 
 **After:** "Compare these three suppliers in a table with columns for Price, Lead Time, Minimum Order and one Risk to Watch. Then add a single line recommending which to trial first and why."
 
-You can ask for a table, a list, an email, a script, a one-line answer — whatever fits where it's going next.
+You can ask for whatever fits where it's going next: a table, a list, an email, a script, or a one-line answer.
 
-### 6. Let it say "I don't know" — and give it the facts
+### 6. Let it say "I don't know" and give it the facts
 
 This is the technique that stops the embarrassing mistakes. Left to invent, a model will sometimes fill a gap with a confident guess. Two habits fix most of it: paste in the real source material, and explicitly give it permission to admit uncertainty.
 
-**Prompt:** "Using only the policy document pasted below, answer the customer's question. If the answer isn't in the document, say 'I'm not certain — please check with us directly' rather than guessing.
+**Prompt:** "Using only the policy document pasted below, answer the customer's question. If the answer isn't in the document, say 'I'm not certain, please check with us directly' rather than guessing.
 
 [paste your returns policy]
 
 Customer question: 'Can I return an item after 40 days if it's unopened?'"
 
-This is also a gentle introduction to what's sometimes called *context engineering* — the idea that giving the model the right information matters as much as giving it the right instructions. For anything where accuracy counts, feeding it your real documents beats relying on its general knowledge every time.
+This is also a gentle introduction to what's sometimes called *context engineering*: the idea that giving the model the right information matters as much as giving it the right instructions. For anything where accuracy counts, feeding it your real documents beats relying on its general knowledge every time.
 
 ### Two habits that beat any single trick
 
-**Treat the first answer as a draft.** The quickest path to a great result is often a quick second instruction — "make it shorter," "less salesy," "add a line about the warranty." You're having a conversation, not casting a spell.
+**Treat the first answer as a draft.** The quickest path to a great result is often a quick second instruction: "make it shorter," "less salesy," "add a line about the warranty." You're having a conversation, not casting a spell.
 
-**Keep your good prompts.** When one works, paste it into a simple document. Within a few weeks you'll have a small library — customer replies, quote drafts, post ideas — that anyone on the team can reuse. That, more than any individual tip, is what turns AI from a novelty into something that quietly saves hours.
+**Keep your good prompts.** When one works, paste it into a simple document. Within a few weeks you'll have a small library (customer replies, quote drafts, post ideas) that anyone on the team can reuse. That, more than any individual tip, is what turns AI from a novelty into something that quietly saves hours.
 
-> **Pro Tip:** The businesses that get the most from AI aren't the ones with the cleverest prompts — they're the ones who picked one repetitive task and got it genuinely reliable before moving on. Our free [AI Adoption Playbook](/ai-adoption-playbook) walks through how to choose that first task.
+> **Pro Tip:** The businesses that get the most from AI aren't the ones with the cleverest prompts. They're the ones who picked one repetitive task and got it genuinely reliable before moving on. Our free [AI Adoption Playbook](/ai-adoption-playbook) walks through how to choose that first task.
 
 ## Want help putting this to work on a real task?
 

@@ -1,6 +1,6 @@
 ---
 title: "Agent Harnesses, Explained: What Hermes and OpenClaw Mean for Your Business"
-excerpt: "The model gets the headlines, but the harness does the work. A deep dive into agent harnesses — using Hermes and OpenClaw as examples — and where the business value actually is."
+excerpt: "The model gets the headlines, but the harness does the work. A deep dive into agent harnesses, using Hermes and OpenClaw as examples, and where the business value actually is."
 author: "David Turnbull"
 authorRole: "Founder & AWS Solutions Architect"
 publishDate: "2026-06-10"
@@ -11,53 +11,53 @@ metaDescription: "What is an AI agent harness? A deep dive using Hermes and Open
 
 ## The model gets the headlines. The harness does the work.
 
-Almost every conversation about AI fixates on the model — which one is smartest, which is cheapest, which topped the leaderboard this week. But a model on its own is just a very capable text box. The thing that turns it into something that can actually *do* a job — check your calendar, draft and send the reply, file the record, pick up where it left off yesterday — is the layer wrapped around it. That layer has a name: the harness.
+Almost every conversation about AI fixates on the model: which one is smartest, which is cheapest, which topped the leaderboard this week. But a model on its own is just a very capable text box. The thing that turns it into something that can actually *do* a job (check your calendar, draft and send the reply, file the record, pick up where it left off yesterday) is the layer wrapped around it. That layer has a name: the harness.
 
-If you want to understand where agents create real value, this is the part worth understanding. So here's a deep dive, using two open-source harnesses — Hermes and OpenClaw — as worked examples.
+If you want to understand where agents create real value, this is the part worth understanding. So here's a deep dive, using two open-source harnesses, Hermes and OpenClaw, as worked examples.
 
 ### What an agent harness actually is
 
-An agent harness is everything you build around a model to turn it into a working, governed agent: the tools it can use, the memory it keeps, the sessions it runs in, the control flow of its decisions, and the policies and audit trail that keep it safe. If the model is the engine, the harness is the rest of the car — the fuel line, the steering, the brakes, and the dashboard that tells you what's happening.
+An agent harness is everything you build around a model to turn it into a working, governed agent: the tools it can use, the memory it keeps, the sessions it runs in, the control flow of its decisions, and the policies and audit trail that keep it safe. If the model is the engine, the harness is the rest of the car: the fuel line, the steering, the brakes, and the dashboard that tells you what's happening.
 
 Concretely, a harness handles:
 
-- **Model calls** — routing prompts to the right provider, managing retries, rate limits and token budgets.
-- **Tools and skills** — giving the agent real capabilities: searching, reading files, calling your APIs, running code.
-- **Memory and sessions** — holding context across a task and across days, so the agent remembers what was discussed.
-- **Control and governance** — the loop that decides what to do next, plus the guardrails, approvals and logs that make it trustworthy.
+- **Model calls.** Routing prompts to the right provider, managing retries, rate limits and token budgets.
+- **Tools and skills.** Giving the agent real capabilities: searching, reading files, calling your APIs, running code.
+- **Memory and sessions.** Holding context across a task and across days, so the agent remembers what was discussed.
+- **Control and governance.** The loop that decides what to do next, plus the guardrails, approvals and logs that make it trustworthy.
 
 Get the harness right and an ordinary model becomes genuinely useful. Get it wrong and even the best model is a demo that falls over the moment it meets real work. (New to the idea of agents at all? Start with [what is an AI agent](/blog/what-is-an-ai-agent).)
 
 ### Two open-source harnesses worth knowing
 
-**Hermes (Nous Research).** Hermes is an open-source agent harness that wraps around any model — local or via an API — and gives it the tools, memory and structure to act like a real assistant. Its design leans hard into production concerns: it treats sessions as infrastructure, keeps a layered memory, can create and refine its own reusable skills, and supports long-running, multi-agent work. The thesis behind it is pointed: with open-source tooling and any decent model API, an individual or a small team should be able to stand up an agent that rivals the commercial offerings — without handing their data or their roadmap to a single vendor.
+**Hermes (Nous Research).** Hermes is an open-source agent harness that wraps around any model, local or via an API, and gives it the tools, memory and structure to act like a real assistant. Its design leans hard into production concerns: it treats sessions as infrastructure, keeps a layered memory, can create and refine its own reusable skills, and supports long-running, multi-agent work. The thesis behind it is pointed. With open-source tooling and any decent model API, an individual or a small team should be able to stand up an agent that rivals the commercial offerings, without handing their data or their roadmap to a single vendor.
 
-**OpenClaw.** OpenClaw takes a different angle on the same problem. It's a self-hosted, MIT-licensed *gateway* that connects the chat apps your team already lives in — WhatsApp, Slack, Telegram, Microsoft Teams, iMessage and more — to an AI agent you run yourself. You run a single gateway process on your own machine or server, and it becomes the bridge between those everyday channels and an always-available assistant, with tool use, memory and the ability to route between multiple isolated agents. It can even drive coding agents like Claude Code or Codex behind the scenes. The pitch is control without friction: your hardware, your rules, reachable from your pocket.
+**OpenClaw.** OpenClaw takes a different angle on the same problem. It's a self-hosted, MIT-licensed *gateway* that connects the chat apps your team already lives in (WhatsApp, Slack, Telegram, Microsoft Teams, iMessage and more) to an AI agent you run yourself. You run a single gateway process on your own machine or server, and it becomes the bridge between those everyday channels and an always-available assistant, with tool use, memory and the ability to route between multiple isolated agents. It can even drive coding agents like Claude Code or Codex behind the scenes. The pitch is control without friction: your hardware, your rules, reachable from your pocket.
 
-Two different shapes, same underlying idea: the model is swappable; the harness is where the product lives.
+Two different shapes, same underlying idea: the model is swappable, and the harness is where the product lives.
 
 ### Where the business value actually is
 
 A harness is only interesting to a business if it pays for itself. Here's where the value genuinely sits:
 
-- **Adoption.** The hardest part of AI in a business isn't the technology — it's getting people to use it. A harness like OpenClaw that puts the agent inside the chat tools your team already uses removes the single biggest barrier: nobody has to learn a new app.
+- **Adoption.** The hardest part of AI in a business isn't the technology. It's getting people to use it. A harness like OpenClaw that puts the agent inside the chat tools your team already uses removes the single biggest barrier: nobody has to learn a new app.
 - **Control and data ownership.** Self-hosted harnesses keep your data inside your environment and free you from per-seat SaaS pricing and lock-in. For anyone handling sensitive or regulated information, that's not a nice-to-have.
-- **Model independence.** Because the harness sits above the model, you can switch models as prices and rankings shift — without rebuilding. That's the same model-agnostic logic we wrote about in [the 2026 model landscape](/blog/best-ai-models-2026-for-business).
+- **Model independence.** Because the harness sits above the model, you can switch models as prices and rankings shift, without rebuilding. That's the same model-agnostic logic we wrote about in [the 2026 model landscape](/blog/best-ai-models-2026-for-business).
 - **Governance.** The harness is where guardrails, approvals and audit logs live. It's the layer that turns "an impressive demo" into "something we're allowed to put in front of customers."
 
 ### How to actually get value (not just a working demo)
 
 The gap between a harness running on a laptop and a harness earning its keep is mostly discipline, not technology:
 
-1. **Start from one painful, repetitive workflow** — not "let's deploy agents everywhere." The narrow win is the one that pays.
-2. **Keep a person at the decision point.** Let the agent do the legwork; let a human approve anything that matters.
-3. **Decide build-versus-buy honestly.** An open harness like Hermes or OpenClaw gives you maximum control, but you own the running, securing and updating of it — the same trade-off as [running your own LLM infrastructure](/blog/when-to-run-your-own-llm-infrastructure). A managed platform gives you speed and a compliance story out of the box, with less control.
-4. **Measure the boring things** — hours saved, error rate, how many people actually use it. If those don't move, the cleverness doesn't matter.
+1. **Start from one painful, repetitive workflow,** not "let's deploy agents everywhere." The narrow win is the one that pays.
+2. **Keep a person at the decision point.** Let the agent do the legwork, and let a human approve anything that matters.
+3. **Decide build-versus-buy honestly.** An open harness like Hermes or OpenClaw gives you maximum control, but you own the running, securing and updating of it, the same trade-off as [running your own LLM infrastructure](/blog/when-to-run-your-own-llm-infrastructure). A managed platform gives you speed and a compliance story out of the box, with less control.
+4. **Measure the boring things:** hours saved, error rate, how many people actually use it. If those don't move, the cleverness doesn't matter.
 
-> **Pro Tip:** The right harness depends entirely on the job, your data sensitivity and who'll maintain it. When we run an [AI Launchpad](/ai-launchpad), part of the work is choosing that foundation honestly — open and self-hosted where control matters, managed where speed and compliance matter more — and proving the value on one real workflow before you commit.
+> **Pro Tip:** The right harness depends entirely on the job, your data sensitivity and who'll maintain it. When we run an [AI Launchpad](/ai-launchpad), part of the work is choosing that foundation honestly (open and self-hosted where control matters, managed where speed and compliance matter more), and proving the value on one real workflow before you commit.
 
 ## Thinking about putting an agent to work?
 
-A free 30-minute call with an engineer. Tell us the workflow you'd most like to hand off, and we'll talk through the right way to build it — harness, model and all.
+A free 30-minute call with an engineer. Tell us the workflow you'd most like to hand off, and we'll talk through the right way to build it: harness, model and all.
 
 [Book a free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call) or read up on [building agents on AWS](/blog/building-ai-agents-on-aws-agentcore-bedrock-guardrails).

@@ -1,6 +1,6 @@
 ---
 title: "Agent Orchestration: The Pros, the Cons, and When Many Agents Beat One"
-excerpt: "Once one agent works, the temptation is to wire up a whole team of them. Sometimes that's the unlock — often it's complexity you didn't need. An honest look at agent orchestration."
+excerpt: "Once one agent works, the temptation is to wire up a whole team of them. Sometimes that's the unlock. Often it's complexity you didn't need. An honest look at agent orchestration."
 author: "David Turnbull"
 authorRole: "Founder & AWS Solutions Architect"
 publishDate: "2026-06-10"
@@ -13,19 +13,19 @@ metaDescription: "The pros and cons of AI agent orchestration: single-agent vs m
 
 Once you've got a single AI agent doing something useful, a tempting next thought arrives: what if I had a *team* of them? A researcher agent, a writer agent, a checker agent, all working together like a little digital department. It's an appealing picture, and sometimes it's exactly right. Just as often, it's a way to turn a working system into a fragile one.
 
-That choice — one capable agent versus several coordinated ones — is what people mean by orchestration. Here's an honest look at the trade-off, without the hype in either direction. (If "agent" itself is still fuzzy, our [plain-English explainer](/blog/what-is-an-ai-agent) is the place to start.)
+That choice, one capable agent versus several coordinated ones, is what people mean by orchestration. Here's an honest look at the trade-off, without the hype in either direction. (If "agent" itself is still fuzzy, our [plain-English explainer](/blog/what-is-an-ai-agent) is the place to start.)
 
 ### Single agent vs multi-agent, plainly
 
-A **single agent** is one model running in a loop with a set of tools. It reads the task, decides what to do, uses a tool, looks at the result, and carries on until it's done. It's simpler, cheaper and far easier to debug — and it handles more than people expect.
+A **single agent** is one model running in a loop with a set of tools. It reads the task, decides what to do, uses a tool, looks at the result, and carries on until it's done. It's simpler, cheaper and far easier to debug, and it handles more than people expect.
 
-**Multi-agent orchestration** coordinates several specialised agents — often a lead agent that plans and delegates to workers, or a set of role-based agents that each own part of the job. It suits genuinely complex, multi-part work, but you pay for it in cost, speed and complexity.
+**Multi-agent orchestration** coordinates several specialised agents: often a lead agent that plans and delegates to workers, or a set of role-based agents that each own part of the job. It suits genuinely complex, multi-part work, but you pay for it in cost, speed and complexity.
 
-The useful rule of thumb: single agents are table stakes now; the real productivity gains *can* come from orchestrating several — but only once the task genuinely needs it.
+The useful rule of thumb: single agents are table stakes now, and the real productivity gains *can* come from orchestrating several, but only once the task genuinely needs it.
 
 ### The pros of orchestration
 
-- **Specialisation.** Each agent can be focused, with its own instructions, tools and permissions — a "researcher" that can only read, a "publisher" that can write.
+- **Specialisation.** Each agent can be focused, with its own instructions, tools and permissions: a "researcher" that can only read, a "publisher" that can write.
 - **Parallelism.** Independent sub-tasks can run at the same time rather than one after another.
 - **Modularity.** You can improve or swap one agent without rebuilding the whole system.
 - **Harder workflows become possible.** Branching, multi-stage processes that a single loop would struggle to hold together.
@@ -33,7 +33,7 @@ The useful rule of thumb: single agents are table stakes now; the real productiv
 ### The cons (the part the demos skip)
 
 - **Complexity and cost.** More agents mean more moving parts, more model calls, more tokens and more latency. The bill and the wait both grow.
-- **Debugging gets harder.** When something goes wrong across five agents, working out *which* one — and why — is genuinely difficult. Errors also compound: a small mistake early gets amplified down the chain.
+- **Debugging gets harder.** When something goes wrong across five agents, working out *which* one, and why, is genuinely difficult. Errors also compound: a small mistake early gets amplified down the chain.
 - **Reliability drops as parts multiply.** Every additional agent is another thing that can wander off-task. Coordination is overhead, and overhead fails.
 - **It's often overkill.** A single, well-built agent with good tools frequently beats a sprawling team of agents that spend half their effort talking to each other.
 
@@ -41,25 +41,25 @@ The useful rule of thumb: single agents are table stakes now; the real productiv
 
 Most orchestration boils down to a few shapes:
 
-- **Orchestrator and workers** — a lead agent breaks the job down and hands pieces to specialist agents.
-- **Role-based crews** — agents modelled on a human team, each with a defined role.
-- **Graph or state-machine workflows** — explicit steps with branching, loops, retries and human approval points.
+- **Orchestrator and workers.** A lead agent breaks the job down and hands pieces to specialist agents.
+- **Role-based crews.** Agents modelled on a human team, each with a defined role.
+- **Graph or state-machine workflows.** Explicit steps with branching, loops, retries and human approval points.
 
 ### The frameworks, briefly and fairly
 
 You don't need to memorise these, but the names come up:
 
-- **LangGraph** models work as a graph of steps, with strong state persistence, checkpointing and human-in-the-loop approvals. It's a sensible default when a workflow needs cycles, branching or auditability — which makes it popular in regulated settings.
+- **LangGraph** models work as a graph of steps, with strong state persistence, checkpointing and human-in-the-loop approvals. It's a sensible default when a workflow needs cycles, branching or auditability, which makes it popular in regulated settings.
 - **CrewAI** uses a role-based design that maps neatly onto how people think about teams, and it's fast to prototype with. The flip side is that its convenient abstractions can get in the way at production scale, and observability is weaker.
 - **Vendor SDKs** (the OpenAI Agents SDK, the Anthropic Claude Agent SDK) and lightweight options like Smolagents are often the quickest path for a single agent that calls a tool or two, without the framework overhead.
 
-This isn't a contest with one winner. Pick role-based tools when the work splits cleanly into specialists; pick graph-based tools when one workflow needs careful control and approvals. And whichever you choose, you can run it on managed infrastructure rather than building the plumbing yourself — more on that in [building agents on AWS](/blog/building-ai-agents-on-aws-agentcore-bedrock-guardrails).
+This isn't a contest with one winner. Pick role-based tools when the work splits cleanly into specialists, and graph-based tools when one workflow needs careful control and approvals. And whichever you choose, you can run it on managed infrastructure rather than building the plumbing yourself. More on that in [building agents on AWS](/blog/building-ai-agents-on-aws-agentcore-bedrock-guardrails).
 
-### When multi-agent is worth it — and when it isn't
+### When multi-agent is worth it, and when it isn't
 
 **Worth it when** the work splits into genuinely distinct sub-tasks, those parts can run in parallel, different stages need different tools or permissions, or the process has real branching that a single loop can't hold.
 
-**Not worth it when** a single agent with good tools could do the job, when you're still early and experimenting, or — most importantly — when you can't yet reliably observe and debug *one* agent. Adding more agents to a system you can't see into doesn't add capability; it adds places for things to go wrong quietly.
+**Not worth it when** a single agent with good tools could do the job, when you're still early and experimenting, or, most importantly, when you can't yet reliably observe and debug *one* agent. Adding more agents to a system you can't see into doesn't add capability. It adds places for things to go wrong quietly.
 
 The honest principle: earn the right to orchestrate. Make one agent genuinely reliable first. Reach for many only when the task leaves you no simpler option.
 
