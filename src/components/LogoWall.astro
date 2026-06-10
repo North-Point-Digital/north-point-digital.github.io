@@ -1,0 +1,34 @@
+---
+interface Props {
+  logos?: string[];
+  /** Logos drawn in white — inverted so they show on the light background. */
+  invertLogos?: string[];
+}
+const { logos = [], invertLogos = [] } = Astro.props;
+---
+
+{logos.length > 0 && (
+  <section class="border-y border-slate-200 bg-slate-50" aria-label="Clients">
+    <div class="container-site py-12">
+      <p class="text-center text-sm font-medium uppercase tracking-wider text-slate-500">
+        Teams we've worked with
+      </p>
+      <ul class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+        {logos.map((logo, i) => (
+          <li>
+            <img
+              src={logo}
+              alt={`Client logo ${i + 1}`}
+              class:list={[
+                'h-9 w-auto max-w-[140px] object-contain grayscale opacity-70',
+                invertLogos.includes(logo) && 'invert',
+              ]}
+              loading="lazy"
+              height="36"
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}

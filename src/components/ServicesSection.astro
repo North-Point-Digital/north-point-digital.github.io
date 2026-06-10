@@ -1,62 +1,121 @@
 ---
-import CalendlyCTA from './CalendlyCTA.astro';
+const CALENDLY = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call';
 
-const services = [
+const supportingServices = [
   {
-    title: 'Save Money',
-    description: 'Cost optimisation, right-sizing, budget alerts.',
-    features: ['25%+ Cost Reduction', 'Security Hardening', 'Performance Optimisation', 'No Upfront Cost'],
+    title: 'Cut your AWS bill',
+    name: 'Security & Cost Optimisation Blueprint',
+    description:
+      'A Well-Architected review focused on the two pillars that pay for themselves: cost and security. We target 25%+ savings and fix critical issues as we find them.',
+    features: ['25%+ cost reduction target', 'Security remediation included', 'No upfront cost'],
     link: '/aws-profitability-resilience-blueprint',
+    trackName: 'Save Money',
   },
   {
-    title: 'Build Better',
-    description: 'Architecture, migrations, modernisation.',
-    features: ['Scalable Infrastructure', 'Cloud Migrations', 'Landing Zones', 'DevOps & SRE', 'Solutions Architecture'],
+    title: 'Build on solid ground',
+    name: 'Build Better on AWS',
+    description:
+      'Architecture, migrations, landing zones and DevOps for teams that need AWS done properly — including AWS-funded migration programmes.',
+    features: ['Cloud migrations & MAP', 'Landing zones & governance', 'DevOps & SRE'],
     link: '/build-better',
-    showMRA: true,
-  },
-  {
-    title: 'Go Faster',
-    description: 'AI PoCs, automation, DevOps.',
-    features: ['AI Proof of Concept', 'Production Roadmap', 'Automation', 'Fixed-Fee Engagement'],
-    link: '/ai-launchpad',
+    trackName: 'Build Better',
+    mra: true,
   },
 ];
 ---
 
-<section id="services" class="section-padding relative overflow-hidden">
-  <div class="container-wide">
-    <div class="text-center mb-16">
-      <h2 class="text-h2 text-white mb-4">What We Do</h2>
-      <p class="text-xl text-white/80 max-w-[600px] mx-auto">Three ways to transform your AWS infrastructure</p>
+<section id="services" class="section bg-slate-50">
+  <div class="container-site">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="eyebrow mb-4">Services</p>
+      <h2 class="text-h2">What we do</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        Three offers, each with a fixed scope and a clear deliverable.
+      </p>
     </div>
 
-    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center md:justify-items-stretch opacity-0" data-animate-on-scroll>
-      {services.map((service) => (
-        <div class="glass-card w-full max-w-full h-full p-8 pb-12 relative overflow-hidden cursor-pointer [&:hover_svg]:scale-110 flex flex-col">
-          <a href={service.link} class="no-underline text-inherit flex-1 block" data-track-service={service.title}>
-            <h3 class="text-white text-2xl mb-4">{service.title}</h3>
-            <p class="text-white/80 leading-relaxed">{service.description}</p>
-            <ul class="list-none mt-4">
-              {service.features.map((feature) => (
-                <li class="text-white/70 py-1">{feature}</li>
+    <div class="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2" data-reveal>
+      {/* Flagship: AI Launchpad */}
+      <article class="card card-hover relative flex flex-col border-accent/30 bg-gradient-to-b from-accent-tint/60 to-white lg:row-span-1 lg:col-span-2 lg:p-10">
+        <div class="flex flex-col gap-8 lg:flex-row lg:items-start">
+          <div class="flex-1">
+            <p class="eyebrow mb-3">Flagship · AI Launchpad</p>
+            <h3 class="text-2xl font-semibold text-slate-900">Put AI to work</h3>
+            <p class="mt-3 max-w-xl leading-relaxed text-slate-600">
+              A fixed-fee, six-week proof of concept built with your data on AWS —
+              Bedrock, SageMaker and friends. You get working software, production
+              costings and a roadmap. Not slideware.
+            </p>
+            <ul class="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              {['Working prototype on your data', 'Production cost projections', 'Implementation roadmap', 'Fixed fee, six weeks'].map((f) => (
+                <li class="flex items-start gap-2.5 text-[0.95rem] text-slate-700">
+                  <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  {f}
+                </li>
               ))}
             </ul>
-          </a>
-          {service.showMRA && (
-            <a
-              href="https://mra.northpointdigital.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-6 inline-block py-2.5 px-5 rounded-full border border-white/80 bg-transparent text-white font-semibold text-sm cursor-pointer transition-all duration-300 hover:bg-white hover:text-[#2d8659] hover:-translate-y-0.5 hover:shadow-lg w-fit"
-            >
-              Launch Migration Readiness Assessment
-            </a>
-          )}
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="/ai-launchpad" class="btn-primary" data-track-service="Go Faster">
+                Explore AI Launchpad
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" class="btn-secondary" data-track-cta="Services Book a Call">
+                Talk it through first
+              </a>
+            </div>
+          </div>
+
+          {/* Simple data-flow diagram, drawn not stocked */}
+          <svg class="mx-auto w-full max-w-[300px] shrink-0 text-slate-300 lg:mx-0" viewBox="0 0 300 220" fill="none" aria-hidden="true">
+            <rect x="10" y="20" width="110" height="40" rx="8" stroke="currentColor" stroke-width="1.5" />
+            <text x="65" y="44" text-anchor="middle" class="fill-slate-500" font-size="12" font-family="ui-monospace, monospace">Your data</text>
+            <rect x="10" y="160" width="110" height="40" rx="8" stroke="currentColor" stroke-width="1.5" />
+            <text x="65" y="184" text-anchor="middle" class="fill-slate-500" font-size="12" font-family="ui-monospace, monospace">Your use case</text>
+            <rect x="180" y="90" width="110" height="40" rx="8" stroke="#2563eb" stroke-width="1.5" />
+            <text x="235" y="114" text-anchor="middle" fill="#2563eb" font-size="12" font-family="ui-monospace, monospace">Working PoC</text>
+            <path d="M120 40 C 160 40, 160 110, 180 110" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" />
+            <path d="M120 180 C 160 180, 160 110, 180 110" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" />
+            <text x="235" y="150" text-anchor="middle" class="fill-slate-400" font-size="11" font-family="ui-monospace, monospace">6 weeks · fixed fee</text>
+          </svg>
         </div>
+      </article>
+
+      {supportingServices.map((service) => (
+        <article class="card card-hover flex flex-col">
+          <p class="eyebrow mb-3">{service.name}</p>
+          <h3 class="text-xl font-semibold text-slate-900">{service.title}</h3>
+          <p class="mt-3 leading-relaxed text-slate-600">{service.description}</p>
+          <ul class="mt-5 space-y-2.5">
+            {service.features.map((feature) => (
+              <li class="flex items-start gap-2.5 text-[0.95rem] text-slate-700">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <div class="mt-auto flex flex-wrap items-center gap-4 pt-7">
+            <a href={service.link} class="font-semibold text-accent no-underline transition-colors duration-fast hover:text-accent-hover" data-track-service={service.trackName}>
+              Learn more →
+            </a>
+            {service.mra && (
+              <a
+                href="https://mra.northpointdigital.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm font-medium text-slate-500 underline decoration-slate-300 underline-offset-4 transition-colors duration-fast hover:text-slate-700"
+              >
+                Try the Migration Readiness Assessment
+              </a>
+            )}
+          </div>
+        </article>
       ))}
     </div>
-
-    <CalendlyCTA />
   </div>
 </section>

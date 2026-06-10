@@ -1,5 +1,4 @@
 ---
-import CalendlyCTA from './CalendlyCTA.astro';
 import { faqs } from '../data/faqs';
 
 interface Props {
@@ -7,38 +6,50 @@ interface Props {
 }
 
 const { framed = false } = Astro.props;
-
-const sectionClasses = framed
-  ? 'section-padding bg-white/[0.08] border border-white/20 rounded-[20px] backdrop-blur-[14px] relative overflow-hidden'
-  : 'section-padding bg-white/5 relative';
 ---
 
-<section class={sectionClasses} id={framed ? undefined : 'faq'} data-section="faq">
-  <div class="container-narrow">
-    <div class="text-center mb-16">
-      <h2 class="text-h2 text-white mb-4">Frequently Asked Questions</h2>
-      <p class="text-xl text-white/80">Everything you need to know about working with us</p>
+<section class="section bg-white" id={framed ? undefined : 'faq'} data-section="faq">
+  <div class="container-site max-w-3xl">
+    <div class="text-center">
+      <p class="eyebrow mb-4">FAQ</p>
+      <h2 class="text-h2">Questions we hear a lot</h2>
     </div>
 
-    <div class="flex flex-col gap-4" data-faq-container>
+    <div class="mt-12 flex flex-col gap-3" data-faq-container>
       {faqs.map((faq, index) => (
-        <details class="glass rounded-[15px] overflow-hidden transition-all duration-300 hover:bg-white/[0.12] group" open={index === 0} data-faq-question={faq.question}>
-          <summary class="w-full p-6 text-white text-xl font-semibold text-left cursor-pointer flex justify-between items-center gap-4 list-none [&::-webkit-details-marker]:hidden">
+        <details
+          class="group rounded-xl border border-slate-200 bg-white open:shadow-sm"
+          open={index === 0}
+          data-faq-question={faq.question}
+        >
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-left font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
             {faq.question}
-            <span class="flex-shrink-0 transition-transform duration-300 group-open:rotate-180">▼</span>
+            <svg
+              class="h-5 w-5 shrink-0 text-slate-400 transition-transform duration-fast group-open:rotate-180"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
           </summary>
-          <div class="px-6 pb-6 text-white/80 text-lg leading-relaxed [&_p]:mb-4 [&_p:last-child]:mb-0 [&_strong]:text-white [&_strong]:font-semibold [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4 [&_ul_li]:py-2" set:html={faq.answer} />
+          <div
+            class="px-5 pb-5 leading-relaxed text-slate-600 [&_p]:mb-4 [&_p:last-child]:mb-0 [&_strong]:font-semibold [&_strong]:text-slate-900 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul_li]:py-1"
+            set:html={faq.answer}
+          />
         </details>
       ))}
     </div>
-
-    {!framed && <CalendlyCTA />}
   </div>
 </section>
 
 <script is:inline>
-  document.querySelectorAll('[data-faq-question]').forEach(function(el) {
-    el.addEventListener('toggle', function() {
+  document.querySelectorAll('[data-faq-question]').forEach(function (el) {
+    el.addEventListener('toggle', function () {
       if (el.open && typeof window.gtag === 'function') {
         window.gtag('event', 'faq_open', {
           event_category: 'engagement',

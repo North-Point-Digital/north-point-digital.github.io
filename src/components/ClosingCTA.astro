@@ -1,0 +1,36 @@
+---
+const CALENDLY = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call';
+---
+
+<section id="contact" class="bg-slate-900">
+  <div class="container-site py-20 text-center md:py-28">
+    <h2 class="mx-auto max-w-2xl text-h2 !text-white">
+      Find out what AI could do for your business
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-slate-400">
+      A free 30-minute call with an engineer, not a salesperson. If there's no fit,
+      we'll say so.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href={CALENDLY}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        data-track-cta="Closing Book a Call"
+      >
+        Book a free call
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-6 py-3.5 text-base font-semibold text-white no-underline transition-colors duration-fast hover:border-slate-400 hover:bg-white/5"
+        data-track-cta="Closing Contact"
+      >
+        Send us a message
+      </a>
+    </div>
+  </div>
+</section>

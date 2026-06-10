@@ -1,0 +1,49 @@
+---
+const steps = [
+  {
+    title: 'A short call',
+    description:
+      'Thirty minutes, no pitch deck. We work out together whether there is a fit and where the value would be.',
+  },
+  {
+    title: 'Assessment',
+    description:
+      'We look at your AWS estate, your data and the use case, then send a written scope with a fixed price.',
+  },
+  {
+    title: 'Fixed-fee delivery',
+    description:
+      'Six weeks for an AI Launchpad, around two for a Blueprint review. Weekly demos — you see progress, not promises.',
+  },
+  {
+    title: 'Handover',
+    description:
+      'Documentation, knowledge transfer and 30 days of support. No lock-in; the aim is to leave you self-sufficient.',
+  },
+];
+---
+
+<section id="how-we-work" class="section bg-white">
+  <div class="container-site">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="eyebrow mb-4">How we work</p>
+      <h2 class="text-h2">From first call to handover</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        Every engagement runs the same way. You'll know the price and the timeline
+        before any work starts.
+      </p>
+    </div>
+
+    <ol class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" data-reveal>
+      {steps.map((step, i) => (
+        <li class="relative">
+          <div class="card h-full">
+            <span class="font-mono text-sm font-medium text-accent">0{i + 1}</span>
+            <h3 class="mt-3 text-lg font-semibold text-slate-900">{step.title}</h3>
+            <p class="mt-2 text-[0.95rem] leading-relaxed text-slate-600">{step.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

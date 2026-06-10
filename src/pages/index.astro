@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
+import LogoWall from '../components/LogoWall.astro';
 import IndustryStatsSection from '../components/IndustryStatsSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
+import HowWeWork from '../components/HowWeWork.astro';
+import CaseStudySection from '../components/CaseStudySection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import TeamSection from '../components/TeamSection.astro';
-import CaseStudySection from '../components/CaseStudySection.astro';
 import FAQSection from '../components/FAQSection.astro';
-import ContactSection from '../components/ContactSection.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
 import { buildFaqJsonLd } from '../data/faqs';
 
 const teamMembers = [
@@ -25,27 +27,27 @@ const logos = [
   '/logos/client7-logo.png', '/logos/client8-logo.png', '/logos/client9-logo.jpeg',
   '/logos/client10-logo.jpeg', '/logos/client11-logo.jpeg',
 ];
-
-const logosWithBackground = ['/logos/client4-logo.svg', '/logos/client5-logo.png'];
 ---
 
 <BaseLayout
-  title="Save Money on Your AWS Bill | North Point Digital"
-  description="AWS-certified experts helping UK businesses cut AWS costs by 25%+, improve security, and accelerate cloud and AI adoption. Risk-free engagement."
+  title="AI Adoption & AWS Consultancy for UK Businesses | North Point Digital"
+  description="Fixed-fee AI proofs of concept on AWS, delivered in six weeks. UK AWS partner for AI adoption, cost optimisation, and cloud done properly."
   canonical="https://northpointdigital.com/"
   jsonLd={[
     { "@context": "https://schema.org", "@type": "Organization", name: "North Point Digital", url: "https://northpointdigital.com/", logo: "https://northpointdigital.com/north-point-logo.webp", sameAs: ["https://www.linkedin.com/company/north-point-digital-ai/", "https://x.com/n0rth_p0int"], contactPoint: { "@type": "ContactPoint", email: "contact@northpointdigital.com", contactType: "sales" } },
     { "@context": "https://schema.org", "@type": "WebSite", name: "North Point Digital", url: "https://northpointdigital.com/" },
-    { "@context": "https://schema.org", "@type": "ProfessionalService", name: "North Point Digital", url: "https://northpointdigital.com/", description: "AWS-certified experts helping UK businesses cut AWS costs by 25%+, improve security, and accelerate cloud and AI adoption.", email: "contact@northpointdigital.com", areaServed: { "@type": "Country", name: "United Kingdom" }, priceRange: "$$", image: "https://northpointdigital.com/north-point-logo.webp" },
+    { "@context": "https://schema.org", "@type": "ProfessionalService", name: "North Point Digital", url: "https://northpointdigital.com/", description: "UK AWS partner helping businesses adopt AI with fixed-fee proofs of concept, cut AWS costs by 25%+, and build secure, resilient cloud platforms.", email: "contact@northpointdigital.com", areaServed: { "@type": "Country", name: "United Kingdom" }, priceRange: "$$", image: "https://northpointdigital.com/north-point-logo.webp", knowsAbout: ["AWS", "AI adoption", "Cloud cost optimisation", "Cloud migration", "Well-Architected Reviews"] },
     buildFaqJsonLd(),
   ]}
 >
-  <HeroSection logos={logos} logosWithBackground={logosWithBackground} />
+  <HeroSection />
+  <LogoWall logos={logos} invertLogos={['/logos/client4-logo.svg']} />
   <IndustryStatsSection />
   <ServicesSection />
+  <HowWeWork />
+  <CaseStudySection />
   <AboutSection />
   <TeamSection teamMembers={teamMembers} />
-  <CaseStudySection />
   <FAQSection />
-  <ContactSection />
+  <ClosingCTA />
 </BaseLayout>

@@ -1,58 +1,63 @@
 ---
-import CalendlyCTA from './CalendlyCTA.astro';
 import { getCollection } from 'astro:content';
 
 const caseStudies = await getCollection('caseStudies');
 ---
 
-<section id="case-studies" class="section-padding relative overflow-hidden">
-  <div class="container-wide">
-    <div class="text-center mb-16">
-      <h2 class="text-h2 text-white mb-4">Case Studies</h2>
-      <p class="text-xl text-white/80 max-w-[600px] mx-auto">Real results from real clients. See how we've helped businesses reduce costs, improve security, and accelerate innovation.</p>
+<section id="case-studies" class="section bg-slate-50">
+  <div class="container-site">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="eyebrow mb-4">Case studies</p>
+      <h2 class="text-h2">Real engagements, with numbers</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        How we've helped clients cut costs, tighten security and ship faster.
+      </p>
     </div>
 
-    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 opacity-0" data-animate-on-scroll>
+    <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal>
       {caseStudies.map((cs) => (
-        <div class="glass-card p-10 relative flex flex-col cursor-pointer [&:hover_.read-more]:translate-x-[5px]">
-          <a href={`/case-studies/${cs.slug}`} class="no-underline text-inherit flex flex-col h-full" data-track-cta={`Case Study: ${cs.data.clientName}`}>
-            <div class="flex items-center gap-4 mb-6">
-              {cs.data.logo && (
-                <img src={cs.data.logo} alt={`${cs.data.clientName} logo`} loading="lazy" class="w-[60px] h-[60px] object-contain rounded-lg bg-white/10 p-2" />
-              )}
-              <div class="flex-1">
-                <h3 class="text-white text-2xl mb-1">{cs.data.clientName}</h3>
-                {cs.data.industry && <p class="text-white/70 text-sm">{cs.data.industry}</p>}
-              </div>
+        <a
+          href={`/case-studies/${cs.slug}`}
+          class="card card-hover group flex flex-col no-underline"
+          data-track-cta={`Case Study: ${cs.data.clientName}`}
+        >
+          <div class="flex items-center gap-4">
+            {cs.data.logo && (
+              <img
+                src={cs.data.logo}
+                alt=""
+                width="48"
+                height="48"
+                loading="lazy"
+                class="h-12 w-12 rounded-lg border border-slate-200 bg-white object-contain p-1.5"
+              />
+            )}
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">{cs.data.clientName}</h3>
+              {cs.data.industry && <p class="text-sm text-slate-500">{cs.data.industry}</p>}
             </div>
+          </div>
 
-            <div class="mb-6">
-              <h4 class="text-white/90 text-base mb-2 font-semibold">Challenge</h4>
-              <p class="text-white/80 leading-relaxed text-[0.95rem]">{cs.data.challenge}</p>
-            </div>
+          <p class="mt-5 leading-relaxed text-slate-600">{cs.data.challenge}</p>
 
-            <div class="mb-6">
-              <h4 class="text-white/90 text-base mb-2 font-semibold">Solution</h4>
-              <p class="text-white/80 leading-relaxed text-[0.95rem]">{cs.data.solution}</p>
-            </div>
+          {cs.data.results.length > 0 && (
+            <ul class="mt-5 space-y-2 border-t border-slate-200 pt-5">
+              {cs.data.results.slice(0, 3).map((result) => (
+                <li class="flex items-start gap-2.5 text-[0.95rem] text-slate-700">
+                  <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  {result}
+                </li>
+              ))}
+            </ul>
+          )}
 
-            <div class="mt-auto pt-6 border-t border-white/10">
-              <h4 class="text-white/90 text-base mb-4 font-semibold">Results</h4>
-              <ul class="list-none p-0 m-0">
-                {cs.data.results.map((result) => (
-                  <li class="text-white/90 py-2 text-[0.95rem]">{result}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div class="read-more mt-6 pt-6 border-t border-white/10 flex items-center gap-2 text-white/90 font-semibold text-[0.95rem] transition-all duration-300">
-              Read Full Case Study →
-            </div>
-          </a>
-        </div>
+          <span class="mt-auto pt-6 font-semibold text-accent transition-colors duration-fast group-hover:text-accent-hover">
+            Read the full case study →
+          </span>
+        </a>
       ))}
     </div>
-
-    <CalendlyCTA />
   </div>
 </section>

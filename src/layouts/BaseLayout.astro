@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
-import Navigation from '../components/Navigation';
+import geistLatin from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
+import geistMonoLatin from '@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2?url';
+import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import BackToTop from '../components/BackToTop';
 
 interface BreadcrumbItem {
   name: string;
@@ -59,22 +60,23 @@ if (breadcrumbs && breadcrumbs.length > 0) {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 
+    <link rel="preload" href={geistLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geistMonoLatin} as="font" type="font/woff2" crossorigin />
+
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <link rel="icon" href="/north-point-logo.webp" />
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <meta name="theme-color" content="#667eea" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="robots" content={robots} />
     <meta name="generator" content={Astro.generator} />
 
@@ -127,22 +129,76 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM5PN5MJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
-    <Navigation client:load />
-    <main>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-slate-900 focus:shadow-md">
+      Skip to content
+    </a>
+    <Navigation />
+    <main id="main">
       <slot />
     </main>
     <Footer />
-    <BackToTop client:visible />
+
+    <button
+      type="button"
+      class="fixed bottom-6 right-6 z-40 hidden h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition-colors duration-fast hover:bg-slate-50"
+      aria-label="Back to top"
+      data-back-to-top
+    >
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <script is:inline>
+      // Scroll reveals + back-to-top. Independent of analytics so content always shows.
+      (function() {
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        var revealTargets = document.querySelectorAll('[data-reveal], [data-animate-on-scroll]');
+        if (!reduceMotion && 'IntersectionObserver' in window) {
+          var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+              if (!e.isIntersecting) return;
+              if (e.target.hasAttribute('data-reveal')) {
+                e.target.classList.add('reveal-in');
+              } else {
+                e.target.classList.add('fade-in');
+              }
+              obs.unobserve(e.target);
+            });
+          }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+          revealTargets.forEach(function(el) {
+            if (el.hasAttribute('data-reveal')) el.classList.add('reveal-init');
+            obs.observe(el);
+          });
+        } else {
+          // No observer or reduced motion: make sure legacy opacity-0 content shows.
+          revealTargets.forEach(function(el) { el.classList.remove('opacity-0'); el.classList.add('fade-in'); });
+        }
+
+        var topBtn = document.querySelector('[data-back-to-top]');
+        if (topBtn) {
+          var ticking = false;
+          window.addEventListener('scroll', function() {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function() {
+              var show = window.scrollY > 600;
+              topBtn.classList.toggle('hidden', !show);
+              topBtn.classList.toggle('flex', show);
+              ticking = false;
+            });
+          }, { passive: true });
+          topBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+          });
+        }
+      })();
+    </script>
     <script is:inline>
       (function() {
         var g = typeof window.gtag === 'function' ? window.gtag : null;
         if (!g) return;
-
-        // Scroll-triggered fade-in animation
-        var animObs = new IntersectionObserver(function(entries) {
-          entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('fade-in'); });
-        }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
-        document.querySelectorAll('[data-animate-on-scroll]').forEach(function(el) { animObs.observe(el); });
 
         // Section visibility tracking
         var trackedSections = {};
@@ -209,6 +265,16 @@ if (breadcrumbs && breadcrumbs.length > 0) {
             var name = el.dataset.trackService;
             if (name) {
               g('event', 'service_click', { event_category: 'services', event_label: name, service_name: name });
+            }
+          });
+        });
+
+        // Navigation click tracking (data-track-nav)
+        document.querySelectorAll('[data-track-nav]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            var name = el.dataset.trackNav;
+            if (name) {
+              g('event', 'navigation_click', { event_category: 'navigation', event_label: name, link_name: name });
             }
           });
         });

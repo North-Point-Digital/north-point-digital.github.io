@@ -1,6 +1,4 @@
 ---
-import CalendlyCTA from './CalendlyCTA.astro';
-
 interface TeamMember {
   name: string;
   role: string;
@@ -15,32 +13,44 @@ interface Props {
 const { teamMembers = [] } = Astro.props;
 ---
 
-<section id="team" class="section-padding bg-white relative">
-  <div class="container-default">
-    <div class="text-center mb-16">
-      <h2 class="text-h2 text-[#333] mb-4">Our Team</h2>
-      <p class="text-xl text-[#666] max-w-[600px] mx-auto">Meet the experts behind North Point Digital</p>
+<section id="team" class="section bg-slate-50">
+  <div class="container-site">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="eyebrow mb-4">The team</p>
+      <h2 class="text-h2">Who you'll be working with</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        No bait and switch — the people on this page do the work.
+      </p>
     </div>
 
     {teamMembers.length > 0 && (
-      <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-12 mt-12 max-md:grid-cols-1 max-md:gap-10 opacity-0" data-animate-on-scroll>
+      <ul class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
         {teamMembers.map((member) => (
-          <div class="text-center flex flex-col items-center">
-            <div class="w-[200px] h-[200px] rounded-full overflow-hidden mb-6 border-4 border-[#f0f0f0] shadow-md transition-all duration-300 bg-gradient-primary flex items-center justify-center hover:scale-105 hover:shadow-lg max-md:w-[180px] max-md:h-[180px]">
+          <li class="card flex items-start gap-5">
+            <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
               {member.image && member.image.trim() !== '' ? (
-                <img src={member.image} alt={member.name} loading="lazy" class="w-full h-full object-contain object-center block" />
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                  class="h-full w-full object-cover"
+                />
               ) : (
-                <span class="text-white/70 text-3xl font-semibold">{member.name.split(' ').map((n: string) => n[0]).join('')}</span>
+                <span class="flex h-full w-full items-center justify-center text-xl font-semibold text-slate-400">
+                  {member.name.split(' ').map((n: string) => n[0]).join('')}
+                </span>
               )}
             </div>
-            <h3 class="text-2xl text-[#333] mb-2 font-semibold">{member.name}</h3>
-            <p class="text-base text-primary mb-4 font-medium">{member.role}</p>
-            <p class="text-[0.95rem] text-[#666] leading-relaxed max-w-[300px] mx-auto">{member.bio}</p>
-          </div>
+            <div>
+              <h3 class="font-semibold text-slate-900">{member.name}</h3>
+              <p class="mt-0.5 text-sm font-medium text-accent">{member.role}</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">{member.bio}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
     )}
-
-    <CalendlyCTA />
   </div>
 </section>
