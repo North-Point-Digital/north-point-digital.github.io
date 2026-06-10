@@ -1,0 +1,68 @@
+---
+title: "No-Code AI Tools Like Lovable: When They're Enough, and When They're Not"
+description: "No-code AI builders like Lovable are great for prototypes. Where they hold up for a small business, where they don't, and when to bring in a consultancy."
+pubDate: "2026-06-10"
+author: "David Turnbull"
+authorRole: "Founder & AWS Solutions Architect"
+tags: ["AI for business", "No-code", "AI strategy"]
+---
+
+## You built it in a weekend. Now it has to survive Monday.
+
+There's a particular kind of magic to tools like Lovable. You type a description of the app you want, and a few minutes later it's running on a real URL, with a database, a login screen and a design that doesn't look like it was made in 1998. For a lot of small businesses, that first moment is the one where AI finally stops being abstract.
+
+So let's be clear from the start: these tools are genuinely good, and this isn't a piece about why you shouldn't use them. It's about knowing what they're for — because the gap between "it works in the demo" and "it runs the business" is where most of the cost, and most of the disappointment, actually lives.
+
+### What no-code AI builders are genuinely good at
+
+Lovable turns plain-English prompts into a working full-stack web app. It writes the front-end in React, wires up a database and authentication through Supabase, and deploys the whole thing with one click. You can sync it to GitHub and take the code with you, and a paid plan starts at around $25 a month. The category has earned its nickname — "vibe coding" — because you describe the vibe and the software appears.
+
+For the right job, that's a brilliant deal. The clear wins are:
+
+- **Prototypes and proofs of concept.** Getting a clickable version of an idea in front of colleagues or customers, fast and cheaply.
+- **Simple internal tools.** A booking form, a basic dashboard, a tidier way to collect information that currently lives in a spreadsheet.
+- **Validating an idea before you spend real money.** Far better to learn what people actually want from a rough build than from a meeting.
+
+If that's what you need, a no-code tool may be the whole answer. Use it, and don't let anyone make you feel you've cut a corner.
+
+### Where the cracks tend to show
+
+The trouble starts when a weekend prototype quietly becomes something the business depends on. The same tools that feel effortless at the start tend to struggle in predictable places:
+
+- **Anything with awkward logic.** Multi-step workflows, unusual rules, the "except when..." cases that every real business has — these are where AI builders slow down and start guessing.
+- **Debugging loops.** When something breaks, you can end up going in circles. Reviews through 2026 repeatedly flag the same frustration: the tool sometimes reports a bug as fixed when it isn't, and you burn time (and credits) chasing it.
+- **Connecting to your real systems.** A demo on sample data is easy. Plugging into your actual accounts package, CRM or customer records — safely — is a different problem.
+- **Security and data.** When the app holds customer details or anything regulated, "it deployed fine" is not the same as "it's safe to put live."
+- **Who owns it on a bad day.** Code generated in an afternoon still has to be understood, maintained and fixed in six months, possibly by someone who wasn't there when it was built.
+
+None of this makes the tools bad. It makes them tools — very good at the first 80%, much less reliable on the 20% that decides whether something is safe to rely on.
+
+### The part no tool does for you
+
+Here's the bit that gets lost in the demos. The hardest questions in an AI project aren't really technical:
+
+- **Which problem is worth solving first?** The most valuable use case is rarely the most obvious one.
+- **Is your data ready?** Most of the real work in any AI project is getting the information into a state where the result actually means something.
+- **What does "good enough" look like, and what will it cost to run?** A prototype that costs pennies in testing can cost a great deal more at full volume — and you want to know that number before you commit, not after.
+
+A no-code tool will happily build whatever you describe. It won't tell you that you're describing the wrong thing. That judgement — picking the problem, getting the data right, being honest about cost — is most of what you're actually paying a good consultancy for.
+
+> **The honest version:** at North Point Digital we use the same fast, modern tooling these builders are based on — that's not a secret, and it's not the value. The value is pointing it at the right problem, building on your real data, and handing you a working result with the running costs attached. That's exactly what a six-week [AI Launchpad](/ai-launchpad) is designed to prove.
+
+### A simple way to decide
+
+You don't have to choose a side. A sensible rule of thumb:
+
+**Reach for a no-code AI tool when** you're prototyping, testing an idea, or building something simple and low-risk that you're happy to maintain yourself.
+
+**Bring in help when** the thing touches customer or financial data, has to integrate with systems you already run, needs to be reliable enough that people depend on it, or has become important enough that "it broke and nobody knows why" would be a genuine problem.
+
+The mistake isn't using Lovable. The mistake is letting a prototype drift into a load-bearing role without anyone deciding that's what's happening.
+
+If you've already built something with a no-code tool and you're wondering whether it's ready for real work — or which problem to point it at next — that's a good conversation to have early.
+
+## Not sure whether to build it yourself or get help?
+
+A free 30-minute call with an engineer, not a salesperson. If a no-code tool is the right answer for you, we'll tell you that on the call.
+
+[Book a free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call) or [read the AI Adoption Playbook](/ai-adoption-playbook) first.

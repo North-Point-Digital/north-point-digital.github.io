@@ -1,0 +1,74 @@
+---
+title: "The 2026 AI Model Landscape: Which One Should Your Business Use?"
+description: "Claude, GPT, Gemini and Grok in mid-2026 — what each is good at, what they cost, and why the smart move for most businesses isn't picking just one."
+pubDate: "2026-06-10"
+author: "David Turnbull"
+authorRole: "Founder & AWS Solutions Architect"
+tags: ["AI models", "AI strategy", "AI for business"]
+---
+
+## There is no "best" AI model — and that's good news for your business
+
+Every few weeks a new model launches, a new leaderboard tops out, and someone in your feed declares the argument settled. Then it happens again. If you've been waiting for the dust to settle before choosing, here's the uncomfortable truth: it won't. The dust is the point.
+
+The more useful question isn't "which model is best?" It's "which model is best for the job I actually have, at a price that makes sense?" Those are very different questions, and answering the second one is far more valuable to a small business than winning an argument about the first.
+
+Here's an honest, non-technical lay of the land as it stands in mid-2026.
+
+### The current frontier (as of June 2026)
+
+Four models sit at the top of the pile: Anthropic's **Claude Opus 4.8**, OpenAI's **GPT-5.5**, Google's **Gemini 3.1 Pro**, and xAI's **Grok 4.3**. On the independent Artificial Analysis Intelligence Index, which blends a range of tests into one score, they land very close together — Claude Opus 4.8 just ahead, with GPT-5.5 a fraction behind, then Gemini 3.1 Pro and Grok 4.3.
+
+The number that matters there isn't the ranking. It's the gap, and the gap is small. At the top end, these models are closer to each other than the marketing would have you believe — and whichever one is "winning" this month, the order tends to reshuffle by the next round of releases. Any business strategy that depends on one model staying in front is built on sand.
+
+### What each one is actually good at
+
+Look past the overall score and the differences get more practical:
+
+- **Claude (Opus 4.8)** is consistently strong on writing and coding. It tends to produce the most natural-sounding text and holds a consistent voice across long documents, which matters if you're using it for customer-facing copy.
+- **GPT-5.5** is a strong all-rounder — neck-and-neck with Claude on coding and a favourite for creative work. It's the safe generalist.
+- **Gemini 3.1 Pro** leads on reasoning and handles enormous amounts of text at once. Its standout feature is a context window far larger than its rivals', which is useful when you need it to read a whole pile of documents in one go.
+- **Grok 4.3** is the value option — the cheapest of the four, with solid scores for automated, tool-using tasks.
+
+For the everyday jobs most businesses care about — drafting replies, summarising documents, pulling data out of paperwork, answering questions from your own files — all four are more than capable. You are not held back by the model. You're held back by how well it's set up around your data, which is a different problem entirely.
+
+### What they cost (and why it's rarely the real cost)
+
+AI is priced per "token" — roughly a few characters of text — and the headline rates, as reported by Artificial Analysis in mid-2026, look like this per million tokens:
+
+- **Gemini 3.1 Pro:** around $2 in / $12 out — the cheapest of the frontier models
+- **Claude Opus 4.8:** around $5 in / $25 out
+- **GPT-5.5:** around $5 in / $30 out
+- **Grok 4.3:** the lowest-cost of the group overall
+
+Those numbers sound abstract, so here's the translation: for most individual business tasks — a drafted email, a summarised report — you're talking fractions of a penny. The per-task cost of the model is almost never the thing that decides whether an AI project pays off.
+
+The real cost sits elsewhere: connecting the model to your systems, getting your data into usable shape, testing it properly, and running it reliably once it's live. That's where projects succeed or quietly fail — not in the choice between a $5 model and a $2 one. Anyone leading with the token price is answering the easy question.
+
+### Why "pick one and marry it" is the wrong move
+
+The instinct is to choose a single provider and standardise on it. It feels tidy. It's also the riskiest option, for three reasons:
+
+1. **The leader keeps changing.** Lock yourself to whoever's top today and you'll be locked to whoever's third in a year.
+2. **Different jobs suit different models.** The best tool for drafting a newsletter isn't necessarily the best for reading 500 pages of contracts.
+3. **Prices and terms move.** Being able to switch is leverage. Being unable to switch is the opposite.
+
+The businesses getting this right treat the model as a swappable part, not a foundation. They build around the job to be done, keep the option to change suppliers, and let the providers compete for their work. It's the same principle we apply to infrastructure: you shouldn't have to rebuild everything because one vendor changed direction.
+
+> **Pro Tip:** at North Point Digital we're deliberately model-agnostic. When we build an [AI Launchpad](/ai-launchpad), we pick whichever model fits your specific use case and budget — and we build it so that swapping to a better or cheaper one later is a small change, not a rewrite. You shouldn't have to care which logo is on the engine.
+
+### How to actually choose, as a business
+
+Forget the leaderboards for a moment and do this instead:
+
+- **Start from the job, not the model.** Name the task you want done first. The model is the last decision, not the first.
+- **Test on your own data.** A benchmark score tells you nothing about how it handles *your* invoices, *your* customers, *your* policies. A small trial on real data tells you everything.
+- **Keep it swappable.** Whatever you build, make sure you could change the underlying model without starting again.
+
+Do that and the "which model is best?" question mostly answers itself — quietly, per task, and without you having to follow every launch.
+
+## Not sure which model fits your use case?
+
+A free 30-minute call with an engineer who builds on all of them. Tell us the job; we'll tell you the right tool and what it would cost to run.
+
+[Book a free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call) or [explore the AI Launchpad](/ai-launchpad).
