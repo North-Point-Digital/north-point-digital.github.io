@@ -123,7 +123,7 @@
   <ul>
     <li><strong>Step 1</strong> — Pick the job, not the technology</li>
     <li><strong>Step 2</strong> — The data readiness check</li>
-    <li><strong>The data layer</strong> — Consolidate or connect · searching everything you know</li>
+    <li><strong>The data layer</strong> — Consolidate or connect · search · RAG, demystified</li>
     <li><strong>Step 3</strong> — What it actually costs</li>
     <li><strong>Step 4</strong> — Build it, buy it, or use no-code?</li>
     <li><strong>The landscape</strong> — Everyday AI tools · agents &amp; harnesses · workflow or agent · orchestration</li>
@@ -210,7 +210,7 @@
   <p>Every business over a few years old has the same problem: the answer exists — in an old email, a proposal, a policy, someone's notes — but finding it costs more than rewriting it. Solving that is one of the highest-value, lowest-drama AI projects available, and it's well within small-business reach in 2026.</p>
   <h3>Why AI search is different</h3>
   <p>Traditional search matches words: search "staff handbook", miss the file called "employee manual". AI search matches <strong>meaning</strong> — the technique is called semantic (or vector) search, and it's why a question phrased your way finds a document phrased someone else's way.</p>
-  <p>The second piece is the one to remember at vendor meetings: <strong>RAG</strong>, retrieval-augmented generation. In plain terms: the AI <em>looks things up first</em>, then answers using only what it found — and cites the source. That citation is the difference between an answer you can trust and an answer the model made up. If a tool can't show its sources, keep shopping.</p>
+  <p>The second piece is the one you'll hear named at every vendor meeting: <strong>RAG</strong> — retrieval-augmented generation. The short version: the AI looks things up first, then answers from what it found, citing its sources. It matters enough, and gets mystified enough, that the next page unpacks it properly.</p>
   <h3>What it takes to work</h3>
   <ul>
     <li><strong>Connectors</strong> to where knowledge lives — shared drives, email, the CRM, the support desk — with the index kept up to date automatically.</li>
@@ -223,7 +223,35 @@
   <div class="footer"><span>The AI Adoption Playbook</span><span>06</span></div>
 </div>
 
-<!-- Page 7: Step 3 -->
+<!-- Page 7: Data layer — RAG demystified -->
+<div class="page">
+  <p class="eyebrow">The data layer · The word on every vendor's slide</p>
+  <h2>RAG, demystified</h2>
+  <p>The problem RAG solves: a model knows nothing about <em>your</em> business, and when asked anyway, it improvises — fluently and wrongly. Retraining on your data is costly and stale the day a document changes. RAG sidesteps both. It's an open-book exam instead of a recital.</p>
+  <h3>What actually happens, in four steps</h3>
+  <ul>
+    <li><strong>1.</strong> Your question becomes a search against your indexed documents.</li>
+    <li><strong>2.</strong> The most relevant passages are retrieved — using the meaning-based search from the previous page.</li>
+    <li><strong>3.</strong> Those passages are handed to the model with your question, behind the scenes.</li>
+    <li><strong>4.</strong> The model answers from what it was handed — citing which document each claim came from.</li>
+  </ul>
+  <p>Two business consequences: answers <strong>stay current</strong> (change the document, the next answer changes — no retraining), and answers are <strong>checkable</strong> (the citation is your defence against confident nonsense).</p>
+  <h3>What's changed lately — the advancements, demystified</h3>
+  <table>
+    <tr><th style="width:26%">You'll hear</th><th>What it actually means</th></tr>
+    <tr><td><strong>Hybrid search</strong></td><td>Meaning-based and exact-keyword search combined — meaning alone fumbles part numbers and names. Table stakes now</td></tr>
+    <tr><td><strong>Reranking</strong></td><td>A second pass re-orders retrieved passages so the best reach the model. Cheap, big accuracy win</td></tr>
+    <tr><td><strong>Graph-based RAG</strong></td><td>Maps how entities relate across documents, so it can answer "what themes run across all our complaints?" — the whole, not a passage</td></tr>
+    <tr><td><strong>Agentic retrieval</strong></td><td>Searches like a person: rephrases, follows leads, checks, searches again. Better on hard questions; slower and dearer</td></tr>
+    <tr><td><strong>Long context instead</strong></td><td>Frontier models read huge amounts in one go. If your corpus is one manual, pasting it in beats building a pipeline — an honest vendor will say when you don't need RAG at all</td></tr>
+  </table>
+  <div class="callout">
+    <p><strong>Vendor questions that sort the field:</strong> Hybrid search? Reranker? Citations on every answer? Permission-aware results? How fast does the index pick up a changed document? Two minutes, and you'll know more than most buyers.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>07</span></div>
+</div>
+
+<!-- Page 8: Step 3 -->
 <div class="page">
   <p class="eyebrow">Step 3</p>
   <h2>What it actually costs</h2>
@@ -245,7 +273,7 @@
     <p><strong>Insist on a fixed fee.</strong> A proof of concept is a defined question with an end date; an open-ended day rate hands all the risk to you. Roughly half of UK SME engagements are now fixed-price — a provider who won't fix a price for their own recommended scope is telling you something.</p>
   </div>
   <p>Worth checking before you assume the headline price: Innovate UK has run AI proof-of-concept grant rounds funding up to 70% of eligible costs for micro and small businesses on larger projects. Eligibility shifts round to round, but ten minutes of checking can change the maths.</p>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>07</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>08</span></div>
 </div>
 
 <!-- Page 6: Step 4 -->
@@ -267,7 +295,7 @@
   <div class="callout">
     <p><strong>The pattern that works:</strong> start everyone on off-the-shelf tools this month — it costs little and builds intuition. In parallel, take the one use case with real money attached through a structured proof. The off-the-shelf habit pays for the coffee; the proven use case pays for the year.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>08</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>09</span></div>
 </div>
 
 <!-- Page 7: Landscape — everyday tools -->
@@ -286,7 +314,7 @@
   <div class="callout">
     <p><strong>The two rules that outlast every release cycle:</strong> test on your own data, because a benchmark says nothing about how a model handles <em>your</em> invoices and <em>your</em> customers; and keep whatever you build swappable, so the underlying model can change without starting again.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>09</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>10</span></div>
 </div>
 
 <!-- Page 8: Landscape — agents & harnesses -->
@@ -305,7 +333,7 @@
   <div class="callout">
     <p><strong>The rule that matters more than the tooling:</strong> keep a person at the decision point. Let the agent do the legwork; let a human approve anything that touches money, customers or reputation. Every stable small-business agent we've seen follows it.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>10</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>11</span></div>
 </div>
 
 <!-- Page 11: Landscape — workflow or agent -->
@@ -328,7 +356,7 @@
   <div class="callout">
     <p><strong>Vendor test:</strong> ask "could this be a workflow with one AI step?" If the seller of an agent platform can't answer crisply, they're selling you their architecture, not your solution.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>11</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>12</span></div>
 </div>
 
 <!-- Page 12: Landscape — orchestration -->
@@ -349,7 +377,7 @@
   <div class="callout">
     <p><strong>For most small businesses the honest sequence is:</strong> assistants first (previous page), then one agent on one workflow with a human approval step, then — only if the numbers demand it — orchestration. Skipping steps is how demos happen and value doesn't.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>12</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>13</span></div>
 </div>
 
 <!-- Page 13: Choosing the system -->
@@ -372,7 +400,7 @@
   <div class="callout">
     <p><strong>If in doubt:</strong> build the workflow, put AI in one step, keep a human at the end. It's the cheapest shape to be wrong about — you'll learn more from two weeks of it running than from any architecture debate.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>13</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>14</span></div>
 </div>
 
 <!-- Page 14: Step 5 -->
@@ -398,7 +426,7 @@
   <div class="callout">
     <p><strong>What you should hold at the end</strong> — whoever does the work: software you can put in front of users, honest production running costs, a written route to live, and ownership of the code and prompts. A slide deck with a roadmap is not a proof of concept, whatever the invoice says.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>14</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>15</span></div>
 </div>
 
 <!-- Page 11: Step 6 -->
@@ -424,7 +452,7 @@
     <li>The prototype impressed everyone and integrated with nothing</li>
     <li>No one inside the business owned it, so it ended with the invoice</li>
   </ul>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>15</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>16</span></div>
 </div>
 
 <!-- Page 12: About / next step -->
@@ -446,7 +474,7 @@
   </div>
   <p style="margin-top:14pt; font-size:9.5pt; color:#64748b;">Sources for figures used in this guide: UK government AI adoption research (Feb 2026); published UK AI consultancy price guides (2026); industry analyses of AI project cost overruns; Innovate UK grant programme documentation. Detailed citations at northpointdigital.com/blog.</p>
   </div>
-  <div class="footer"><span>© 2026 North Point Digital</span><span>16</span></div>
+  <div class="footer"><span>© 2026 North Point Digital</span><span>17</span></div>
 </div>
 
 </body>
