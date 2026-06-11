@@ -178,6 +178,34 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     </button>
 
     <script is:inline>
+      // Courtesy price localisation: GBP is canonical (and what we bill in);
+      // US and Eurozone visitors see an approximate figure in their currency.
+      // Timezone-based, so no geo lookup and nothing leaves the browser.
+      (function () {
+        var RANGES = {
+          USD: '$20,000–$32,000',
+          EUR: '€17,500–€29,000',
+        };
+        function localise(tz) {
+          var currency = null;
+          if (tz === 'Europe/London') currency = null;
+          else if (tz.indexOf('Europe/') === 0) currency = 'EUR';
+          else if (tz) currency = 'USD';
+          if (!currency) return;
+          document.querySelectorAll('[data-price-range]').forEach(function (el) {
+            el.textContent = RANGES[currency];
+          });
+          document.querySelectorAll('[data-price-note]').forEach(function (el) {
+            el.classList.remove('hidden');
+          });
+        }
+        window.__localisePrices = localise;
+        try {
+          localise(Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+        } catch (e) {}
+      })();
+    </script>
+    <script is:inline>
       // Scroll reveals + back-to-top. Independent of analytics so content always shows.
       (function() {
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

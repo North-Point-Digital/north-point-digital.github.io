@@ -14,7 +14,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: 'What does the AI Launchpad cost?',
-    answer: `<p><strong>Typically £15,000–£25,000, fixed.</strong> Where you land in that range depends mostly on data readiness, meaning how much work it takes to get your data cleanly in front of the model. The exact figure is agreed in writing before we start, and it doesn't move after that.</p><p>We're currently offering our first three Launchpad clients roughly half the usual fee, in exchange for a named case study and a reference call.</p><p>The Security &amp; Cost Optimisation Blueprint is priced differently: no upfront cost, and if we don't find at least 25% in potential savings, no fee at all.</p>`,
+    answer: `<p><strong>Typically <span data-price-range>£15,000–£25,000</span>, fixed<span data-price-note class="hidden"> (approximate, we bill in GBP)</span>.</strong> Where you land in that range depends mostly on data readiness, meaning how much work it takes to get your data cleanly in front of the model. The exact figure is agreed in writing before we start, and it doesn't move after that.</p><p>We're currently offering our first three Launchpad clients roughly half the usual fee, in exchange for a named case study and a reference call.</p><p>The Security &amp; Cost Optimisation Blueprint is priced differently: no upfront cost, and if we don't find at least 25% in potential savings, no fee at all.</p>`,
   },
   {
     question: "We're not on AWS. Does that matter?",

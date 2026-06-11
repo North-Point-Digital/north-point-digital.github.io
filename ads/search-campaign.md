@@ -130,6 +130,20 @@ aws calculator, pricing calculator, login, documentation
 Review the search-terms report weekly for the first month and add anything
 irrelevant as a negative — this is where most of the budget protection happens.
 
+## Going international (later, not now)
+
+When the UK campaign has proven the funnel, expand with one campaign per
+market rather than widening this one: geo-targeting, budgets and copy all
+live at campaign level. US campaign: duplicate, switch keywords to
+-ization spellings, headlines to "$20k–$32k", targeting to "presence in:
+United States", and shift the ad schedule to their business hours. EU is
+third priority (English ads realistically reach NL, the Nordics and
+Ireland). The landing pages localise the displayed price automatically by
+visitor timezone, so every campaign points at the same URLs. Each campaign
+needs its own ~£500/month to learn anything; don't split one budget three
+ways. The Ads account bills in one fixed currency (GBP) regardless of what
+the ad copy displays.
+
 ## Kill criteria (agreed framing: a test, not a faucet)
 
 £500/month for three months. Success by day 90: **three booked calls and one
