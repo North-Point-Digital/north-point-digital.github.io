@@ -129,6 +129,12 @@ const contents = [
 
   <script is:inline>
     function ml_webform_success_42471936() {
+      // Track the download before touching the DOM, so a UI error can't
+      // swallow the conversion event.
+      if (typeof gtag === 'function') {
+        gtag('event', 'playbook_download', { event_category: 'conversion', event_label: 'AI Adoption Playbook' });
+        gtag('event', 'generate_lead', { event_category: 'conversion', event_label: 'Playbook Download', currency: 'GBP', value: 1 });
+      }
       var $ = ml_jQuery || jQuery;
       $('.ml-subscribe-form-42471936 .row-success').show();
       $('.ml-subscribe-form-42471936 .row-form').hide();

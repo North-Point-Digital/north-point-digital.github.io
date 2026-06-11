@@ -124,6 +124,10 @@ if (breadcrumbs && breadcrumbs.length > 0) {
           analytics_storage: 'denied',
           wait_for_update: 500,
         });
+        // Improve ad measurement under denied consent: pass click info via
+        // URL and redact ads data instead of dropping conversions entirely.
+        gtag('set', 'url_passthrough', true);
+        gtag('set', 'ads_data_redaction', true);
         if (stored) {
           var v = stored === 'granted' ? 'granted' : 'denied';
           gtag('consent', 'update', {
@@ -132,6 +136,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
             ad_personalization: v,
             analytics_storage: v,
           });
+          gtag('set', 'ads_data_redaction', v !== 'granted');
         }
       })();
     </script>

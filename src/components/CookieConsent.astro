@@ -39,6 +39,7 @@
           ad_personalization: v,
           analytics_storage: v,
         });
+        gtag('set', 'ads_data_redaction', v !== 'granted');
       }
       banner.classList.add('hidden');
     }
