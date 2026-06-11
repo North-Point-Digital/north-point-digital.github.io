@@ -20,7 +20,7 @@ if command -v pdftoppm >/dev/null 2>&1; then
   PREVIEW_DIR="../public/images/playbook"
   mkdir -p "$PREVIEW_DIR"
   PDF="../public/downloads/ai-adoption-playbook.pdf"
-  pdftoppm -jpeg -jpegopt quality=82 -r 110 -singlefile -f 1 -l 1 "$PDF" "$PREVIEW_DIR/preview-cover"
+  pdftoppm -jpeg -jpegopt quality=82 -r 110 -singlefile -f 5 -l 5 "$PDF" "$PREVIEW_DIR/preview-data-layer"
   pdftoppm -jpeg -jpegopt quality=82 -r 110 -singlefile -f 7 -l 7 "$PDF" "$PREVIEW_DIR/preview-rag"
   pdftoppm -jpeg -jpegopt quality=82 -r 110 -singlefile -f 14 -l 14 "$PDF" "$PREVIEW_DIR/preview-framework"
   echo "rendered previews to public/images/playbook/"

@@ -1,9 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HubSpotForm from '../components/HubSpotForm';
-import { HUBSPOT_CONFIG } from '../config/hubspot';
 
-const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && !HUBSPOT_CONFIG.forms.aiPlaybook.includes('YOUR_');
 const siteUrl = 'https://northpointdigital.com';
 
 const contents = [
@@ -41,13 +38,13 @@ const contents = [
 
       <div class="mx-auto mt-12 max-w-5xl">
         <div class="grid grid-cols-3 gap-4 md:gap-6" data-reveal>
-          <img src="/images/playbook/preview-cover.jpg" alt="Playbook cover" width="909" height="1285" loading="lazy" class="w-full rounded-lg border border-slate-200 shadow-sm" />
+          <img src="/images/playbook/preview-data-layer.jpg" alt="Sample page: consolidate or connect your data" width="909" height="1285" loading="lazy" class="w-full rounded-lg border border-slate-200 shadow-sm" />
           <img src="/images/playbook/preview-rag.jpg" alt="Sample page: RAG, demystified" width="909" height="1285" loading="lazy" class="w-full rounded-lg border border-slate-200 shadow-sm" />
           <img src="/images/playbook/preview-framework.jpg" alt="Sample page: the decision framework" width="909" height="1285" loading="lazy" class="w-full rounded-lg border border-slate-200 shadow-sm" />
         </div>
         <p class="mt-4 text-center text-sm text-slate-500">
-          Three of the seventeen pages — the cover, RAG demystified, and the decision
-          framework. What you see is what you get.
+          Three of the seventeen pages — connecting your data, RAG demystified, and the
+          decision framework. What you see is what you get.
         </p>
       </div>
 
@@ -74,18 +71,243 @@ const contents = [
             handful of short follow-up notes from us — unsubscribe any time, no
             hard feelings.
           </p>
-          <div class="mt-6">
-            {isHubSpotConfigured ? (
-              <HubSpotForm client:idle formType="aiPlaybook" region={HUBSPOT_CONFIG.region} />
-            ) : (
-              <p class="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center text-slate-600">
-                Email <a href="mailto:contact@northpointdigital.com?subject=AI%20Adoption%20Playbook" class="font-medium text-accent no-underline hover:underline">contact@northpointdigital.com</a>
-                {' '}with the subject "Playbook" and we'll send it straight over.
-              </p>
-            )}
+          <div class="mt-6 playbook-form">
+            <div id="mlb2-42471936" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42471936">
+              <div class="ml-form-align-center">
+                <div class="ml-form-embedWrapper embedForm">
+                  <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2423627/forms/189963976859190614/subscribe" data-code="" method="post" target="_blank">
+                      <div class="ml-form-formContent">
+                        <div class="ml-form-fieldRow ml-last-item">
+                          <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                            <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Your email address" autocomplete="email" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="ml-form-checkboxRow ml-validate-required">
+                        <label class="checkbox">
+                          <input type="checkbox" />
+                          <div class="label-description">
+                            <p>Opt in to receive news and updates.</p>
+                          </div>
+                        </label>
+                      </div>
+
+                      <div class="ml-form-recaptcha ml-validate-required">
+                        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+
+                      <input type="hidden" name="ml-submit" value="1" />
+
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit" class="primary">Download the playbook</button>
+                        <button disabled="disabled" style="display: none;" type="button" class="loading">
+                          <div class="ml-form-embedSubmitLoad"></div>
+                          <span class="sr-only">Loading...</span>
+                        </button>
+                      </div>
+
+                      <input type="hidden" name="anticsrf" value="true" />
+                    </form>
+                  </div>
+
+                  <div class="ml-form-successBody row-success" style="display: none">
+                    <div class="ml-form-successContent">
+                      <h4>Thank you!</h4>
+                      <p>Check your inbox — the playbook is on its way.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    function ml_webform_success_42471936() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-42471936 .row-success').show();
+      $('.ml-subscribe-form-42471936 .row-form').hide();
+    }
+  </script>
+  <script is:inline src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+  <script is:inline>
+    fetch('https://assets.mailerlite.com/jsonp/2423627/forms/189963976859190614/takel');
+  </script>
+  <script is:inline src="https://www.google.com/recaptcha/api.js"></script>
+
+  <style is:global>
+    .playbook-form,
+    .playbook-form * {
+      font-family: 'Geist Variable', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      box-sizing: border-box;
+    }
+
+    .playbook-form .ml-form-embedContainer,
+    .playbook-form .ml-form-embedWrapper {
+      width: 100%;
+      max-width: 100%;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      display: block;
+    }
+
+    .playbook-form .ml-form-embedBody {
+      padding: 0;
+    }
+
+    .playbook-form .ml-form-fieldRow {
+      margin: 0 0 0.875rem 0;
+    }
+
+    .playbook-form input[type='email'],
+    .playbook-form input[type='text'],
+    .playbook-form .form-control {
+      width: 100%;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #0f172a;
+      background: #ffffff;
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .playbook-form input[type='email']:focus,
+    .playbook-form input[type='text']:focus,
+    .playbook-form .form-control:focus {
+      border-color: #2563eb;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .playbook-form input::placeholder {
+      color: #94a3b8;
+    }
+
+    .playbook-form .ml-form-checkboxRow {
+      margin: 0 0 1rem 0;
+    }
+
+    .playbook-form .ml-form-checkboxRow label.checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .playbook-form .ml-form-checkboxRow input[type='checkbox'] {
+      margin-top: 0.2rem;
+      width: 1rem;
+      height: 1rem;
+      accent-color: #2563eb;
+      flex-shrink: 0;
+    }
+
+    .playbook-form .ml-form-checkboxRow .label-description,
+    .playbook-form .ml-form-checkboxRow .label-description p {
+      color: #475569;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .playbook-form .ml-form-recaptcha {
+      margin: 0 0 1rem 0;
+    }
+
+    .playbook-form .ml-form-embedSubmit {
+      position: relative;
+    }
+
+    .playbook-form .ml-form-embedSubmit button,
+    .playbook-form .ml-form-embedSubmit button.primary {
+      width: 100%;
+      background: #2563eb;
+      border: 0;
+      border-radius: 0.75rem;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      transition: background-color 200ms ease;
+    }
+
+    .playbook-form .ml-form-embedSubmit button:hover,
+    .playbook-form .ml-form-embedSubmit button.primary:hover {
+      background: #1d4ed8;
+    }
+
+    .playbook-form .ml-form-embedSubmit button.loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .playbook-form .ml-form-successContent {
+      text-align: center;
+    }
+
+    .playbook-form .ml-form-successContent h4 {
+      color: #0f172a;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .playbook-form .ml-form-successContent p {
+      color: #475569;
+      margin: 0;
+    }
+
+    .playbook-form .ml-error input,
+    .playbook-form .ml-error .form-control {
+      border-color: #ef4444 !important;
+    }
+
+    .playbook-form .ml-error .label-description,
+    .playbook-form .ml-error .label-description p {
+      color: #ef4444 !important;
+    }
+
+    .playbook-form .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .playbook-form .ml-form-embedSubmitLoad:after {
+      content: ' ';
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      border-color: #ffffff #ffffff #ffffff transparent;
+      animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+    }
+
+    @keyframes ml-form-embedSubmitLoad {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .playbook-form .g-recaptcha {
+        transform: scale(0.9);
+        transform-origin: 0 0;
+      }
+    }
+  </style>
 </BaseLayout>
