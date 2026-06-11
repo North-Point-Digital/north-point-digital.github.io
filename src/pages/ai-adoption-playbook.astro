@@ -6,19 +6,15 @@ import { HUBSPOT_CONFIG } from '../config/hubspot';
 const isHubSpotConfigured = HUBSPOT_CONFIG.portalId !== 'YOUR_PORTAL_ID' && !HUBSPOT_CONFIG.forms.aiPlaybook.includes('YOUR_');
 const siteUrl = 'https://northpointdigital.com';
 
-const benefits = [
-  {
-    title: 'A strategy you can defend',
-    description: 'A step-by-step framework for picking AI use cases that survive contact with the budget meeting.',
-  },
-  {
-    title: 'An implementation route',
-    description: 'The path from idea to production, including the bits most write-ups skip — data readiness and what it costs to run.',
-  },
-  {
-    title: 'Use cases that fit',
-    description: 'Worked examples sized for small and mid-sized businesses, not enterprise science projects.',
-  },
+const contents = [
+  'Pick the job, not the technology — with six worked examples',
+  'The data readiness check, and why you don’t need a warehouse',
+  'Searching everything your business knows · RAG, demystified',
+  'What AI actually costs in the UK, with real price bands',
+  'Build it, buy it, or use no-code — the decision tree',
+  'Everyday tools · agents & harnesses · orchestration',
+  'Workflow or agent? Choosing the right system, and why',
+  'Prove it in six weeks · the questions that keep providers honest',
 ];
 ---
 
@@ -43,20 +39,40 @@ const benefits = [
         </p>
       </div>
 
+      <div class="mx-auto mt-12 max-w-5xl">
+        <div class="grid grid-cols-3 gap-4 md:gap-6" data-reveal>
+          <img src="/images/playbook/preview-cover.jpg" alt="Playbook cover" width="909" height="1285" loading="lazy" class="w-full rounded-lg border border-slate-200 shadow-sm" />
+          <img src="/images/playbook/preview-rag.jpg" alt="Sample page: RAG, demystified" width="909" height="1285" loading="lazy" class="w-full rounded-lg border border-slate-200 shadow-sm" />
+          <img src="/images/playbook/preview-framework.jpg" alt="Sample page: the decision framework" width="909" height="1285" loading="lazy" class="w-full rounded-lg border border-slate-200 shadow-sm" />
+        </div>
+        <p class="mt-4 text-center text-sm text-slate-500">
+          Three of the seventeen pages — the cover, RAG demystified, and the decision
+          framework. What you see is what you get.
+        </p>
+      </div>
+
       <div class="mx-auto mt-14 grid max-w-5xl grid-cols-1 items-start gap-8 lg:grid-cols-2">
-        <div class="space-y-4">
-          {benefits.map((b) => (
-            <div class="card">
-              <h2 class="text-lg font-semibold text-slate-900">{b.title}</h2>
-              <p class="mt-2 leading-relaxed text-slate-600">{b.description}</p>
-            </div>
-          ))}
+        <div class="card lg:p-10">
+          <h2 class="text-xl font-semibold text-slate-900">What's inside</h2>
+          <p class="mt-1 text-sm text-slate-500">17 pages · about a twenty-minute read</p>
+          <ul class="mt-5 space-y-2.5">
+            {contents.map((item) => (
+              <li class="flex items-start gap-2.5 text-[0.95rem] leading-relaxed text-slate-700">
+                <svg class="mt-1 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div class="card lg:p-10">
           <h2 class="text-center text-xl font-semibold text-slate-900">Get the playbook</h2>
           <p class="mt-2 text-center text-slate-600">
-            Fill in the form and we'll send it straight over.
+            Fill in the form and we'll send it straight over. You'll also get a
+            handful of short follow-up notes from us — unsubscribe any time, no
+            hard feelings.
           </p>
           <div class="mt-6">
             {isHubSpotConfigured ? (
