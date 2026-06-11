@@ -220,6 +220,38 @@
   <div class="callout">
     <p><strong>The honest limitation:</strong> search quality mirrors document hygiene. If three versions of a price list are indexed, the AI will confidently cite the wrong one. The fix is the light consolidation from the previous page — retire duplicates and outdated files from the corpus before you index it, and add to it gradually.</p>
   </div>
+  <svg viewBox="0 0 660 150" style="width:100%; margin-top:10pt" fill="none">
+    <defs>
+      <marker id="ar6" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L8 4L0 8z" fill="#94a3b8"/>
+      </marker>
+    </defs>
+    <g font-family="Geist Mono Variable, monospace" font-size="10">
+      <g stroke="#cbd5e1" stroke-width="1.5">
+        <rect x="2" y="6" width="120" height="28" rx="7" fill="#f8fafc"/>
+        <rect x="2" y="42" width="120" height="28" rx="7" fill="#f8fafc"/>
+        <rect x="2" y="78" width="120" height="28" rx="7" fill="#f8fafc"/>
+        <rect x="2" y="114" width="120" height="28" rx="7" fill="#f8fafc"/>
+      </g>
+      <text x="62" y="24" text-anchor="middle" fill="#475569">shared drive</text>
+      <text x="62" y="60" text-anchor="middle" fill="#475569">email</text>
+      <text x="62" y="96" text-anchor="middle" fill="#475569">CRM</text>
+      <text x="62" y="132" text-anchor="middle" fill="#475569">support desk</text>
+      <g stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar6)">
+        <path d="M122 20 C 180 20, 190 62, 246 70"/>
+        <path d="M122 56 C 170 56, 180 68, 244 73"/>
+        <path d="M122 92 C 170 92, 180 80, 244 77"/>
+        <path d="M122 128 C 180 128, 190 88, 246 80"/>
+      </g>
+      <rect x="250" y="52" width="160" height="46" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="330" y="72" text-anchor="middle" fill="#2563eb" font-weight="600">one search index</text>
+      <text x="330" y="86" text-anchor="middle" fill="#64748b" font-size="9">permission-aware</text>
+      <path d="M410 75h36" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar6)"/>
+      <rect x="448" y="52" width="208" height="46" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+      <text x="552" y="72" text-anchor="middle" fill="#059669" font-weight="600">one answer, with sources</text>
+      <text x="552" y="86" text-anchor="middle" fill="#64748b" font-size="9">only what the asker may see</text>
+    </g>
+  </svg>
   <div class="footer"><span>The AI Adoption Playbook</span><span>06</span></div>
 </div>
 
@@ -229,12 +261,32 @@
   <h2>RAG, demystified</h2>
   <p>The problem RAG solves: a model knows nothing about <em>your</em> business, and when asked anyway, it improvises — fluently and wrongly. Retraining on your data is costly and stale the day a document changes. RAG sidesteps both. It's an open-book exam instead of a recital.</p>
   <h3>What actually happens, in four steps</h3>
-  <ul>
-    <li><strong>1.</strong> Your question becomes a search against your indexed documents.</li>
-    <li><strong>2.</strong> The most relevant passages are retrieved — using the meaning-based search from the previous page.</li>
-    <li><strong>3.</strong> Those passages are handed to the model with your question, behind the scenes.</li>
-    <li><strong>4.</strong> The model answers from what it was handed — citing which document each claim came from.</li>
-  </ul>
+  <svg viewBox="0 0 660 130" style="width:100%; margin:6pt 0 10pt" fill="none">
+    <defs>
+      <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L8 4L0 8z" fill="#94a3b8"/>
+      </marker>
+    </defs>
+    <g font-family="Geist Mono Variable, monospace" font-size="10">
+      <rect x="2" y="30" width="140" height="46" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="72" y="50" text-anchor="middle" fill="#64748b">1. your question</text>
+      <text x="72" y="64" text-anchor="middle" fill="#0f172a" font-weight="600">"notice period?"</text>
+      <path d="M142 53h26" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+      <rect x="170" y="30" width="140" height="46" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="240" y="50" text-anchor="middle" fill="#64748b">2. search finds</text>
+      <text x="240" y="64" text-anchor="middle" fill="#0f172a" font-weight="600">your passages</text>
+      <path d="M240 88v-8" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="240" y="102" text-anchor="middle" fill="#94a3b8" font-size="9">policies · contracts · email</text>
+      <path d="M310 53h26" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+      <rect x="338" y="30" width="140" height="46" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="408" y="50" text-anchor="middle" fill="#64748b">3. handed to</text>
+      <text x="408" y="64" text-anchor="middle" fill="#2563eb" font-weight="600">the model</text>
+      <path d="M478 53h26" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+      <rect x="506" y="30" width="150" height="46" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+      <text x="581" y="50" text-anchor="middle" fill="#64748b">4. answer</text>
+      <text x="581" y="64" text-anchor="middle" fill="#059669" font-weight="600">+ cited sources</text>
+    </g>
+  </svg>
   <p>Two business consequences: answers <strong>stay current</strong> (change the document, the next answer changes — no retraining), and answers are <strong>checkable</strong> (the citation is your defence against confident nonsense).</p>
   <h3>What's changed lately — the advancements, demystified</h3>
   <table>
@@ -340,8 +392,47 @@
 <div class="page">
   <p class="eyebrow">The landscape · The distinction that matters</p>
   <h2>Workflow or agent?</h2>
-  <p>These two words get used interchangeably in sales conversations, and they shouldn't be — they describe opposite philosophies, with different costs, risks and failure modes.</p>
-  <p>A <strong>workflow</strong> is a route you've drawn: you write the steps, the system follows them, the same way every time. An <strong>agent</strong> is a destination you've set: you give it a goal and some tools, and it decides the steps itself, at run time, differently each time if need be.</p>
+  <p>These two words get used interchangeably in sales conversations, and they shouldn't be — they describe opposite philosophies, with different costs, risks and failure modes. A <strong>workflow</strong> is a route you've drawn. An <strong>agent</strong> is a destination you've set.</p>
+  <svg viewBox="0 0 660 132" style="width:100%; margin:6pt 0 8pt" fill="none">
+    <defs>
+      <marker id="ar11" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L8 4L0 8z" fill="#94a3b8"/>
+      </marker>
+      <marker id="ar11b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L8 4L0 8z" fill="#2563eb"/>
+      </marker>
+    </defs>
+    <g font-family="Geist Mono Variable, monospace" font-size="10">
+      <text x="6" y="14" fill="#0f172a" font-weight="600">workflow — you write the steps</text>
+      <g stroke="#cbd5e1" stroke-width="1.5">
+        <rect x="6" y="48" width="62" height="30" rx="7" fill="#f8fafc"/>
+        <rect x="92" y="48" width="62" height="30" rx="7" fill="#f8fafc"/>
+        <rect x="178" y="48" width="62" height="30" rx="7" fill="#f8fafc"/>
+      </g>
+      <rect x="264" y="48" width="56" height="30" rx="7" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+      <text x="37" y="67" text-anchor="middle" fill="#475569">step 1</text>
+      <text x="123" y="67" text-anchor="middle" fill="#475569">step 2</text>
+      <text x="209" y="67" text-anchor="middle" fill="#475569">step 3</text>
+      <text x="292" y="67" text-anchor="middle" fill="#059669">done</text>
+      <g stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar11)">
+        <path d="M68 63h18"/><path d="M154 63h18"/><path d="M240 63h18"/>
+      </g>
+      <text x="6" y="112" fill="#94a3b8" font-size="9">same route, every time · breaks loudly at the edges</text>
+
+      <text x="370" y="14" fill="#0f172a" font-weight="600">agent — you set the goal</text>
+      <rect x="370" y="48" width="58" height="30" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="399" y="67" text-anchor="middle" fill="#475569">goal</text>
+      <circle cx="500" cy="63" r="34" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <text x="500" y="53" text-anchor="middle" fill="#2563eb" font-size="9">decide</text>
+      <text x="500" y="67" text-anchor="middle" fill="#2563eb" font-size="9">act</text>
+      <text x="500" y="81" text-anchor="middle" fill="#2563eb" font-size="9">check</text>
+      <path d="M428 63h24" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar11)"/>
+      <path d="M534 63h24" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ar11b)"/>
+      <rect x="560" y="48" width="56" height="30" rx="7" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+      <text x="588" y="67" text-anchor="middle" fill="#059669">done</text>
+      <text x="370" y="112" fill="#94a3b8" font-size="9">chooses its route per case · must be watched</text>
+    </g>
+  </svg>
   <table>
     <tr><th style="width:33%"></th><th style="width:33%">Workflow</th><th>Agent</th></tr>
     <tr><td><strong>Behaviour</strong></td><td>Predictable — same input, same route</td><td>Adaptive — chooses its route per case</td></tr>
@@ -395,8 +486,28 @@
     <tr><td><strong>6.</strong> Could you observe and debug one agent today?</td><td>If not, you're not ready for several — build the simpler shape first</td></tr>
   </table>
   <h3>The ladder, and why you climb it slowly</h3>
-  <p>Each shape costs more to run, secure and watch than the one before it: <span class="mono">assistant → workflow → workflow&nbsp;+&nbsp;AI&nbsp;steps → single&nbsp;agent&nbsp;+&nbsp;approval → multi-agent</span>. Climb a rung only when the one below demonstrably fails the job.</p>
-  <p>The why is the cost of the wrong shape, and it cuts both ways. An agent doing a workflow's job means paying — in money, latency and supervision — for flexibility you didn't want; the same input giving different routes is a bug, not intelligence, when the process should be identical every time. A workflow doing an agent's job means brittle rules sprouting exceptions until someone maintains a rule garden no one understands. Both failure modes start as someone choosing the system before understanding the job.</p>
+  <svg viewBox="0 0 660 124" style="width:100%; margin:4pt 0 8pt" fill="none">
+    <defs>
+      <marker id="ar13" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0L8 4L0 8z" fill="#2563eb"/>
+      </marker>
+    </defs>
+    <g font-family="Geist Mono Variable, monospace" font-size="9.5">
+      <rect x="2" y="86" width="118" height="26" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="61" y="103" text-anchor="middle" fill="#475569">assistant</text>
+      <rect x="132" y="68" width="118" height="26" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="191" y="85" text-anchor="middle" fill="#475569">workflow</text>
+      <rect x="262" y="50" width="118" height="26" rx="7" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+      <text x="321" y="67" text-anchor="middle" fill="#2563eb">+ AI steps</text>
+      <rect x="392" y="32" width="128" height="26" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="456" y="49" text-anchor="middle" fill="#475569">agent + approval</text>
+      <rect x="532" y="14" width="118" height="26" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="591" y="31" text-anchor="middle" fill="#475569">multi-agent</text>
+      <path d="M14 78 C 180 60, 420 30, 636 4" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#ar13)" opacity="0.7"/>
+      <text x="408" y="116" text-anchor="middle" fill="#94a3b8" font-size="9">running cost · supervision · places for things to go quietly wrong →</text>
+    </g>
+  </svg>
+  <p>Climb a rung only when the one below demonstrably fails the job. The why is the cost of the wrong shape, and it cuts both ways: an agent doing a workflow's job means paying — in money, latency and supervision — for flexibility you didn't want, while a workflow doing an agent's job means brittle rules sprouting exceptions until no one understands the rule garden. Both failures start as someone choosing the system before understanding the job.</p>
   <div class="callout">
     <p><strong>If in doubt:</strong> build the workflow, put AI in one step, keep a human at the end. It's the cheapest shape to be wrong about — you'll learn more from two weeks of it running than from any architecture debate.</p>
   </div>
@@ -409,12 +520,20 @@
   <h2>Prove it in six weeks</h2>
   <p>However you source the work, the proof phase should follow the same shape. Six weeks is enough to prove or disprove almost any small-business use case — engagements that run longer than that before showing working software are drifting.</p>
   <h3>The shape</h3>
-  <table>
-    <tr><th style="width:22%">Weeks</th><th>What happens</th></tr>
-    <tr><td class="mono">Week 1</td><td>Scope: pick the use case, inspect the data, agree what the prototype must prove — and what result means "stop"</td></tr>
-    <tr><td class="mono">Weeks 2–5</td><td>Build, with a demo every week. You watch it take shape and steer while changing course is still cheap</td></tr>
-    <tr><td class="mono">Week 6</td><td>Working prototype, running costs on one page, a written route to production — or a documented reason not to proceed</td></tr>
-  </table>
+  <svg viewBox="0 0 660 96" style="width:100%; margin:6pt 0 8pt" fill="none">
+    <g font-family="Geist Mono Variable, monospace" font-size="10">
+      <rect x="2" y="28" width="100" height="34" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="106" y="28" width="424" height="34" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+      <rect x="534" y="28" width="118" height="34" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+      <text x="52" y="49" text-anchor="middle" fill="#475569" font-weight="600">scope</text>
+      <text x="318" y="49" text-anchor="middle" fill="#2563eb" font-weight="600">build · a demo every week</text>
+      <text x="593" y="49" text-anchor="middle" fill="#059669" font-weight="600">prove</text>
+      <text x="4" y="80" fill="#94a3b8" font-size="9">week 1 · kill criteria agreed</text>
+      <text x="318" y="80" text-anchor="middle" fill="#94a3b8" font-size="9">weeks 2–5 · steer while it's cheap</text>
+      <text x="652" y="80" text-anchor="end" fill="#94a3b8" font-size="9">week 6 · or a documented "no"</text>
+      <text x="318" y="14" text-anchor="middle" fill="#64748b" font-size="9">one fixed fee, agreed before week 1</text>
+    </g>
+  </svg>
   <h3>The rules that keep it honest</h3>
   <ul>
     <li><strong>One use case.</strong> Not a platform. The narrower the question, the cheaper the answer.</li>
