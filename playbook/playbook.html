@@ -123,9 +123,11 @@
   <ul>
     <li><strong>Step 1</strong> — Pick the job, not the technology</li>
     <li><strong>Step 2</strong> — The data readiness check</li>
+    <li><strong>The data layer</strong> — Consolidate or connect · searching everything you know</li>
     <li><strong>Step 3</strong> — What it actually costs</li>
     <li><strong>Step 4</strong> — Build it, buy it, or use no-code?</li>
-    <li><strong>The landscape</strong> — Everyday AI tools · agents &amp; harnesses · orchestration</li>
+    <li><strong>The landscape</strong> — Everyday AI tools · agents &amp; harnesses · workflow or agent · orchestration</li>
+    <li><strong>Choosing the system</strong> — The decision framework, and why the shape matters</li>
     <li><strong>Step 5</strong> — Prove it in six weeks</li>
     <li><strong>Step 6</strong> — Questions that keep providers honest</li>
   </ul>
@@ -175,7 +177,53 @@
   <div class="footer"><span>The AI Adoption Playbook</span><span>04</span></div>
 </div>
 
-<!-- Page 5: Step 3 -->
+<!-- Page 5: Data layer — consolidate or connect -->
+<div class="page">
+  <p class="eyebrow">The data layer · Where it all lives</p>
+  <h2>Consolidate or connect?</h2>
+  <p>The most expensive sentence in small-business AI is: <em>"First we need to get all our data in one place."</em> It sounds responsible. In practice it spawns a six-month tidying project that delays every AI benefit and usually stalls — because the tidying has no customer.</p>
+  <p>The modern answer is mostly the opposite: <strong>leave data where it lives and connect to it</strong>. AI systems read from the tools you already use through connectors and exports. Your accounts stay in the accounts package; the AI visits.</p>
+  <h3>The three honest options</h3>
+  <table>
+    <tr><th style="width:28%">Approach</th><th>When it's right</th></tr>
+    <tr><td><strong>Connect in place</strong></td><td>The default. Connectors or scheduled exports from each system. Days of work, not months — and if a use case dies, nothing was wasted</td></tr>
+    <tr><td><strong>Light consolidation</strong></td><td>For documents: one well-named folder structure for the files that matter (policies, proposals, manuals). An afternoon's discipline that pays forever</td></tr>
+    <tr><td><strong>Full warehouse</strong></td><td>When reporting across systems is itself the goal, or volumes are genuinely large. Rarely the right first move for a small business — and never a prerequisite for proving an AI use case</td></tr>
+  </table>
+  <h3>Access: who — and what — can see your data</h3>
+  <ul>
+    <li><strong>Least privilege.</strong> The AI should see only what its task needs. An invoice reader needs the invoices folder, not the HR drive.</li>
+    <li><strong>Service accounts, not personal logins.</strong> Access granted to the system under its own identity — revocable, auditable, and not tied to whoever set it up.</li>
+    <li><strong>An audit trail.</strong> You should be able to answer "what did it read, and when?" If a provider can't show you that, see Step 6.</li>
+    <li><strong>Personal data means GDPR.</strong> Not a blocker — but where the processing happens, and under what agreement, must be a written answer.</li>
+  </ul>
+  <div class="callout">
+    <p><strong>The rule:</strong> never let a data project block an AI project. Prove the use case on an export; consolidate only what the proven use case demands. The proof tells you which data was worth tidying.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>05</span></div>
+</div>
+
+<!-- Page 6: Data layer — organisation-wide search -->
+<div class="page">
+  <p class="eyebrow">The data layer · Finding it again</p>
+  <h2>Searching everything you know</h2>
+  <p>Every business over a few years old has the same problem: the answer exists — in an old email, a proposal, a policy, someone's notes — but finding it costs more than rewriting it. Solving that is one of the highest-value, lowest-drama AI projects available, and it's well within small-business reach in 2026.</p>
+  <h3>Why AI search is different</h3>
+  <p>Traditional search matches words: search "staff handbook", miss the file called "employee manual". AI search matches <strong>meaning</strong> — the technique is called semantic (or vector) search, and it's why a question phrased your way finds a document phrased someone else's way.</p>
+  <p>The second piece is the one to remember at vendor meetings: <strong>RAG</strong>, retrieval-augmented generation. In plain terms: the AI <em>looks things up first</em>, then answers using only what it found — and cites the source. That citation is the difference between an answer you can trust and an answer the model made up. If a tool can't show its sources, keep shopping.</p>
+  <h3>What it takes to work</h3>
+  <ul>
+    <li><strong>Connectors</strong> to where knowledge lives — shared drives, email, the CRM, the support desk — with the index kept up to date automatically.</li>
+    <li><strong>Permission-aware results.</strong> The answer must respect who's asking: the sales team's search should never surface HR documents. Insist on this; it's where cheap tools cut corners.</li>
+    <li><strong>One good corpus first.</strong> Start with the best-kept set of documents — policies, manuals, past proposals — not the whole chaotic drive on day one.</li>
+  </ul>
+  <div class="callout">
+    <p><strong>The honest limitation:</strong> search quality mirrors document hygiene. If three versions of a price list are indexed, the AI will confidently cite the wrong one. The fix is the light consolidation from the previous page — retire duplicates and outdated files from the corpus before you index it, and add to it gradually.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>06</span></div>
+</div>
+
+<!-- Page 7: Step 3 -->
 <div class="page">
   <p class="eyebrow">Step 3</p>
   <h2>What it actually costs</h2>
@@ -197,7 +245,7 @@
     <p><strong>Insist on a fixed fee.</strong> A proof of concept is a defined question with an end date; an open-ended day rate hands all the risk to you. Roughly half of UK SME engagements are now fixed-price — a provider who won't fix a price for their own recommended scope is telling you something.</p>
   </div>
   <p>Worth checking before you assume the headline price: Innovate UK has run AI proof-of-concept grant rounds funding up to 70% of eligible costs for micro and small businesses on larger projects. Eligibility shifts round to round, but ten minutes of checking can change the maths.</p>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>05</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>07</span></div>
 </div>
 
 <!-- Page 6: Step 4 -->
@@ -219,7 +267,7 @@
   <div class="callout">
     <p><strong>The pattern that works:</strong> start everyone on off-the-shelf tools this month — it costs little and builds intuition. In parallel, take the one use case with real money attached through a structured proof. The off-the-shelf habit pays for the coffee; the proven use case pays for the year.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>06</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>08</span></div>
 </div>
 
 <!-- Page 7: Landscape — everyday tools -->
@@ -238,7 +286,7 @@
   <div class="callout">
     <p><strong>The two rules that outlast every release cycle:</strong> test on your own data, because a benchmark says nothing about how a model handles <em>your</em> invoices and <em>your</em> customers; and keep whatever you build swappable, so the underlying model can change without starting again.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>07</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>09</span></div>
 </div>
 
 <!-- Page 8: Landscape — agents & harnesses -->
@@ -257,10 +305,33 @@
   <div class="callout">
     <p><strong>The rule that matters more than the tooling:</strong> keep a person at the decision point. Let the agent do the legwork; let a human approve anything that touches money, customers or reputation. Every stable small-business agent we've seen follows it.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>08</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>10</span></div>
 </div>
 
-<!-- Page 9: Landscape — orchestration -->
+<!-- Page 11: Landscape — workflow or agent -->
+<div class="page">
+  <p class="eyebrow">The landscape · The distinction that matters</p>
+  <h2>Workflow or agent?</h2>
+  <p>These two words get used interchangeably in sales conversations, and they shouldn't be — they describe opposite philosophies, with different costs, risks and failure modes.</p>
+  <p>A <strong>workflow</strong> is a route you've drawn: you write the steps, the system follows them, the same way every time. An <strong>agent</strong> is a destination you've set: you give it a goal and some tools, and it decides the steps itself, at run time, differently each time if need be.</p>
+  <table>
+    <tr><th style="width:33%"></th><th style="width:33%">Workflow</th><th>Agent</th></tr>
+    <tr><td><strong>Behaviour</strong></td><td>Predictable — same input, same route</td><td>Adaptive — chooses its route per case</td></tr>
+    <tr><td><strong>Best at</strong></td><td>Repetitive, well-understood processes</td><td>Variation, judgement, messy inputs</td></tr>
+    <tr><td><strong>Running cost</strong></td><td>Low and stable</td><td>Higher, and varies with the task</td></tr>
+    <tr><td><strong>When it breaks</strong></td><td>Loudly, at the edge cases</td><td>Quietly, in ways you must watch for</td></tr>
+    <tr><td><strong>Audit</strong></td><td>Trivial — the route is the documentation</td><td>Needs deliberate logging and review</td></tr>
+  </table>
+  <h3>The middle path most small businesses actually need</h3>
+  <p>The highest-value pattern in small-business AI is neither extreme: a <strong>workflow with AI steps</strong>. The skeleton is deterministic — fixed route, auditable, cheap — and AI handles the one step rules can't: reading the document, classifying the email, drafting the reply. You get judgement where it's needed and predictability everywhere else.</p>
+  <p>Mapping the Step 1 examples: invoice retyping is a workflow with one AI extraction step. Quote drafting is a workflow with one AI drafting step. "Ask your documents" is search (see The data layer), not an agent. Inbox triage with judgement calls across systems — <em>that's</em> agent territory, with a human approving sends.</p>
+  <div class="callout">
+    <p><strong>Vendor test:</strong> ask "could this be a workflow with one AI step?" If the seller of an agent platform can't answer crisply, they're selling you their architecture, not your solution.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>11</span></div>
+</div>
+
+<!-- Page 12: Landscape — orchestration -->
 <div class="page">
   <p class="eyebrow">The landscape · Orchestration</p>
   <h2>One agent or many?</h2>
@@ -278,10 +349,33 @@
   <div class="callout">
     <p><strong>For most small businesses the honest sequence is:</strong> assistants first (previous page), then one agent on one workflow with a human approval step, then — only if the numbers demand it — orchestration. Skipping steps is how demos happen and value doesn't.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>09</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>12</span></div>
 </div>
 
-<!-- Page 10: Step 5 -->
+<!-- Page 13: Choosing the system -->
+<div class="page">
+  <p class="eyebrow">Choosing the system · And why it matters</p>
+  <h2>The decision framework</h2>
+  <p>Six questions decide the right shape for any automation. Answer them for your candidate use case before any vendor conversation, and you'll walk in knowing what you need:</p>
+  <table>
+    <tr><th style="width:55%">Question</th><th>What the answer points to</th></tr>
+    <tr><td><strong>1.</strong> Could you write the steps on one page?</td><td>Yes → workflow. No, "it depends" every time → agent territory</td></tr>
+    <tr><td><strong>2.</strong> Is any step reading or writing natural language?</td><td>That step is where AI goes — the rest can stay plain automation</td></tr>
+    <tr><td><strong>3.</strong> What does a wrong action cost?</td><td>If it's real money or reputation: human approval before anything irreversible, whatever the shape</td></tr>
+    <tr><td><strong>4.</strong> How many times a week does this happen?</td><td>A handful → an assistant and a person may be enough. Dozens+ → automation pays</td></tr>
+    <tr><td><strong>5.</strong> Does each case need judgement, or just consistency?</td><td>Consistency → workflow. Judgement → AI step or agent</td></tr>
+    <tr><td><strong>6.</strong> Could you observe and debug one agent today?</td><td>If not, you're not ready for several — build the simpler shape first</td></tr>
+  </table>
+  <h3>The ladder, and why you climb it slowly</h3>
+  <p>Each shape costs more to run, secure and watch than the one before it: <span class="mono">assistant → workflow → workflow&nbsp;+&nbsp;AI&nbsp;steps → single&nbsp;agent&nbsp;+&nbsp;approval → multi-agent</span>. Climb a rung only when the one below demonstrably fails the job.</p>
+  <p>The why is the cost of the wrong shape, and it cuts both ways. An agent doing a workflow's job means paying — in money, latency and supervision — for flexibility you didn't want; the same input giving different routes is a bug, not intelligence, when the process should be identical every time. A workflow doing an agent's job means brittle rules sprouting exceptions until someone maintains a rule garden no one understands. Both failure modes start as someone choosing the system before understanding the job.</p>
+  <div class="callout">
+    <p><strong>If in doubt:</strong> build the workflow, put AI in one step, keep a human at the end. It's the cheapest shape to be wrong about — you'll learn more from two weeks of it running than from any architecture debate.</p>
+  </div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>13</span></div>
+</div>
+
+<!-- Page 14: Step 5 -->
 <div class="page">
   <p class="eyebrow">Step 5</p>
   <h2>Prove it in six weeks</h2>
@@ -304,7 +398,7 @@
   <div class="callout">
     <p><strong>What you should hold at the end</strong> — whoever does the work: software you can put in front of users, honest production running costs, a written route to live, and ownership of the code and prompts. A slide deck with a roadmap is not a proof of concept, whatever the invoice says.</p>
   </div>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>10</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>14</span></div>
 </div>
 
 <!-- Page 11: Step 6 -->
@@ -330,7 +424,7 @@
     <li>The prototype impressed everyone and integrated with nothing</li>
     <li>No one inside the business owned it, so it ended with the invoice</li>
   </ul>
-  <div class="footer"><span>The AI Adoption Playbook</span><span>11</span></div>
+  <div class="footer"><span>The AI Adoption Playbook</span><span>15</span></div>
 </div>
 
 <!-- Page 12: About / next step -->
@@ -352,7 +446,7 @@
   </div>
   <p style="margin-top:14pt; font-size:9.5pt; color:#64748b;">Sources for figures used in this guide: UK government AI adoption research (Feb 2026); published UK AI consultancy price guides (2026); industry analyses of AI project cost overruns; Innovate UK grant programme documentation. Detailed citations at northpointdigital.com/blog.</p>
   </div>
-  <div class="footer"><span>© 2026 North Point Digital</span><span>12</span></div>
+  <div class="footer"><span>© 2026 North Point Digital</span><span>16</span></div>
 </div>
 
 </body>
