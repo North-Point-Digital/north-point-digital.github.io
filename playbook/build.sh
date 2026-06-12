@@ -22,7 +22,7 @@ if command -v pdftoppm >/dev/null 2>&1; then
   PDF="../public/downloads/ai-adoption-playbook.pdf"
   pdftoppm -jpeg -jpegopt quality=82 -r 110 -singlefile -f 5 -l 5 "$PDF" "$PREVIEW_DIR/preview-data-layer"
   pdftoppm -jpeg -jpegopt quality=82 -r 110 -singlefile -f 7 -l 7 "$PDF" "$PREVIEW_DIR/preview-rag"
-  pdftoppm -jpeg -jpegopt quality=82 -r 110 -singlefile -f 14 -l 14 "$PDF" "$PREVIEW_DIR/preview-framework"
+  pdftoppm -jpeg -jpegopt quality=82 -r 110 -singlefile -f 16 -l 16 "$PDF" "$PREVIEW_DIR/preview-framework"
   echo "rendered previews to public/images/playbook/"
 else
   echo "pdftoppm not found; skipping previews"

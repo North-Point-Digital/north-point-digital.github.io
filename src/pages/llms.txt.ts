@@ -29,7 +29,7 @@ export const GET: APIRoute = async () => {
     `- [AI Launchpad](${SITE}/ai-launchpad): Fixed-fee, six-week AI proof of concept built with the client's own data — working prototype, production running costs, and a roadmap to live (or a documented reason not to proceed). Week one scopes the use case; weekly demos during the build.`,
     `- [Security & Cost Optimisation Blueprint](${SITE}/aws-cost-optimisation): Two-week AWS Well-Architected review covering cost and security. Critical issues are fixed during the engagement; targets 25%+ cost reduction with no upfront cost and a no-savings-no-fee guarantee. Requires an AWS account (the only offer that does).`,
     `- [Build Better on AWS](${SITE}/build-better): AWS architecture, cloud migrations (including AWS Migration Acceleration Program funding where workloads qualify), landing zones, DevOps and modernisation.`,
-    `- [AI Adoption Playbook](${SITE}/ai-adoption-playbook): Free downloadable guide to planning, validating and scaling AI in a small business — picking a use case, data readiness, and what AI costs to run.`,
+    `- [AI Adoption Playbook](${SITE}/ai-adoption-playbook): Free downloadable guide to planning, validating and scaling AI in a small business: picking a use case, data readiness, what AI costs to run, and how to calculate and maximise the return.`,
     '',
     '## Case studies',
     '',
