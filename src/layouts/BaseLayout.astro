@@ -71,6 +71,8 @@ if (breadcrumbs && breadcrumbs.length > 0) {
 
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://snap.licdn.com" />
+    <link rel="dns-prefetch" href="https://px.ads.linkedin.com" />
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/north-point-logo.webp" type="image/webp" />
@@ -169,12 +171,30 @@ if (breadcrumbs && breadcrumbs.length > 0) {
         ah.src = 'https://analytics.ahrefs.com/analytics.js';
         ah.setAttribute('data-key', '3DtutYsLrjOgc2Go/USL/Q');
         document.head.appendChild(ah);
+
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push('9280258');
+        (function(l) {
+          if (!l) {
+            window.lintrk = function(a, b) { window.lintrk.q.push([a, b]); };
+            window.lintrk.q = [];
+          }
+          var s = document.getElementsByTagName('script')[0];
+          var b = document.createElement('script');
+          b.type = 'text/javascript';
+          b.async = true;
+          b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+          s.parentNode.insertBefore(b, s);
+        })(window.lintrk);
       })();
     </script>
   </head>
   <body>
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM5PN5MJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <noscript>
+      <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9280258&fmt=gif" />
     </noscript>
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-slate-900 focus:shadow-md">
       Skip to content
