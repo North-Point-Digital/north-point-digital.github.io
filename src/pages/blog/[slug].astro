@@ -20,6 +20,8 @@ const siteUrl = 'https://northpointdigital.com';
 const description = post.data.metaDescription || post.data.excerpt || `${post.data.title} from North Point Digital.`;
 const canonical = `${siteUrl}/blog/${post.slug}`;
 const ogImage = post.data.ogImage || post.data.featuredImage || post.data.thumbnailImage || `${siteUrl}/north-point-logo.webp`;
+const ogImageAbs = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const isVignette = ogImage.includes('/images/blog/');
 const publishDate = post.data.publishDate;
 const modifiedDate = post.data.lastUpdated || post.data.publishDate;
 
@@ -29,7 +31,9 @@ const jsonLd = {
   url: canonical,
   headline: post.data.title,
   description,
-  image: ogImage,
+  image: isVignette
+    ? { '@type': 'ImageObject', url: ogImageAbs, width: 1200, height: 630 }
+    : ogImageAbs,
   author: {
     '@type': 'Person',
     name: post.data.author,
