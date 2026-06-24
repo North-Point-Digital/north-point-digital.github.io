@@ -13,6 +13,34 @@ const stats = [
   { number: '£0', label: 'upfront cost' },
 ];
 
+const costLevers = [
+  'Rightsizing over-provisioned EC2, RDS and EBS using AWS Compute Optimizer and utilisation data',
+  'Savings Plans and Reserved Instances modelled against your real usage, not a sales target',
+  'Idle and orphaned resources: unattached EBS volumes, old snapshots, unused Elastic IPs and load balancers',
+  'S3 storage-class tiering and lifecycle policies to move cold data off Standard',
+  'Graviton and managed/serverless moves where they cut cost without a rewrite',
+  'Cost Explorer analysis, a consistent tagging model, and budget alerts so spend stays visible after we leave',
+];
+
+const securityLevers = [
+  'IAM review: over-permissive roles, unused access keys, missing MFA and root-account exposure',
+  'Public exposure checks across S3, security groups and network ACLs',
+  'Encryption at rest and in transit, and AWS KMS key hygiene',
+  'Logging and guardrails: CloudTrail, AWS Config, GuardDuty and Trusted Advisor findings',
+  'Account structure and isolation between production and non-production',
+];
+
+const requirements = [
+  'Read-only access to your AWS account (or a billing and architecture export if you prefer)',
+  'A 30-minute kickoff call to understand what each workload does',
+  'A point of contact for any change we want to apply during the engagement',
+];
+
+const relatedPosts = [
+  { title: 'Reduce your AWS bill without rewriting everything', href: '/blog/reduce-aws-bill-without-rewriting-everything' },
+  { title: 'Building on Bedrock: why your business needs an AWS landing zone', href: '/blog/landing-zones-for-growing-aws-teams' },
+];
+
 const timelineSteps = [
   {
     week: 'Week 1',
@@ -64,9 +92,15 @@ const timelineSteps = [
       <p class="eyebrow mb-6">Well-Architected review · No upfront cost</p>
       <h1 class="max-w-4xl text-h1">Security &amp; Cost Optimisation Blueprint</h1>
       <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-        A Well-Architected review of your AWS estate, focused on the two pillars that
+        A two-week AWS Well-Architected review of your estate, focused on the two pillars that
         pay for themselves: cost and security. We target 25%+ savings and fix critical
         issues while we're in there, not after the report lands.
+      </p>
+      <p class="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-800">
+        <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 12l2 2 4-4M12 3l7 4v5a8 8 0 0 1-7 8 8 8 0 0 1-7-8V7l7-4z" />
+        </svg>
+        Our guarantee: if we don't find at least 25% in potential savings, there's no fee.
       </p>
       <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
         <a href={CTA_LINK} target="_blank" rel="noopener noreferrer" class="btn-primary" data-track-cta="Blueprint Book a Call">
@@ -74,6 +108,9 @@ const timelineSteps = [
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
+        </a>
+        <a href="/contact" class="btn-secondary" data-track-cta="Blueprint Contact">
+          Prefer email? Tell us your setup
         </a>
       </div>
 
@@ -138,6 +175,47 @@ const timelineSteps = [
   </section>
 
   <section class="section bg-white">
+    <div class="container-site max-w-4xl">
+      <div class="text-center">
+        <p class="eyebrow mb-4">What we look at</p>
+        <h2 class="text-h2">The levers that actually move the bill</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
+          Cost optimisation isn't one big switch. It's a set of changes, most of them
+          operational rather than code, that compound. Here's the ground we cover.
+        </p>
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div class="card h-full">
+          <h3 class="text-lg font-semibold text-slate-900">Cost</h3>
+          <ul class="mt-4 space-y-2.5">
+            {costLevers.map((item) => (
+              <li class="flex items-start gap-2.5 text-[0.95rem] leading-relaxed text-slate-600">
+                <svg class="mt-1 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="card h-full">
+          <h3 class="text-lg font-semibold text-slate-900">Security</h3>
+          <ul class="mt-4 space-y-2.5">
+            {securityLevers.map((item) => (
+              <li class="flex items-start gap-2.5 text-[0.95rem] leading-relaxed text-slate-600">
+                <svg class="mt-1 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section border-t border-slate-200 bg-slate-50">
     <div class="container-site">
       <div class="mx-auto max-w-2xl text-center">
         <p class="eyebrow mb-4">How it runs</p>
@@ -161,6 +239,64 @@ const timelineSteps = [
           </li>
         ))}
       </ol>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container-site max-w-4xl">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
+        <div>
+          <p class="eyebrow mb-4">What we need from you</p>
+          <h2 class="text-h2">Light touch on your team</h2>
+          <p class="mt-4 text-lg leading-relaxed text-slate-600">
+            The Blueprint is designed to run without tying up your engineers. To get started we need:
+          </p>
+          <ul class="mt-5 space-y-2.5">
+            {requirements.map((item) => (
+              <li class="flex items-start gap-2.5 text-[0.95rem] leading-relaxed text-slate-600">
+                <svg class="mt-1 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="card h-full bg-slate-50">
+          <p class="eyebrow mb-3">Proof</p>
+          <p class="text-lg leading-relaxed text-slate-700">
+            Across 20+ reviews we've found an average of <strong class="font-semibold text-slate-900">30% in potential savings</strong> —
+            and because of the guarantee, finding less than 25% means you pay nothing.
+          </p>
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-slate-600">
+            Acorn, a HealthTech platform building for the NHS, came to us cost-conscious and
+            running on expensive EC2. We redesigned the architecture to move them off it while
+            meeting NHS DSPT security standards.
+          </p>
+          <a href="/case-studies/acorn-healthtech-compliance" class="mt-5 inline-flex items-center gap-2 font-medium text-accent no-underline hover:underline">
+            Read the Acorn case study
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-slate-200 pt-8">
+        <p class="eyebrow mb-4">Related reading</p>
+        <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {relatedPosts.map((post) => (
+            <li>
+              <a href={post.href} class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 font-medium text-slate-800 no-underline transition-colors duration-fast hover:border-slate-300 hover:bg-slate-50">
+                {post.title}
+                <svg class="h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 
