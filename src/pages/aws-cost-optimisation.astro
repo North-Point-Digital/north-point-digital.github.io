@@ -73,6 +73,19 @@ const timelineSteps = [
     ],
   },
 ];
+
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How the Security & Cost Optimisation Blueprint works",
+  description: "A two-week AWS Well-Architected review: discover and analyse the estate, implement cost and security fixes during the engagement, then hand over a full report and roadmap.",
+  totalTime: "P2W",
+  step: timelineSteps.map((step) => ({
+    "@type": "HowToStep",
+    name: `${step.week} — ${step.title}`,
+    text: step.items.join('. '),
+  })),
+};
 ---
 
 <BaseLayout
@@ -82,6 +95,7 @@ const timelineSteps = [
   breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Services', url: `${siteUrl}/#services` }, { name: 'Security & Cost Optimisation Blueprint', url: `${siteUrl}/aws-cost-optimisation` }]}
   jsonLd={[
     { "@context": "https://schema.org", "@type": "Service", name: "Security & Cost Optimisation Blueprint", description: "Comprehensive AWS Well-Architected review focused on security and cost optimisation, targeting 25%+ savings while strengthening your cloud posture.", url: `${siteUrl}/aws-cost-optimisation`, provider: { "@type": "Organization", name: "North Point Digital", url: `${siteUrl}/` }, areaServed: { "@type": "Country", name: "United Kingdom" }, serviceType: "AWS Security and Cost Optimisation Consulting" },
+    howToJsonLd,
     buildFaqJsonLd(),
   ]}
 >

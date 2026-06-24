@@ -62,6 +62,12 @@ const details = [
     ],
   },
 ];
+
+const relatedPosts = [
+  { title: 'Building on Bedrock: why your business needs an AWS landing zone', href: '/blog/landing-zones-for-growing-aws-teams' },
+  { title: 'Reduce your AWS bill without rewriting everything', href: '/blog/reduce-aws-bill-without-rewriting-everything' },
+  { title: 'Building AI agents on AWS: AgentCore, Bedrock Guardrails and the pieces that matter', href: '/blog/building-ai-agents-on-aws-agentcore-bedrock-guardrails' },
+];
 ---
 
 <BaseLayout
@@ -152,6 +158,24 @@ const details = [
           </ul>
         </article>
       ))}
+    </div>
+  </section>
+
+  <section class="section border-t border-slate-200 bg-slate-50">
+    <div class="container-site max-w-4xl">
+      <p class="eyebrow mb-4">Related reading</p>
+      <ul class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {relatedPosts.map((post) => (
+          <li>
+            <a href={post.href} class="flex h-full items-start justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 font-medium leading-snug text-slate-800 no-underline transition-colors duration-fast hover:border-slate-300 hover:bg-slate-50">
+              {post.title}
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
