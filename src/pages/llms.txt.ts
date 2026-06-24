@@ -9,9 +9,12 @@ export const GET: APIRoute = async () => {
     (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
   );
   const caseStudies = await getCollection('caseStudies');
+  const lastUpdated = new Date().toISOString().slice(0, 10);
 
   const lines = [
     '# North Point Digital',
+    '',
+    `> Last-Updated: ${lastUpdated}`,
     '',
     '> North Point Digital is a consultancy that builds working AI for small businesses',
     '> in six weeks for a fixed fee, and helps AWS customers cut cloud costs and tighten',
@@ -49,9 +52,11 @@ export const GET: APIRoute = async () => {
     '',
     `- [How we work](${SITE}/#how-we-work): Four steps — a free 30-minute call, an assessment with a written fixed-price scope, fixed-fee delivery with weekly demos, then handover with documentation and 30 days of support.`,
     `- [Contact](${SITE}/contact): Email contact@northpointdigital.com, send a message, or book a free call.`,
+    `- [Book a free call](https://calendly.com/david-northpointdigital/north-point-digital-initial-call): A free 30-minute call with an engineer.`,
     '',
     '## Optional',
     '',
+    `- [Full content](${SITE}/llms-full.txt): Every service, case study and blog post expanded in full.`,
     `- [Privacy policy](${SITE}/privacy-policy): How personal data is collected and handled.`,
     '',
   ];
