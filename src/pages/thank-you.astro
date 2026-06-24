@@ -5,8 +5,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout
   title="Thank You for Booking | North Point Digital"
   description="Your consultation with North Point Digital is confirmed. Check your email for calendar details and joining instructions."
-  canonical="https://northpointdigital.com/thank-you"
-  jsonLd={{ "@context": "https://schema.org", "@type": "Reservation", reservationStatus: "https://schema.org/ReservationConfirmed", provider: { "@type": "Organization", name: "North Point Digital" } }}
+  canonical="https://northpointdigital.com/thank-you/"
+  noIndex={true}
+  jsonLd={{ "@context": "https://schema.org", "@type": "WebPage", name: "Booking Confirmed", url: "https://northpointdigital.com/thank-you/" }}
 >
   <section class="flex min-h-screen items-center justify-center bg-slate-50 pt-16">
     <div class="container-site max-w-3xl py-16">

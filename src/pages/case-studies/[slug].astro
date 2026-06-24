@@ -17,6 +17,8 @@ const siteUrl = 'https://northpointdigital.com';
 
 const description = data.pageSubtitle || data.executiveSummary || data.detailedChallenge || data.challenge;
 const canonical = `${siteUrl}/case-studies/${study.slug}`;
+const datePublished = data.publishDate;
+const dateModified = data.lastUpdated || data.publishDate;
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -26,13 +28,22 @@ const jsonLd = {
   url: canonical,
   industry: data.industry,
   image: data.logo ? `${siteUrl}${data.logo}` : `${siteUrl}/north-point-logo.webp`,
-  author: { "@type": "Organization", name: "North Point Digital" },
-  publisher: { "@type": "Organization", name: "North Point Digital", logo: { "@type": "ImageObject", url: `${siteUrl}/north-point-logo.webp` } },
+  ...(datePublished ? { datePublished } : {}),
+  ...(dateModified ? { dateModified } : {}),
+  author: { "@type": "Organization", name: "North Point Digital", url: siteUrl },
+  publisher: { "@type": "Organization", name: "North Point Digital", logo: { "@type": "ImageObject", url: `${siteUrl}/north-point-logo.webp`, width: 1024, height: 1024 } },
   mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+  ...(data.testimonial ? {
+    review: {
+      "@type": "Review",
+      reviewBody: data.testimonial.quote,
+      author: { "@type": "Person", name: data.testimonial.author, ...(data.testimonial.role ? { jobTitle: data.testimonial.role } : {}) },
+      itemReviewed: { "@type": "Organization", name: "North Point Digital", url: siteUrl },
+    },
+  } : {}),
 };
 const breadcrumbs = [
   { name: 'Home', url: siteUrl },
-  { name: 'Case Studies', url: `${siteUrl}/#case-studies` },
   { name: data.clientName, url: canonical },
 ];
 

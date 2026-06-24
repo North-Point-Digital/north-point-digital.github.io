@@ -24,6 +24,8 @@ const caseStudies = defineCollection({
     clientName: z.string(),
     industry: z.string().optional(),
     logo: z.string().optional(),
+    publishDate: z.string().optional(),
+    lastUpdated: z.string().optional(),
     challenge: z.string(),
     solution: z.string(),
     results: z.array(z.string()),
