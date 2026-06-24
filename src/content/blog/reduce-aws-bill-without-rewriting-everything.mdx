@@ -4,6 +4,7 @@ excerpt: "A practical, operator-focused guide to cutting AWS costs using tagging
 author: "David Turnbull"
 authorRole: "Founder & AWS Solutions Architect"
 publishDate: "2025-01-27"
+lastUpdated: "2026-06-25"
 category: "AWS & Cloud"
 tags: ["AWS", "Cost Optimisation", "Cloud Governance"]
 metaDescription: "A practical guide to reducing your AWS bill without a full re-architecture, focusing on tagging, right-sizing and no-regret operational changes."
@@ -13,22 +14,42 @@ metaDescription: "A practical guide to reducing your AWS bill without a full re-
 
 Most teams know their AWS bill is too high, but the idea of a full re-architecture feels unrealistic. The good news is you can find meaningful savings without a two-year migration programme. The key is to treat cost optimisation as an ongoing **operations discipline**, not a one-off event.
 
+The savings that matter rarely come from one heroic change. They come from a handful of low-risk, operational adjustments that compound — and from making spend visible enough that it stops drifting upward. None of it requires touching application code.
+
 ### 1. Get Visibility First: Tagging and Cost Allocation
 
-You cannot optimise what you cannot see. Start by enforcing a simple tagging model across accounts: `Environment`, `Application`, `Owner`, and `CostCentre`. Once tags are consistent, you can break the bill down by team and workload, and have sensible conversations about value versus spend.
+You cannot optimise what you cannot see. Start by enforcing a simple tagging model across accounts: `Environment`, `Application`, `Owner`, and `CostCentre`. Once tags are consistent, you can break the bill down by team and workload in **AWS Cost Explorer**, and have sensible conversations about value versus spend.
+
+In practice, most estates start at 40–60% tag coverage. Getting to near-100% is unglamorous but it's the single highest-leverage step, because every decision after this depends on knowing what each pound is actually buying. Turn on **AWS Cost Anomaly Detection** at the same time so a runaway cost shows up in days, not at the end of the month.
 
 ### 2. Target the No-Regret Changes
 
 Before you touch application code, look for changes that are operational only:
 
-- Right-size consistently under-utilised instances.
-- Move cold data to cheaper storage tiers.
-- Turn off non-production environments out-of-hours.
+- **Right-size consistently under-utilised instances.** Use **AWS Compute Optimizer** to find EC2, RDS and EBS resources running at low utilisation. Dropping an instance one size is often invisible to users and cuts that line item by roughly half.
+- **Move cold data to cheaper storage tiers.** S3 Lifecycle policies and Intelligent-Tiering move infrequently accessed objects off Standard automatically. The same logic applies to old EBS snapshots and unattached volumes that nobody has cleaned up.
+- **Turn off non-production environments out-of-hours.** A dev and staging fleet that runs 168 hours a week but is used for 50 is a standing 65%+ saving on those environments for the price of a scheduler.
+- **Buy your steady-state baseline.** Once usage is predictable, **Savings Plans** or Reserved Instances on your always-on baseline typically save 30–50% versus on-demand, with no architecture change at all.
 
 These actions can usually be implemented by the platform team with very low risk and immediate measurable impact.
 
+### A Worked Example
+
+Take a 12-person SaaS business spending about **£8,000 a month** on AWS. A typical first pass looks like this:
+
+- Right-sizing three over-provisioned services: **−£900/month**
+- Scheduling dev and staging to weekday business hours: **−£700/month**
+- S3 lifecycle policies and deleting orphaned snapshots and volumes: **−£400/month**
+- A Savings Plan on the production baseline: **−£1,100/month**
+
+That's roughly **£3,100 a month, or ~38%, off the bill** — none of it requiring an application rewrite, and most of it shipped within two weeks. The exact numbers vary, but the shape is consistent: the bulk of the saving sits in compute scheduling, right-sizing and commitment, not in exotic re-architecture.
+
 ### 3. Build Guard Rails, Not Hero Dashboards
 
-Fancy cost dashboards are useless if engineers ignore them. Instead, wire cost signals into the way people already work: budgets, alerts, and simple monthly reviews tied to your AWS accounts and applications.
+Fancy cost dashboards are useless if engineers ignore them. Instead, wire cost signals into the way people already work: **AWS Budgets** with alerts, anomaly notifications in the channel the team already watches, and simple monthly reviews tied to your AWS accounts and applications. The goal is to make the new, lower number stick rather than creep back up three months later once everyone's attention has moved on.
 
-> **Pro Tip:** At North Point Digital we use our Security & Cost Optimisation Blueprint to find these quick wins in the first few weeks, while also giving you a longer-term roadmap for deeper modernisation work.
+### Where to Start
+
+If you only do one thing this quarter, get your tagging and Cost Explorer in order — every other saving depends on it. From there, the no-regret changes above will usually find double-digit percentage savings without a single line of application code changing.
+
+> **Pro Tip:** At North Point Digital we use our [Security & Cost Optimisation Blueprint](/aws-cost-optimisation) to find these quick wins in the first couple of weeks, while also giving you a longer-term roadmap for deeper modernisation work. Across 20+ reviews we've found an average of 30% in potential savings — and if we don't find at least 25%, there's no fee.
