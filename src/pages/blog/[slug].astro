@@ -2,16 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { slugifyCategory } from '../../utils/blog';
+import AuthorBio from '../../components/AuthorBio.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { post, posts },
   }));
 }
 
-const { post } = Astro.props;
+const { post, posts } = Astro.props;
 const { Content } = await post.render();
 
 const siteUrl = 'https://northpointdigital.com';
@@ -64,6 +66,9 @@ const breadcrumbs = [
         </a>
         {' · '}
         {new Date(post.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+        {post.data.lastUpdated && post.data.lastUpdated !== post.data.publishDate && (
+          <span> · Updated {new Date(post.data.lastUpdated).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        )}
         {' · '}
         {post.data.author}
         {post.data.authorRole ? `, ${post.data.authorRole}` : ''}
@@ -83,6 +88,8 @@ const breadcrumbs = [
         <Content />
       </div>
 
+      <AuthorBio author={post.data.author} />
+
       <div class="mt-14 rounded-2xl border border-slate-200 bg-slate-50 p-8 text-center">
         <h2 class="text-xl font-semibold text-slate-900">Want a second pair of eyes on your AWS estate?</h2>
         <p class="mx-auto mt-2 max-w-md text-slate-600">A free 30-minute call with an engineer. No pitch deck.</p>
@@ -96,6 +103,8 @@ const breadcrumbs = [
           Book a free call
         </a>
       </div>
+
+      <RelatedPosts posts={posts} current={post} />
     </div>
   </article>
 </BaseLayout>

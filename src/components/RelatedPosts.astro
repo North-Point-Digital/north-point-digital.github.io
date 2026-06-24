@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { slugifyCategory } from '../utils/blog';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  current: CollectionEntry<'blog'>;
+  max?: number;
+}
+
+const { posts, current, max = 3 } = Astro.props;
+
+const others = posts.filter((p) => p.slug !== current.slug);
+const sameCategory = others.filter((p) => p.data.category === current.data.category);
+const rest = others.filter((p) => p.data.category !== current.data.category);
+
+const byDate = (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+  new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+
+const related = [...sameCategory.sort(byDate), ...rest.sort(byDate)].slice(0, max);
+---
+
+{related.length > 0 && (
+  <section class="mt-16 border-t border-slate-200 pt-10">
+    <h2 class="text-xl font-semibold tracking-tight text-slate-900">Related reading</h2>
+    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+      {related.map((post) => (
+        <li>
+          <a
+            href={`/blog/${post.slug}`}
+            class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 no-underline transition-colors duration-fast hover:border-slate-300 hover:bg-slate-50"
+          >
+            <span class="text-xs font-medium uppercase tracking-wider text-accent">{post.data.category}</span>
+            <span class="mt-2 font-semibold leading-snug text-slate-900">{post.data.title}</span>
+            {post.data.excerpt && (
+              <span class="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-500">{post.data.excerpt}</span>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
