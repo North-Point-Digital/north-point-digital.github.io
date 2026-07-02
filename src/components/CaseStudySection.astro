@@ -17,7 +17,7 @@ const caseStudies = await getCollection('caseStudies');
     <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal>
       {caseStudies.map((cs) => (
         <a
-          href={`/case-studies/${cs.slug}`}
+          href={`/case-studies/${cs.slug}/`}
           class="card card-hover group flex flex-col no-underline"
           data-track-cta={`Case Study: ${cs.data.clientName}`}
         >

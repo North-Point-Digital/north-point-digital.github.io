@@ -36,7 +36,7 @@ const heading = activeCategory
 
     <nav class="mt-10 flex flex-wrap items-center justify-center gap-2" aria-label="Blog categories">
       <a
-        href="/blog"
+        href="/blog/"
         class:list={[
           'rounded-full border px-4 py-1.5 text-sm font-medium no-underline transition-colors duration-fast',
           !activeCategory
@@ -49,7 +49,7 @@ const heading = activeCategory
       </a>
       {categories.map((category) => (
         <a
-          href={`/blog/category/${category.slug}`}
+          href={`/blog/category/${category.slug}/`}
           class:list={[
             'rounded-full border px-4 py-1.5 text-sm font-medium no-underline transition-colors duration-fast',
             activeCategory === category.slug
@@ -66,7 +66,7 @@ const heading = activeCategory
 
     <div class="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {page.data.map((post) => (
-        <a href={`/blog/${post.slug}`} class="card card-hover group flex h-full flex-col overflow-hidden !p-0 no-underline">
+        <a href={`/blog/${post.slug}/`} class="card card-hover group flex h-full flex-col overflow-hidden !p-0 no-underline">
           {post.data.thumbnailImage && (
             <img
               src={post.data.thumbnailImage}
@@ -98,13 +98,13 @@ const heading = activeCategory
     {page.lastPage > 1 && (
       <nav class="mt-12 flex items-center justify-center gap-4" aria-label="Pagination">
         {page.url.prev ? (
-          <a href={page.url.prev} class="btn-secondary !px-5 !py-2.5 text-sm">← Newer</a>
+          <a href={page.url.prev.endsWith('/') ? page.url.prev : `${page.url.prev}/`} class="btn-secondary !px-5 !py-2.5 text-sm">← Newer</a>
         ) : (
           <span class="inline-flex items-center rounded-lg border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-300">← Newer</span>
         )}
         <span class="text-sm text-slate-500">Page {page.currentPage} of {page.lastPage}</span>
         {page.url.next ? (
-          <a href={page.url.next} class="btn-secondary !px-5 !py-2.5 text-sm">Older →</a>
+          <a href={page.url.next.endsWith('/') ? page.url.next : `${page.url.next}/`} class="btn-secondary !px-5 !py-2.5 text-sm">Older →</a>
         ) : (
           <span class="inline-flex items-center rounded-lg border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-300">Older →</span>
         )}
@@ -118,7 +118,7 @@ const heading = activeCategory
         If you're reading up before making a move, start here: picking a use case,
         getting your data ready, and what AI actually costs to run.
       </p>
-      <a href="/ai-adoption-playbook" class="btn-primary mt-6" data-track-cta="Blog Index Playbook">
+      <a href="/ai-adoption-playbook/" class="btn-primary mt-6" data-track-cta="Blog Index Playbook">
         Get the playbook
       </a>
     </div>

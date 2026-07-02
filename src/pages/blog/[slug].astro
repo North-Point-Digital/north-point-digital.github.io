@@ -18,7 +18,7 @@ const { Content } = await post.render();
 
 const siteUrl = 'https://northpointdigital.com';
 const description = post.data.metaDescription || post.data.excerpt || `${post.data.title} from North Point Digital.`;
-const canonical = `${siteUrl}/blog/${post.slug}`;
+const canonical = `${siteUrl}/blog/${post.slug}/`;
 const ogImage = post.data.ogImage || post.data.featuredImage || post.data.thumbnailImage || `${siteUrl}/north-point-logo.webp`;
 const ogImageAbs = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 const isVignette = ogImage.includes('/images/blog/');
@@ -49,7 +49,7 @@ const jsonLd = {
 
 const breadcrumbs = [
   { name: 'Home', url: siteUrl },
-  { name: 'Blog', url: `${siteUrl}/blog` },
+  { name: 'Blog', url: `${siteUrl}/blog/` },
   { name: post.data.title, url: canonical },
 ];
 ---
@@ -57,13 +57,13 @@ const breadcrumbs = [
 <BaseLayout title={`${post.data.title} | Blog | North Point Digital`} description={description} canonical={canonical} jsonLd={jsonLd} ogImage={ogImage} breadcrumbs={breadcrumbs} ogType="article" publishDate={publishDate} modifiedDate={modifiedDate}>
   <article class="bg-white pt-16">
     <div class="mx-auto max-w-3xl px-6 py-16 md:px-8">
-      <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 no-underline transition-colors duration-fast hover:text-slate-900">
+      <a href="/blog/" class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 no-underline transition-colors duration-fast hover:text-slate-900">
         ← Back to the blog
       </a>
       <h1 class="mt-6 text-[clamp(2rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-slate-900">{post.data.title}</h1>
       <p class="mt-4 text-[0.95rem] text-slate-500">
         <a
-          href={`/blog/category/${slugifyCategory(post.data.category)}`}
+          href={`/blog/category/${slugifyCategory(post.data.category)}/`}
           class="font-medium text-accent no-underline hover:underline"
         >
           {post.data.category}

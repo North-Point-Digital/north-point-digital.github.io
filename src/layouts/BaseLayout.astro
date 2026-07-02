@@ -39,7 +39,14 @@ const {
 
 const siteUrl = 'https://northpointdigital.com';
 const robots = noIndex ? 'noindex,nofollow' : 'index,follow';
-const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+// Normalise canonical to always end with a trailing slash (unless it has a
+// file extension). GitHub Pages serves directory URLs with a trailing slash
+// and 301-redirects the non-slash version, so a canonical without the slash
+// points at a redirect — which confuses Google's canonicalisation.
+const rawCanonical = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const canonicalUrl = /\.[a-z0-9]+$/i.test(rawCanonical) || rawCanonical.endsWith('/')
+  ? rawCanonical
+  : `${rawCanonical}/`;
 const imageUrl = ogImage
   ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`)
   : `${siteUrl}/north-point-logo.webp`;

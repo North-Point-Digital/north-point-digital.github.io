@@ -3,7 +3,7 @@ const navItems = [
   { name: 'Services', path: '/#services' },
   { name: 'How we work', path: '/#how-we-work' },
   { name: 'Case studies', path: '/#case-studies' },
-  { name: 'Blog', path: '/blog' },
+  { name: 'Blog', path: '/blog/' },
 ];
 
 const pathname = Astro.url.pathname;
@@ -23,7 +23,7 @@ const pathname = Astro.url.pathname;
             href={item.path}
             class:list={[
               'text-[0.95rem] font-medium no-underline transition-colors duration-fast hover:text-slate-900',
-              pathname.startsWith('/blog') && item.path === '/blog' ? 'text-slate-900' : 'text-slate-600',
+              pathname.startsWith('/blog') && item.path === '/blog/' ? 'text-slate-900' : 'text-slate-600',
             ]}
             data-track-nav={item.name}
           >

@@ -11,7 +11,7 @@ export default defineConfig({
     port: process.env.PORT ? Number(process.env.PORT) : 4321,
   },
   redirects: {
-    '/aws-profitability-resilience-blueprint': '/aws-cost-optimisation',
+    '/aws-profitability-resilience-blueprint': '/aws-cost-optimisation/',
   },
   integrations: [
     react(),

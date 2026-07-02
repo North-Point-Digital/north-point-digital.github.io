@@ -16,7 +16,7 @@ const data = study.data;
 const siteUrl = 'https://northpointdigital.com';
 
 const description = data.pageSubtitle || data.executiveSummary || data.detailedChallenge || data.challenge;
-const canonical = `${siteUrl}/case-studies/${study.slug}`;
+const canonical = `${siteUrl}/case-studies/${study.slug}/`;
 const datePublished = data.publishDate;
 const dateModified = data.lastUpdated || data.publishDate;
 const jsonLd = {
