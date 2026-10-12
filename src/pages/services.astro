@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CaseStudySection from '../components/CaseStudySection.astro';
+import AIExamplesSection from '../components/AIExamplesSection.astro';
 import FAQSection from '../components/FAQSection.astro';
 import ClosingCTA from '../components/ClosingCTA.astro';
 import { buildFaqJsonLd } from '../data/faqs';
@@ -127,6 +128,7 @@ const serviceJsonLd = tracks.map((t) => ({
   </section>
 
   {tracks.map((track, i) => (
+    <>
     <section id={track.id} class:list={['section scroll-mt-16 border-t border-slate-200', i % 2 === 0 ? 'bg-slate-50' : 'bg-white']}>
       <div class="container-site grid grid-cols-1 gap-12 lg:grid-cols-[6fr_5fr] lg:items-start">
         <div>
@@ -167,6 +169,8 @@ const serviceJsonLd = tracks.map((t) => ({
         </div>
       </div>
     </section>
+    {track.id === 'ai-adoption' && <AIExamplesSection limit={4} />}
+    </>
   ))}
 
   <section id="how-engagements-work" class="section scroll-mt-16 border-t border-slate-200 bg-white">

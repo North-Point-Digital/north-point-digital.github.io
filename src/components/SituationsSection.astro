@@ -1,0 +1,90 @@
+---
+const CALENDLY = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call';
+
+const situations = [
+  {
+    title: 'The AWS bill doubled',
+    now: 'Spend has doubled since last year and nobody can say which workload did it.',
+    us: 'A review of the accounts, findings ranked by cost, and the fixes applied while we are in there.',
+    icon: 'M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6',
+  },
+  {
+    title: 'One engineer holds the platform',
+    now: 'One person knows how production works, and they are on holiday next month.',
+    us: 'A consultant embedded with the team, turning what is in their head into code and runbooks.',
+    icon: 'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z',
+  },
+  {
+    title: 'The audit is in eight weeks',
+    now: 'A security questionnaire or DSPT submission is due and the landing zone was never finished.',
+    us: 'Governance, logging and encryption put in place to the standard the auditor will check.',
+    icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+  },
+  {
+    title: 'The migration stalled',
+    now: 'Half the estate is in AWS, half is not, and the project has lost its owner.',
+    us: 'A lead and a small team to finish it, with MAP funding where the workload qualifies.',
+    icon: 'M4 12h16M12 4l8 8-8 8',
+  },
+  {
+    title: 'The roadmap needs more hands',
+    now: 'A deadline the current team cannot hit without hiring, and hiring takes four months.',
+    us: 'Senior engineers in your repository, shipping through your pipeline to your standards.',
+    icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6',
+  },
+  {
+    title: 'The board wants an AI answer',
+    now: 'You have been asked what the company is doing about AI, and there is a slide, not a plan.',
+    us: 'A use case chosen for payback, proved on your data, with a running cost you can defend.',
+    icon: 'M12 2a4 4 0 014 4v1h1a3 3 0 013 3v2a3 3 0 01-3 3h-1v1a4 4 0 01-8 0v-1H7a3 3 0 01-3-3v-2a3 3 0 013-3h1V6a4 4 0 014-4zM9 11h.01M15 11h.01M10 15h4',
+  },
+];
+---
+
+<section id="situations" class="section bg-slate-50">
+  <div class="container-site">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="eyebrow mb-4">When teams call us</p>
+      <h2 class="text-h2">The situations we usually walk into</h2>
+      <p class="mt-4 text-lg text-slate-600">
+        If one of these sounds like this quarter, that is what the first call is for.
+      </p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal>
+      {situations.map((s) => (
+        <article class="card flex flex-col">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-accent-tint">
+            <svg class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d={s.icon} />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900">{s.title}</h3>
+          <p class="mt-3 text-[0.95rem] leading-relaxed text-slate-500">
+            <span class="font-mono text-xs uppercase tracking-wider text-slate-500">Now&nbsp;&nbsp;</span>
+            {s.now}
+          </p>
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-slate-700">
+            <span class="font-mono text-xs uppercase tracking-wider text-accent">With us&nbsp;&nbsp;</span>
+            {s.us}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      <a
+        href={CALENDLY}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        data-track-cta="Situations Book a Call"
+      >
+        Sound familiar? Book a call
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

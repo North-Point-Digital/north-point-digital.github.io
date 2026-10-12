@@ -29,6 +29,8 @@ const caseStudies = defineCollection({
     challenge: z.string(),
     solution: z.string(),
     results: z.array(z.string()),
+    shape: z.string().optional(),
+    headline: z.string().optional(),
     pageTitle: z.string().optional(),
     pageSubtitle: z.string().optional(),
     executiveSummary: z.string().optional(),

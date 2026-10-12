@@ -38,7 +38,15 @@ const caseStudies = await getCollection('caseStudies');
             </div>
           </div>
 
-          <p class="mt-5 leading-relaxed text-slate-600">{cs.data.challenge}</p>
+          {cs.data.shape && (
+            <p class="mt-5 inline-flex w-fit items-center rounded-md bg-accent-tint px-2.5 py-1 font-mono text-xs font-medium uppercase tracking-wider text-accent">
+              {cs.data.shape}
+            </p>
+          )}
+          {cs.data.headline && (
+            <p class="mt-4 text-lg font-semibold leading-snug text-slate-900">{cs.data.headline}</p>
+          )}
+          <p class="mt-3 leading-relaxed text-slate-600">{cs.data.challenge}</p>
 
           {cs.data.results.length > 0 && (
             <ul class="mt-5 space-y-2 border-t border-slate-200 pt-5">
