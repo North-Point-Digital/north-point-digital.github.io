@@ -15,7 +15,7 @@ function toPlainMarkdown(body: string): string {
     .trim();
 }
 
-// Full-content companion to llms.txt — expands every service, case study and
+// Full-content companion to llms.txt. Expands every service, case study and
 // blog post with full prose so AI engines can answer without crawling the site.
 export const GET: APIRoute = async () => {
   const posts = (await getCollection('blog')).sort(
@@ -25,33 +25,37 @@ export const GET: APIRoute = async () => {
   const lastUpdated = new Date().toISOString().slice(0, 10);
 
   const lines: string[] = [
-    '# North Point Digital — Full Content',
+    '# North Point Digital: Full Content',
     '',
     `> Last-Updated: ${lastUpdated}`,
     '',
-    '> North Point Digital is a consultancy that builds working AI for small businesses',
-    '> in six weeks for a fixed fee, and helps AWS customers cut cloud costs and tighten',
-    '> security. Clients do not need to be on AWS or be technical: prototypes run on',
-    '> infrastructure North Point sets up and manages, and client systems stay where',
-    '> they are (on-premises, Microsoft, Google, or spreadsheets and email).',
+    '> North Point Digital is a UK consultancy run by David Turnbull, a senior platform',
+    '> engineer. It sells his time across three tracks: platform, AWS and SRE engineering;',
+    '> AI adoption; and software engineering. Engagements are scoped in writing (days,',
+    '> deliverable, end date) before work starts. No rates or packages are published.',
+    '> For AI work, client systems stay where they are (on-premises, Microsoft, Google, or',
+    '> spreadsheets and email) and the model runs on infrastructure North Point manages.',
     '',
-    'Key facts: official AWS Partner; fixed-fee engagements with no long-term contracts;',
-    'the cost review carries a written guarantee (if at least 25% in potential AWS savings',
-    'is not found, there is no fee — across 20+ reviews the average found is 30%). The',
-    'first call is free, 30 minutes, with an engineer.',
+    'Key facts: official AWS Partner; work is done by David Turnbull, with named associates',
+    'brought in when a piece of work needs another specialism; engagements take one of three',
+    'shapes (a review over a few days, a build over weeks, or a set number of days a month);',
+    'nothing to cancel afterwards. The first call is 30 minutes, with the engineer.',
     '',
-    `Contact: contact@northpointdigital.com. Book a free call: ${BOOKING}`,
+    `Contact: contact@northpointdigital.com. Book a call: ${BOOKING}`,
     '',
     '## Services',
     '',
-    `### AI Launchpad (${SITE}/ai-launchpad)`,
-    "Fixed-fee, six-week AI proof of concept built with the client's own data. You get a working prototype, its production running costs, and a roadmap to live — or a documented reason not to proceed. Week one scopes the use case; there are weekly demos during the build. Clients do not need to be on AWS or be technical; the prototype runs on infrastructure North Point sets up and manages.",
+    `### Platform, AWS and SRE engineering (${SITE}/services/#platform)`,
+    'Most of David Turnbull\'s career has been inside AWS estates: building them, running them and fixing them when they break. He works in the client\'s accounts, with their team, and leaves infrastructure as code behind. Typical work: Well-Architected, cost and security reviews; multi-account landing zones and governance; migrations, with AWS Migration Acceleration Program funding where the workload qualifies; Terraform and CDK; observability, on-call and incident response.',
     '',
-    `### Security & Cost Optimisation Blueprint (${SITE}/aws-cost-optimisation)`,
-    'A two-week AWS Well-Architected review covering cost and security. Critical security issues are fixed during the engagement rather than just listed. It targets 25%+ cost reduction with no upfront cost and a no-savings-no-fee guarantee: if at least 25% in potential savings is not found, there is no fee. Cost levers include right-sizing with AWS Compute Optimizer, Savings Plans and Reserved Instances, idle/orphaned resource cleanup, S3 storage tiering, Graviton and serverless moves, and Cost Explorer plus tagging and budget alerts. Security covers IAM, public-exposure checks, encryption and KMS, and logging/guardrails (CloudTrail, AWS Config, GuardDuty, Trusted Advisor). Requires an AWS account (the only offer that does).',
+    `### AI adoption (${SITE}/services/#ai-adoption)`,
+    'Picking the use case that pays, proving it on the client\'s own data, and running it in production with a readable bill. Client systems stay where they are; the model runs on infrastructure North Point sets up and manages. Typical work: use-case selection and data readiness, proof of concept on the client\'s data, Amazon Bedrock with guardrails and evaluation, running-cost modelling, production hardening and handover.',
     '',
-    `### Build Better on AWS (${SITE}/build-better)`,
-    'AWS architecture, cloud migrations (including AWS Migration Acceleration Program funding where workloads qualify), landing zones, DevOps and modernisation.',
+    `### Software engineering (${SITE}/services/#software)`,
+    'Backend and platform code shipped into the client\'s repository with tests and a pipeline. Typical work: backend services in TypeScript and Python, APIs and event-driven systems, CI/CD pipelines, modernising legacy code, code and architecture reviews.',
+    '',
+    `### How engagements work (${SITE}/services/#how-engagements-work)`,
+    'Every engagement is David\'s time, scoped in writing before it starts. Three shapes cover most of them. A review: a few days, read-only access, a written report with findings ranked by risk and cost, and a call to walk through it. A build: weeks, part-time or full-time, a defined deliverable in the client\'s repository and accounts, with a weekly written update. Ongoing: a set number of days a month for architecture, reviews and escalation, month to month, cancel with notice. The proposal states the days, the deliverable and the end date; nothing else is billed. No rates or packages are published.',
     '',
     `### AI Adoption Playbook (${SITE}/ai-adoption-playbook)`,
     'A free downloadable guide to planning, validating and scaling AI in a small business: picking a use case, data readiness, what AI costs to run, and how to calculate and maximise the return.',
@@ -83,8 +87,8 @@ export const GET: APIRoute = async () => {
   lines.push(
     '## Company',
     '',
-    `- How we work (${SITE}/#how-we-work): Four steps — a free 30-minute call, an assessment with a written fixed-price scope, fixed-fee delivery with weekly demos, then handover with documentation and 30 days of support.`,
-    `- Contact (${SITE}/contact): Email contact@northpointdigital.com, send a message, or book a free call at ${BOOKING}.`,
+    `- How we work (${SITE}/#how-we-work): Four steps: a 30-minute call, a written proposal (scope, days, who does the work, end date), the work in the client's repositories and accounts with a weekly written update, then handover with documentation and knowledge transfer.`,
+    `- Contact (${SITE}/contact): Email contact@northpointdigital.com, send a message, or book a call at ${BOOKING}.`,
     ''
   );
 

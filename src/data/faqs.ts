@@ -5,36 +5,28 @@ export interface FAQ {
 
 export const faqs: FAQ[] = [
   {
-    question: "What if you don't find 25% in savings?",
-    answer: `<p><strong>Then the review is free.</strong></p><p>That's the deal on our Security & Cost Optimisation Blueprint: if we can't find at least 25% in potential cost reductions, you don't pay. We can offer that because 78% of companies overspend on AWS, and the causes are usually the same: no tagging discipline, no Reserved Instance strategy, instances sized for a launch day that never came.</p><p>In 20+ reviews so far, we've averaged 30% in savings found.</p>`,
+    question: 'What happens on the first call?',
+    answer: `<p><strong>Thirty minutes with me, not a salesperson.</strong></p><p>You describe the problem, I ask questions, and we work out whether there is a fit. If there isn't, I'll say so on the call and point you somewhere better if I can. No deck and no follow-up sequence.</p>`,
   },
   {
-    question: 'What do we need to bring to an AI Launchpad?',
-    answer: `<p>Three things:</p><ul><li><strong>A problem worth solving.</strong> A process that eats hours, questions your data could answer, work that queues up. If you're not sure which one to pick, that's what the first week is for.</li><li><strong>Some of your data.</strong> Even a sample is fine. We build the prototype on your data, not a demo dataset, because that's the only way the result means anything.</li><li><strong>Someone who can say yes.</strong> A sponsor who'll watch the weekly demos and make the call at the end.</li></ul><p>You don't need an AI strategy document. The Launchpad usually replaces one.</p>`,
+    question: 'How does an engagement start?',
+    answer: `<p><strong>With a written proposal.</strong></p><p>It states the scope, how much of my time the work needs, who does it, and the end date. Nothing is billed until you've agreed it.</p><p>Most engagements take one of three shapes: a review over a few days, a build over several weeks, or a set number of days a month for ongoing work.</p>`,
   },
   {
-    question: 'What does the AI Launchpad cost?',
-    answer: `<p><strong>Typically <span data-price-range>£15,000–£25,000</span>, fixed<span data-price-note class="hidden"> (approximate, we bill in GBP)</span>.</strong> Where you land in that range depends mostly on data readiness, meaning how much work it takes to get your data cleanly in front of the model. The exact figure is agreed in writing before we start, and it doesn't move after that.</p><p>We're currently offering our first three Launchpad clients roughly half the usual fee, in exchange for a named case study and a reference call.</p><p>The Security &amp; Cost Optimisation Blueprint is priced differently: no upfront cost, and if we don't find at least 25% in potential savings, no fee at all.</p>`,
+    question: 'How much of your time do I get?',
+    answer: `<p><strong>Whatever the proposal says, and it's my time rather than a delegated junior's.</strong></p><p>A build might be two or three days a week. Ongoing work is a set number of days a month. When a piece of work needs another specialism, I bring in an associate, and you know who before they start.</p>`,
   },
   {
-    question: "We're not on AWS. Does that matter?",
-    answer: `<p><strong>Not at all.</strong> The AI prototype runs on infrastructure we set up and manage. Your systems stay exactly where they are: on-prem, Microsoft, Google, or nothing more than spreadsheets and email.</p><p>We connect to your data through exports or simple integrations, and if the pilot goes to production, we run the infrastructure side. You never need to log into AWS or learn what any of it means. That's the part you're paying us for.</p><p>The only offer that requires AWS is the cost-saving Blueprint, for the obvious reason that it reviews an AWS bill.</p>`,
+    question: 'Do you only work on AWS?',
+    answer: `<p><strong>No.</strong></p><p>AWS is where most of my platform work has been, and North Point Digital is an official AWS Partner. AI adoption and software engineering don't depend on where your systems live.</p><p>For AI work, your data stays where it is: on-prem, Microsoft, Google, or spreadsheets and email. The model runs on infrastructure I set up and manage, and you never need to log into it.</p>`,
   },
   {
-    question: 'How long do engagements take?',
-    answer: `<p><strong>The Blueprint takes two weeks. The AI Launchpad takes six.</strong> Both are fixed-fee, priced before we start.</p><p>Blueprint: week one is the audit, covering costs, security and architecture, with an initial findings report. Week two we implement: critical fixes, budget alerts, tagging, tuning. You end with a full Well-Architected report and roadmap.</p><p>Launchpad: week one we scope the use case and look at your data. Weeks two to five we build, with a demo every week. Week six you get the working prototype, production costings and a route to live.</p><p>Both come with 30 days of support after delivery.</p>`,
+    question: 'Do you work remotely or on site?',
+    answer: `<p><strong>Remotely by default, from the UK.</strong></p><p>I work in your chat tools, your repositories and your accounts. Days on site for workshops or kick-offs are fine where they're useful, and they go in the proposal like everything else.</p>`,
   },
   {
-    question: 'Do you require long-term contracts?',
-    answer: `<p><strong>No.</strong> Every engagement is fixed-fee with a defined end date, and there's nothing to cancel afterwards.</p><p>Plenty of clients take the Blueprint report, implement it themselves, and come back months later with a new project. That suits us fine. We'd rather be invited back than locked in.</p>`,
-  },
-  {
-    question: 'What makes you different from other AWS consultancies?',
-    answer: `<p><strong>We only do AWS, and we put senior engineers on every engagement.</strong></p><ul><li>The people you meet on the first call are the people who do the work, with no junior staff padding hours</li><li>Fixed fees with named deliverables, not open-ended day rates</li><li>We fix critical issues during a review rather than listing them in a PDF</li><li>If we don't find 25% in savings on a Blueprint, you don't pay</li></ul>`,
-  },
-  {
-    question: 'Why should I trust your consultancy?',
-    answer: `<p>Fair question. Every consultancy says they're experts. Here's what you can check:</p><ul><li>We're an official AWS Partner, and our consultants hold AWS certifications with 10+ years of enterprise cloud work behind them</li><li>Our case studies name the clients and the numbers: zero-downtime launches, NHS compliance sign-off, 30-second Minecraft deployments</li><li>The Blueprint guarantee is in writing: no 25% savings found, no fee</li><li>The first call is free, and the people on it are engineers</li></ul>`,
+    question: 'What happens at the end?',
+    answer: `<p><strong>Handover.</strong></p><p>Documentation, infrastructure as code and a knowledge-transfer session, so your team can run what I've built without me. There's nothing to cancel afterwards. Clients who come back do so because they want to, not because they're locked in.</p>`,
   },
 ];
 
