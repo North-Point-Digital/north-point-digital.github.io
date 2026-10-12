@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CaseStudySection from '../components/CaseStudySection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ClosingCTA from '../components/ClosingCTA.astro';
+import { buildFaqJsonLd } from '../data/faqs';
+
+const siteUrl = 'https://northpointdigital.com';
+const CALENDLY = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call';
+
+const tracks = [
+  {
+    id: 'platform',
+    eyebrow: 'Platform',
+    title: 'Platform, AWS and SRE engineering',
+    intro: [
+      'Most of my career has been inside AWS estates: building them, running them, and finding out at three in the morning what was wrong with them. I work in your accounts, with your team, and leave infrastructure as code behind.',
+    ],
+    work: [
+      'Well-Architected, cost and security reviews',
+      'Multi-account landing zones and governance',
+      'Migrations, with AWS MAP funding where the workload qualifies',
+      'Terraform and CDK',
+      'Observability, on-call and incident response',
+    ],
+    icon: 'M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6',
+    extra: { label: 'Try the Migration Readiness Assessment', href: 'https://mra.northpointdigital.com' },
+  },
+  {
+    id: 'ai-adoption',
+    eyebrow: 'AI',
+    title: 'AI adoption',
+    intro: [
+      'Picking the use case that pays, proving it on your data, and running it in production with a bill you can read. Your systems stay where they are. The model runs on infrastructure I set up and manage.',
+    ],
+    work: [
+      'Use-case selection and data readiness',
+      'Proof of concept on your own data',
+      'Amazon Bedrock, guardrails and evaluation',
+      'Running-cost modelling',
+      'Production hardening and handover',
+    ],
+    icon: 'M12 2a4 4 0 014 4v1h1a3 3 0 013 3v2a3 3 0 01-3 3h-1v1a4 4 0 01-8 0v-1H7a3 3 0 01-3-3v-2a3 3 0 013-3h1V6a4 4 0 014-4zM9 11h.01M15 11h.01M10 15h4',
+  },
+  {
+    id: 'software',
+    eyebrow: 'Software',
+    title: 'Software engineering',
+    intro: [
+      'Backend and platform code, shipped into your repository with tests and a pipeline. I am as happy paying down the code nobody wants to touch as I am building the new thing.',
+    ],
+    work: [
+      'Backend services in TypeScript and Python',
+      'APIs and event-driven systems',
+      'CI/CD pipelines',
+      'Modernising legacy code',
+      'Code and architecture reviews',
+    ],
+    icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6',
+  },
+];
+
+const shapes = [
+  {
+    name: 'A review',
+    time: 'A few days',
+    description:
+      'Read-only access, a written report with findings ranked by risk and cost, and a call to walk through it.',
+  },
+  {
+    name: 'A build',
+    time: 'Weeks, part-time or full-time',
+    description:
+      'A defined deliverable in your repository and your accounts, with a short written update every week.',
+  },
+  {
+    name: 'Ongoing',
+    time: 'A set number of days a month',
+    description:
+      'Architecture, reviews and escalation when something breaks. Month to month, cancel with notice.',
+  },
+];
+
+const serviceJsonLd = tracks.map((t) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${siteUrl}/services/#${t.id}`,
+  name: t.title,
+  serviceType: t.title,
+  description: t.intro.join(' '),
+  provider: { '@id': `${siteUrl}/#organization` },
+  areaServed: { '@type': 'Country', name: 'United Kingdom' },
+  url: `${siteUrl}/services/#${t.id}`,
+}));
+---
+
+<BaseLayout
+  title="Services | North Point Digital"
+  description="Platform, AWS and SRE engineering, AI adoption and software engineering, sold as a senior engineer's time. Scope, days and end date agreed in writing before work starts."
+  canonical={`${siteUrl}/services/`}
+  breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Services', url: `${siteUrl}/services/` }]}
+  jsonLd={[...serviceJsonLd, buildFaqJsonLd()]}
+>
+  <section class="relative overflow-hidden bg-white pt-16">
+    <div class="hero-tint" aria-hidden="true"></div>
+    <div class="hero-dots" aria-hidden="true"></div>
+    <div class="container-site relative py-20 md:py-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="eyebrow mb-6">Services</p>
+        <h1 class="text-h1">Three kinds of work. One engineer doing it.</h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
+          Platform, AI adoption and software engineering, sold as my time rather
+          than as packages. Scope and dates are agreed in writing before anything starts.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a href={CALENDLY} target="_blank" rel="noopener noreferrer" class="btn-primary" data-track-cta="Services Hero Book a Call">
+            Book a call
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+          <a href="#how-engagements-work" class="btn-secondary">How engagements work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {tracks.map((track, i) => (
+    <section id={track.id} class:list={['section scroll-mt-16 border-t border-slate-200', i % 2 === 0 ? 'bg-slate-50' : 'bg-white']}>
+      <div class="container-site grid grid-cols-1 gap-12 lg:grid-cols-[6fr_5fr] lg:items-start">
+        <div>
+          <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-lg bg-accent-tint">
+            <svg class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d={track.icon} />
+            </svg>
+          </div>
+          <p class="eyebrow mb-3">{track.eyebrow}</p>
+          <h2 class="text-h2">{track.title}</h2>
+          <div class="mt-5 space-y-4 text-lg leading-relaxed text-slate-600">
+            {track.intro.map((p) => <p>{p}</p>)}
+          </div>
+        </div>
+
+        <div class="card" data-reveal>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Typical work</h3>
+          <ul class="mt-4 space-y-3">
+            {track.work.map((item) => (
+              <li class="flex items-start gap-2.5 text-[0.95rem] text-slate-700">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          {track.extra && (
+            <a
+              href={track.extra.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-block text-sm font-medium text-slate-500 underline decoration-slate-300 underline-offset-4 transition-colors duration-fast hover:text-slate-700"
+            >
+              {track.extra.label}
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section id="how-engagements-work" class="section scroll-mt-16 border-t border-slate-200 bg-white">
+    <div class="container-site">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-4">Engagements</p>
+        <h2 class="text-h2">How engagements work</h2>
+        <p class="mt-4 text-lg text-slate-600">
+          Every engagement is my time, scoped in writing before it starts. Three
+          shapes cover most of them.
+        </p>
+      </div>
+
+      <ol class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3" data-reveal>
+        {shapes.map((shape, i) => (
+          <li class="card h-full">
+            <div class="flex items-center justify-between">
+              <p class="font-mono text-sm font-medium text-slate-500">{shape.time}</p>
+              <span class="font-mono text-sm font-medium text-slate-500">0{i + 1}</span>
+            </div>
+            <h3 class="mt-4 text-xl font-semibold text-slate-900">{shape.name}</h3>
+            <p class="mt-2 text-[0.95rem] leading-relaxed text-slate-600">{shape.description}</p>
+          </li>
+        ))}
+      </ol>
+
+      <p class="mx-auto mt-10 max-w-2xl text-center text-slate-600">
+        The proposal states the days, the deliverable and the end date. Nothing
+        else is billed.
+      </p>
+    </div>
+  </section>
+
+  <CaseStudySection />
+  <FAQSection framed />
+  <ClosingCTA />
+</BaseLayout>
