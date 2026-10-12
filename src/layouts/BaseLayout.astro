@@ -93,7 +93,7 @@ if (breadcrumbs && breadcrumbs.length > 0) {
 
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    <link rel="canonical" href={canonicalUrl} />
+    {!noIndex && <link rel="canonical" href={canonicalUrl} />}
 
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
