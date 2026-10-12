@@ -1,6 +1,6 @@
 ---
 const navItems = [
-  { name: 'Services', path: '/#services' },
+  { name: 'Services', path: '/services/' },
   { name: 'How we work', path: '/#how-we-work' },
   { name: 'Case studies', path: '/#case-studies' },
   { name: 'Blog', path: '/blog/' },
@@ -23,7 +23,10 @@ const pathname = Astro.url.pathname;
             href={item.path}
             class:list={[
               'text-[0.95rem] font-medium no-underline transition-colors duration-fast hover:text-slate-900',
-              pathname.startsWith('/blog') && item.path === '/blog/' ? 'text-slate-900' : 'text-slate-600',
+              (pathname.startsWith('/blog') && item.path === '/blog/') ||
+              (pathname.startsWith('/services') && item.path === '/services/')
+                ? 'text-slate-900'
+                : 'text-slate-600',
             ]}
             data-track-nav={item.name}
           >
@@ -39,7 +42,7 @@ const pathname = Astro.url.pathname;
           class="btn-primary !px-5 !py-2.5 text-sm"
           data-track-cta="Nav Book a Call"
         >
-          Book a free call
+          Book a call
         </a>
       </li>
     </ul>
@@ -91,7 +94,7 @@ const pathname = Astro.url.pathname;
           class="btn-primary w-full"
           data-track-cta="Nav Book a Call"
         >
-          Book a free call
+          Book a call
         </a>
       </li>
     </ul>

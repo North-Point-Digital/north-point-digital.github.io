@@ -6,8 +6,8 @@ interface Props {
 }
 
 const {
-  title = "Bring us a use case. We'll tell you what it costs to prove.",
-  subtitle = "A free 30-minute call with an engineer, not a salesperson. If there's no fit, we'll say so on the call.",
+  title = "Bring the problem. The first call is with the engineer.",
+  subtitle = "Thirty minutes. If it is not a fit, you will hear that on the call.",
   calendly = 'https://calendly.com/david-northpointdigital/north-point-digital-initial-call',
 } = Astro.props;
 const CALENDLY = calendly;
@@ -36,7 +36,7 @@ const CALENDLY = calendly;
         class="btn-primary"
         data-track-cta="Closing Book a Call"
       >
-        Book a free call
+        Book a call
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6" />
         </svg>
@@ -46,7 +46,7 @@ const CALENDLY = calendly;
         class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-600 px-6 py-3.5 text-base font-semibold text-white no-underline transition-colors duration-fast hover:border-slate-400 hover:bg-white/5"
         data-track-cta="Closing Contact"
       >
-        Send us a message
+        Send a message
       </a>
     </div>
 
@@ -55,8 +55,8 @@ const CALENDLY = calendly;
         <img src="/aws-logo.png" alt="Amazon Web Services" width="34" height="20" class="h-5 w-auto" loading="lazy" />
         Official AWS Partner
       </span>
-      <span>20+ Well-Architected reviews completed</span>
-      <span>Fixed fees · no long-term contracts</span>
+      <span>Scope and dates in writing before work starts</span>
+      <span>Nothing to cancel afterwards</span>
     </div>
   </div>
 </section>
