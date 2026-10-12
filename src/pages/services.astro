@@ -14,7 +14,7 @@ const tracks = [
     eyebrow: 'Platform',
     title: 'Platform, AWS and SRE engineering',
     intro: [
-      'Most of my career has been inside AWS estates: building them, running them, and finding out at three in the morning what was wrong with them. I work in your accounts, with your team, and leave infrastructure as code behind.',
+      'Most of our consultants\' careers have been inside AWS estates: building them, running them, and finding out at three in the morning what was wrong with them. We work in your accounts, with your team, and leave infrastructure as code behind.',
     ],
     work: [
       'Well-Architected, cost and security reviews',
@@ -31,7 +31,7 @@ const tracks = [
     eyebrow: 'AI',
     title: 'AI adoption',
     intro: [
-      'Picking the use case that pays, proving it on your data, and running it in production with a bill you can read. Your systems stay where they are. The model runs on infrastructure I set up and manage.',
+      'Picking the use case that pays, proving it on your data, and running it in production with a bill you can read. Your systems stay where they are. The model runs on infrastructure we set up and manage.',
     ],
     work: [
       'Use-case selection and data readiness',
@@ -47,7 +47,7 @@ const tracks = [
     eyebrow: 'Software',
     title: 'Software engineering',
     intro: [
-      'Backend and platform code, shipped into your repository with tests and a pipeline. I am as happy paying down the code nobody wants to touch as I am building the new thing.',
+      'Backend and platform code, shipped into your repository with tests and a pipeline. We are as happy paying down the code nobody wants to touch as building the new thing.',
     ],
     work: [
       'Backend services in TypeScript and Python',
@@ -62,22 +62,22 @@ const tracks = [
 
 const shapes = [
   {
-    name: 'A review',
-    time: 'A few days',
+    name: 'One consultant in your team',
+    time: 'Embedded',
     description:
-      'Read-only access, a written report with findings ranked by risk and cost, and a call to walk through it.',
+      'A senior engineer working inside your team, in your tools and your stand-ups, for as long as the work needs.',
   },
   {
-    name: 'A build',
-    time: 'Weeks, part-time or full-time',
+    name: 'A small team for a build',
+    time: 'Two to four consultants',
     description:
-      'A defined deliverable in your repository and your accounts, with a short written update every week.',
+      'A lead and a small team, a defined deliverable in your repositories and accounts, and a written update every week.',
   },
   {
-    name: 'Ongoing',
+    name: 'Ongoing days',
     time: 'A set number of days a month',
     description:
-      'Architecture, reviews and escalation when something breaks. Month to month, cancel with notice.',
+      'Consultant days for architecture, reviews and escalation when something breaks. Month to month, cancel with notice.',
   },
 ];
 
@@ -96,7 +96,7 @@ const serviceJsonLd = tracks.map((t) => ({
 
 <BaseLayout
   title="Services | North Point Digital"
-  description="Platform, AWS and SRE engineering, AI adoption and software engineering, sold as a senior engineer's time. Scope, days and end date agreed in writing before work starts."
+  description="Platform, AWS and SRE engineering, AI adoption and software engineering from a UK consultancy. Scope, team and end date agreed in writing before work starts."
   canonical={`${siteUrl}/services/`}
   breadcrumbs={[{ name: 'Home', url: siteUrl }, { name: 'Services', url: `${siteUrl}/services/` }]}
   jsonLd={[...serviceJsonLd, buildFaqJsonLd()]}
@@ -107,10 +107,11 @@ const serviceJsonLd = tracks.map((t) => ({
     <div class="container-site relative py-20 md:py-24">
       <div class="mx-auto max-w-3xl text-center">
         <p class="eyebrow mb-6">Services</p>
-        <h1 class="text-h1">Three kinds of work. One engineer doing it.</h1>
+        <h1 class="text-h1">Three kinds of work. Senior people doing it.</h1>
         <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-          Platform, AI adoption and software engineering, sold as my time rather
-          than as packages. Scope and dates are agreed in writing before anything starts.
+          Platform, AI adoption and software engineering, sold as our consultants'
+          time rather than as packages. Scope, team and dates are agreed in writing
+          before anything starts.
         </p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a href={CALENDLY} target="_blank" rel="noopener noreferrer" class="btn-primary" data-track-cta="Services Hero Book a Call">
@@ -174,8 +175,8 @@ const serviceJsonLd = tracks.map((t) => ({
         <p class="eyebrow mb-4">Engagements</p>
         <h2 class="text-h2">How engagements work</h2>
         <p class="mt-4 text-lg text-slate-600">
-          Every engagement is my time, scoped in writing before it starts. Three
-          shapes cover most of them.
+          Every engagement is our consultants' time, scoped in writing before it
+          starts. Three shapes cover most of them.
         </p>
       </div>
 
@@ -193,8 +194,8 @@ const serviceJsonLd = tracks.map((t) => ({
       </ol>
 
       <p class="mx-auto mt-10 max-w-2xl text-center text-slate-600">
-        The proposal states the days, the deliverable and the end date. Nothing
-        else is billed.
+        The proposal states who, how many days, the deliverable and the end date.
+        Nothing else is billed.
       </p>
     </div>
   </section>
